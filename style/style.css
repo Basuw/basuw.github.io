@@ -10,6 +10,10 @@ body {
 
 /* Clock */
 
+#CS {
+    color:#FF5EFA ;
+}
+
 body {
     background: #ccc;
  }
