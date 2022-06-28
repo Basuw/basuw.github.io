@@ -8,6 +8,20 @@ body {
     background-color: whitesmoke;
 }
 
+#auteurs{
+   text-align: right;
+   vertical-align: text-bottom;
+
+}
+
+h2 {
+   color: yellow;
+}
+
+.ssLinks{
+   display: flex;
+   flex-direction: row;
+}
 /* Clock */
 
 #CS {
