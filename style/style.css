@@ -68,7 +68,7 @@ body {
 .iconlink:hover{
    color: #FF5EFA ;
    border-bottom:  2px solid #FF5EFA;
-   border-collapse: collapse;
+   border-collapse:collapse;
 }
 
 .grayBack{
@@ -139,9 +139,25 @@ body {
    display: flex;
    justify-content: center;
    align-items: center; /*aligner verticalement */
+   padding-top: 50px;
  }
-
-
+.return{
+   font-size: 40px;
+   text-align: center;
+   color: #db812c;
+   text-decoration: none;
+   align-content: center;
+}
+.return:hover{
+   color: #FF5EFA ;
+   border-bottom:  2px solid #FF5EFA;
+   border-collapse:collapse;
+}
+.center{
+   display: flex;
+   flex-direction: row;
+   justify-content: center; /*aligner horizontalement */
+}
 
 
 
