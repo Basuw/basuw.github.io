@@ -5,7 +5,7 @@ h1 {
 }
 
 body {
-    background-color: whitesmoke;
+    background-color: #df5312;
 }
 
 #auteurs{
@@ -53,11 +53,23 @@ h2 {
 .grayBack{
    background-color: rgba(128, 128, 128, 0.664);
    border: 1px black solid;
-   border-radius: 10px;
+   border-radius: 3px;
    padding: 10px;
-   color: #FFB875;
-   font-size: 20px;
+   font-size: 15;
 }
+
+.listHobby{
+   display: flex;
+   flex-direction: row;
+   flex-wrap: wrap;
+}
+
+.imgHobbby{
+   width: auto;
+   height: 1080px;
+   margin-right: 10px;
+}
+
 
 
 
