@@ -5,8 +5,8 @@ Personal website
 ## Ideas
 
 - [ ] météo
-- [ ] link twitter, git ...
-- [ ] Clock
+- [x] link twitter, git ...
+- [-] Clock
 - [ ] Projects
 - [ ] Trading
 - [ ] F1
