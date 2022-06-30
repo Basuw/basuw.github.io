@@ -158,24 +158,33 @@ body {
    flex-direction: row;
    justify-content: center; /*aligner horizontalement */
 }
-#fixed{
+#fixedTopLeft{
    display: flex;
    flex-direction: row;
    align-items: center; /*aligner verticalement */
    justify-content: center; /*aligner horizontalement */
-   width: 90px;
+   width: 100px;
    height: 40px;
-   position: fixed;
+   position: absolute;
    top: 50px;
-   right: 50px;
+   left: 50px;
+}
+#fixedTopRight{
+   display: flex;
+   flex-direction: row;
+   align-items: center; /*aligner verticalement */
+   justify-content: center; /*aligner horizontalement */
+   width: 500px;
+   height: 500px;
+   position: absolute;
+   top: -50px;
+   right: -50px;
 }
 
 
 
 
-
 /* Clock */
-
 #CS {
     color:#FF5EFA ;
 }
