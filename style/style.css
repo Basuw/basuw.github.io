@@ -158,7 +158,17 @@ body {
    flex-direction: row;
    justify-content: center; /*aligner horizontalement */
 }
-
+#fixed{
+   display: flex;
+   flex-direction: row;
+   align-items: center; /*aligner verticalement */
+   justify-content: center; /*aligner horizontalement */
+   width: 90px;
+   height: 40px;
+   position: fixed;
+   top: 50px;
+   right: 50px;
+}
 
 
 
