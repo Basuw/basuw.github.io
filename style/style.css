@@ -3,7 +3,10 @@ h1 {
     font-size: 50px;
     color: #C49FFF;
 }
-
+#frenchFlag{
+   width: 100px;
+   position: relative;
+}
 h2 {
    width: 500px;
    color: #FF96A5;
@@ -89,9 +92,7 @@ body {
 }
 
 .imgHobbby{
-   width: auto;
-   height: 1080px;
-   width: 1860px;
+   width: 99%;
    border-radius: 10px;
 }
 
@@ -183,11 +184,11 @@ body {
    flex-direction: column;
    align-items: center; /*aligner verticalement */
    justify-content: center; /*aligner horizontalement */
-   width: 400px;
-   height: 250px;
+   width: 100px;
+   height: 50px;
    position: absolute;
-   top: 0px;
-   right: 100px;
+   top: 50px;
+   right: 50px;
 }
 
 
