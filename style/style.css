@@ -21,6 +21,7 @@ body {
     background-color: #FDF0E7;
 }
 
+
 #auteurs{
    text-align: right;
    vertical-align: text-bottom;
@@ -100,12 +101,13 @@ body {
 
 .vertical{
    text-align: center;
+   width: 100%;
 }
+
 .horizontal{
    display: flex;
    flex-direction: row;
    align-items: center;
-
 }
 
 .projects{
@@ -114,14 +116,17 @@ body {
    flex-direction: row;
    justify-content: left;
    align-items: center;
+   width: 100%;
 }
 #projectImg{
-   size-adjust: auto;
    border-radius: 10px;
    margin-left: 50px;
+   width: 80%;
+   min-width: 500px;
 }
 #txtName {
    font-size: 50px;
+   position: st;
 }
 #name{
    text-decoration: none;
@@ -129,7 +134,7 @@ body {
 }
 
 #name:hover{
-   border-bottom: 2px solid #5181ca;
+   border-bottom: 2px solid rgb(54, 237, 8);
 }
 
 #profilImg{
