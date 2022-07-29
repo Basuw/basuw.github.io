@@ -92,9 +92,19 @@ body {
 }
 
 .imgHobbby{
-   width: 99%;
+   width: 70%;
    border-radius: 10px;
+   margin-left: 15%;
+   margin-right: 15%;
+   opacity: 0.7;
 }
+.imgHobbby:hover{
+   margin-left: 0%;
+   transition: 200ms;
+   width: 99%;
+   opacity: 1;
+}
+
 
 .links{
    list-style:none;
@@ -136,6 +146,9 @@ body {
 
 #name:hover{
    border-bottom: 2px solid rgb(54, 237, 8);
+   transform: rotate(5deg);
+   transition: 150ms;
+   zoom: 120%;
 }
 
 #profilImg{
