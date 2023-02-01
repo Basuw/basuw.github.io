@@ -1,15 +1,17 @@
 # Basuw.guthub.io
 
-Personal website
+Welcome to my personal website
 
 ## Ideas
 
 - [ ] météo
 - [x] link twitter, git ...
-- [-] Clock
+- [ ] Clock
 - [ ] Projects
 - [ ] Trading
-- [ ] F1
+- [x] F1
 - [ ] Car occas
 
-## 
+## Authors :
+
+Bastien Jacquelin
