@@ -13,11 +13,9 @@ export default {
 			switch (page) {
 				case 'home':
 					document.querySelector("#home").setAttribute('class','active')
-					console.log(page, 'cici')
 					break;
 				case 'cv':
 					document.querySelector("#cv").setAttribute('class','active')
-					console.log(page)
 					break;
 			}
 		}
