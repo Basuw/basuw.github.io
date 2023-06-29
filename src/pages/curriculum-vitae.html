@@ -4,30 +4,31 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Basuw.github.io</title>
-    <link rel="stylesheet" href="style/style.css">
+    <title>Curriculum Vitae</title>
+    <link rel="stylesheet" href="/style/style.css">
+</head>
+
 <body>
-
     <div id="app">
-        <h1>Bastien Jacquelin</h1>
-
+        <h1>{{message}}</h1>
+        <h2>Coucou</h2>
+        <nav-bar page="cv"></nav-bar>
         <!-- <team-card @edit-team="editTeam" v-for="team in teams"
                    :id="team.id"
                    :nom="team.name"
                    :description="team.description">
         </team-card> -->
-        <nav-bar :page="home"></nav-bar>
-
     </div>
     <!-- <script src="main.js"></script> -->
     <script type="module">
         import { createApp } from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js';
         import NavBar from '/src/views/nav-bar.js';
-        var home='webui';
+
         const app = createApp({
             created(){},
             data(){
                 return{
+					message: 'Curriculum Vitae'
                 }
             },
             methods:{
@@ -36,10 +37,8 @@
         });
         app.component('NavBar', NavBar);
         app.mount('#app');
-        // var currentPageName = window.location.pathname.split('/').pop();
-        // console.log(currentPageName);
-        NavBar.methods.setStyle('home');
-    </script>
+        NavBar.methods.setStyle('cv');
 
+    </script>
 </body>
 </html>

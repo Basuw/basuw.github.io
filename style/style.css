@@ -1,381 +1,51 @@
-h1 {
-    text-align: center;
-    font-size: 50px;
-    color: #C49FFF;
-}
-#frenchFlag{
-   width: 100px;
-   position: relative;
-}
-h2 {
-   width: 500px;
-   color: #FF96A5;
-   font-size: 40px;
-   text-align: center;
-   border-top: solid 2px #FF96A5;
-   border-collapse: collapse;
-}
-h4{
-   font-size: 30px;
-   color: gray;
-   padding-left: 170px;
-}
 body {
-    background-color: #FDF0E7;
+   /* background-image: url('/img/background.png'); */
+   background-color : rgb(25, 25, 25);
 }
 
-
-#auteurs{
-   text-align: right;
-   vertical-align: text-bottom;
-
-}
-
-.Txt {
-   font-size: 40px;
+h1{
+   color: whitesmoke;
    text-align: center;
-   color: #db812c;
-   margin: 50px;
-   justify-content: left;
-}
-#divwip{
-   display: flex;
-   flex-direction:row;
-   align-items: center; /*aligner verticalement */
-   justify-content: center; /*aligner horizontalement */
- }
- .wip{
-   height: 200px;
-   width: 200px;
-   margin-top: 20px;
-
-}
-.ssLinks{
-   display: flex;
-   flex-direction: row;
 }
 
-.icon{
-   width: 50px;
-   height: 50px;
-   padding-left: 20px;
-   padding-right: 20px;
-   padding-top: 20px;
-}
-
-.ssicon{
-   padding-top: 10px;
-   font-size: 20px;
-}
-
-.iconlink{
-   color: #FF96A5 ;
-   text-decoration: none;   
-}
-
-.iconlink:hover{
-   color: #FF5EFA ;
-   border-bottom:  2px solid #FF5EFA;
-   border-collapse:collapse;
-}
-
-.grayBack{
-
-   padding: 10px;
-   font-size: 15;
-}
-
-.listHobby{
-   display: flex;
-   flex-direction: row;
-   flex-wrap: wrap;
-}
-
-.imgHobbby{
-   width: 70%;
-   border-radius: 10px;
-   margin-left: 15%;
-   margin-right: 15%;
-   opacity: 0.7;
-}
-.imgHobbby:hover{
-   margin-left: 0%;
-   transition: 200ms;
-   width: 99%;
-   opacity: 1;
-}
-
-
-.links{
-   list-style:none;
-}
-
-.vertical{
-   text-align: center;
-   width: 100%;
-}
-
-.horizontal{
-   display: flex;
-   flex-direction: row;
-   align-items: center;
-}
-
-.projects{
-   padding-top: 50px;
-   display: flex;
-   flex-direction: row;
-   justify-content: left;
-   align-items: center;
-   width: 100%;
-}
-#projectImg{
-   border-radius: 10px;
-   margin-left: 50px;
-   width: 80%;
-   min-width: 500px;
-}
-#txtName {
-   font-size: 50px;
-   position: st;
-}
-#name{
-   text-decoration: none;
-   color: #598ad3;
-}
-
-#name:hover{
-   border-bottom: 2px solid rgb(54, 237, 8);
-   transform: rotate(5deg);
-   transition: 150ms;
-   zoom: 120%;
-}
-
-#profilImg{
-   padding-left: 250px;
-   padding-right: 50px;
-   box-shadow: solid #5c5c5c 10px;
-   padding-top: 50px;
-   padding-bottom: 50px;
-}
- .title{
-   display: flex;
-   justify-content: center;
-   align-items: center; /*aligner verticalement */
-   padding-top: 50px;
- }
-.return{
-   font-size: 40px;
-   text-align: center;
-   color: #db812c;
-   text-decoration: none;
-   align-content: center;
-}
-.return:hover{
-   color: #FF5EFA ;
-   border-bottom:  2px solid #FF5EFA;
-   border-collapse:collapse;
-}
-.center{
-   display: flex;
-   flex-direction: row;
-   justify-content: center; /*aligner horizontalement */
-}
-#fixedTopLeft{
-   display: flex;
-   flex-direction: row;
-   align-items: center; /*aligner verticalement */
-   justify-content: center; /*aligner horizontalement */
-   width: 100px;
-   height: 40px;
-   position: absolute;
-   top: 50px;
-   left: 50px;
-}
-#fixedTopRight{
+#navbar {
+   width: 15rem;
    display: flex;
    flex-direction: column;
+ }
+
+ #navbar a {
+   float: left;
+   display: block;
+   color: #f2f2f2;
+   text-align: center;
+   padding: 14px 16px;
+   text-decoration: none;
+   font-size: 17px;
+ }
+
+ #navbar a:hover {
+   background-color: #ddd;
+   color: black;
+ }
+
+ #navbar a.active {
+   background-color: #ff6600; /* Couleur orange fluo */
+   color: white;
+ }
+
+ #openMenu{
+   width: 3rem;
+   background-color: #333;
+   border: 0px;
    align-items: center; /*aligner verticalement */
    justify-content: center; /*aligner horizontalement */
-   width: 100px;
-   height: 50px;
-   position: absolute;
-   top: 50px;
-   right: 50px;
-}
+ }
+ #openMenu img{
+   width: 2.5rem;
+ }
 
-
-
-
-
-
-
-
-/* Clock */
-#CS {
-    color:#FF5EFA ;
-}
-
- .dial {
-    position: relative;
-    width: 350px;
-    height: 350px;
-    background: #ececec;
-    border: 12px solid #5c5c5c;
-    border-radius: 50%;
-    margin: 8% auto 0;
-    box-shadow: 1px 14px 21px 0 rgba(0,0,0,.2);
- }
- 
- span {
-    display: inline-block;
- }
- 
- .dot {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    margin: auto;
-    width: 16px;
-    height: 16px;
-    border-radius: 50%;
-    background: radial-gradient(ellipse 20px 15px at 50% 0, #ececec 40%, #5c5c5c 80%);
-    z-index: 10;
-    box-shadow: 0 2px 5px 0 rgba(0,0,0,.3);
- }
- 
- .sec-hand {
-    position: absolute;
-    top: 39px;
-    left: 50%;
-    margin-left: -7px;
-    width: 14px;
-    height: 162px;
-    background: url('https://themegion.github.com/AnalogClock/sec.svg') 50% 50% no-repeat;
-    z-index: 9;
-    transform-origin: 50% 136px;
- }
- 
- .sec-hand.shadow {
-    top: 46px;
-    margin-left: -4px;
-    background-image: url('https://themegion.github.com/AnalogClock/sec-shdw.svg');
-    opacity: .1;
-    z-index: 8;
-    filter: blur(2px);
- }
- 
- .min-hand {
-    position: absolute;
-    top: 51px;  
-    left: 50%;
-    margin-left: -8px;
-    width: 16px;
-    height: 144px;
-    background: url('https://themegion.github.com/AnalogClock/min.svg') 50% 50% no-repeat;
-    z-index: 7;
-    transform-origin: 50% 124px;
- }
- 
- .min-hand.shadow {
-    top: 58px;
-    margin-left: -5px;
-    background-image: url('https://themegion.github.com/AnalogClock/min-shdw.svg');
-    opacity: .1;
-    z-index: 6;
-    filter: blur(2px);
- }
- 
- .hour-hand {
-    position: absolute;
-    top: 85px;
-    left: 50%;
-    margin-left: -7px;
-    width: 14px;
-    height: 110px;
-    background: url('https://themegion.github.com/AnalogClock/hour.svg') 50% 50% no-repeat;
-    z-index: 5;
-    transform-origin: 50% 90px;
- }
- 
- .hour-hand.shadow {
-    top: 92px;
-    margin-left: -4px;
-    background-image: url('https://themegion.github.com/AnalogClock/hour-shdw.svg');
-    opacity: .1;
-    z-index: 4;
-    filter: blur(2px);
- }
- 
- .twelve,
- .three,
- .six,
- .nine {
-    position: absolute;
-    font-family: Lato, sans-serif;
-    font-size: 32px;
-    color: #777;
- }
- 
- .twelve {
-    top: 35px;
-    left: 155px;
- }
- 
- .three {
-    top: 156px;
-    right: 39px;
- }
- 
- .six {
-    left: 165px;
-    bottom: 35px;
- }
- 
- .nine {
-    top: 156px;
-    left: 39px;
- }
- 
- .diallines {
-    position: absolute;
-    top: 15px;
-    left: 50%;
-    margin-left: -1px;
-    width: 2px;
-    height: 10px;
-    background: #b3b3b0;
-    z-index: 1;
-    transform-origin: 50% 160px;
- }
- 
- .diallines:nth-of-type(5n) {
-    position: absolute;
-    top: 10px;
-    left: 50%;
-    margin-left: -2px;
-    width: 4px;
-    height: 25px;
-    background: #b3b3b0;
-    z-index: 1;
-    transform-origin: 50% 165px;
- }
- 
- .date {
-    position: absolute;
-    top: 242px;
-    left: 50%;
-    margin-left: -18px;
-    width: 36px;
-    height: 30px;
-    background: #83837a;
-    border-radius: 6px;
-    font-family: 'Fjalla One', sans-serif;
-    font-size: 21px;
-    line-height: 30px;
-    color: white;
-    text-align: center;
-    box-shadow: inset 0 2px 2px 0 rgba(0,0,0,.3), inset 0 -2px 2px 0 rgba(255,255,255,.2);
+ #tabNav{
+   background-color: #333;
+   border-radius: 8px;
  }
