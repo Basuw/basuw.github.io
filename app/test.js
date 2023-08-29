@@ -21,11 +21,17 @@ let year = date.getFullYear();
 let lastDateofMounth = new Date(year,mounth,0).getDate();
 
 let calendar = new Calendar();
-calendar.nextSevenDays();
+calendar.nextXDays(10);
+calendar.endOfWeek(usr.activities);
 
 console.log(activities[1]);
 console.log("usr",usr);
 console.log(`${day}/${mounth}/${year}`);
 console.log(`date : ${date}`);
 console.log(`lastDateofMounth : ${lastDateofMounth}`);
-
+console.log(`usr.activities : ${lastDateofMounth}`);
+console.log(`usr.activitiesPerDay : ${usr.activitiesPerDay}`);
+console.log(`usr.activitiesPerDay.length : ${usr.activitiesPerDay.length}`);
+usr.activitiesPerDay.forEach(e=>{
+    console.log(e);
+})
