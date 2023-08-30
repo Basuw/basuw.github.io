@@ -3,7 +3,4 @@ class DayActivities{
         this.day=day;
         this.activity=activity;
     }
-    save(){
-        
-    }
 }

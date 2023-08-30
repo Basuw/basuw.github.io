@@ -1,20 +1,19 @@
 class Calendar{
     constructor(){
         let date = new Date();
-        const days = ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday']
+        this.days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday']
         this.day = date.getDate();
         this.mounth = date.getMonth()+1;
         this.year = date.getFullYear();
-        this.dayOfWeek=days[date.getDay()-1]
+        this.dayOfWeek=this.days[date.getDay()]
         this.lastDateofMounth = new Date(this.year,this.mounth,0).getDate();
     }
 
     rightFormat(date){
-        const days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday']
         let day = date.getDate();
         let mounth = date.getMonth()+1;
         let year = date.getFullYear();
-        let dayOfWeek=days[date.getDay()]
+        let dayOfWeek=this.days[date.getDay()]
         return `${dayOfWeek} ${day}/${mounth}/${year}`
     }
     nextXDays(x){
@@ -25,10 +24,9 @@ class Calendar{
             let myDay = this.rightFormat(currentDate);
             tab.push(myDay);
         }
-        console.log("7d",tab);
         return tab;
     }
-    endOfWeek(activities){//create array with activities per day
+    endOfWeek(activities){//create array with activities per day for the next days
         let tab=[];
         let date=new Date().getDay();
         let z=0;
@@ -46,6 +44,6 @@ class Calendar{
             z++;
         }
         return tab;
-    }
-    
+    }   
+
 }

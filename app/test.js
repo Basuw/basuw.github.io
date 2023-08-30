@@ -9,8 +9,9 @@ let usr = new User('leBast','oueoue',mapp);
 usr.addActivity(activities[2],4);
 usr.removeActivity(activities[2]);
 usr.addActivity(activities[1],4);
-usr.activityDone(activities[1]);
-usr.activityDone(activities[0]);
+usr.activityDone("Monday 28/8/2023",activities[1],1);
+usr.activityDone("Tuesday 29/8/2023",activities[0],0.5);
+usr.activityDone("Tuesday 29/8/2023",activities[1],1);
 usr.reportActivity();
 
 
@@ -22,16 +23,15 @@ let lastDateofMounth = new Date(year,mounth,0).getDate();
 
 let calendar = new Calendar();
 calendar.nextXDays(10);
-calendar.endOfWeek(usr.activities);
+calendar.endOfWeek(usr.activitiesReference);
 
-console.log(activities[1]);
-console.log("usr",usr);
-console.log(`${day}/${mounth}/${year}`);
-console.log(`date : ${date}`);
-console.log(`lastDateofMounth : ${lastDateofMounth}`);
-console.log(`usr.activities : ${lastDateofMounth}`);
-console.log(`usr.activitiesPerDay : ${usr.activitiesPerDay}`);
-console.log(`usr.activitiesPerDay.length : ${usr.activitiesPerDay.length}`);
-usr.activitiesPerDay.forEach(e=>{
-    console.log(e);
-})
+// console.log(activities[1]);
+// console.log(`${day}/${mounth}/${year}`);
+// console.log(`date : ${date}`);
+// console.log(`lastDateofMounth : ${lastDateofMounth}`);
+
+console.log("usr",usr)
+let json = JSON.stringify(usr);
+// console.log("usr json",json)
+// console.log("usr Save",usr.save())
+// console.log("usr Save",JSON.stringify(usr.save()))

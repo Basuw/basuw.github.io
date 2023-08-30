@@ -5,5 +5,6 @@ class Activity{
         this.time=time;
         this.pages=pages;
         this.kilometers=kilometers;
+        this.progress=0;
     }
 }
