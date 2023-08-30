@@ -29,8 +29,8 @@ class Calendar{
     endOfWeek(activities){//create array with activities per day for the next days
         let tab=[];
         let date=new Date().getDay();
-        let z=0;
-        for (let i=date; i<=7; i++){
+        let z=1;
+        for (let i=date; i<7; i++){
             let currentDate = new Date();
             currentDate.setDate(currentDate.getDate() + z);
             let myDay = this.rightFormat(currentDate);

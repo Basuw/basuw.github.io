@@ -59,9 +59,8 @@ class User{
         return new SaveUser(this.name,this.password,tabActivitiesReference);
     }
     loadActivities(xDays){//load json activities
-        xDays--;//TO DELETE merge current day
         let array=[];
-        const previousDayActivities='[{"day":"Tuesday 29/8/2023","tabInter":[{"key":{"name":"Read","description":"blabla","progress":1},"value":1},{"key":{"name":"Hiking","description":"blabla","progress":0.8},"value":1}]},{"day":"Monday 28/8/2023","tabInter":[{"key":{"name":"Read","description":"blabla","progress":0.3},"value":1},{"key":{"name":"Hiking","description":"blabla","progress":0.5},"value":1}]}]';
+        const previousDayActivities='[{"day":"Wednesday 30/8/2023","tabInter":[{"key":{"name":"Read","description":"blabla","progress":1},"value":1},{"key":{"name":"Hiking","description":"blabla","progress":0.8},"value":1}]},{"day":"Tuesday 29/8/2023","tabInter":[{"key":{"name":"Read","description":"blabla","progress":1},"value":1},{"key":{"name":"Hiking","description":"blabla","progress":0.8},"value":1}]},{"day":"Monday 28/8/2023","tabInter":[{"key":{"name":"Read","description":"blabla","progress":0.3},"value":1},{"key":{"name":"Hiking","description":"blabla","progress":0.5},"value":1}]}]';
         //recup JSON
         let objects=JSON.parse(previousDayActivities);
         for (let i=0; i <xDays; i++) {

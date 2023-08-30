@@ -12,7 +12,7 @@ usr.addActivity(activities[1],4);
 usr.activityDone("Monday 28/8/2023",activities[1],1);
 usr.activityDone("Tuesday 29/8/2023",activities[0],0.5);
 usr.activityDone("Tuesday 29/8/2023",activities[1],1);
-usr.reportActivity();
+usr.reportActivity(true);
 
 
 let date = new Date();
