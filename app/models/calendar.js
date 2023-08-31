@@ -45,5 +45,22 @@ class Calendar{
         }
         return tab;
     }   
-
+    endOfMounth(){
+        let tab=[];
+        let z=this.day+1;
+        for (let i=this.day; i<this.lastDateofMounth; i++){
+            let currentDate = new Date();
+            currentDate.setDate(currentDate.getDate() + z);
+            let myDay = this.rightFormat(currentDate);
+            let map=new Map();
+            activities.forEach((v,k) => {
+                if(v>0){
+                    map.set(k,v);
+                }
+            });
+            tab.push(new DayActivities(myDay,map));
+            z++;
+        }
+        return tab;
+    }
 }

@@ -14,7 +14,7 @@ class User{
         this.activitiesReference.delete(activity);
         this.formatAllActivities()
     }
-    editActivity(activity,NewFrequence){
+    editActivity(day,activity,NewFrequence){
         this.activities.set(activity,NewFrequence);
         // update this.activitiesPerDay remove 1 frequence
     }
@@ -31,19 +31,27 @@ class User{
     }
     reportActivity(week){//report at the end of week
         let map = new Map();
-        for(let i=0 ;i<new Date().getDay();i++){//for the previous & current days
-            this.activitiesPerDay[i].activity.forEach((v,k) => {
-                if(map.get(k.name)!=null){
-                    map.set(k.name,k.progress+map.get(k.name))
-                }
-                else{
-                    map.set(k.name,k.progress)
-                }
-            });
+        let allActivities;
+        if(!week){
+            let calendar=new Calendar()
+            allActivities=this.loadActivities(calendar.day).concat(calendar.endOfMounth())
         }
-        this.activitiesReference.forEach((v,k)=>{
-            this.report.set(k.name,map.get(k.name)/v)
-        })
+        else{
+            allActivities=this.activitiesPerDay
+            for(let i=0 ;i<new Date().getDay();i++){//for the previous & current days
+                    allActivities[i].activity.forEach((v,k) => {
+                    if(map.get(k.name)!=null){
+                        map.set(k.name,k.progress+map.get(k.name))
+                    }
+                    else{
+                        map.set(k.name,k.progress)
+                    }
+                });
+            }
+            this.activitiesReference.forEach((v,k)=>{
+                this.report.set(k.name,map.get(k.name)/v)
+            })
+        }
         return this.report;
     }
     formatAllActivities(){//activities of the week
@@ -60,7 +68,7 @@ class User{
     }
     loadActivities(xDays){//load json activities
         let array=[];
-        const previousDayActivities='[{"day":"Wednesday 30/8/2023","tabInter":[{"key":{"name":"Read","description":"blabla","progress":1},"value":1},{"key":{"name":"Hiking","description":"blabla","progress":0.8},"value":1}]},{"day":"Tuesday 29/8/2023","tabInter":[{"key":{"name":"Read","description":"blabla","progress":1},"value":1},{"key":{"name":"Hiking","description":"blabla","progress":0.8},"value":1}]},{"day":"Monday 28/8/2023","tabInter":[{"key":{"name":"Read","description":"blabla","progress":0.3},"value":1},{"key":{"name":"Hiking","description":"blabla","progress":0.5},"value":1}]}]';
+        const previousDayActivities='[{"day":"Thursday 31/8/2023","tabInter":[{"key":{"name":"Read","description":"blabla","progress":1},"value":1}]},{"day":"Wednesday 30/8/2023","tabInter":[{"key":{"name":"Read","description":"blabla","progress":1},"value":1},{"key":{"name":"Hiking","description":"blabla","progress":0.8},"value":1}]},{"day":"Tuesday 29/8/2023","tabInter":[{"key":{"name":"Read","description":"blabla","progress":1},"value":1},{"key":{"name":"Hiking","description":"blabla","progress":0.8},"value":1}]},{"day":"Monday 28/8/2023","tabInter":[{"key":{"name":"Read","description":"blabla","progress":0.3},"value":1},{"key":{"name":"Hiking","description":"blabla","progress":0.5},"value":1}]}]';
         //recup JSON
         let objects=JSON.parse(previousDayActivities);
         for (let i=0; i <xDays; i++) {

@@ -4,4 +4,10 @@ class SaveUser{
         this.password=password;
         this.activitiesReference=activitiesReference
     }
+    save(){
+
+    }
+    load(){
+        
+    }
 }

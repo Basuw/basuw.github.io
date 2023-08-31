@@ -24,6 +24,7 @@ let lastDateofMounth = new Date(year,mounth,0).getDate();
 let calendar = new Calendar();
 calendar.nextXDays(10);
 calendar.endOfWeek(usr.activitiesReference);
+console.log("cal, eofMounth",calendar.endOfMounth(usr.activitiesReference));
 
 // console.log(activities[1]);
 // console.log(`${day}/${mounth}/${year}`);
