@@ -1,0 +1,78 @@
+body{
+   background-color: #171717;
+}
+h1{
+   margin: 0 auto;
+   text-align: center;
+   color: lightgrey;
+   display: block;
+}
+#mainDiv{
+   margin: 2.5%;
+   border: 1px solid white;
+   padding: 1.5%;
+}
+#days{
+   align-content: center;
+   border: 1px solid yellowgreen;
+   text-align: center;
+   padding: 1%;
+}
+.tasksMain{
+   display: flex;
+   flex-direction: column;
+   margin-top: 2%;
+   align-content: center;
+   border: 1px solid orangered;
+   text-align: center;
+   padding: 1%;
+
+}
+.task{
+   display: flex;
+   flex-direction: row;
+   align-items: left;
+   border: 1px solid blue;
+   text-align: center;
+   width: auto;
+   height: auto;
+   padding-left: 3%;
+   padding-right: 3%;
+   padding-top: 0.5%;
+   padding-bottom: 0.5%;
+   align-items: center;
+}
+.imgTask{
+   width: 3%;
+   height: 5%;
+}
+h2{
+   margin-top: 0;
+   text-align: center;
+   color: lightgrey;
+   display: block;
+}
+.taskName{
+   color: white;
+   font-size: 130%;
+   margin: auto;
+   /* margin-top: -10%; */
+}
+.vertical{
+   margin-left: auto;
+   display: flex;
+   flex-direction: column;
+}
+.value{
+   font-size: x-large;
+   color: lightgrey;
+}
+.unit{
+   font-size: large;
+   color: lightgrey;
+}
+.frequence{
+   margin-top: 10%;
+   font-size: large;
+   color: lightgrey;
+}

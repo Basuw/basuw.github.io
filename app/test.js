@@ -13,6 +13,7 @@ usr.activityDone("Monday 28/8/2023",activities[1],1);
 usr.activityDone("Tuesday 29/8/2023",activities[0],0.5);
 usr.activityDone("Tuesday 29/8/2023",activities[1],1);
 usr.reportActivity(true);
+console.log(usr.reportActivity(false));
 
 
 let date = new Date();

@@ -74,6 +74,7 @@ class User{
         for (let i=0; i <xDays; i++) {
             let map= new Map();
             let currentObj=objects.pop()
+            if(currentObj==null)break;
             currentObj.tabInter.forEach(e=>{
                 map.set(new Activity(e.key.name,e.key.description,e.key.pages,e.key.kilometers),e.value);
             });

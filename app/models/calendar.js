@@ -26,7 +26,7 @@ class Calendar{
         }
         return tab;
     }
-    endOfWeek(activities){//create array with activities per day for the next days
+    endOfWeek(activities){//create array with activities per day for the next days of the week
         let tab=[];
         let date=new Date().getDay();
         let z=1;
@@ -45,7 +45,7 @@ class Calendar{
         }
         return tab;
     }   
-    endOfMounth(){
+    endOfMounth(){//create array with activities per day for the next days of the mounth
         let tab=[];
         let z=this.day+1;
         for (let i=this.day; i<this.lastDateofMounth; i++){
