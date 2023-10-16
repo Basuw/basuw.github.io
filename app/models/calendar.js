@@ -14,7 +14,8 @@ class Calendar{
         let mounth = date.getMonth()+1;
         let year = date.getFullYear();
         let dayOfWeek=this.days[date.getDay()]
-        return `${dayOfWeek} ${day}/${mounth}/${year}`
+
+        return new Day(dayOfWeek,day,mounth,year);
     }
     nextXDays(x){
         let tab=[]
@@ -26,21 +27,15 @@ class Calendar{
         }
         return tab;
     }
-    endOfWeek(activities){//create array with activities per day for the next days of the week
+    endOfWeek(){//create array with current day and days until sunday 
         let tab=[];
         let date=new Date().getDay();
-        let z=1;
-        for (let i=date; i<7; i++){
+        let z=0;
+        for (let i=date; i<=7; i++){
             let currentDate = new Date();
             currentDate.setDate(currentDate.getDate() + z);
             let myDay = this.rightFormat(currentDate);
-            let map=new Map();
-            activities.forEach((v,k) => {
-                if(v>0){
-                    map.set(k,v);
-                }
-            });
-            tab.push(new DayActivities(myDay,map));
+            tab.push(myDay);
             z++;
         }
         return tab;
