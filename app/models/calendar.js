@@ -9,7 +9,8 @@ class Calendar{
         this.lastDateofMounth = new Date(this.year,this.mounth,0).getDate();
     }
 
-    rightFormat(date){
+    rightFormat(){
+        let date = new Date();
         let day = date.getDate();
         let mounth = date.getMonth()+1;
         let year = date.getFullYear();
@@ -27,7 +28,7 @@ class Calendar{
         }
         return tab;
     }
-    endOfWeek(){//create array with current day and days until sunday 
+    endOfWeek(){//create array with current day and next days until sunday 
         let tab=[];
         let date=new Date().getDay();
         let z=0;
@@ -57,5 +58,24 @@ class Calendar{
             z++;
         }
         return tab;
+    }
+    /**
+     * 
+     * @param {*} myDate 
+     * return boolean 
+        true if myDate is strictly anterior than current date
+     */
+    anteriorDate(myDate){
+        if (myDate.year<this.year){
+            return true;
+        }else if( myDate.year==this.year){
+            if(myDate.mounth<this.mounth ){
+                return true;
+            }else if(myDate.mounth==this.mounth ){
+                if(myDate.day<this.day) {
+                    return true;
+                }else return false;
+            }else return false;
+        }else return false;
     }
 }

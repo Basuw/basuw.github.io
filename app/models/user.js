@@ -19,38 +19,38 @@ class User{
         this.activities.set(activity,NewFrequence);
         // update this.activitiesPerDay remove 1 frequence
     }
-    activityDone(day,activity,progress){ //TO DO
-        // this.activitiesPerDay.forEach((e)=>{
-        //     if(e.day==day){
-        //         e.activity.forEach((v,k)=>{
-        //             if(k.name==activity.name){
-        //                 k.progress=progress;
-        //             }
-        //         })
-        //     }
-        // });
-    }
-    CreateReferenceAchievedPerDayForWeek(){
-        let date = new Date();
-        console.log(date.getDay());
-        let calendar=new Calendar();
-        console.log("calendar.endOfWeek(this.activitiesReference)",calendar.endOfWeek(this.activitiesReference));
-        if (this.ReferenceAchievedPerDay.size === 0) {
-            calendar.endOfWeek().forEach(day => {
-                this.activitiesReference.forEach((value,activity) => {
-                    this.ReferenceAchievedPerDay.set(new DayActivities(day,activity),new ReferenceAchieved(value,0));
-                    console.log("Day",day);
-                    console.log("activity",activity);
-                    console.log("this.activitiesReference[activity]",this.activitiesReference[activity]);
-                    console.log("value",value);
-                });
+    activityDone(day,activity,achievment){
+        let myReferenceAchieved = this.ReferenceAchievedPerDay[new DayActivities(day,activity)];
+        console.log("myReferenceAchieved",myReferenceAchieved);
 
+        //myReferenceAchieved.achieved=achievment;
+    }
+    CreateReferenceAchievedPerDayForWeek(calendar){
+        calendar.endOfWeek().forEach(day => {
+            this.activitiesReference.forEach((value,activity) => {
+                this.ReferenceAchievedPerDay.set(new DayActivities(day,activity),new ReferenceAchieved(value,0));
             });
-            console.log("this.ReferenceAchievedPerDay",this.ReferenceAchievedPerDay);
-            console.log("this.activitiesReference",this.activitiesReference);
+        });
+        console.log("this.ReferenceAchievedPerDay",this.ReferenceAchievedPerDay);
+    }
+
+    statusOfReferenceAchievedPerDay(){
+        let saveAct = new SaveAct();
+        let date = new Date();
+        let calendar=new Calendar();
+        console.log("calendar.endOfWeek()",calendar.endOfWeek(this.activitiesReference));
+        if (this.ReferenceAchievedPerDay.size === 0) {
+            this.CreateReferenceAchievedPerDayForWeek(calendar);
+            return;
         }
-        if (this.ReferenceAchievedPerDay.keys[6]) {
-            
+        let myArray = Array.from(this.ReferenceAchievedPerDay);
+        let lastElement = myArray[myArray.length - 1];
+        console.log('lastElement',lastElement);
+        console.log('lastElement[0].day',lastElement[0].day);
+        if (calendar.anteriorDate(lastElement[0].day)) {//
+            saveAct.save();
+            this.CreateReferenceAchievedPerDayForWeek(calendar);
+            return;
         }
     }
     // reportActivity(week){//report at the end of week

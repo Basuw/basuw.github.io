@@ -15,14 +15,11 @@ usr.activityDone("Tuesday 29/8/2023",activities[1],1);
 //usr.reportActivity(true);
 //console.log(usr.reportActivity(false));
 
-
-let date = new Date();
-let day = date.getDate();
-let mounth = date.getMonth()+1;
-let year = date.getFullYear();
-let lastDateofMounth = new Date(year,mounth,0).getDate();
-
 let calendar = new Calendar();
+let currentDay = calendar.rightFormat();
+console.log("currentDay",currentDay);
+
+
 calendar.nextXDays(10);
 calendar.endOfWeek(usr.activitiesReference);
 console.log("cal, eofMounth",calendar.endOfMounth(usr.activitiesReference));
@@ -38,4 +35,4 @@ let json = JSON.stringify(usr);
 // console.log("usr Save",usr.save())
 // console.log("usr Save",JSON.stringify(usr.save()))
 
-usr.CreateReferenceAchievedPerDayForWeek();
+usr.statusOfReferenceAchievedPerDay();
