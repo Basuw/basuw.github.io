@@ -22,7 +22,6 @@ class User{
     activityDone(day,activity,achievment){
         let myReferenceAchieved = this.ReferenceAchievedPerDay[new DayActivities(day,activity)];
         console.log("myReferenceAchieved",myReferenceAchieved);
-
         //myReferenceAchieved.achieved=achievment;
     }
     CreateReferenceAchievedPerDayForWeek(calendar){
@@ -31,7 +30,7 @@ class User{
                 this.ReferenceAchievedPerDay.set(new DayActivities(day,activity),new ReferenceAchieved(value,0));
             });
         });
-        console.log("this.ReferenceAchievedPerDay",this.ReferenceAchievedPerDay);
+        //console.log("this.ReferenceAchievedPerDay",this.ReferenceAchievedPerDay);
     }
 
     statusOfReferenceAchievedPerDay(){

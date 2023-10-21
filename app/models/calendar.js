@@ -9,8 +9,7 @@ class Calendar{
         this.lastDateofMounth = new Date(this.year,this.mounth,0).getDate();
     }
 
-    rightFormat(){
-        let date = new Date();
+    rightFormat(date){
         let day = date.getDate();
         let mounth = date.getMonth()+1;
         let year = date.getFullYear();
@@ -62,8 +61,7 @@ class Calendar{
     /**
      * 
      * @param {*} myDate 
-     * return boolean 
-        true if myDate is strictly anterior than current date
+     * @returns boolean, if myDate strictly anterior than current date
      */
     anteriorDate(myDate){
         if (myDate.year<this.year){

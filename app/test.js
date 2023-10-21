@@ -9,15 +9,17 @@ let usr = new User('leBast','oueoue',mapp);
 usr.addActivity(activities[2],4);
 usr.removeActivity(activities[2]);
 usr.addActivity(activities[1],4);
-usr.activityDone("Monday 28/8/2023",activities[1],1);
-usr.activityDone("Tuesday 29/8/2023",activities[0],0.5);
-usr.activityDone("Tuesday 29/8/2023",activities[1],1);
+// usr.activityDone("Monday 28/8/2023",activities[1],1);
+// usr.activityDone("Tuesday 29/8/2023",activities[0],0.5);
+// usr.activityDone("Tuesday 29/8/2023",activities[1],1);
 //usr.reportActivity(true);
 //console.log(usr.reportActivity(false));
 
 let calendar = new Calendar();
-let currentDay = calendar.rightFormat();
+let currentDay = calendar.rightFormat(new Date());
 console.log("currentDay",currentDay);
+usr.activityDone(currentDay,activities[0],1);
+
 
 
 calendar.nextXDays(10);
