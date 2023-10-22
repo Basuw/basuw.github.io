@@ -1,8 +1,5 @@
 export default{
-    props: {
-        day: Day,
-        activities:{}
-    },
+    props:['day','activities'],
 	// emits: ['event'],
 	methods: {
         echo(){

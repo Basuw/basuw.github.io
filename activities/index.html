@@ -29,8 +29,10 @@
             <div id="days">
                 <day-item @selected-day="SelectedDay" v-for="day in weekDisplay" :day="day"></day-item>
             </div>
-            <day-content :day="currentDay" :activities="activities"></day-content>
-            
+            <day-content :day="dayClicked" :activities="activities"></day-content>
+            <span>{{dayClicked}} aa</span>
+            <span>{{weekDisplay[0]}} bb</span>
+
         </div>
     </div>
 
@@ -46,23 +48,27 @@
                     Stub:new Stub(),
                     calendar:new Calendar(),
                     weekDisplay:calendar.currentWeek(),
-                    selectedtDay:calendar.currentDay,
+                    dayClicked:calendar.currentDay,
                     usr:Stub.user,
-                    activities:usr.activitiesOfDay(this.selectedtDay)
+                    activities:usr.activitiesOfDay(this.dayClicked)
                 }
             },
             methods:{
                 SelectedDay(data){
-                    this.selectedtDay= data;
-                    console.log('this.selectedtDay',this.selectedtDay)
+                    this.dayClicked= data;
+                    console.log('this.dayClicked',this.dayClicked)
                 },
                 loadActivityPerDay(){
 
                 },
             }
         });
-        let weekDisplay = new Calendar().currentWeek()
-        console.log('weekDisplay',weekDisplay)
+        let calendar = new Calendar()
+        //let weekDisplay = calendar.currentWeek()
+        let dayClicked = calendar.currentDay
+
+        //console.log('weekDisplay',weekDisplay)
+        console.log('dayClicked',dayClicked)
         console.log('usr html',usr)
 
         app.component('ActivityItem', ActivityItem);

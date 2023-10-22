@@ -9,7 +9,6 @@ class Calendar{
         this.lastDateofMounth = new Date(this.year,this.mounth,0).getDate();
         this.currentDay = this.rightFormat(date);
     }
-
     rightFormat(date){
         let day = date.getDate();
         let mounth = date.getMonth()+1;
