@@ -94,8 +94,8 @@ class Calendar{
         if (day===0) {
             return this.nextXDays(-7).reverse()
         }
-        if(day>1){
-            return this.nextXDays(-(day-1)).concat(this.endOfWeek()).reverse()
+        if(day>=1){
+            return this.nextXDays(0-day+1).concat(this.endOfWeek())
         }
     }
 }

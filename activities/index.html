@@ -30,6 +30,7 @@
                 <day-item @selected-day="SelectedDay" v-for="day in weekDisplay" :day="day"></day-item>
             </div>
             <day-content :day="currentDay" :activities="activities"></day-content>
+            
         </div>
     </div>
 
@@ -61,7 +62,7 @@
             }
         });
         let weekDisplay = new Calendar().currentWeek()
-        //console.log('weekDisplay',weekDisplay)
+        console.log('weekDisplay',weekDisplay)
         console.log('usr html',usr)
 
         app.component('ActivityItem', ActivityItem);

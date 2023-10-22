@@ -1,19 +1,20 @@
 export default{
     props: {
         day: Day,
-        activities:[]
+        activities:{}
     },
 	// emits: ['event'],
 	methods: {
-		// myFunction: function(){
-		// 	this.$emit(event, param)// throw an event
-		// 	return
-		// }
+        echo(){
+            console.log("day",day)
+            console.log("activities",activities)
+        }
 	},
 	template:
 		`
         <div id="taskRemaining" class="tasksMain">
-        <h2>REMAINING</h2>
+        <h2 @click="echo">REMAINING</h2>
+        <activity-item></activity-item>
 
         </div>
         <div id="taskDone" class="tasksMain">

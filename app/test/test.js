@@ -31,7 +31,7 @@ let myDayUlterior = calendar.rightFormat(currentDate);
 // console.log('FALSE',calendar.anteriorDate(myDayUlterior));
 
 
-// console.log('calendar.currentWeek()',calendar.currentWeek());
+console.log('calendar.currentWeek()',calendar.currentWeek());
 // console.log('calendar.nextDays',calendar.nextXDays(-5));
 
 

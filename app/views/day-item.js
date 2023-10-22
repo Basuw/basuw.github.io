@@ -2,7 +2,7 @@ export default{
     props: {
         day: Day
     },
-	emits: ['selectedDay'],
+	emits: ['selected-day'],
 	methods: {
 		clicked: function(){
 			this.$emit('selected-day', this.day)// throw an event
