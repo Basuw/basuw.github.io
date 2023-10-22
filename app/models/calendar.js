@@ -31,6 +31,13 @@ class Calendar{
         let tab=[];
         let date=new Date().getDay();
         let z=0;
+        if(this.dayOfWeek==='Sunday'){
+            let currentDate = new Date();
+            currentDate.setDate(currentDate.getDate() + z);
+            let myDay = this.rightFormat(currentDate);
+            tab.push(myDay);
+            return tab
+        }
         for (let i=date; i<=7; i++){
             let currentDate = new Date();
             currentDate.setDate(currentDate.getDate() + z);
@@ -70,7 +77,7 @@ class Calendar{
             if(myDate.mounth<this.mounth ){
                 return true;
             }else if(myDate.mounth==this.mounth ){
-                if(myDate.day<this.day) {
+                if(myDate.number<this.day) {
                     return true;
                 }else return false;
             }else return false;

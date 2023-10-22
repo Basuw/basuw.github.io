@@ -6,6 +6,7 @@ class User{
         this.report= new Map(); //%tage of achievment
         this.activitiesPerDay;//array of dayActivities for eof
         this.ReferenceAchievedPerDay= new Map(); //<DayActivity/ReferenceAchieved> for the week
+        this.statusOfReferenceAchievedPerDay();
     }
     addActivity(activity,frequence){
         this.activitiesReference.set(activity,frequence);
@@ -20,9 +21,13 @@ class User{
         // update this.activitiesPerDay remove 1 frequence
     }
     activityDone(day,activity,achievment){
-        let myReferenceAchieved = this.ReferenceAchievedPerDay[new DayActivities(day,activity)];
-        console.log("myReferenceAchieved",myReferenceAchieved);
-        //myReferenceAchieved.achieved=achievment;
+        let dayAct = new DayActivities(day,activity)
+        usr.ReferenceAchievedPerDay.forEach((v,k)=>{
+            if(k.equals(dayAct)){
+                v=new ReferenceAchieved(v.reference,achievment)
+                this.ReferenceAchievedPerDay.set(k,v);
+            }
+        })
     }
     CreateReferenceAchievedPerDayForWeek(calendar){
         calendar.endOfWeek().forEach(day => {
@@ -30,18 +35,17 @@ class User{
                 this.ReferenceAchievedPerDay.set(new DayActivities(day,activity),new ReferenceAchieved(value,0));
             });
         });
-        //console.log("this.ReferenceAchievedPerDay",this.ReferenceAchievedPerDay);
     }
 
     statusOfReferenceAchievedPerDay(){
         let saveAct = new SaveAct();
         let date = new Date();
         let calendar=new Calendar();
-        console.log("calendar.endOfWeek()",calendar.endOfWeek(this.activitiesReference));
         if (this.ReferenceAchievedPerDay.size === 0) {
             this.CreateReferenceAchievedPerDayForWeek(calendar);
             return;
         }
+        //console.log('th',this.ReferenceAchievedPerDay.size);
         let myArray = Array.from(this.ReferenceAchievedPerDay);
         let lastElement = myArray[myArray.length - 1];
         console.log('lastElement',lastElement);
