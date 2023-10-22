@@ -13,7 +13,7 @@ let usr = new User('leBast','oueoue',mapp);
 
 usr.addActivity(activities[2],4);
 usr.removeActivity(activities[2]);
-usr.addActivity(activities[1],4);
+// usr.addActivity(activities[1],4);
 
 
 // usr.activityDone("Tuesday 29/8/2023",activities[0],0.5);
@@ -23,7 +23,6 @@ usr.addActivity(activities[1],4);
 let calendar = new Calendar();
 let date = new Date();
 let bidule =  new DayActivities(calendar.rightFormat(date),activities[0]);
-
 
 let currentDate = new Date();
 currentDate.setDate(currentDate.getDate()-4);

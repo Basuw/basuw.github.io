@@ -10,7 +10,11 @@ class User{
     }
     addActivity(activity,frequence){
         this.activitiesReference.set(activity,frequence);
-        //this.formatAllActivities()
+        let calendar = new Calendar()
+        calendar.endOfWeek().forEach(e=>{
+            console.log(e);
+            this.ReferenceAchievedPerDay.set(new DayActivities(e,activity),new ReferenceAchieved(frequence,0));
+        })
     }    
     removeActivity(activity){
         this.activitiesReference.delete(activity);
