@@ -13,10 +13,11 @@ h1{
    padding: 1.5%;
 }
 #days{
-   align-content: center;
    border: 1px solid yellowgreen;
    text-align: center;
    padding: 1%;
+   display: flex;
+   justify-content:space-evenly;
 }
 .tasksMain{
    display: flex;
@@ -75,4 +76,17 @@ h2{
    margin-top: 10%;
    font-size: large;
    color: lightgrey;
+}
+.dayChoice{
+   display: flex;
+   flex-direction: column;
+   margin: 1%;
+}
+.dayChoiceNumber{
+   color: lightgrey;
+   font-size: 200%;
+}
+.dayChoiceDay{
+   color: lightgrey;
+   font-size: 150%;
 }

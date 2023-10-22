@@ -89,11 +89,8 @@ class Calendar{
     }
     currentWeek(){
         let date = new Date();
-        //nextXDays(-this.date.getDay())
         let day=date.getDay()
-        console.log('this.date.getDay()',day)
         if (day===0) {
-            console.log('day === 0')
             return this.nextXDays(-7).reverse()
         }
         if(day>1){
