@@ -7,6 +7,7 @@ class Calendar{
         this.year = date.getFullYear();
         this.dayOfWeek=this.days[date.getDay()]
         this.lastDateofMounth = new Date(this.year,this.mounth,0).getDate();
+        this.currentDay = this.rightFormat(date);
     }
 
     rightFormat(date){

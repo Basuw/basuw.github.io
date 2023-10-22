@@ -15,10 +15,6 @@ usr.removeActivity(activities[2]);
 // usr.addActivity(activities[1],4);
 
 
-// usr.activityDone("Tuesday 29/8/2023",activities[0],0.5);
-// usr.activityDone("Tuesday 29/8/2023",activities[1],1);
-//usr.reportActivity(true);
-//console.log(usr.reportActivity(false));
 let calendar = new Calendar();
 let date = new Date();
 let bidule =  new DayActivities(calendar.rightFormat(date),activities[0]);
@@ -29,27 +25,22 @@ let myDayAnterior = calendar.rightFormat(currentDate);
 currentDate.setDate(currentDate.getDate()+4);
 let myDayUlterior = calendar.rightFormat(currentDate);
 
-console.log('myDayAnterior',myDayAnterior);
-console.log('myDayUlterior',myDayUlterior);
-console.log('TRUE',calendar.anteriorDate(myDayAnterior));
-console.log('FALSE',calendar.anteriorDate(myDayUlterior));
+// console.log('myDayAnterior',myDayAnterior);
+// console.log('myDayUlterior',myDayUlterior);
+// console.log('TRUE',calendar.anteriorDate(myDayAnterior));
+// console.log('FALSE',calendar.anteriorDate(myDayUlterior));
 
 
-console.log('calendar.currentWeek()',calendar.currentWeek());
-console.log('calendar.nextDays',calendar.nextXDays(-5));
+// console.log('calendar.currentWeek()',calendar.currentWeek());
+// console.log('calendar.nextDays',calendar.nextXDays(-5));
 
 
 usr.activityDone(calendar.rightFormat(date),activities[1],1);
-
+console.log('usr.activitiesOfDay(calendar.currentDay)',usr.activitiesOfDay(calendar.currentDay))
 
 calendar.nextXDays(10);
 calendar.endOfWeek(usr.activitiesReference);
-// console.log("cal, eofMounth",calendar.endOfMounth(usr.activitiesReference));
 
-// console.log(activities[1]);
-// console.log(`${day}/${mounth}/${year}`);
-// console.log(`date : ${date}`);
-// console.log(`lastDateofMounth : ${lastDateofMounth}`);
 
 console.log("usr",usr)
 let json = JSON.stringify(usr);

@@ -5,7 +5,7 @@ export default{
 	emits: ['selectedDay'],
 	methods: {
 		clicked: function(){
-			this.$emit(selectedDay, day)// throw an event
+			this.$emit('selected-day', this.day)// throw an event
 			return
 		}
 	},

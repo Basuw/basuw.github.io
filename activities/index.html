@@ -29,7 +29,7 @@
             <div id="days">
                 <day-item @selected-day="SelectedDay" v-for="day in weekDisplay" :day="day"></day-item>
             </div>
-            <day-content></day-content>
+            <day-content :day="currentDay" :activities="activities"></day-content>
         </div>
     </div>
 
@@ -41,14 +41,21 @@
             created(){},
             data(){
                 return{
-                    weekDisplay:new Calendar().currentWeek(),
-                    currentDay:Day
+                    calendar:new Calendar(),
+                    weekDisplay:calendar.currentWeek(),
+                    selectedtDay:calendar.currentDay,
+                    activities:[],
+                    usr:User,
                 }
             },
             methods:{
-                SelectedDay(){
-                    
-                }
+                SelectedDay(data){
+                    this.selectedtDay= data;
+                    console.log('this.selectedtDay',this.selectedtDay)
+                },
+                loadActivityPerDay(){
+
+                },
             }
         });
         let weekDisplay = new Calendar().currentWeek()

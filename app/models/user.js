@@ -19,7 +19,6 @@ class User{
         this.activitiesReference.delete(activity);
         this.ReferenceAchievedPerDay.forEach((v,k)=>{
             if (k.activity==activity) {
-                console.log('k',k)
                 this.ReferenceAchievedPerDay.delete(k)
             }
             // this.ReferenceAchievedPerDay.set(new DayActivities(e,activity),new ReferenceAchieved(frequence,0));
@@ -64,6 +63,16 @@ class User{
             this.CreateReferenceAchievedPerDayForWeek(calendar);
             return;
         }
+    }
+    activitiesOfDay(day){
+        let activities = [];
+        this.ReferenceAchievedPerDay.forEach((v,k)=>{
+            if (k.day.equals(day)) {
+                activities.push(k.activity)
+            }
+            // this.ReferenceAchievedPerDay.set(new DayActivities(e,activity),new ReferenceAchieved(frequence,0));
+        })
+        return activities
     }
     // reportActivity(week){//report at the end of week
     //     let map = new Map();

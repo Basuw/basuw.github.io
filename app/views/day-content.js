@@ -1,7 +1,7 @@
 export default{
     props: {
         day: Day,
-        Activities:[]
+        activities:[]
     },
 	// emits: ['event'],
 	methods: {
