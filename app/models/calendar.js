@@ -19,9 +19,13 @@ class Calendar{
     }
     nextXDays(x){
         let tab=[]
-        for (let i=0; i<x; i++){
+        for (let i=0; i<Math.abs(x); i++){
             let currentDate = new Date();
-            currentDate.setDate(currentDate.getDate() + i);
+            if (x<0) {
+                currentDate.setDate(currentDate.getDate() - i);
+            }else{
+                currentDate.setDate(currentDate.getDate() + i);
+            }
             let myDay = this.rightFormat(currentDate);
             tab.push(myDay);
         }
@@ -82,5 +86,18 @@ class Calendar{
                 }else return false;
             }else return false;
         }else return false;
+    }
+    currentWeek(){
+        let date = new Date();
+        //nextXDays(-this.date.getDay())
+        let day=date.getDay()
+        console.log('this.date.getDay()',day)
+        if (day===0) {
+            console.log('day === 0')
+            return this.nextXDays(-7).reverse()
+        }
+        if(day>1){
+            return this.nextXDays(-(day-1)).concat(this.endOfWeek()).reverse()
+        }
     }
 }

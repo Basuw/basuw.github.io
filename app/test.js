@@ -35,7 +35,8 @@ console.log('TRUE',calendar.anteriorDate(myDayAnterior));
 console.log('FALSE',calendar.anteriorDate(myDayUlterior));
 
 
-
+console.log('calendar.currentWeek()',calendar.currentWeek());
+console.log('calendar.nextDays',calendar.nextXDays(-5));
 
 
 usr.activityDone(calendar.rightFormat(date),activities[1],1);
