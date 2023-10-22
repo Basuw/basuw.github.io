@@ -12,13 +12,18 @@ class User{
         this.activitiesReference.set(activity,frequence);
         let calendar = new Calendar()
         calendar.endOfWeek().forEach(e=>{
-            console.log(e);
             this.ReferenceAchievedPerDay.set(new DayActivities(e,activity),new ReferenceAchieved(frequence,0));
         })
     }    
     removeActivity(activity){
         this.activitiesReference.delete(activity);
-        //this.formatAllActivities()
+        this.ReferenceAchievedPerDay.forEach((v,k)=>{
+            if (k.activity==activity) {
+                console.log('k',k)
+                this.ReferenceAchievedPerDay.delete(k)
+            }
+            // this.ReferenceAchievedPerDay.set(new DayActivities(e,activity),new ReferenceAchieved(frequence,0));
+        })    
     }
     editActivity(day,activity,NewFrequence){
         this.activities.set(activity,NewFrequence);

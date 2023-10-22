@@ -10,7 +10,6 @@ mapp.set(activities[1],2)
 
 
 let usr = new User('leBast','oueoue',mapp);
-
 usr.addActivity(activities[2],4);
 usr.removeActivity(activities[2]);
 // usr.addActivity(activities[1],4);
