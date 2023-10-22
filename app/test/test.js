@@ -9,7 +9,7 @@ mapp.set(activities[1],2)
 // console.log('mapp',mapp.get(activities[0]))
 
 
-let usr = new User('leBast','oueoue',mapp);
+let usr = new Stub().user
 usr.addActivity(activities[2],4);
 usr.removeActivity(activities[2]);
 // usr.addActivity(activities[1],4);

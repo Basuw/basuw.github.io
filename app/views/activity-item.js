@@ -1,6 +1,6 @@
 export default{
     props: {
-        activity
+        activity:Activity
     },
 	// emits: ['event'],
 	methods: {
@@ -22,5 +22,6 @@ export default{
                 <span class="unit">minutes</span>
             </div>
         </div>
+        
 		`
 }

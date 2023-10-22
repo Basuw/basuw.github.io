@@ -35,17 +35,19 @@
 
 	<script type="module">
         import { createApp } from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js';
+        import ActivityItem from '/app/views/activity-item.js';
         import DayItem from '/app/views/day-item.js';
         import DayContent from '/app/views/day-content.js';
         const app = createApp({
             created(){},
             data(){
                 return{
+                    Stub:new Stub(),
                     calendar:new Calendar(),
                     weekDisplay:calendar.currentWeek(),
                     selectedtDay:calendar.currentDay,
-                    activities:[],
-                    usr:User,
+                    usr:Stub.user,
+                    activities:usr.activitiesOfDay(this.selectedtDay)
                 }
             },
             methods:{
@@ -60,6 +62,9 @@
         });
         let weekDisplay = new Calendar().currentWeek()
         //console.log('weekDisplay',weekDisplay)
+        console.log('usr html',usr)
+
+        app.component('ActivityItem', ActivityItem);
         app.component('DayItem', DayItem);
         app.component('DayContent', DayContent);
 
