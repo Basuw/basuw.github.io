@@ -30,8 +30,8 @@
                 <day-item @selected-day="SelectedDay" v-for="day in weekDisplay" :day="day"></day-item>
             </div>
             <day-content :day="dayClicked" :activities="activities"></day-content>
-            <span>{{dayClicked}} aa</span>
-            <span>{{weekDisplay[0]}} bb</span>
+            <p class="testDisplay">{{dayClicked}} dayClicked</p>
+            <p class="testDisplay">{{weekDisplay[0]}} weekDisplay[0]</p>
 
         </div>
     </div>

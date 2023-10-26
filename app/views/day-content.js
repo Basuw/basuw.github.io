@@ -3,8 +3,8 @@ export default{
 	// emits: ['event'],
 	methods: {
         echo:function(){
-            //console.log("day",day)
-            console.log("activities",activities)
+            console.log("dayyyy",this.day)
+            console.log("activities",this.activities)
         }
 	},
 	template:
