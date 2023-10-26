@@ -30,7 +30,7 @@ class User{
     }
     activityDone(day,activity,achievment){
         let dayAct = new DayActivities(day,activity)
-        usr.ReferenceAchievedPerDay.forEach((v,k)=>{
+        this.ReferenceAchievedPerDay.forEach((v,k)=>{
             if(k.equals(dayAct)){
                 v=new ReferenceAchieved(v.reference,achievment)
                 this.ReferenceAchievedPerDay.set(k,v);

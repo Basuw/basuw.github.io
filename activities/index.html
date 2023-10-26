@@ -32,7 +32,7 @@
             <day-content :day="dayClicked" :activities="activities"></day-content>
             <p class="testDisplay">{{dayClicked}} dayClicked</p>
             <p class="testDisplay">{{weekDisplay[0]}} weekDisplay[0]</p>
-
+            <button @click="clicked">CLICK</button>
         </div>
     </div>
 
@@ -45,34 +45,41 @@
             created(){this.dayClicked=this.calendar.currentDay},
             data(){
                 return{
-                    Stub:new Stub(),
-                    calendar:new Calendar(),
+                    calendar:calendar,
                     weekDisplay:calendar.currentWeek(),
                     dayClicked:calendar.currentDay,
-                    usr:Stub.user,
-                    activities:usr.activitiesOfDay(this.dayClicked)
+                    activities:user.activitiesOfDay(dayClicked)
                 }
             },
             methods:{
                 SelectedDay(data){
                     this.dayClicked= data;
+                    this.activities=user.activitiesOfDay(data)
                     console.log('this.dayClicked MAIN',this.dayClicked)
+                    console.log('this.activities MAIN',this.activities)
                 },
                 loadActivityPerDay(){
 
                 },
                 clicked: function(){
-                    console.log('this.dayClicked MAIN before init',this.dayClicked)
+                    console.log('user',user)
                 }
             },
         });
-        let calendar = new Calendar()
-        //let weekDisplay = calendar.currentWeek()
+        let stub = new Stub();
+        let calendar = new Calendar();
+        let user = stub.user;
         let dayClicked = calendar.currentDay
 
-        //console.log('weekDisplay',weekDisplay)
-        console.log('dayClicked',dayClicked)
-        console.log('usr html',usr)
+        user.activityDone(calendar.currentDay,user.activitiesOfDay(calendar.currentDay)[1],1);
+        //let usr = new Stub().user;
+        // //let weekDisplay = calendar.currentWeek()
+
+        // //console.log('weekDisplay',weekDisplay)
+        // console.log('dayClickeddddd',dayClickeddddd)
+        // console.log('usr html',usr)
+
+
 
         app.component('ActivityItem', ActivityItem);
         app.component('DayItem', DayItem);

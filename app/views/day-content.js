@@ -3,7 +3,7 @@ export default{
 	// emits: ['event'],
 	methods: {
         echo:function(){
-            console.log("dayyyy",this.day)
+            console.log("day",this.day)
             console.log("activities",this.activities)
         }
 	},
