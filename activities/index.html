@@ -42,7 +42,7 @@
         import DayItem from '/app/views/day-item.js';
         import DayContent from '/app/views/day-content.js';
         const app = createApp({
-            created(){},
+            created(){this.dayClicked=this.calendar.currentDay},
             data(){
                 return{
                     Stub:new Stub(),
@@ -56,12 +56,15 @@
             methods:{
                 SelectedDay(data){
                     this.dayClicked= data;
-                    console.log('this.dayClicked',this.dayClicked)
+                    console.log('this.dayClicked MAIN',this.dayClicked)
                 },
                 loadActivityPerDay(){
 
                 },
-            }
+                clicked: function(){
+                    console.log('this.dayClicked MAIN before init',this.dayClicked)
+                }
+            },
         });
         let calendar = new Calendar()
         //let weekDisplay = calendar.currentWeek()

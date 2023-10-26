@@ -2,8 +2,8 @@ export default{
     props:['day','activities'],
 	// emits: ['event'],
 	methods: {
-        echo(){
-            console.log("day",day)
+        echo:function(){
+            //console.log("day",day)
             console.log("activities",activities)
         }
 	},
@@ -11,7 +11,7 @@ export default{
 		`
         <div id="taskRemaining" class="tasksMain">
         <h2 @click="echo">REMAINING</h2>
-        <activity-item></activity-item>
+        <activity-item v-for="activity in activities" :activity="activity"></activity-item>
 
         </div>
         <div id="taskDone" class="tasksMain">

@@ -93,8 +93,13 @@ class Calendar{
         if (day===0) {
             return this.nextXDays(-7).reverse()
         }
-        if(day>=1){
-            return this.nextXDays(0-day+1).concat(this.endOfWeek())
+        if(day===1){
+            return this.nextXDays(0-day+1).reverse().concat(this.endOfWeek())
+        }
+        else{
+            let array= this.nextXDays(0-day).reverse().concat(this.endOfWeek())
+            array.splice(day,1)
+            return array;
         }
     }
 }
