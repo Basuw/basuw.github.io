@@ -48,7 +48,7 @@
                     calendar:calendar,
                     weekDisplay:calendar.currentWeek(),
                     dayClicked:calendar.currentDay,
-                    activities:user.activitiesOfDay(dayClicked)
+                    activities:user.activitiesOfDay(dayClicked),
                 }
             },
             methods:{
@@ -72,12 +72,13 @@
         let dayClicked = calendar.currentDay
 
         user.activityDone(calendar.currentDay,user.activitiesOfDay(calendar.currentDay)[1],1);
+        
         //let usr = new Stub().user;
         // //let weekDisplay = calendar.currentWeek()
 
         // //console.log('weekDisplay',weekDisplay)
         // console.log('dayClickeddddd',dayClickeddddd)
-        // console.log('usr html',usr)
+        console.log('usr html',user)
 
 
 

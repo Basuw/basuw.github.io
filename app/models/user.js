@@ -30,12 +30,25 @@ class User{
     }
     activityDone(day,activity,achievment){
         let dayAct = new DayActivities(day,activity)
+        let tmpK,tmpV;
         this.ReferenceAchievedPerDay.forEach((v,k)=>{
             if(k.equals(dayAct)){
-                v=new ReferenceAchieved(v.reference,achievment)
-                this.ReferenceAchievedPerDay.set(k,v);
+                k.activity.progress=achievment;
+                tmpK=k;
+                if (achievment==1) {
+                    tmpV=new ReferenceAchieved(v.reference,achievment)
+                }else{
+                    tmpV=v
+                }
+                this.ReferenceAchievedPerDay.delete(k)
             }
         })
+        if (tmpV!=null && tmpK!=null) {
+            this.ReferenceAchievedPerDay.set(tmpK,tmpV);
+            console.log('tmpK',tmpK)
+            console.log('tmpV',tmpV)
+
+        }
     }
     CreateReferenceAchievedPerDayForWeek(calendar){
         calendar.endOfWeek().forEach(day => {
