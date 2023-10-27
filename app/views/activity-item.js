@@ -3,25 +3,39 @@ export default{
         activity:Activity,
         referenceAchieved:ReferenceAchieved
     },
+    emits: ['achievment'],
+    data:function(){
+        return{
+            perweek:THISWEEK
+        }
+    },
 	// emits: ['event'],
 	methods: {
-		// myFunction: function(){
-		// 	this.$emit(event, param)// throw an event
-		// 	return
-		// }
+        achieved: function(value){
+			this.referenceAchieved.achieved=value;
+            this.$emit("achievment",this.activity, value);
+		}
 	},
 	template:
 		`
         <div class="task">
-            <img src="/activities/icon/tasks/hiking.png" alt="imgTask" class="imgTask"/>
-            <div class="vertical">
-                <span class="taskName"> {{activity.name}} </span>
-                <span class="frequence"> twice a week</span>
-                <span class="frequence"> {{referenceAchieved.achieved}}/{{referenceAchieved.reference}}</span>
+            <div class="mainTaskInfo">
+                <img src="/activities/icon/tasks/hiking.png" alt="imgTask" class="imgTask"/>
+                <div class="vertical">
+                    <span class="taskName"> {{activity.name}} </span>
+                    <span class="frequence"> {{activity.progress}} / {{referenceAchieved.reference}} {{perweek}}</span>
+                </div>
+                <div class="vertical">
+                    <span class="value">{{referenceAchieved.achieved}}/{{activity.value}}</span>
+                    <span class="unit">{{activity.unit}}</span>
+                </div>
             </div>
-            <div class="vertical">
-                <span class="value">20</span>
-                <span class="unit">minutes</span>
+            <div class="validationInfo">
+                <div class="buttonValidation" @click="achieved(Math.round(activity.value*0.3))">{{Math.round(activity.value*0.3)}}</div>
+                <div class="buttonValidation" @click="achieved(Math.round(activity.value*0.7))">{{Math.round(activity.value*0.7)}}</div>
+                <div class="buttonValidation" @click="achieved(activity.value)">{{activity.value}}</div>
+            </div>
+            <div class="deleteInfo">
             </div>
         </div>
         

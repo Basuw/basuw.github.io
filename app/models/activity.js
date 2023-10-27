@@ -1,10 +1,9 @@
 class Activity{
-    constructor(name,description,time,pages,kilometers){
+    constructor(name,description,value,unit){
         this.name=name;
         this.description=description;
-        this.time=time;
-        this.pages=pages;
-        this.kilometers=kilometers;
+        this.value=value;
+        this.unit=unit;
         this.progress=0;
     }
     equals(other) {
@@ -14,9 +13,8 @@ class Activity{
         return (
             other.name === this.name &&
             other.description === this.description &&
-            other.time === this.time &&
-            other.pages === this.pages &&
-            other.kilometers === this.kilometers &&
+            other.value === this.value &&
+            other.unit === this.unity&&
             other.progress === this.progress
         ); // Return true if all the properties are the same, otherwise return false
     }

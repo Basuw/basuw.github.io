@@ -14,6 +14,7 @@
 
 <body>
 	<script src="/app/models/activity.js"></script>
+	<script src="/app/tools/const.js"></script>
 	<script src="/app/tools/saveAct.js"></script>
 	<script src="/app/models/day.js"></script>
 	<script src="/app/models/referenceAchieved.js"></script>
@@ -30,9 +31,6 @@
                 <day-item @selected-day="SelectedDay" v-for="day in weekDisplay" :day="day"></day-item>
             </div>
             <day-content :day="dayClicked" :activities="activities" :reference-achieved="referenceAchieved"></day-content>
-            <p class="testDisplay">{{dayClicked}} dayClicked</p>
-            <p class="testDisplay">{{weekDisplay[0]}} weekDisplay[0]</p>
-            <button @click="clicked">CLICK</button>
         </div>
     </div>
 
@@ -76,7 +74,7 @@
         let calendar = new Calendar();
         let user = stub.user;
         let dayClicked = calendar.currentDay
-        user.activityDone(calendar.currentDay,user.activitiesOfDay(calendar.currentDay)[1],1);
+        user.activityDone(calendar.currentDay,user.activitiesOfDay(calendar.currentDay)[1],5);
         let referenceAchievedInit = user.ArrayOfReferenceAchievedForActOfADay(calendar.currentDay);
         
         //let usr = new Stub().user;

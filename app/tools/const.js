@@ -1,0 +1,1 @@
+const THISWEEK = "this week"

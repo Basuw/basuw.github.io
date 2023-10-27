@@ -34,7 +34,7 @@ class User{
         this.ReferenceAchievedPerDay.forEach((v,k)=>{
             if(k.equals(dayAct)){
                 tmpV=new ReferenceAchieved(v.reference,achievment)
-                if (achievment==1) {
+                if (achievment==activity.value) {
                     k.activity.progress=+1;
                 }
                 tmpK=k
