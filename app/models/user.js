@@ -43,9 +43,6 @@ class User{
         })
         if (tmpV!=null && tmpK!=null) {
             this.ReferenceAchievedPerDay.set(tmpK,tmpV);
-            console.log('tmpK',tmpK)
-            console.log('tmpV',tmpV)
-
         }
     }
     CreateReferenceAchievedPerDayForWeek(calendar){
@@ -84,6 +81,15 @@ class User{
             // this.ReferenceAchievedPerDay.set(new DayActivities(e,activity),new ReferenceAchieved(frequence,0));
         })
         return activities
+    }
+    ArrayOfReferenceAchievedForActOfADay(day){
+        let array=[];
+        this.ReferenceAchievedPerDay.forEach((v,k) => {
+            if (k.day.equals(day)) {
+                array.push(v);
+            }
+        });
+        return array;
     }
     // reportActivity(week){//report at the end of week
     //     let map = new Map();

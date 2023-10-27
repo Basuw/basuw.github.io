@@ -1,6 +1,7 @@
 export default{
     props: {
-        activity:Activity
+        activity:Activity,
+        referenceAchieved:ReferenceAchieved
     },
 	// emits: ['event'],
 	methods: {
@@ -16,7 +17,7 @@ export default{
             <div class="vertical">
                 <span class="taskName"> {{activity.name}} </span>
                 <span class="frequence"> twice a week</span>
-                <span class="frequence"> {{activity.progress}}</span>
+                <span class="frequence"> {{referenceAchieved.achieved}}/{{referenceAchieved.reference}}</span>
             </div>
             <div class="vertical">
                 <span class="value">20</span>

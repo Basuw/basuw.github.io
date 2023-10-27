@@ -29,7 +29,7 @@
             <div id="days">
                 <day-item @selected-day="SelectedDay" v-for="day in weekDisplay" :day="day"></day-item>
             </div>
-            <day-content :day="dayClicked" :activities="activities"></day-content>
+            <day-content :day="dayClicked" :activities="activities" :reference-achieved="referenceAchieved"></day-content>
             <p class="testDisplay">{{dayClicked}} dayClicked</p>
             <p class="testDisplay">{{weekDisplay[0]}} weekDisplay[0]</p>
             <button @click="clicked">CLICK</button>
@@ -49,20 +49,26 @@
                     weekDisplay:calendar.currentWeek(),
                     dayClicked:calendar.currentDay,
                     activities:user.activitiesOfDay(dayClicked),
+                    referenceAchieved:referenceAchievedInit
                 }
             },
             methods:{
                 SelectedDay(data){
                     this.dayClicked= data;
                     this.activities=user.activitiesOfDay(data)
+                    this.referenceAchieved=user.ArrayOfReferenceAchievedForActOfADay(this.dayClicked);
                     console.log('this.dayClicked MAIN',this.dayClicked)
                     console.log('this.activities MAIN',this.activities)
+                    console.log('this.referenceAchieved MAIN',this.referenceAchieved)
                 },
                 loadActivityPerDay(){
 
                 },
                 clicked: function(){
                     console.log('user',user)
+                },
+                activityRepartition(){
+                    
                 }
             },
         });
@@ -70,8 +76,8 @@
         let calendar = new Calendar();
         let user = stub.user;
         let dayClicked = calendar.currentDay
-
         user.activityDone(calendar.currentDay,user.activitiesOfDay(calendar.currentDay)[1],1);
+        let referenceAchievedInit = user.ArrayOfReferenceAchievedForActOfADay(calendar.currentDay);
         
         //let usr = new Stub().user;
         // //let weekDisplay = calendar.currentWeek()
