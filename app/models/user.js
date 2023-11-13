@@ -9,10 +9,11 @@ class User{
         this.statusOfReferenceAchievedPerDay();
     }
     addActivity(activity,frequence){
-        this.activitiesReference.set(activity,frequence);
+        let referenceAchieved=new ReferenceAchieved(frequence,0)
+        this.activitiesReference.set(activity,referenceAchieved);
         let calendar = new Calendar()
         calendar.endOfWeek().forEach(e=>{
-            this.ReferenceAchievedPerDay.set(new DayActivities(e,activity),new ReferenceAchieved(frequence,0));
+            this.ReferenceAchievedPerDay.set(new DayActivities(e,activity),referenceAchieved);
         })
     }    
     removeActivity(activity){
@@ -28,27 +29,21 @@ class User{
         this.activities.set(activity,NewFrequence);
         // update this.activitiesPerDay remove 1 frequence
     }
-    activityDone(day,activity,achievment){
+    activityDone(day,activity,achievment,){
         let dayAct = new DayActivities(day,activity)
-        let tmpK,tmpV;
         this.ReferenceAchievedPerDay.forEach((v,k)=>{
             if(k.equals(dayAct)){
-                tmpV=new ReferenceAchieved(v.reference,achievment)
+                k.activity.progress=achievment;
                 if (achievment==activity.value) {
-                    k.activity.progress=+1;
+                    v.achieved++;
                 }
-                tmpK=k
-                this.ReferenceAchievedPerDay.delete(k)
             }
         })
-        if (tmpV!=null && tmpK!=null) {
-            this.ReferenceAchievedPerDay.set(tmpK,tmpV);
-        }
     }
     CreateReferenceAchievedPerDayForWeek(calendar){
         calendar.endOfWeek().forEach(day => {
             this.activitiesReference.forEach((value,activity) => {
-                this.ReferenceAchievedPerDay.set(new DayActivities(day,activity),new ReferenceAchieved(value,0));
+                this.ReferenceAchievedPerDay.set(new DayActivities(day,new Activity(activity.name,activity.description,activity.value,activity.unit)),value);
             });
         });
     }
@@ -64,8 +59,6 @@ class User{
         //console.log('th',this.ReferenceAchievedPerDay.size);
         let myArray = Array.from(this.ReferenceAchievedPerDay);
         let lastElement = myArray[myArray.length - 1];
-        console.log('lastElement',lastElement);
-        console.log('lastElement[0].day',lastElement[0].day);
         if (calendar.anteriorDate(lastElement[0].day)) {//
             saveAct.save();
             this.CreateReferenceAchievedPerDayForWeek(calendar);

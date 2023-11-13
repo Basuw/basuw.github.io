@@ -30,7 +30,7 @@
             <div id="days">
                 <day-item @selected-day="SelectedDay" v-for="day in weekDisplay" :day="day"></day-item>
             </div>
-            <day-content :day="dayClicked" :activities="activities" :reference-achieved="referenceAchieved"></day-content>
+            <day-content @achievment="achievment" :day="dayClicked" :activities="activities" :reference-achieved="referenceAchieved"></day-content>
         </div>
     </div>
 
@@ -55,9 +55,6 @@
                     this.dayClicked= data;
                     this.activities=user.activitiesOfDay(data)
                     this.referenceAchieved=user.ArrayOfReferenceAchievedForActOfADay(this.dayClicked);
-                    console.log('this.dayClicked MAIN',this.dayClicked)
-                    console.log('this.activities MAIN',this.activities)
-                    console.log('this.referenceAchieved MAIN',this.referenceAchieved)
                 },
                 loadActivityPerDay(){
 
@@ -67,6 +64,11 @@
                 },
                 activityRepartition(){
                     
+                },
+                achievment(activity,value){
+                    console.log("activity before",activity)
+                    user.activityDone(this.dayClicked,activity,value)
+                    console.log("activity after",activity)
                 }
             },
         });
@@ -75,6 +77,7 @@
         let user = stub.user;
         let dayClicked = calendar.currentDay
         user.activityDone(calendar.currentDay,user.activitiesOfDay(calendar.currentDay)[1],5);
+        //user.activityDone(calendar.currentDay,user.activitiesOfDay(calendar.currentDay)[0],30);
         let referenceAchievedInit = user.ArrayOfReferenceAchievedForActOfADay(calendar.currentDay);
         
         //let usr = new Stub().user;

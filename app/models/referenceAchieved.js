@@ -1,7 +1,7 @@
 class ReferenceAchieved{
     constructor(reference,achieved){
-        this.reference=reference;
-        this.achieved=achieved;
+        this.reference=reference;//nb per week theoric
+        this.achieved=achieved;//qchievment for the task and the day
     }
     equals(other) {
         if (other === this) return true; // If the two objects are the same, return true

@@ -6,14 +6,16 @@ export default{
     emits: ['achievment'],
     data:function(){
         return{
-            perweek:THISWEEK
         }
     },
 	// emits: ['event'],
 	methods: {
         achieved: function(value){
-			this.referenceAchieved.achieved=value;
+            this.activity.progress=value;-
             this.$emit("achievment",this.activity, value);
+            // if (value===this.activity.value) {
+            //     this.referenceAchieved.achieved++
+            // }
 		}
 	},
 	template:
@@ -23,10 +25,10 @@ export default{
                 <img src="/activities/icon/tasks/hiking.png" alt="imgTask" class="imgTask"/>
                 <div class="vertical">
                     <span class="taskName"> {{activity.name}} </span>
-                    <span class="frequence"> {{activity.progress}} / {{referenceAchieved.reference}} {{perweek}}</span>
+                    <span class="frequence"> {{referenceAchieved.achieved}} / {{referenceAchieved.reference}}</span>
                 </div>
                 <div class="vertical">
-                    <span class="value">{{referenceAchieved.achieved}}/{{activity.value}}</span>
+                    <span class="value">{{activity.progress}}/{{activity.value}}</span>
                     <span class="unit">{{activity.unit}}</span>
                 </div>
             </div>
