@@ -52,9 +52,14 @@
             },
             methods:{
                 SelectedDay(data){
-                    this.dayClicked= data;
+                    let old=this.dayClicked;
+                    this.dayClicked=data;
                     this.activities=user.activitiesOfDay(data)
                     this.referenceAchieved=user.ArrayOfReferenceAchievedForActOfADay(this.dayClicked);
+                    setStyle(old,this.dayClicked);
+                },
+                setStyle(old, day){
+                    old.setStyle()
                 },
                 loadActivityPerDay(){
 
