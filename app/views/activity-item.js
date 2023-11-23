@@ -3,7 +3,7 @@ export default{
         activity:Activity,
         referenceAchieved:ReferenceAchieved
     },
-    emits: ['achievment'],
+    emits: ['achievment','removeachievment'],
     data:function(){
         return{
         }
@@ -11,11 +11,14 @@ export default{
 	// emits: ['event'],
 	methods: {
         achieved: function(value){
-            this.activity.progress=value;-
-            this.$emit("achievment",this.activity, value);
-            // if (value===this.activity.value) {
-            //     this.referenceAchieved.achieved++
-            // }
+            if(this.activity.value==this.activity.progress){
+                this.activity.progress=value;
+                if(value==this.activity.value){return;}
+                this.$emit("removeachievment",this.activity, value);
+            }else{
+                this.activity.progress=value;
+                this.$emit("achievment",this.activity, value);
+            }
 		}
 	},
 	template:

@@ -30,7 +30,7 @@
             <div id="days">
                 <day-item @selected-day="SelectedDay" v-for="day in weekDisplay" :day="day"></day-item>
             </div>
-            <day-content @achievment="achievment" :day="dayClicked" :activities="activities" :reference-achieved="referenceAchieved"></day-content>
+            <day-content @removeachievment='removeachievment' @achievment="achievment" :day="dayClicked" :activities="activities" :reference-achieved="referenceAchieved"></day-content>
         </div>
     </div>
 
@@ -66,17 +66,18 @@
                     
                 },
                 achievment(activity,value){
-                    console.log("activity before",activity)
                     user.activityDone(this.dayClicked,activity,value)
-                    console.log("activity after",activity)
-                }
+                },
+                removeachievment(activity,value){
+                    user.removeProgress(this.dayClicked,activity,value)
+                },
             },
         });
         let stub = new Stub();
         let calendar = new Calendar();
         let user = stub.user;
         let dayClicked = calendar.currentDay
-        user.activityDone(calendar.currentDay,user.activitiesOfDay(calendar.currentDay)[1],5);
+        //user.activityDone(calendar.currentDay,user.activitiesOfDay(calendar.currentDay)[1],5);
         //user.activityDone(calendar.currentDay,user.activitiesOfDay(calendar.currentDay)[0],30);
         let referenceAchievedInit = user.ArrayOfReferenceAchievedForActOfADay(calendar.currentDay);
         

@@ -40,6 +40,14 @@ class User{
             }
         })
     }
+    removeProgress(day,activity){
+        let dayAct = new DayActivities(day,activity)
+        this.ReferenceAchievedPerDay.forEach((v,k)=>{
+            if(k.equals(dayAct)){
+                v.achieved-=1;
+            }
+        })   
+    }
     CreateReferenceAchievedPerDayForWeek(calendar){
         calendar.endOfWeek().forEach(day => {
             this.activitiesReference.forEach((value,activity) => {
