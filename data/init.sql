@@ -8,13 +8,13 @@ CREATE TABLE Activity (
 CREATE TABLE User (
     id INT PRIMARY KEY,
     name VARCHAR (100),
-    pasword VARCHAR (100),
+    pasword VARCHAR (100)
 );
 CREATE TABLE Achieve (
     id INT PRIMARY KEY,
     actId INT,
     achievment INT,
-    dateAchieve date
+    dateAchieve date,
     FOREIGN KEY (actId) REFERENCES Activity(id)
 );
 CREATE TABLE Save (
