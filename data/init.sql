@@ -1,31 +1,33 @@
--- Crée une table
+--  Tables creation
 CREATE TABLE Activity (
     id INT PRIMARY KEY,
-    name VARCHAR (100),
-    description VARCHAR (100),
-    unit VARCHAR (10)
+    name VARCHAR(100),
+    description VARCHAR(100),
+    unit VARCHAR(10)
 );
-CREATE TABLE User (
+
+CREATE TABLE "User" (
     id INT PRIMARY KEY,
-    name VARCHAR (100),
-    pasword VARCHAR (100)
+    name VARCHAR(100),
+    password VARCHAR(100)
 );
+
 CREATE TABLE Achieve (
     id INT PRIMARY KEY,
     actId INT,
-    achievment INT,
-    dateAchieve date,
+    achievement INT,
+    dateAchieve DATE,
     FOREIGN KEY (actId) REFERENCES Activity(id)
 );
+
 CREATE TABLE Save (
     id INT PRIMARY KEY,
     actId INT,
-    frequence
+    frequence VARCHAR(50),
     FOREIGN KEY (actId) REFERENCES Activity(id)
-
 );
 
--- Insère des données dans la table
-INSERT INTO Activity VALUES (0,'read','read description','pages');
-INSERT INTO Activity VALUES (1,'hiking','hiking description','km');
-INSERT INTO User VALUES (0,'dev','123');
+-- Insertion
+INSERT INTO Activity VALUES (0, 'read', 'read description', 'pages');
+INSERT INTO Activity VALUES (1, 'hiking', 'hiking description', 'km');
+INSERT INTO "User" VALUES (0, 'dev', '123');
