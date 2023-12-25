@@ -3,8 +3,8 @@ FROM postgres:latest
 
 # Définit les variables d'environnement
 ENV POSTGRES_DB=Activities
-ENV POSTGRES_USER=myuser
-ENV POSTGRES_PASSWORD=mypassword
+ENV POSTGRES_USER=api
+ENV POSTGRES_PASSWORD=ActivitiesDataBase63@
 
 # Copie les fichiers d'initialisation SQL dans le conteneur
 COPY ./data/init.sql /docker-entrypoint-initdb.d/
