@@ -1,6 +1,27 @@
 --  Tables creation
 CREATE SCHEMA IF NOT EXISTS reminder;
 
+CREATE SEQUENCE reminder.user_sequence
+    INCREMENT BY 1
+    START WITH 1
+    MINVALUE 1;
+
+CREATE SEQUENCE reminder.save_sequence
+    INCREMENT BY 1
+    START WITH 1
+    MINVALUE 1;
+
+CREATE SEQUENCE reminder.activity_sequence
+    INCREMENT BY 1
+    START WITH 1    
+    MINVALUE 1;
+
+CREATE SEQUENCE reminder.achieve_sequence
+    INCREMENT BY 1
+    START WITH 1    
+    MINVALUE 1;
+
+
 CREATE TABLE reminder.Activity (
     id INT PRIMARY KEY,
     name VARCHAR(100),
@@ -19,7 +40,7 @@ CREATE TABLE reminder.Achieve (
     id INT PRIMARY KEY,
     actId INT,
     usrId INT,
-    achievement INT,
+    achievement NUMERIC(7,2),
     dateAchieved DATE,
     FOREIGN KEY (actId) REFERENCES reminder.Activity(id),
     FOREIGN KEY (usrId) REFERENCES reminder.User(id)
@@ -29,7 +50,7 @@ CREATE TABLE reminder.Saved (
     id INT PRIMARY KEY,
     actId INT,
     usrId INT,
-    frequence VARCHAR(50),
+    frequence NUMERIC(7,2),
     FOREIGN KEY (actId) REFERENCES reminder.Activity(id),
     FOREIGN KEY (usrId) REFERENCES reminder.User(id)
 );
