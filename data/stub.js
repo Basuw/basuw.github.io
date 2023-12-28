@@ -4,6 +4,6 @@ class Stub{
         let map= new Map();
         map.set(new Activity('Read','blabla',30,"page"),new ReferenceAchieved(1,0))
         map.set(new Activity('Hiking','blabla',5,"km"),new ReferenceAchieved(2,0))
-        this.user=new User('leBast','oueoue',map);
+        this.user=new User(1,'leBast','oueoue',map);
     }
 }

@@ -1,12 +1,20 @@
 class User{
-    constructor(name,password,activitiesReference){
+    constructor(id,name,password){
+        let activities = [new Activity('Read','blabla',30,"page"),new Activity('Hiking','blabla',5,"km"),new Activity('Learning','blabla',30,"min")]
+        let map= new Map();
+        map.set(new Activity('Read','blabla',30,"page"),new ReferenceAchieved(1,0))
+        map.set(new Activity('Hiking','blabla',5,"km"),new ReferenceAchieved(2,0))
+
+
+        this.id = id;
         this.name=name;
         this.password=password;
-        this.activitiesReference=activitiesReference;// <activity/int>  int=frequence/time for the act ---- never change except when you modify the activities you want to do
+        this.activitiesReference=map;// <activity/int>  int=frequence/time for the act ---- never change except when you modify the activities you want to do
         this.report= new Map(); //%tage of achievment
         this.activitiesPerDay;//array of dayActivities for eof
         this.ReferenceAchievedPerDay= new Map(); //<DayActivity/ReferenceAchieved> for the week
         this.statusOfReferenceAchievedPerDay();
+
     }
     addActivity(activity,frequence){
         let referenceAchieved=new ReferenceAchieved(frequence,0)

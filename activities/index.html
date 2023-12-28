@@ -13,6 +13,7 @@
 </head>
 
 <body>
+	<script src="/app/tools/api-service.js"></script>
 	<script src="/app/models/activity.js"></script>
 	<script src="/app/tools/const.js"></script>
 	<script src="/app/tools/saveAct.js"></script>
@@ -33,7 +34,6 @@
             <day-content @removeachievment='removeachievment' @achievment="achievment" :day="dayClicked" :activities="activities" :reference-achieved="referenceAchieved"></day-content>
         </div>
     </div>
-
 	<script type="module">
         import { createApp } from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js';
         import ActivityItem from '/app/views/activity-item.js';
@@ -56,16 +56,13 @@
                     this.dayClicked=data;
                     this.activities=user.activitiesOfDay(data)
                     this.referenceAchieved=user.ArrayOfReferenceAchievedForActOfADay(this.dayClicked);
-                    setStyle(old,this.dayClicked);
+                    this.setStyle(old,this.dayClicked);
                 },
                 setStyle(old, day){
-                    old.setStyle()
+                    //old.setStyle()
                 },
                 loadActivityPerDay(){
 
-                },
-                clicked: function(){
-                    console.log('user',user)
                 },
                 activityRepartition(){
                     
@@ -78,10 +75,14 @@
                 },
             },
         });
+        let api = new ApiService(); 
         let stub = new Stub();
         let calendar = new Calendar();
         let user = stub.user;
-        let dayClicked = calendar.currentDay
+        let dayClicked = calendar.currentDay;
+        api.getUsr().then(result =>{
+            user=result;
+        });
         //user.activityDone(calendar.currentDay,user.activitiesOfDay(calendar.currentDay)[1],5);
         //user.activityDone(calendar.currentDay,user.activitiesOfDay(calendar.currentDay)[0],30);
         let referenceAchievedInit = user.ArrayOfReferenceAchievedForActOfADay(calendar.currentDay);

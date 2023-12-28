@@ -2,23 +2,23 @@
 CREATE SCHEMA IF NOT EXISTS reminder;
 
 CREATE SEQUENCE reminder.user_sequence
-    INCREMENT BY 1
     START WITH 1
+    INCREMENT BY 1
     MINVALUE 1;
 
 CREATE SEQUENCE reminder.save_sequence
-    INCREMENT BY 1
     START WITH 1
+    INCREMENT BY 1
     MINVALUE 1;
 
 CREATE SEQUENCE reminder.activity_sequence
-    INCREMENT BY 1
     START WITH 1    
+    INCREMENT BY 1
     MINVALUE 1;
 
 CREATE SEQUENCE reminder.achieve_sequence
-    INCREMENT BY 1
     START WITH 1    
+    INCREMENT BY 1
     MINVALUE 1;
 
 
@@ -46,11 +46,12 @@ CREATE TABLE reminder.Achieve (
     FOREIGN KEY (usrId) REFERENCES reminder.User(id)
 );
 
-CREATE TABLE reminder.Saved (
+CREATE TABLE reminder.Save (
     id INT PRIMARY KEY,
     actId INT,
     usrId INT,
     frequence NUMERIC(7,2),
+    time TIME,
     FOREIGN KEY (actId) REFERENCES reminder.Activity(id),
     FOREIGN KEY (usrId) REFERENCES reminder.User(id)
 );
