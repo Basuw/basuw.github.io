@@ -80,20 +80,37 @@
         let calendar = new Calendar();
         let user = stub.user;
         let dayClicked = calendar.currentDay;
-        api.getUsr().then(result =>{
-            user=result;
+        let usr
+        usr = await api.get("http://127.0.0.1:8080/activities/reminder/user/1")
+        user = new User(usr.id, usr.name, usr.password);
+        console.log("usr",usr);
+        console.log("user",user);
+
+        let allAct, allActObj=[], actByUsr,actByUsrObj=[], allSaved,allSavedObj=[];
+
+        allAct = await api.get("http://localhost:8080/activities/reminder/activity");
+        allAct.forEach(e => {
+            allActObj.push(new Activity(e.id,e.name,e.description,e.unit,e.icon));
         });
-        //user.activityDone(calendar.currentDay,user.activitiesOfDay(calendar.currentDay)[1],5);
-        //user.activityDone(calendar.currentDay,user.activitiesOfDay(calendar.currentDay)[0],30);
+        console.log("allAct",allAct);
+        console.log("allActObj",allActObj);
+
+
+        allSaved= await api.get("http://127.0.0.1:8080/activities/reminder/save/all");
+        allSaved.forEach(e => {
+            allSavedObj.push(new Activity(e.id,e.name,e.description,e.unit,e.icon));
+        });
+        console.log("allActObj[1]",allSaved[1])
+        console.log("allSaved",allSaved)
+        console.log("allSavedObj",allSavedObj)
+
+        actByUsr = await api.get("http://localhost:8080/activities/reminder/save/usrid?usrId="+user.id);
+        console.log("actByUsr",actByUsr)
+
+
+
+
         let referenceAchievedInit = user.ArrayOfReferenceAchievedForActOfADay(calendar.currentDay);
-        
-        //let usr = new Stub().user;
-        // //let weekDisplay = calendar.currentWeek()
-
-        // //console.log('weekDisplay',weekDisplay)
-        // console.log('dayClickeddddd',dayClickeddddd)
-        console.log('usr html',user)
-
 
 
         app.component('ActivityItem', ActivityItem);

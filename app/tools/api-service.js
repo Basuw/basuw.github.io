@@ -1,17 +1,29 @@
 class ApiService{
     constructor(){}
-    async getUsr(){
-        const baseUrl = APIROOT+'/user/1';
+    async get(link){
+        const baseUrl = `${link}`;//edit
         const headers = {
             method: 'GET'
         };
-        return fetch(baseUrl, headers).then(response => {
-            if (!response.ok)
-                throw new Error('Une erreur est survenue durant l\'appel HTTP.');
-        
-            return response.json();
-        }).then(usr => {
-            return new User(usr.id, usr.name, usr.password);
-        });
+        let response = await fetch(baseUrl, headers);
+        let responseJson = await response.json()
+        return responseJson
+    }
+    async post(link,value){
+        const baseUrl = `${link}`;//edit
+        const headers = {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(value)
+        };
+        fetch(baseUrl, headers).then( (response) => { 
+            if (response.ok)
+                console.log("Posted")
+            else 
+	            throw new Error('Une erreur est survenue durant l\'appel HTTP.');
+        })
     }
 }
