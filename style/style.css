@@ -14,9 +14,15 @@ html, body {
    align-items: center;
 }
 
+@font-face {
+   font-family: 'NohemiFont';
+   src: url('../fonts/Nohemi/OpenType-TT/Nohemi-Light.ttf') format('truetype');
+}
+
+
 .main-title {
    text-align: center;
-   font-family: fantasy;
+   font-family: NohemiFont;
 }
 
 /* Styles pour la fenêtre */
