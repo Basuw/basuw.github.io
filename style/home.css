@@ -1,0 +1,42 @@
+/* Style pour le paragraphe surligné */
+.highlight {
+   background-color: #d1c4e9; /* Violet pas trop flashy */
+   padding: 5px;
+   border-radius: 7px;
+}
+
+/* Style pour le texte "Hi, I'm Bastien" */
+.intro-text {
+   font-family: 'Vercetti', sans-serif;
+   font-size: 3em;
+   font-weight: bold;
+}
+
+/* Style pour le conteneur de l'introduction */
+.intro-container {
+   display: flex;
+   align-items: flex-end; /* Positionner le texte en bas */
+   justify-content: space-between;
+}
+
+.intro-text-container {
+   width: 50%;
+   margin-left: 2%;
+}
+
+.intro-image-container {
+   width: 50%;
+}
+
+.intro-image-container img {
+   width: 100%;
+   height: auto;
+   border-radius: 10px;
+}
+
+/* Style pour le paragraphe */
+.intro-text-container p {
+   font-family: 'Vercetti', sans-serif;
+   font-size: 2em; /* Taille de police plus grande */
+   line-height: 1.6; /* Plus d'espace entre les lignes */
+}

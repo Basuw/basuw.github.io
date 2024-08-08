@@ -8,6 +8,5 @@ export default{
 	},
 	template:
 	`
-		<p>Hi, I'm Bastien</p>
 	`
 }

@@ -18,6 +18,7 @@ html, body {
 .main-title {
    text-align: center;
    font-family: Aerial;
+   font-size: 200%;
 }
 
 /* Styles pour la fenêtre */
@@ -119,4 +120,8 @@ footer {
 
 .dropdown:hover .dropdown-content {
    display: block;
+}
+
+.font-container {
+   margin: 20px;
 }
