@@ -5,52 +5,107 @@
 
 	<meta charset="utf-8">
 	<title> Bastien's personal page </title>
-	<link rel="stylesheet" href="style/style.css"/>
-	<script src="assets/main.js"></script>
+
+	<link rel="stylesheet" href="/style/style.css"/>
+	<link rel="stylesheet" href="/style/fonts.css"/>
+	<link rel="stylesheet" href="/style/font-page.css"/>
+
+	<!-- <script src="assets/main.js"></script> -->
 	<link rel="icon" type="image/x-icon" href="icon/watermelon.ico">
 	<!-- Global site tag (gtag.js) - Google Analytics -->
 	<script async src="https://www.googletagmanager.com/gtag/js?id=G-WHQKH19ZS9"></script>
 	<script>
-	window.dataLayer = window.dataLayer || [];
-	function gtag(){dataLayer.push(arguments);}
-	gtag('js', new Date());
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
 
-	gtag('config', 'G-EBMWYZ6XSF');
+        gtag('config', 'G-EBMWYZ6XSF');
 	</script>
-<!-- commentaire -->
-
 </head>
 
 <body>
-    <h1 class="main-title">
-        Bastien's personal page
-    </h1>
-    <div class="main-content">
-        <div class="window">
-            <div class="window-header">
-                <div class="button red"></div>
-                <div class="button yellow"></div>
-                <div class="button green"></div>
-            </div>
-            <div class="navbar">
-                <a href="#home">Home</a>
-                <a href="#services">Services</a>
-                <a href="#about">About</a>
-                <a href="#contact">Contact</a>
-                <div class="dropdown">
-                    <button class="dropdown-btn">Menu</button>
-                    <div class="dropdown-content">
-                        <a href="#option1">Option 1</a>
-                        <a href="#option2">Option 2</a>
-                        <a href="#option3">Option 3</a>
+    <div id="app" class="row" >
+        <h1 class="main-title">
+            {{title}}
+        </h1>
+        <div class="main-content">
+            <div class="window">
+                <div class="window-header">
+                    <div class="button red"></div>
+                    <div class="button yellow"></div>
+                    <div class="button green"></div>
+                </div>
+                <div class="navbar">
+                    <a @click=homeFunction >Home</a>
+                    <a @click=developmentFunction >Development</a>
+                    <a href="#about">About</a>
+                    <a href="#contact">Contact</a>
+                    <div class="dropdown">
+                        <button class="dropdown-btn">Menu</button>
+                        <div class="dropdown-content">
+                            <a href="#option1">Option 1</a>
+                            <a href="#option2">Option 2</a>
+                            <a href="#option3">Option 3</a>
+                        </div>
                     </div>
+                </div>
+                <div v-if="componentStatus['development']">
+                    <development/>
+                </div>
+                <div v-if="componentStatus['home']">
+                    <home />
                 </div>
             </div>
         </div>
+        <footer>
+            <small>Bastien Jacquelin © </small>
+        </footer>
     </div>
-    <footer>
-        <small>Bastien Jacquelin © </small>
-    </footer>
+
+
+
+    <script type="module">
+
+        import { createApp } from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js';
+        import Development from '/views/development.js';
+        import Home from '/views/home.js';
+        const app = createApp({
+            created()
+            {
+            },
+            mounted()
+            {},
+            data(){
+                return{
+                    title:'Bastien\'s personal page',
+                    componentStatus : {
+                        'home': true,
+                        'development': false,
+                    },
+                }
+            },
+            methods:{
+                developmentFunction(){
+                    this.setValueToFalse();
+                    this.componentStatus['development'] = true;
+                    this.title = "Development tools";
+                },
+                homeFunction(){
+                    this.setValueToFalse();
+                    this.componentStatus['home'] = true;
+                    this.title = "Bastien's personal page";
+                },
+                setValueToFalse(){
+                    for (const key in this.componentStatus) {
+                        this.componentStatus[key] = false;
+                    }
+                }
+            }
+        });
+        app.component('Development', Development)
+            .component('Home', Home)
+        app.mount('#app');
+    </script>    
 </body>
 
 </html>

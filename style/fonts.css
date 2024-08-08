@@ -1,0 +1,25 @@
+
+@font-face {
+    font-family: 'Nohemi';
+    src: url('../fonts/Nohemi/OpenType-TT/Nohemi-Light.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Aerial';
+    src: url('../fonts/Aeronaut/POI_Aeronaut/otf/POIAeronautTrial-Regular.otf') format('opentype');
+}
+
+@font-face {
+    font-family: 'Chillax';
+    src: url('../fonts/Chillax/Chillax-Variable.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Vercetti';
+    src: url('../fonts/Vercetti/Vercetti-Regular.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'HKGrotesk';
+    src: url('../fonts/Vercetti/Vercetti-Regular.ttf') format('truetype');
+}

@@ -1,0 +1,19 @@
+{
+  "name": "basuw.github.io",
+  "version": "1.0.0",
+  "description": "Personal website",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Basuw/basuw.github.io.git"
+  },
+  "author": "Bastien Jacquelin",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Basuw/basuw.github.io/issues"
+  },
+  "homepage": "https://github.com/Basuw/basuw.github.io#readme"
+}
