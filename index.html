@@ -8,6 +8,7 @@
 
 	<link rel="stylesheet" href="/style/style.css"/>
 	<link rel="stylesheet" href="/style/home.css"/>
+	<link rel="stylesheet" href="/style/about.css"/>
 	<link rel="stylesheet" href="/style/fonts.css"/>
 	<link rel="stylesheet" href="/style/font-page.css"/>
 
@@ -39,7 +40,7 @@
                 <div class="navbar">
                     <a @click=homeFunction >Home</a>
                     <a @click=developmentFunction >Development</a>
-                    <a href="#about">About</a>
+                    <a @click=aboutFunction>About myself</a>
                     <a href="#contact">Contact</a>
                     <div class="dropdown">
                         <button class="dropdown-btn">Menu</button>
@@ -56,6 +57,17 @@
                 <div v-if="componentStatus['home']">
                     <home />
                 </div>
+                <div v-if="componentStatus['about']">
+                    <about />
+                </div>
+                <div class="test">
+                    <div class="bottom-bar">
+                        <div id="first-button" class="bar-button" @click=highlightButton($event)>Button 1</div>
+                        <div class="bar-button" @click=highlightButton($event)>Button 2</div>
+                        <div class="bar-button" @click=highlightButton($event)>Button 3</div>
+                        <div id="last-button" class="bar-button" @click=highlightButton($event)>Button 4</div>
+                    </div>
+                </div>
             </div>
         </div>
         <footer>
@@ -70,6 +82,7 @@
         import { createApp } from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js';
         import Development from '/views/development.js';
         import Home from '/views/home.js';
+        import About from '/views/about.js';
         const app = createApp({
             created()
             {
@@ -80,8 +93,9 @@
                 return{
                     title:'Bastien\'s personal page',
                     componentStatus : {
-                        'home': true,
+                        'home': false,
                         'development': false,
+                        'about': false,
                     },
                 }
             },
@@ -96,15 +110,29 @@
                     this.componentStatus['home'] = true;
                     this.title = "Bastien's personal page";
                 },
+                aboutFunction(){
+                    this.setValueToFalse();
+                    this.componentStatus['about'] = true;
+                    this.title = "About Myself";
+                },
                 setValueToFalse(){
                     for (const key in this.componentStatus) {
                         this.componentStatus[key] = false;
                     }
+                },
+                highlightButton(event) {
+                    // Remove highlight from all buttons
+                    const buttons = document.querySelectorAll('.bar-button');
+                    buttons.forEach(btn => btn.classList.remove('highlighted'));
+
+                    // Add highlight to the clicked button
+                    event.target.classList.add('highlighted');
                 }
             }
         });
         app.component('Development', Development)
             .component('Home', Home)
+            .component('About', About)
         app.mount('#app');
     </script>    
 </body>

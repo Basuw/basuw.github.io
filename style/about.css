@@ -1,0 +1,44 @@
+.window {
+    position: relative;
+    /* Other styles for .window */
+}
+
+.bottom-bar {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    color: white;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.bar-button {
+    flex: 1; /* Make buttons take equal width */
+    background-color: #333;
+    padding: 10px 0; /* Adjust padding to make buttons take full height */
+    cursor: pointer;
+    transition: background-color 0.3s;
+    height: 100%; /* Make buttons take full height */
+    color: #fff; /* Ensure text is visible */
+    display: flex; /* Use flexbox for alignment */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+}
+.bar-button:hover {
+    background-color: #575757;
+}
+ 
+.bar-button.highlighted {
+    background-color: #d1c4e9; /* Violet pas trop flashy */
+    color: #1f1f1f;
+}
+#first-button {
+    border-bottom-left-radius: 5px;
+}
+#last-button {
+    border-bottom-right-radius: 5px;
+}
