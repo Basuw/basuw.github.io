@@ -6,7 +6,7 @@
 }
 
 /* Style pour le texte "Hi, I'm Bastien" */
-.intro-text {
+.title-intro-text {
    font-family: 'Vercetti', sans-serif;
    font-size: 3em;
    font-weight: bold;
@@ -37,6 +37,8 @@
 /* Style pour le paragraphe */
 .intro-text-container p {
    font-family: 'Vercetti', sans-serif;
-   font-size: 2em; /* Taille de police plus grande */
    line-height: 1.6; /* Plus d'espace entre les lignes */
+}
+.small-intro-text{
+   font-size: 2em;
 }

@@ -10,8 +10,10 @@ export default{
 	`
 	<div class="intro-container">
 		<div class="intro-text-container">
-			<p class="intro-text">Hi, I'm Bastien</p>
-			<p>Student in 2nd year of engineering school in computer science in apprenticeship, <span class="highlight">volunteer firefighter</span>, practicing a lot of <span class="highlight">sports</span>, passionate about <span class="highlight">new technologies</span>.</p>
+			<p class="title-intro-text">Hi, I'm Bastien</p>
+			<div class="small-intro-text">
+				<p>Student in 2nd year of engineering school in computer science in apprenticeship, <span class="highlight">volunteer firefighter</span>, practicing a lot of <span class="highlight">sports</span>, passionate about <span class="highlight">new technologies</span>.</p>
+			</div>
 		</div>
 		<div class="intro-image-container">
 			<img src="path/to/your/image.jpg" alt="Description of image">
