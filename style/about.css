@@ -19,6 +19,7 @@
 .bar-button {
     flex: 1; /* Make buttons take equal width */
     background-color: #333;
+    font-family: 'Vercetti', sans-serif;
     padding: 10px 0; /* Adjust padding to make buttons take full height */
     cursor: pointer;
     transition: background-color 0.3s;
@@ -27,6 +28,7 @@
     display: flex; /* Use flexbox for alignment */
     justify-content: center; /* Center horizontally */
     align-items: center; /* Center vertically */
+
 }
 .bar-button:hover {
     background-color: #575757;

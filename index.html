@@ -11,6 +11,8 @@
 	<link rel="stylesheet" href="/style/about.css"/>
 	<link rel="stylesheet" href="/style/fonts.css"/>
 	<link rel="stylesheet" href="/style/font-page.css"/>
+	<link rel="stylesheet" href="/style/chronological.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
 	<!-- <script src="assets/main.js"></script> -->
 	<link rel="icon" type="image/x-icon" href="icon/watermelon.ico">
@@ -57,8 +59,38 @@
                 <div v-if="componentStatus['home']">
                     <home />
                 </div>
-                <div v-if="componentStatus['about']">
+                <div v-if="componentStatus['timeline']">
                     <about />
+                </div>
+                <div id="yes">
+                    <div class="timeline-container top">
+                        <div class="timeline-content">
+                            <i class="fas fa-graduation-cap"></i>
+                            <h2 class="timeline-title">2021</h2>
+                            <p>Obtention of baccalauréat with honors in Math and Physics.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-container bottom">
+                        <div class="timeline-content">
+                            <i class="fas fa-laptop-code"></i>
+                            <h2 class="timeline-title">2023</h2>
+                            <p>Obtention of DUT in Computer Science at IUT Informatique.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-container top">
+                        <div class="timeline-content">
+                            <i class="fas fa-fire-extinguisher"></i>
+                            <h2 class="timeline-title">2024</h2>
+                            <p>Started my engagement as a volunteer firefighter.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-container bottom">
+                        <div class="timeline-content">
+                            <i class="fas fa-user-graduate"></i>
+                            <h2 class="timeline-title">2026</h2>
+                            <p>2nd year of engineering degree in Computer Science at ISIMA.</p>
+                        </div>
+                    </div>
                 </div>
                 <div class="test">
                     <div class="bottom-bar">
@@ -82,7 +114,7 @@
         import { createApp } from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js';
         import Development from '/views/development.js';
         import Home from '/views/home.js';
-        import About from '/views/about.js';
+        import Timeline from '/views/about/timeline.js';
         const app = createApp({
             created()
             {
@@ -132,7 +164,7 @@
         });
         app.component('Development', Development)
             .component('Home', Home)
-            .component('About', About)
+            .component('Timeline', Timeline)
         app.mount('#app');
     </script>    
 </body>
