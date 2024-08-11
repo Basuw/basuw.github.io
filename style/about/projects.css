@@ -106,7 +106,7 @@
 
 }
 
-.project-icon {
+.popup-project-icon {
     height: 30vh;
     border-radius: 8px;
 }
@@ -129,8 +129,8 @@
     font-weight: bold;
     cursor: pointer;
 }
+
 .git-icon {
-    width: 8vh; /* Ajuster la taille de l'icône */
     margin: 10px;
     transition: all 0.3s ease; /* Ajouter une transition pour un effet de survol fluide */
     object-fit: cover; /* Assurez-vous que l'image conserve ses proportions */
@@ -147,4 +147,19 @@
     to {
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Ombre finale */
     }
+}
+.popup-footer {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Espace entre les éléments */
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.popup-footer .git-icon,
+.popup-footer .like-button i {
+    width: 8vh; /* Ajuster la taille de l'icône */
+    height: 8vh; /* Ajustez la taille selon vos besoins */
+    font-size: 8vh;
 }

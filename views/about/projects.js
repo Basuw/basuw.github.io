@@ -37,30 +37,37 @@ export default {
             selectedProject: null
         };
     },
-    methods: {
+	methods: {
 		handleKeydown(event) {
 			if (event.key === 'Escape') {
 				this.closePopup();
 			}
 		},
-        openPopup(project) {
-            this.selectedProject = project;
-        },
-        closePopup() {
-            this.selectedProject = null;
-        },
+		closePopup() {
+			this.selectedProject = null;
+		},
+		openPopup(project) {
+			this.selectedProject = project;
+		},
 		likeProject(project) {
-			if (!project.liked) {
+			const likedProjects = JSON.parse(localStorage.getItem('likedProjects')) || [];
+			const projectIndex = likedProjects.indexOf(project.id);
+	
+			if (projectIndex === -1) {
+				// Like the project
 				project.liked = true;
 				project.likes++;
-				const likedProjects = JSON.parse(localStorage.getItem('likedProjects')) || [];
 				likedProjects.push(project.id);
-				localStorage.setItem('likedProjects', JSON.stringify(likedProjects));
 			} else {
-				alert('You have already liked this project.');
+				// Unlike the project
+				project.liked = false;
+				project.likes--;
+				likedProjects.splice(projectIndex, 1);
 			}
+	
+			localStorage.setItem('likedProjects', JSON.stringify(likedProjects));
 		}
-    },
+	},
 	template: `
 	<div>
 		<div class="project-list">
@@ -85,12 +92,17 @@ export default {
 		<div v-if="selectedProject" class="popup" @click="closePopup">
 			<div class="popup-content" @click.stop>
 				<span class="close" @click="closePopup">&times;</span>
-				<img class="project-icon" :src="selectedProject.image" :alt="selectedProject.title" />
+				<img class="popup-project-icon" :src="selectedProject.image" :alt="selectedProject.title" />
 				<h3>{{ selectedProject.title }}</h3>
 				<p>{{ selectedProject.detailedDescription }}</p>
-				<a :href="selectedProject.github" target="_blank">
-					<img class="git-icon" src="/icon/github.png" alt="GitHub" />
-				</a>
+				<div class="popup-footer">
+					<a :href="selectedProject.github" target="_blank">
+						<img class="git-icon" src="/icon/github.png" alt="GitHub" />
+					</a>
+					<button class="like-button" @click.stop="likeProject(selectedProject)">
+						<i :class="selectedProject.liked ? 'fas fa-heart' : 'far fa-heart'"></i> {{ selectedProject.likes }}
+					</button>
+				</div>
 			</div>
 		</div>
 	</div>
