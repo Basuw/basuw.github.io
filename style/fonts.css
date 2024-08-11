@@ -23,3 +23,8 @@
     font-family: 'HKGrotesk';
     src: url('../fonts/Vercetti/Vercetti-Regular.ttf') format('truetype');
 }
+
+@font-face {
+    font-family: 'Skyer';
+    src: url('../fonts/Skyer/Skyer-TrialVersion.otf') format('opentype');
+}

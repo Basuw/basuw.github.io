@@ -3,10 +3,13 @@ export default{
 	data : function(){
 		return {
             aboutComponentStatus : {
-                'timeline': false,
+                'timeline': true,
                 'projects': false,
             },
 		}
+	},
+    created() {
+		this.setStyles();
 	},
 	methods: {
         setValueToFalse(componentStatus){
@@ -33,9 +36,15 @@ export default{
             event.target.classList.add('highlighted');
         },
         setStyles(){
-            const button = document.querySelectorAll('#first-button');
-            button.classList.add('highlighted');
-        }
+            this.$nextTick(() => {
+                const button = document.querySelector('#first-button');
+                if (button) {
+                    button.classList.add('highlighted');
+                } else {
+                    console.error('Button with ID "first-button" not found.');
+                }
+            });
+        },
 	},
 	template:
 	`

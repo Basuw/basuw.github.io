@@ -1,5 +1,5 @@
-.font-arial {
-   font-family: 'Aerial', sans-serif;
+.font-aeronaut {
+   font-family: 'Aeronaut', sans-serif;
 }
 
 .font-chillax {
@@ -12,4 +12,64 @@
 
 .font-Nohemi {
    font-family: 'Nohemi', sans-serif;
+}
+
+.font-HKGrotesk {
+   font-family: 'HKGrotesk', sans-serif;
+}
+
+.font-Skyer {
+   font-family: 'Skyer', sans-serif;
+}
+
+.font-container {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   gap: 20px;
+   padding: 20px;
+   background-color: #f5f5f5;
+   border-radius: 10px;
+   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+   max-height: 73vh; /* Adjust the height as needed */
+   overflow-y: auto;
+}
+
+.font-container .font-item {
+   display: flex;
+   align-items: center;
+   width: 100%;
+}
+
+.font-container .font-rank {
+   font-size: 1.5em;
+   color: #d1c4e9;
+   margin-right: 10px;
+}
+
+.font-container input {
+   width: 80%;
+   padding: 15px;
+   font-size: 1.2em;
+   border: 2px solid #ccc;
+   border-radius: 5px;
+   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+   outline: none;
+   transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.font-container input:focus {
+   border-color: #d1c4e9;
+   box-shadow: 0 0 8px rgba(209, 196, 233, 0.5);
+}
+
+.font-container input::placeholder {
+   color: #999;
+}
+
+h2 {
+   font-size: 2em;
+   color: #d1c4e9;
+   margin-bottom: 20px;
+   text-align: center;
 }
