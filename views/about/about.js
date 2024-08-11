@@ -3,7 +3,8 @@ export default{
 	data : function(){
 		return {
             aboutComponentStatus : {
-                'timeline': true,
+                'timeline': false,
+                'projects': false,
             },
 		}
 	},
@@ -16,6 +17,11 @@ export default{
         timelineFunc(event){
             this.setValueToFalse(this.aboutComponentStatus);
             this.aboutComponentStatus['timeline'] = true;
+            this.highlightButton(event);
+        },
+        projectsFunc(event){
+            this.setValueToFalse(this.aboutComponentStatus);
+            this.aboutComponentStatus['projects'] = true;
             this.highlightButton(event);
         },
         highlightButton(event) {
@@ -36,9 +42,12 @@ export default{
     <div v-if="aboutComponentStatus['timeline']">
         <timeline />
     </div>
+    <div v-if="aboutComponentStatus['projects']">
+        <projects />
+    </div>
     <div class="bottom-bar">
         <div id="first-button" class="bar-button" @click=timelineFunc($event)>Timeline</div>
-        <div class="bar-button" @click=highlightButton($event)>Button 2</div>
+        <div class="bar-button" @click=projectsFunc($event)>Projects</div>
         <div class="bar-button" @click=highlightButton($event)>Button 3</div>
         <div id="last-button" class="bar-button" @click=highlightButton($event)>Button 4</div>
     </div>

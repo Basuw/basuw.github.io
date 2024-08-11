@@ -33,7 +33,7 @@ export default{
 		<div class="timeline-container bottom">
 			<div class="timeline-content">
 				<i class="fas fa-user-graduate"></i>
-				<h2 class="timeline-title">2026</h2>
+				<h2 class="timeline-title">2024</h2>
 				<p>2nd year of engineering degree in Computer Science at ISIMA.</p>
 			</div>
 		</div>

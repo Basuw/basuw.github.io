@@ -8,10 +8,11 @@
 
 	<link rel="stylesheet" href="/style/style.css"/>
 	<link rel="stylesheet" href="/style/home.css"/>
-	<link rel="stylesheet" href="/style/about.css"/>
+	<link rel="stylesheet" href="/style/about/about.css"/>
 	<link rel="stylesheet" href="/style/fonts.css"/>
 	<link rel="stylesheet" href="/style/font-page.css"/>
-	<link rel="stylesheet" href="/style/chronological.css"/>
+	<link rel="stylesheet" href="/style/about/chronological.css"/>
+	<link rel="stylesheet" href="/style/about/projects.css"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
 	<!-- <script src="assets/main.js"></script> -->
@@ -60,9 +61,8 @@
                     <home />
                 </div>
                 <div v-if="componentStatus['about']">
-                    <about :/>
+                    <about />
                 </div>
-
             </div>
         </div>
         <footer>
@@ -79,6 +79,8 @@
         import Home from '/views/home.js';
         import About from '/views/about/about.js';
         import Timeline from '/views/about/timeline.js';
+        import Projects from '/views/about/projects.js';
+        import Item from '/views/about/item.js';
         const app = createApp({
             created()
             {
@@ -122,6 +124,8 @@
             .component('Home', Home)
             .component('About', About)
             .component('Timeline', Timeline)
+            .component('Projects', Projects)
+            .component('Item', Item)
         app.mount('#app');
     </script>    
 </body>
