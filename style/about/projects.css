@@ -42,6 +42,7 @@
 .description {
     text-align: center;
     margin-top: 10px;
+    font-family: 'Chillax', sans-serif;
 }
 
 .description h3 {
@@ -65,17 +66,16 @@
 }
 
 .like-button {
-    background-color: #ff4081;
-    color: white;
+    background: none;
     border: none;
-    border-radius: 5px;
-    padding: 5px 10px;
+    color: #ff0000; /* Use the same color as the current like button */
     cursor: pointer;
-    margin-top: 10px;
+    font-size: 24px;
+    transition: color 0.3s ease;
 }
 
 .like-button:hover {
-    background-color: #e03570;
+    color: #ff6666; /* Slightly lighter color on hover */
 }
 
 .popup {
@@ -102,10 +102,21 @@
     border-radius: 8px;
     position: relative;
     text-align: center;
+    font-family: 'Chillax', sans-serif;
+
+}
+
+.project-icon {
+    height: 30vh;
+    border-radius: 8px;
+}
+
+.popup-content h3 {
+    font-size: 2em;
 }
 
 .icon-project {
-    width: 300px;
+    height: 300px;
     border-radius: 8px;
     margin-bottom: 20px;
 }

@@ -1,4 +1,10 @@
 export default {
+	mounted() {
+		document.addEventListener('keydown', this.handleKeydown);
+	},
+	beforeDestroy() {
+		document.removeEventListener('keydown', this.handleKeydown);
+	},
     data() {
         return {
             projects: [
@@ -32,22 +38,28 @@ export default {
         };
     },
     methods: {
+		handleKeydown(event) {
+			if (event.key === 'Escape') {
+				this.closePopup();
+			}
+		},
         openPopup(project) {
             this.selectedProject = project;
         },
         closePopup() {
             this.selectedProject = null;
         },
-        likeProject(project) {
-            const likedProjects = JSON.parse(localStorage.getItem('likedProjects')) || [];
-            if (!likedProjects.includes(project.id)) {
-                project.likes++;
-                likedProjects.push(project.id);
-                localStorage.setItem('likedProjects', JSON.stringify(likedProjects));
-            } else {
-                alert('You have already liked this project.');
-            }
-        }
+		likeProject(project) {
+			if (!project.liked) {
+				project.liked = true;
+				project.likes++;
+				const likedProjects = JSON.parse(localStorage.getItem('likedProjects')) || [];
+				likedProjects.push(project.id);
+				localStorage.setItem('likedProjects', JSON.stringify(likedProjects));
+			} else {
+				alert('You have already liked this project.');
+			}
+		}
     },
 	template: `
 	<div>
@@ -65,7 +77,7 @@ export default {
 					<p class="date">{{ project.date }}</p>
 					<p class="authors">{{ project.authors }}</p>
 					<button class="like-button" @click.stop="likeProject(project)">
-						Like ({{ project.likes }})
+						<i :class="project.liked ? 'fas fa-heart' : 'far fa-heart'"></i> {{ project.likes }}
 					</button>
 				</div>
 			</div>
@@ -73,7 +85,7 @@ export default {
 		<div v-if="selectedProject" class="popup" @click="closePopup">
 			<div class="popup-content" @click.stop>
 				<span class="close" @click="closePopup">&times;</span>
-				<img class="icon-project" :src="selectedProject.image" :alt="selectedProject.title" />
+				<img class="project-icon" :src="selectedProject.image" :alt="selectedProject.title" />
 				<h3>{{ selectedProject.title }}</h3>
 				<p>{{ selectedProject.detailedDescription }}</p>
 				<a :href="selectedProject.github" target="_blank">
