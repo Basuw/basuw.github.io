@@ -7,6 +7,7 @@
 	<title> Bastien's personal page </title>
 
 	<link rel="stylesheet" href="/style/style.css"/>
+	<link rel="stylesheet" href="/style/contact.css"/>
 	<link rel="stylesheet" href="/style/home.css"/>
 	<link rel="stylesheet" href="/style/about/about.css"/>
 	<link rel="stylesheet" href="/style/fonts.css"/>
@@ -45,7 +46,7 @@
                     <a @click="homeFunction">Home</a>
                     <a @click="aboutFunction">About myself</a>
                     <div class="dropdown">
-                        <button class="dropdown-btn">For developers</button>
+                        <button class="dropdown-btn">▼ For developers</button>
                         <div class="dropdown-content">
                             <a @click="fontsFunction">Fonts</a>
                             <a href="#option2">Coming soon</a>
@@ -53,7 +54,7 @@
                         </div>
                     </div>
                     <a @click="developmentFunction">Development</a>
-                    <a href="#contact">Contact</a>
+                    <a @click="contactFunction">Contact</a>
                 </div>
                 <div v-if="componentStatus['fonts']">
                     <fonts/>
@@ -63,6 +64,9 @@
                 </div>
                 <div v-if="componentStatus['about']">
                     <about />
+                </div>
+                <div v-if="componentStatus['contact']">
+                    <contact />
                 </div>
             </div>
         </div>
@@ -78,6 +82,7 @@
         import { createApp } from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js';
         import Fonts from '/views/development/fonts.js';
         import Home from '/views/home.js';
+        import Contact from '/views/contact.js';
         import About from '/views/about/about.js';
         import Timeline from '/views/about/timeline.js';
         import Projects from '/views/about/projects.js';
@@ -97,6 +102,7 @@
                         'development': false,
                         'fonts': false,
                         'about': false,
+                        'contact': false,
                     }
                 }
             },
@@ -119,6 +125,11 @@
                     this.setValueToFalse(this.componentStatus);
                     this.componentStatus['about'] = true;
                     this.title = "About Myself";
+                },                
+                contactFunction(){
+                    this.setValueToFalse(this.componentStatus);
+                    this.componentStatus['contact'] = true;
+                    this.title = "Contact";
                 },
                 setValueToFalse(componentStatus){
                     for (const key in componentStatus) {
@@ -129,6 +140,7 @@
         });
         app.component('Fonts', Fonts)
             .component('Home', Home)
+            .component('Contact', Contact)
             .component('About', About)
             .component('Timeline', Timeline)
             .component('Projects', Projects)

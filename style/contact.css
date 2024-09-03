@@ -1,0 +1,47 @@
+.contact {
+    text-align: center;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.contact-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.contact-links li {
+    display: inline-block;
+    margin: 0 15px;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.contact-links li:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.contact-links a {
+    text-decoration: none;
+    color: #333;
+    font-size: 1.5em;
+    display: flex;
+    align-items: center;
+    transition: color 0.3s;
+}
+
+.contact-links a:hover {
+    color: #0073b1; /* LinkedIn color */
+}
+
+.contact-links i {
+    margin-right: 10px;
+    font-size: 1.5em;
+    transition: color 0.3s;
+}
+
+.contact-links a:hover i {
+    color: #0073b1; /* LinkedIn color */
+}
