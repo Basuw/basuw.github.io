@@ -42,21 +42,21 @@
                     <div class="button green"></div>
                 </div>
                 <div class="navbar">
-                    <a @click=homeFunction >Home</a>
-                    <a @click=developmentFunction >Development</a>
-                    <a @click=aboutFunction>About myself</a>
-                    <a href="#contact">Contact</a>
+                    <a @click="homeFunction">Home</a>
+                    <a @click="aboutFunction">About myself</a>
                     <div class="dropdown">
-                        <button class="dropdown-btn">Menu</button>
+                        <button class="dropdown-btn">For developers</button>
                         <div class="dropdown-content">
-                            <a href="#option1">Option 1</a>
-                            <a href="#option2">Option 2</a>
-                            <a href="#option3">Option 3</a>
+                            <a @click="fontsFunction">Fonts</a>
+                            <a href="#option2">Coming soon</a>
+                            <a href="#option3">Coming soon</a>
                         </div>
                     </div>
+                    <a @click="developmentFunction">Development</a>
+                    <a href="#contact">Contact</a>
                 </div>
-                <div v-if="componentStatus['development']">
-                    <development/>
+                <div v-if="componentStatus['fonts']">
+                    <fonts/>
                 </div>
                 <div v-if="componentStatus['home']">
                     <home />
@@ -76,7 +76,7 @@
     <script type="module">
 
         import { createApp } from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js';
-        import Development from '/views/development.js';
+        import Fonts from '/views/development/fonts.js';
         import Home from '/views/home.js';
         import About from '/views/about/about.js';
         import Timeline from '/views/about/timeline.js';
@@ -95,6 +95,7 @@
                     componentStatus : {
                         'home': true,
                         'development': false,
+                        'fonts': false,
                         'about': false,
                     }
                 }
@@ -102,8 +103,12 @@
             methods:{
                 developmentFunction(){
                     this.setValueToFalse(this.componentStatus);
-                    this.componentStatus['development'] = true;
                     this.title = "Development tools";
+                },
+                fontsFunction(){
+                    this.developmentFunction()
+                    this.setValueToFalse(this.componentStatus);
+                    this.componentStatus['fonts'] = true;
                 },
                 homeFunction(){
                     this.setValueToFalse(this.componentStatus);
@@ -122,7 +127,7 @@
                 }
             }
         });
-        app.component('Development', Development)
+        app.component('Fonts', Fonts)
             .component('Home', Home)
             .component('About', About)
             .component('Timeline', Timeline)
