@@ -4,7 +4,7 @@ Welcome to my personal website. 👋🏼
 
 You will discover lots of information about myself, but also few tools usefool for developers like a Font tester... 
 
-Follow this link to travel to [my website](basuw.github.io) ✈️
+Follow this link to travel to [my website](www.basuw.github.io) ✈️
 ## Technologies 
 
 - Vue JS
