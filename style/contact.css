@@ -4,19 +4,20 @@
     background-color: #f9f9f9;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    height: 70vh;
+    height: 68vh;
     width: 85vw;
-    margin-left: 2vw;
+    margin-left: 1.5vw;
 }
 
 .carousel {
     position: relative;
-    width: 80%;
-    height: 80%;
+    width: 100%;
+    height: 50vh;
     overflow: hidden;
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-bottom: 5%;
 }
 
 .carousel-inner {
@@ -32,22 +33,30 @@
     height: 100%;
     text-align: center;
     opacity: 0;
+    display: none; /* Masquer les éléments non actifs */
     transition: left 0.5s ease-in-out, opacity 0.5s ease-in-out;
+    z-index: 1; /* Assurez-vous que les éléments non actifs sont en arrière-plan */
 }
 
 .carousel-item.active {
     left: 0;
     opacity: 1;
+    display: block; /* Afficher l'élément actif */
+    z-index: 2; /* Assurez-vous que l'élément actif est au-dessus des autres */
 }
 
 .carousel-item.prev {
     left: -100%;
     opacity: 1;
+    display: block; /* Afficher l'élément précédent */
+    z-index: 1; /* Assurez-vous que l'élément précédent est en arrière-plan */
 }
 
 .carousel-item.next {
     left: 100%;
     opacity: 1;
+    display: block; /* Afficher l'élément suivant */
+    z-index: 1; /* Assurez-vous que l'élément suivant est en arrière-plan */
 }
 
 .carousel-controls {
@@ -56,7 +65,7 @@
     width: 100%;
     display: flex;
     justify-content: space-between;
-    transform: translateY(-50%);
+    z-index: 3; /* Assurez-vous que les contrôles sont au-dessus des éléments */
 }
 
 .carousel-control {
@@ -66,6 +75,10 @@
     cursor: pointer;
 }
 
+.carousel-control:hover::before {
+    background-color: rgba(128, 128, 128, 0.5); /* Rond gris */
+}
+
 .carousel-indicators {
     position: absolute;
     bottom: 10px;
@@ -73,6 +86,7 @@
     display: flex;
     justify-content: center;
     width: 100%;
+    z-index: 3; /* Assurez-vous que les indicateurs sont au-dessus des éléments */
 }
 
 .carousel-indicators span {
@@ -99,13 +113,24 @@
     transition: color 0.3s;
 }
 
-.carousel-item a:hover {
-    color: #0073b1; /* Hover color */
+
+
+.carousel-item a{
+    margin: 6% 0;
+    text-decoration: none;
+    color: #333;
+    font-size: 2em;
+    display: flex;
+    flex-direction: column; /* Ajoutez cette ligne */
+    align-items: center;
+    justify-content: center;
+    transition: color 0.3s;
 }
+
 
 .carousel-item i {
     margin-right: 10px;
-    font-size: 2em;
+    font-size: 6em;
     transition: color 0.3s;
 }
 
@@ -113,45 +138,3 @@
     color: #0073b1; /* Hover color */
 }
 
-.contact-links {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    padding-top: 10%;
-    padding-bottom: 23%;
-    text-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.contact-links li {
-    display: inline-block;
-    margin: 0 5%;
-    transition: transform 0.3s, box-shadow 0.3s;
-}
-
-.contact-links li:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-.contact-links a {
-    text-decoration: none;
-    color: #333;
-    font-size: 1.5em;
-    display: flex;
-    align-items: center;
-    transition: color 0.3s;
-}
-
-.contact-links a:hover {
-    color: #0073b1; /* LinkedIn color */
-}
-
-.contact-links i {
-    margin-right: 10px;
-    font-size: 1.5em;
-    transition: color 0.3s;
-}
-
-.contact-links a:hover i {
-    color: #0073b1; /* LinkedIn color */
-}

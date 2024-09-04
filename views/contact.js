@@ -41,11 +41,14 @@ export default {
             const items = this.$el.querySelectorAll('.carousel-item');
             items.forEach((item, index) => {
                 item.classList.remove('active', 'prev', 'next');
+                item.style.display = 'none'; // Masquer tous les éléments
                 if (index === prevIndex) {
                     item.classList.add(direction === 'next' ? 'next' : 'prev');
+                    item.style.display = 'block'; // Afficher l'élément précédent ou suivant
                 }
                 if (index === currentIndex) {
                     item.classList.add('active');
+                    item.style.display = 'block'; // Afficher l'élément actif
                 }
             });
         }
