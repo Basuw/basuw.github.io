@@ -23,13 +23,31 @@ export default {
     },
     methods: {
         nextLink() {
+            const prevIndex = this.currentIndex;
             this.currentIndex = (this.currentIndex + 1) % this.links.length;
+            this.updateClasses(prevIndex, this.currentIndex, 'next');
         },
         prevLink() {
+            const prevIndex = this.currentIndex;
             this.currentIndex = (this.currentIndex - 1 + this.links.length) % this.links.length;
+            this.updateClasses(prevIndex, this.currentIndex, 'prev');
         },
         selectLink(index) {
+            const prevIndex = this.currentIndex;
             this.currentIndex = index;
+            this.updateClasses(prevIndex, this.currentIndex, 'next');
+        },
+        updateClasses(prevIndex, currentIndex, direction) {
+            const items = this.$el.querySelectorAll('.carousel-item');
+            items.forEach((item, index) => {
+                item.classList.remove('active', 'prev', 'next');
+                if (index === prevIndex) {
+                    item.classList.add(direction === 'next' ? 'next' : 'prev');
+                }
+                if (index === currentIndex) {
+                    item.classList.add('active');
+                }
+            });
         }
     },
     mounted() {
