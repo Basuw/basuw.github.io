@@ -49,12 +49,12 @@
                         <button class="dropdown-btn">▼ For developers</button>
                         <div class="dropdown-content">
                             <a @click="fontsFunction">Fonts</a>
-                            <a href="#option2">Coming soon</a>
-                            <a href="#option3">Coming soon</a>
+                            <a @click="developmentFunction">Coming soon</a>
+                            <a @click="developmentFunction">Coming soon</a>
                         </div>
                     </div>
-                    <a @click="developmentFunction">Development</a>
                     <a @click="contactFunction">Contact</a>
+                    <a @click="thisWebSiteFunction">This website</a>
                 </div>
                 <div v-if="componentStatus['fonts']">
                     <fonts/>
@@ -103,6 +103,7 @@
                         'fonts': false,
                         'about': false,
                         'contact': false,
+                        'website': false,
                     }
                 }
             },
@@ -130,6 +131,11 @@
                     this.setValueToFalse(this.componentStatus);
                     this.componentStatus['contact'] = true;
                     this.title = "Contact";
+                },
+                thisWebSiteFunction(){
+                    this.setValueToFalse(this.componentStatus);
+                    this.componentStatus['website'] = true;
+                    this.title = "About this website";
                 },
                 setValueToFalse(componentStatus){
                     for (const key in componentStatus) {

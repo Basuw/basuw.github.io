@@ -4,17 +4,114 @@
     background-color: #f9f9f9;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    height: 70vh;
+    width: 85vw;
+    margin-left: 2vw;
+}
+
+
+.carousel {
+    position: relative;
+    width: 80%;
+    height: 80%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.carousel-inner {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.carousel-item {
+    min-width: 100%;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.carousel-item.active {
+    opacity: 1;
+}
+
+.carousel-controls {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    transform: translateY(-50%);
+}
+
+.carousel-control {
+    background: none;
+    border: none;
+    font-size: 2em;
+    cursor: pointer;
+}
+
+.carousel-indicators {
+    position: absolute;
+    bottom: 10px;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.carousel-indicators span {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    margin: 0 5px;
+    background-color: #ccc;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.carousel-indicators span.active {
+    background-color: #0073b1; /* Active indicator color */
+}
+
+.carousel-item a {
+    text-decoration: none;
+    color: #333;
+    font-size: 2em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.3s;
+}
+
+.carousel-item a:hover {
+    color: #0073b1; /* Hover color */
+}
+
+.carousel-item i {
+    margin-right: 10px;
+    font-size: 2em;
+    transition: color 0.3s;
+}
+
+.carousel-item a:hover i {
+    color: #0073b1; /* Hover color */
 }
 
 .contact-links {
     list-style: none;
     padding: 0;
     margin: 0;
+    padding-top: 10%;
+    padding-bottom: 23%;
+    text-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
 }
 
 .contact-links li {
     display: inline-block;
-    margin: 0 15px;
+    margin: 0 5%;
     transition: transform 0.3s, box-shadow 0.3s;
 }
 
