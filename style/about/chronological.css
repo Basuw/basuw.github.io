@@ -72,10 +72,10 @@
 }
 
 .timeline-container.top .timeline-content {
-    margin-bottom: 30vh; /* Augmenter l'espacement au-dessus de la ligne */
+    margin-bottom: 35vh; /* Augmenter l'espacement au-dessus de la ligne */
     margin-top: 0;
 }
 
 .timeline-container.bottom .timeline-content {
-    margin-top: 30vh; /* Augmenter l'espacement en dessous de la ligne */
+    margin-top: 35vh; /* Augmenter l'espacement en dessous de la ligne */
 }
