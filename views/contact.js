@@ -2,6 +2,9 @@ export default {
     data: function() {
         return {
             currentIndex: 0,
+            intervalId: null,
+            colorIntervalId: null, // Ajout d'un identifiant pour l'intervalle de couleur
+            colorStep: 0, // Étape actuelle de la couleur
             links: [
                 {
                     href: "https://www.linkedin.com/in/bastien-jacquelin",
@@ -26,16 +29,19 @@ export default {
             const prevIndex = this.currentIndex;
             this.currentIndex = (this.currentIndex + 1) % this.links.length;
             this.updateClasses(prevIndex, this.currentIndex, 'next');
+            this.resetInterval(); // Réinitialiser l'intervalle
         },
         prevLink() {
             const prevIndex = this.currentIndex;
             this.currentIndex = (this.currentIndex - 1 + this.links.length) % this.links.length;
             this.updateClasses(prevIndex, this.currentIndex, 'prev');
+            this.resetInterval(); // Réinitialiser l'intervalle
         },
         selectLink(index) {
             const prevIndex = this.currentIndex;
             this.currentIndex = index;
             this.updateClasses(prevIndex, this.currentIndex, 'next');
+            this.resetInterval(); // Réinitialiser l'intervalle
         },
         updateClasses(prevIndex, currentIndex, direction) {
             const items = this.$el.querySelectorAll('.carousel-item');
@@ -51,10 +57,49 @@ export default {
                     item.style.display = 'block'; // Afficher l'élément actif
                 }
             });
+        },
+        resetInterval() {
+            if (this.intervalId) {
+                clearInterval(this.intervalId);
+            }
+            if (this.colorIntervalId) {
+                clearInterval(this.colorIntervalId);
+            }
+            this.intervalId = setInterval(this.nextLink, 5000); // Réinitialiser l'intervalle
+            this.colorStep = 0; // Réinitialiser l'étape de couleur
+            this.colorIntervalId = setInterval(this.updateIndicatorColor, 100); // Changer la couleur toutes les 0.1 secondes
+        },
+        interpolateColor(color1, color2, factor) {
+            const result = color1.slice();
+            for (let i = 0; i < 3; i++) {
+                result[i] = Math.round(result[i] + factor * (color2[i] - color1[i]));
+            }
+            return result;
+        },
+        updateIndicatorColor() {
+            const blue = [0, 0, 255];
+            const violet = [142, 68, 173];
+            const factor = this.colorStep / 50;
+            const color = this.interpolateColor(blue, violet, factor);
+            const colorString = `rgb(${color[0]}, ${color[1]}, ${color[2]})`;
+            const activeIndicator = this.$el.querySelector('.carousel-indicators span.active');
+            if (activeIndicator) {
+                activeIndicator.style.backgroundColor = colorString;
+            }
+            this.colorStep = (this.colorStep + 1) % 51; // Réinitialiser après 50 étapes
         }
     },
     mounted() {
-        setInterval(this.nextLink, 5000); // Change link every 5 seconds
+        this.intervalId = setInterval(this.nextLink, 5000); // Change link every 5 seconds
+        this.colorIntervalId = setInterval(this.updateIndicatorColor, 100); // Change color every 0.1 seconds
+    },
+    beforeDestroy() {
+        if (this.intervalId) {
+            clearInterval(this.intervalId); // Nettoyer l'intervalle lors de la destruction du composant
+        }
+        if (this.colorIntervalId) {
+            clearInterval(this.colorIntervalId); // Nettoyer l'intervalle de couleur lors de la destruction du composant
+        }
     },
     template: `
         <div class="contact">
