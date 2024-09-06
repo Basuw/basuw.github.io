@@ -57,6 +57,7 @@ export default {
                     item.style.display = 'block'; // Afficher l'élément actif
                 }
             });
+            this.resetIndicatorColors(); // Réinitialiser les couleurs des indicateurs
         },
         resetInterval() {
             if (this.intervalId) {
@@ -87,6 +88,12 @@ export default {
                 activeIndicator.style.backgroundColor = colorString;
             }
             this.colorStep = (this.colorStep + 1) % 51; // Réinitialiser après 50 étapes
+        },
+        resetIndicatorColors() {
+            const indicators = this.$el.querySelectorAll('.carousel-indicators span');
+            indicators.forEach(indicator => {
+                indicator.style.backgroundColor = '#ccc'; // Couleur grise pour tous les indicateurs
+            });
         }
     },
     mounted() {

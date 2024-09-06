@@ -135,6 +135,6 @@
 }
 
 .carousel-item a:hover i {
-    color: #0073b1; /* Hover color */
+    color: rgb(0, 115, 177); /* Hover color */
 }
 
