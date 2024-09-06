@@ -78,7 +78,7 @@ export default {
             return result;
         },
         updateIndicatorColor() {
-            const blue = [0, 0, 255];
+            const blue = [0, 115, 177];
             const violet = [142, 68, 173];
             const factor = this.colorStep / 50;
             const color = this.interpolateColor(blue, violet, factor);
@@ -93,7 +93,12 @@ export default {
             const indicators = this.$el.querySelectorAll('.carousel-indicators span');
             indicators.forEach(indicator => {
                 indicator.style.backgroundColor = '#ccc'; // Couleur grise pour tous les indicateurs
+                indicator.classList.remove('active'); // Supprimer la classe active
             });
+            const activeIndicator = this.$el.querySelector(`.carousel-indicators span:nth-child(${this.currentIndex + 1})`);
+            if (activeIndicator) {
+                activeIndicator.classList.add('active'); // Ajouter la classe active au point sélectionné
+            }
         }
     },
     mounted() {

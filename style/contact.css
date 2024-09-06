@@ -93,14 +93,17 @@
     display: inline-block;
     width: 10px;
     height: 10px;
-    margin: 0 5px;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: #ccc;
     border-radius: 50%;
-    cursor: pointer;
+    margin: 0 5px;
+    transition: all 0.3s ease;
 }
 
 .carousel-indicators span.active {
-    background-color: #8e44ad; /* Couleur violette */
+    width: 30px;
+    height: 10px;
+    border-radius: 20px;
+    background-color: #8e44ad; /* Couleur violette par défaut */
 }
 
 .carousel-item a {
