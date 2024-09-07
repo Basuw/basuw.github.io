@@ -6,6 +6,7 @@ export default{
                 'timeline': true,
                 'personality': false,
                 'projects': false,
+                'experience': false,
             },
 		}
 	},
@@ -31,6 +32,11 @@ export default{
         personalityFunc(event){
             this.setValueToFalse(this.aboutComponentStatus);
             this.aboutComponentStatus['personality'] = true;
+            this.highlightButton(event);
+        },
+        experienceFunc(event){
+            this.setValueToFalse(this.aboutComponentStatus);
+            this.aboutComponentStatus['experience'] = true;
             this.highlightButton(event);
         },
         highlightButton(event) {
@@ -63,11 +69,14 @@ export default{
     <div v-if="aboutComponentStatus['projects']">
         <projects />
     </div>
+    <div v-if="aboutComponentStatus['experience']">
+        <experience />
+    </div>
     <div class="bottom-bar">
         <div id="first-button" class="bar-button" @click=timelineFunc($event)>Timeline</div>
-        <div class="bar-button" @click=personalityFunc($event)>Personality</div>
+        <div class="bar-button" @click=experienceFunc($event)>Experience</div>
         <div class="bar-button" @click=projectsFunc($event)>Projects</div>
-        <div id="last-button" class="bar-button" @click=highlightButton($event)>Button 4</div>
+        <div id="last-button" class="bar-button" @click=personalityFunc($event)>Personality</div>
     </div>
 	`
 }
