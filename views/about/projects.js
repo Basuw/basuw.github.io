@@ -34,7 +34,8 @@ export default {
                     summary: 'JavaScript web app using Node.js with Socket.io for the multiplayer mode and VueJs',
                     likes: 8,
                     id: 'project2'
-                },                {
+                },                
+				{
                     image: '/img/projects/arduino_icon.png',
                     title: 'Moisture & Temperature Sensor',
                     description: 'Moisture & Temperature Sensor using an Arduino board and a small screen to display the data.',
@@ -45,7 +46,8 @@ export default {
                     summary: 'Arduino project using C++',
                     likes: 2,
                     id: 'project3'
-                },                {
+                },                
+				{
                     image: '/img/projects/visit_icon.png',
                     title: 'Visit Manager',
                     description: 'Web application to manage visits in a school',
@@ -57,7 +59,30 @@ export default {
                     likes: 8,
                     id: 'project4'
                 },
-                // Add more projects as needed
+				{
+                    image: '/img/projects/recoguenize_icon.png',
+                    title: 'Recoguenize',
+                    description: 'Mobile application that allows you to recognize the song that is playing.',
+                    date: '2024-06',
+                    authors: 'Antoine Imbert, Louis Cambier, Alban Guillot, Yoan Boyer, Bastien Jacquelin',
+                    detailedDescription: 'This application aims to to identify the name of a song you\'re hearing like the famous app Shazam. This project was realised during 1st year of engineering school in computer science at ISIMA (equivalent to master in engineering)',
+                    github: 'https://github.com/Basuw/Recoguenize-Backend',
+                    summary: 'Flutter mobile app working with a Spring Boot API deployed using DockerCompose, and signal processing made in Python',
+                    likes: 12,
+                    id: 'project5'
+                },
+				{
+                    image: '/img/projects/activities_icon.png',
+                    title: 'Activities',
+                    description: 'Mobile application that help you to set and follow you objectives.',
+                    date: '2024-now',
+                    authors: 'Bastien Jacquelin',
+                    detailedDescription: 'With Activities you can track your progress among all ativities you perform on a day. This application help you to reach your objectives and become better each days. You can customize as much as you want. More is coming like a sport tracker and a food tracker.',
+                    github: 'https://github.com/Basuw/Activities',
+                    summary: 'Personal project to learn React native.',
+                    likes: 9,
+                    id: 'project6'
+                },
             ],
             selectedProject: null
         };

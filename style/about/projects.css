@@ -1,10 +1,10 @@
 .project-list {
-    max-height: 69vh; /* Définir une hauteur fixe pour la liste des projets */
+    max-height: 63vh; /* Définir une hauteur fixe pour la liste des projets */
     overflow-y: auto; /* Activer le défilement vertical */
     display: grid;
     grid-template-columns: repeat(3, 1fr); /* Définir 3 colonnes fixes */
     gap: 40px; /* Augmenter l'espace horizontal entre les items */
-    margin-bottom: 50px;
+    margin-bottom: 20vh;
     padding: 10px;
 }
 
@@ -97,7 +97,6 @@
     padding: 20px;
     border: 1px solid #888;
     max-width: 40%;
-    max-height: 80%;
     border-radius: 8px;
     position: relative;
     text-align: center;
