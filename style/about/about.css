@@ -3,6 +3,14 @@
     /* Other styles for .window */
 }
 
+#container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    overflow-y: auto; /* Ajoute une barre de défilement verticale si nécessaire */
+}
+
 .bottom-bar {
     position: absolute;
     bottom: 0;
@@ -28,19 +36,21 @@
     display: flex; /* Use flexbox for alignment */
     justify-content: center; /* Center horizontally */
     align-items: center; /* Center vertically */
-
 }
+
 .bar-button:hover {
     background-color: #575757;
 }
- 
+
 .bar-button.highlighted {
     background-color: #d1c4e9; /* Violet pas trop flashy */
     color: #1f1f1f;
 }
+
 #first-button {
     border-bottom-left-radius: 5px;
 }
+
 #last-button {
     border-bottom-right-radius: 5px;
 }

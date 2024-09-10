@@ -2,28 +2,49 @@
 #time {
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    height: 90%;
+    align-items: flex-start; /* Aligne les éléments au début pour éviter le chevauchement */
     padding: 20px;
+    max-height: 62vh; /* Utilise une hauteur maximale pour permettre le défilement */
     position: relative;
+    overflow-x: auto; /* Ajoute une barre de défilement horizontale si nécessaire */
+    overflow-y: auto; /* Ajoute une barre de défilement verticale si nécessaire */
+    flex-wrap: nowrap; /* Empêche les éléments de se réorganiser sur plusieurs lignes */
+}
+
+.timeline-container {
+    flex: 0 0 20%; /* Fixe la largeur des éléments à 20% */
+    box-sizing: border-box;
+    margin: 10px;
+    position: relative;
+    min-width: 300px; /* Assure une largeur minimale pour chaque conteneur */
+    text-align: center;
+}
+
+.timeline-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Media query pour les petits écrans */
+@media (max-width: 768px) {
+    .timeline-container {
+        flex: 1 1 100%; /* Prend toute la largeur sur les petits écrans */
+        min-width: auto; /* Supprime la largeur minimale sur les petits écrans */
+    }
 }
 
 #time::before {
     content: '';
     position: absolute;
-    width: 100%;
-    height: 4px;
-    background-color: #333;
-    top: 50%;
+    bottom: 26vh;
     left: 0;
-    transform: translateY(-50%);
-    z-index: 1;
-}
-
-.timeline-container {
-    position: relative;
-    width: 20%;
-    text-align: center;
+    right: 0;
+    width: 100vw;
+    height: 2px;
+    background-color: #000;
+    transform: translateY(-100%);
 }
 
 .timeline-container::before {
@@ -72,10 +93,10 @@
 }
 
 .timeline-container.top .timeline-content {
-    margin-bottom: 35vh; /* Augmenter l'espacement au-dessus de la ligne */
+    margin-bottom: 40vh; /* Augmenter l'espacement au-dessus de la ligne */
     margin-top: 0;
 }
 
 .timeline-container.bottom .timeline-content {
-    margin-top: 35vh; /* Augmenter l'espacement en dessous de la ligne */
+    margin-top: 40vh; /* Augmenter l'espacement en dessous de la ligne */
 }

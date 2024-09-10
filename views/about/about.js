@@ -60,17 +60,19 @@ export default{
 	},
 	template:
 	`
-    <div v-if="aboutComponentStatus['timeline']">
-        <timeline />
-    </div>
-    <div v-if="aboutComponentStatus['personality']">
-        <personality />
-    </div>    
-    <div v-if="aboutComponentStatus['projects']">
-        <projects />
-    </div>
-    <div v-if="aboutComponentStatus['experience']">
-        <experience />
+    <div id="container">
+        <div v-if="aboutComponentStatus['timeline']">
+            <timeline />
+        </div>
+        <div v-if="aboutComponentStatus['personality']">
+            <personality />
+        </div>    
+        <div v-if="aboutComponentStatus['projects']">
+            <projects />
+        </div>
+        <div v-if="aboutComponentStatus['experience']">
+            <experience />
+        </div>
     </div>
     <div class="bottom-bar">
         <div id="first-button" class="bar-button" @click=timelineFunc($event)>Timeline</div>
