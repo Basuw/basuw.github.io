@@ -6,6 +6,28 @@ html, body {
    background-color: rgb(215, 240, 242);
 }
 
+html::-webkit-scrollbar {
+    width: 8px; /* Width of the scrollbar */
+}
+
+html::-webkit-scrollbar-thumb {
+    background-color: #ccc; /* Change to gray */
+    border-radius: 10px; /* Rounded corners for the scrollbar thumb */
+}
+
+html::-webkit-scrollbar-thumb:hover {
+    background-color: #a0a0a0; /* Change to violet on hover */
+}
+
+html::-webkit-scrollbar-track {
+    background: #fff; /* Color of the scrollbar track */
+    border-radius: 10px; /* Rounded corners for the scrollbar track */
+}
+
+html::-webkit-scrollbar-button {
+    display: none; /* Remove the buttons at the top and bottom */
+}
+
 /* Le conteneur principal prend tout l'espace disponible */
 .main-content {
    flex: 1;
