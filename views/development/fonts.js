@@ -12,27 +12,27 @@ export default {
     <div class="font-container">
 		<div class="font-item">
             <span class="font-rank">1</span>
-            <input class="font-vercetti" type="text" value="This is Vercetti font." />
+            <input class="font-vercetti" type="text" value="This is Vercetti font. Give it a try" />
 		</div>
 		<div class="font-item">
             <span class="font-rank">2</span>
-            <input class="font-Nohemi" type="text" value="This is Nohemi font." />
+            <input class="font-Nohemi" type="text" value="This is Nohemi font. Give it a try" />
         </div>
 		<div class="font-item">
             <span class="font-rank">3</span>
-            <input class="font-chillax" type="text" value="This is Chillax font." />
+            <input class="font-chillax" type="text" value="This is Chillax font. Give it a try" />
         </div>
         <div class="font-item">
             <span class="font-rank">4</span>
-            <input class="font-aeronaut" type="text" value="This is Aeronaut font." />
+            <input class="font-aeronaut" type="text" value="This is Aeronaut font. Give it a try" />
         </div>
 		<div class="font-item">
             <span class="font-rank">5</span>
-            <input class="font-Skyer" type="text" value="This is Skyer font." />
+            <input class="font-Skyer" type="text" value="This is Skyer font. Give it a try" />
         </div>
 		<div class="font-item">
             <span class="font-rank">6</span>
-            <input class="font-HKGrotesk" type="text" value="This is HKGrotesk font." />
+            <input class="font-HKGrotesk" type="text" value="This is HKGrotesk font. Give it a try" />
         </div>
 
     </div>

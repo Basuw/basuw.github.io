@@ -41,6 +41,7 @@ html::-webkit-scrollbar-button {
    text-align: center;
    font-family: Aerial;
    font-size: 200%;
+   color: #333;
 }
 
 /* Styles pour la fenêtre */
