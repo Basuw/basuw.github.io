@@ -14,7 +14,7 @@
 }
 
 .project-list::-webkit-scrollbar-thumb {
-    background: linear-gradient(135deg, rgba(139, 92, 246, 0.6), rgba(59, 130, 246, 0.6));
+    background: var(--gradient-primary);
     border-radius: 10px;
 }
 
@@ -23,7 +23,7 @@
 }
 
 .project-list::-webkit-scrollbar-track {
-    background: rgba(30, 30, 46, 0.3);
+    background: var(--bg-secondary);
     border-radius: 10px;
 }
 
@@ -36,10 +36,10 @@
     overflow-y: auto;
     overflow-x: hidden;
     padding: 20px;
-    background: rgba(30, 30, 46, 0.2);
+    background: var(--bg-secondary);
     backdrop-filter: blur(10px);
     border-radius: 20px;
-    border: 1px solid rgba(139, 92, 246, 0.1);
+    border: 1px solid var(--border-primary);
 }
 
 /* Styles de scrollbar pour projects-container */
@@ -48,7 +48,7 @@
 }
 
 .projects-container::-webkit-scrollbar-thumb {
-    background: linear-gradient(135deg, rgba(139, 92, 246, 0.6), rgba(59, 130, 246, 0.6));
+    background: var(--gradient-primary);
     border-radius: 10px;
 }
 
@@ -57,7 +57,7 @@
 }
 
 .projects-container::-webkit-scrollbar-track {
-    background: rgba(30, 30, 46, 0.3);
+    background: var(--bg-secondary);
     border-radius: 10px;
 }
 
@@ -71,12 +71,10 @@
     cursor: pointer;
     transition: all 0.4s ease;
     text-align: center;
-    background: rgba(45, 45, 68, 0.8);
+    background: var(--bg-card);
     backdrop-filter: blur(15px);
-    border: 1px solid rgba(139, 92, 246, 0.2);
-    box-shadow: 
-        0 8px 25px rgba(0, 0, 0, 0.3),
-        0 0 0 1px rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--border-primary);
+    box-shadow: var(--shadow-primary);
     border-radius: 16px;
     padding: 20px;
     overflow: hidden;
@@ -97,10 +95,8 @@
 
 .gallery-item:hover {
     transform: translateY(-8px) scale(1.02);
-    border-color: rgba(139, 92, 246, 0.4);
-    box-shadow: 
-        0 20px 40px rgba(139, 92, 246, 0.2),
-        0 0 0 1px rgba(255, 255, 255, 0.1);
+    border-color: var(--border-hover);
+    box-shadow: var(--shadow-hover);
 }
 
 .gallery-item:hover::before {
@@ -112,12 +108,12 @@
     border-radius: 12px;
     display: block;
     margin: 0 auto;
-    border: 2px solid rgba(139, 92, 246, 0.1);
+    border: 2px solid var(--border-primary);
     transition: all 0.3s ease;
 }
 
 .gallery-item:hover img {
-    border-color: rgba(139, 92, 246, 0.3);
+    border-color: var(--border-hover);
     box-shadow: 0 8px 20px rgba(139, 92, 246, 0.2);
 }
 
@@ -130,8 +126,8 @@
 .description h3 {
     font-size: 1.5em;
     margin: 0 0 10px 0;
-    color: #e2e8f0;
-    background: linear-gradient(135deg, #e2e8f0, #cbd5e1);
+    color: var(--text-primary);
+    background: var(--gradient-text);
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -139,25 +135,25 @@
 
 .description p {
     font-size: 1em;
-    color: #94a3b8;
+    color: var(--text-secondary);
     line-height: 1.4;
 }
 
 .description .date {
     font-size: 0.9em;
-    color: rgba(139, 92, 246, 0.8);
+    color: var(--accent-primary);
     font-weight: 500;
 }
 
 .description .authors {
     font-size: 0.9em;
-    color: #64748b;
+    color: var(--text-tertiary);
 }
 
 .like-button {
-    background: linear-gradient(135deg, rgba(244, 63, 94, 0.1), rgba(239, 68, 68, 0.1));
-    border: 1px solid rgba(244, 63, 94, 0.3);
-    color: #f87171;
+    background: linear-gradient(135deg, rgba(var(--accent-secondary-rgb), 0.1), rgba(var(--accent-secondary-rgb), 0.1));
+    border: 1px solid rgba(var(--accent-secondary-rgb), 0.3);
+    color: var(--accent-secondary);
     cursor: pointer;
     font-size: 16px;
     padding: 8px 16px;
@@ -168,10 +164,10 @@
 }
 
 .like-button:hover {
-    background: linear-gradient(135deg, rgba(244, 63, 94, 0.2), rgba(239, 68, 68, 0.2));
-    border-color: rgba(244, 63, 94, 0.5);
+    background: linear-gradient(135deg, rgba(var(--accent-secondary-rgb), 0.2), rgba(var(--accent-secondary-rgb), 0.2));
+    border-color: rgba(var(--accent-secondary-rgb), 0.5);
     transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(244, 63, 94, 0.3);
+    box-shadow: 0 8px 20px rgba(var(--accent-secondary-rgb), 0.3);
 }
 
 .popup {
@@ -194,7 +190,7 @@
 }
 
 .popup::-webkit-scrollbar-thumb {
-    background: linear-gradient(135deg, rgba(139, 92, 246, 0.6), rgba(59, 130, 246, 0.6));
+    background: var(--gradient-primary);
     border-radius: 10px;
 }
 
@@ -203,7 +199,7 @@
 }
 
 .popup::-webkit-scrollbar-track {
-    background: rgba(30, 30, 46, 0.3);
+    background: var(--bg-secondary);
     border-radius: 10px;
     margin: 10px 0;
 }
@@ -213,9 +209,9 @@
 }
 
 .popup-content {
-    background: rgba(30, 30, 46, 0.95);
+    background: var(--bg-card);
     backdrop-filter: blur(20px);
-    border: 1px solid rgba(139, 92, 246, 0.3);
+    border: 1px solid var(--border-primary);
     margin: 2% auto;
     padding: 20px;
     max-width: 40%;
@@ -225,15 +221,12 @@
     position: relative;
     text-align: center;
     font-family: 'Chillax', sans-serif;
-    box-shadow: 
-        0 25px 50px rgba(0, 0, 0, 0.5),
-        0 0 0 1px rgba(255, 255, 255, 0.05);
-    color: #e2e8f0;
+    box-shadow: var(--shadow-primary);
+    color: var(--text-primary);
     overflow-y: auto;
     overflow-x: hidden;
     display: flex;
     flex-direction: column;
-    margin-bottom: 15%;
 }
 
 /* Styles de scrollbar pour popup-content */
@@ -242,7 +235,7 @@
 }
 
 .popup-content::-webkit-scrollbar-thumb {
-    background: linear-gradient(135deg, rgba(139, 92, 246, 0.8), rgba(59, 130, 246, 0.8));
+    background: var(--gradient-primary);
     border-radius: 10px;
     border: 1px solid rgba(255, 255, 255, 0.1);
 }
@@ -253,10 +246,10 @@
 }
 
 .popup-content::-webkit-scrollbar-track {
-    background: rgba(30, 30, 46, 0.5);
+    background: var(--bg-secondary);
     border-radius: 10px;
     margin: 10px 0;
-    border: 1px solid rgba(139, 92, 246, 0.1);
+    border: 1px solid var(--border-primary);
 }
 
 .popup-content::-webkit-scrollbar-button {
@@ -269,8 +262,8 @@
     width: auto;
     height: auto;
     border-radius: 12px;
-    border: 2px solid rgba(139, 92, 246, 0.2);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    border: 2px solid var(--border-primary);
+    box-shadow: var(--shadow-primary);
     object-fit: contain;
     display: block;
     margin: 0 auto;
@@ -278,7 +271,7 @@
 
 .popup-content h3 {
     font-size: 2em;
-    background: linear-gradient(135deg, #e2e8f0, #cbd5e1);
+    background: var(--gradient-text);
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -286,7 +279,7 @@
 }
 
 .popup-content p {
-    color: #94a3b8;
+    color: var(--text-secondary);
     line-height: 1.6;
     margin: 15px 0;
 }
@@ -298,12 +291,12 @@
     font-size: 30px;
     font-weight: bold;
     cursor: pointer;
-    color: #94a3b8;
+    color: var(--text-secondary);
     transition: color 0.3s ease;
 }
 
 .popup-content .close:hover {
-    color: #e2e8f0;
+    color: var(--text-primary);
 }
 
 .popup-footer {
@@ -314,7 +307,7 @@
     margin-top: 25px;
     padding: 15px 0;
     flex-shrink: 0;
-    border-top: 1px solid rgba(139, 92, 246, 0.2);
+    border-top: 1px solid var(--border-primary);
 }
 
 .popup-footer .git-icon {
@@ -322,7 +315,7 @@
     height: 80px;
     border-radius: 12px;
     transition: all 0.3s ease;
-    border: 2px solid rgba(139, 92, 246, 0.2);
+    border: 2px solid var(--border-primary);
     object-fit: contain;
     padding: 8px;
     box-sizing: border-box;
@@ -333,7 +326,7 @@
 .popup-footer .git-icon:hover {
     transform: translateY(-3px);
     box-shadow: 0 10px 25px rgba(139, 92, 246, 0.3);
-    border-color: rgba(139, 92, 246, 0.4);
+    border-color: var(--border-hover);
 }
 
 .popup-footer .like-button {
@@ -343,9 +336,9 @@
     min-height: 80px;
     max-width: 80px;
     max-height: 80px;
-    background: linear-gradient(135deg, rgba(244, 63, 94, 0.1), rgba(239, 68, 68, 0.1));
-    border: 2px solid rgba(244, 63, 94, 0.3);
-    color: #f87171;
+    background: linear-gradient(135deg, rgba(var(--accent-secondary-rgb), 0.1), rgba(var(--accent-secondary-rgb), 0.1));
+    border: 2px solid rgba(var(--accent-secondary-rgb), 0.3);
+    color: var(--accent-secondary);
     cursor: pointer;
     font-size: 16px;
     border-radius: 12px;
@@ -364,10 +357,10 @@
 }
 
 .popup-footer .like-button:hover {
-    background: linear-gradient(135deg, rgba(244, 63, 94, 0.2), rgba(239, 68, 68, 0.2));
-    border-color: rgba(244, 63, 94, 0.5);
+    background: linear-gradient(135deg, rgba(var(--accent-secondary-rgb), 0.2), rgba(var(--accent-secondary-rgb), 0.2));
+    border-color: rgba(var(--accent-secondary-rgb), 0.5);
     transform: translateY(-3px);
-    box-shadow: 0 10px 25px rgba(244, 63, 94, 0.3);
+    box-shadow: 0 10px 25px rgba(var(--accent-secondary-rgb), 0.3);
 }
 
 .popup-footer .like-button i {

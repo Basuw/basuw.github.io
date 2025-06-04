@@ -1,12 +1,12 @@
 .contact {
     padding: 5px 40px 30px 40px; /* Réduire le padding top de 30px à 5px */
     text-align: center;
-    background: rgba(30, 30, 46, 0.3);
+    background: var(--bg-card);
     backdrop-filter: blur(15px);
     border-radius: 20px;
     margin: 20px;
-    border: 1px solid rgba(139, 92, 246, 0.1);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    border: 1px solid var(--border-primary);
+    box-shadow: var(--shadow-primary);
     min-height: calc(100vh - 200px); /* Utilise presque toute la hauteur disponible */
     max-height: calc(100vh - 200px); /* Ajout d'une hauteur maximale */
     overflow-y: auto; /* Ajout du scroll si débordement */
@@ -21,7 +21,7 @@
     font-size: 3em;
     margin-bottom: 30px; /* Réduire de 50px à 30px */
     margin-top: 0; /* Supprimer tout margin top */
-    background: linear-gradient(135deg, #e2e8f0, #cbd5e1);
+    background: linear-gradient(135deg, var(--text-primary), var(--text-secondary));
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -32,7 +32,7 @@
    text-align: center;
    font-family: Aerial;
    font-size: 200%;
-   color: #333;
+   color: var(--text-primary);
    margin-top: 5px; /* Réduire encore plus l'espace en haut */
    margin-bottom: 5px; /* Réduire encore plus l'espace en bas */
 }
@@ -43,12 +43,12 @@
     max-width: 800px;
     width: 100%;
     margin: 0 auto;
-    background: rgba(45, 45, 68, 0.6);
+    background: var(--bg-secondary);
     backdrop-filter: blur(20px);
     border-radius: 20px;
     padding: 50px;
-    border: 1px solid rgba(139, 92, 246, 0.2);
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+    border: 1px solid var(--border-primary);
+    box-shadow: var(--shadow-primary);
 }
 
 .carousel-inner {
@@ -90,10 +90,10 @@
     gap: 20px;
     padding: 30px 50px; /* Augmenté pour plus d'espace */
     background: linear-gradient(135deg, rgba(139, 92, 246, 0.2), rgba(59, 130, 246, 0.1));
-    color: #e2e8f0;
+    color: var(--text-primary);
     text-decoration: none;
     border-radius: 16px;
-    border: 1px solid rgba(139, 92, 246, 0.3);
+    border: 1px solid var(--border-primary);
     transition: all 0.3s ease;
     font-family: 'Chillax', sans-serif;
     font-size: 1.4em; /* Plus gros texte */
@@ -104,10 +104,10 @@
 
 .carousel-item a:hover {
     background: linear-gradient(135deg, rgba(139, 92, 246, 0.3), rgba(59, 130, 246, 0.2));
-    border-color: rgba(139, 92, 246, 0.5);
+    border-color: var(--border-hover);
     transform: translateY(-3px);
     box-shadow: 0 8px 25px rgba(139, 92, 246, 0.3);
-    color: #ffffff;
+    color: var(--text-primary);
 }
 
 .carousel-item a i {
@@ -133,11 +133,11 @@
 .carousel-control {
     width: 50px; /* Plus gros */
     height: 50px;
-    background: rgba(45, 45, 68, 0.9);
+    background: var(--bg-secondary);
     backdrop-filter: blur(15px);
-    border: 1px solid rgba(139, 92, 246, 0.3);
+    border: 1px solid var(--border-primary);
     border-radius: 50%;
-    color: #e2e8f0;
+    color: var(--text-primary);
     font-size: 20px; /* Plus gros texte */
     cursor: pointer;
     transition: all 0.3s ease;
@@ -150,7 +150,7 @@
 
 .carousel-control:hover {
     background: linear-gradient(135deg, rgba(139, 92, 246, 0.4), rgba(59, 130, 246, 0.3));
-    border-color: rgba(139, 92, 246, 0.5);
+    border-color: var(--border-hover);
     transform: scale(1.1);
     box-shadow: 0 6px 20px rgba(139, 92, 246, 0.3);
 }
@@ -183,46 +183,5 @@
     border-color: rgba(139, 92, 246, 0.6);
     transform: scale(1.3);
     box-shadow: 0 0 15px rgba(139, 92, 246, 0.6);
-}
-
-/* Styles thème clair pour contact */
-body.light-theme .contact {
-    background: rgba(255, 255, 255, 0.4);
-    border: 1px solid rgba(59, 130, 246, 0.1);
-}
-
-body.light-theme .contact h2 {
-    background: linear-gradient(135deg, #1e293b, #475569);
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-
-body.light-theme .carousel {
-    background: rgba(248, 250, 252, 0.8);
-    border: 1px solid rgba(59, 130, 246, 0.2);
-}
-
-body.light-theme .carousel-item a {
-    background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(139, 92, 246, 0.05));
-    color: #475569;
-    border: 1px solid rgba(59, 130, 246, 0.2);
-}
-
-body.light-theme .carousel-item a:hover {
-    background: linear-gradient(135deg, rgba(59, 130, 246, 0.15), rgba(139, 92, 246, 0.1));
-    color: #1e293b;
-    border-color: rgba(59, 130, 246, 0.3);
-}
-
-body.light-theme .carousel-control {
-    background: rgba(248, 250, 252, 0.9);
-    color: #475569;
-    border: 1px solid rgba(59, 130, 246, 0.2);
-}
-
-body.light-theme .carousel-control:hover {
-    background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(139, 92, 246, 0.05));
-    color: #1e293b;
 }
 

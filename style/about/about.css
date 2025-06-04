@@ -10,12 +10,12 @@
     overflow-y: auto;
     padding: 5px 30px 50px 30px;
     margin-bottom: 30px; /* Ajouter un margin en bas du container */
-    background: rgba(30, 30, 46, 0.2);
+    background: var(--bg-card);
     backdrop-filter: blur(15px);
     border-radius: 20px;
     margin: 20px 0 30px 0; /* Ajuster le margin pour inclure l'espace en bas */
-    border: 1px solid rgba(139, 92, 246, 0.1);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    border: 1px solid var(--border-primary);
+    box-shadow: var(--shadow-primary);
     position: relative;
 }
 
@@ -43,11 +43,11 @@
     align-items: center;
     gap: 15px;
     padding: 15px 20px;
-    background: rgba(30, 30, 46, 0.95);
+    background: var(--bg-secondary);
     backdrop-filter: blur(25px);
     border-radius: 16px;
-    border: 1px solid rgba(139, 92, 246, 0.3);
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+    border: 1px solid var(--border-primary);
+    box-shadow: var(--shadow-primary);
     z-index: 1000;
     transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
     opacity: 1;
@@ -88,14 +88,14 @@
 .indicator-bar {
     width: 50px;
     height: 5px;
-    background: rgba(255, 255, 255, 0.8);
+    background: var(--text-secondary);
     border-radius: 3px;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
 }
 
 .ios-indicator:hover .indicator-bar {
-    background: rgba(139, 92, 246, 0.9);
+    background: var(--accent-primary);
     width: 55px;
     height: 6px;
     box-shadow: 0 0 15px rgba(139, 92, 246, 0.5);
@@ -105,9 +105,9 @@
     flex: 1; /* Make buttons take equal width */
     padding: 12px 24px;
     background: linear-gradient(135deg, rgba(139, 92, 246, 0.1), rgba(59, 130, 246, 0.1));
-    border: 1px solid rgba(139, 92, 246, 0.2);
+    border: 1px solid var(--border-primary);
     border-radius: 12px;
-    color: #e2e8f0;
+    color: var(--text-primary);
     cursor: pointer;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     font-family: 'Chillax', sans-serif;
@@ -135,15 +135,15 @@
 
 .bar-button:hover {
     background: linear-gradient(135deg, rgba(139, 92, 246, 0.2), rgba(59, 130, 246, 0.2));
-    border-color: rgba(139, 92, 246, 0.4);
+    border-color: var(--border-hover);
     transform: translateY(-2px);
     box-shadow: 0 8px 25px rgba(139, 92, 246, 0.3);
-    color: #ffffff;
+    color: var(--text-primary);
 }
 
 .bar-button.highlighted {
-    background: linear-gradient(135deg, rgba(139, 92, 246, 0.6), rgba(59, 130, 246, 0.4));
-    border: 2px solid rgba(139, 92, 246, 0.8);
+    background: var(--gradient-primary);
+    border: 2px solid var(--accent-primary);
     color: #ffffff;
     font-weight: 600;
     transform: translateY(-3px);

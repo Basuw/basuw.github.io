@@ -104,6 +104,15 @@
         const app = createApp({
             created()
             {
+                // Charger le thème sauvegardé ou utiliser le thème sombre par défaut
+                const savedTheme = localStorage.getItem('theme');
+                if (savedTheme === 'light') {
+                    this.isDarkTheme = false;
+                    document.body.classList.add('light-theme');
+                } else {
+                    this.isDarkTheme = true;
+                    document.body.classList.remove('light-theme');
+                }
             },
             mounted()
             {
@@ -126,7 +135,7 @@
                         'contact': false,
                         'website': false,
                     },
-                    isDarkTheme: false,
+                    isDarkTheme: true,
                     showDropdown: false,
                     dropdownTimeout: null
                 }
@@ -165,7 +174,14 @@
                 },
                 toggleTheme() {
                     this.isDarkTheme = !this.isDarkTheme;
-                    document.body.classList.toggle('dark-theme', this.isDarkTheme);
+                    // Utiliser light-theme pour le thème clair, pas de classe pour le thème sombre
+                    if (this.isDarkTheme) {
+                        document.body.classList.remove('light-theme');
+                        localStorage.setItem('theme', 'dark');
+                    } else {
+                        document.body.classList.add('light-theme');
+                        localStorage.setItem('theme', 'light');
+                    }
                 },
                 toggleDropdown() {
                     this.showDropdown = !this.showDropdown;

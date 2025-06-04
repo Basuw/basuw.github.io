@@ -1,11 +1,94 @@
+/* Variables CSS pour les thèmes */
+:root {
+  /* Thème sombre (par défaut) */
+  --bg-primary: linear-gradient(135deg, #1e1e2e 0%, #2d2d44 25%, #3c3c5a 50%, #2d2d44 75%, #1e1e2e 100%);
+  --bg-secondary: rgba(30, 30, 46, 0.95);
+  --bg-tertiary: rgba(45, 45, 68, 0.8);
+  --bg-card: rgba(45, 45, 68, 0.6);
+  --bg-navbar: linear-gradient(135deg, rgba(30, 30, 46, 0.8), rgba(45, 45, 68, 0.6));
+  --bg-hover: linear-gradient(135deg, rgba(139, 92, 246, 0.15), rgba(59, 130, 246, 0.1));
+  --bg-active: linear-gradient(135deg, rgba(30, 30, 46, 0.95), rgba(45, 45, 68, 0.9));
+  
+  --text-primary: #e2e8f0;
+  --text-secondary: #94a3b8;
+  --text-muted: #64748b;
+  --text-accent: #8b5cf6;
+  
+  --border-primary: rgba(139, 92, 246, 0.2);
+  --border-hover: rgba(139, 92, 246, 0.4);
+  --border-active: rgba(139, 92, 246, 0.6);
+  
+  --shadow-primary: 0 20px 40px rgba(0, 0, 0, 0.4);
+  --shadow-hover: 0 -8px 25px rgba(139, 92, 246, 0.2);
+  --shadow-active: 0 -10px 30px rgba(139, 92, 246, 0.3);
+  
+  --gradient-primary: linear-gradient(135deg, #8b5cf6, #3b82f6);
+  --gradient-text: linear-gradient(135deg, #e2e8f0, #cbd5e1);
+  --gradient-timeline: linear-gradient(135deg, rgba(139, 92, 246, 0.2), rgba(59, 130, 246, 0.1));
+  
+  --backdrop-blur: blur(20px);
+  --glass-effect: rgba(255, 255, 255, 0.05);
+  
+  /* Technology colors */
+  --color-html: #e34f26;
+  --color-css: #1572b6;
+  --color-js: #f7df1e;
+  --color-python: #3776ab;
+  --color-java: #ed8b00;
+  --color-cpp: #00599c;
+  --color-react: #61dafb;
+  --color-vue: #4fc08d;
+  --color-node: #339933;
+  --color-git: #f05032;
+  --color-docker: #2496ed;
+  --color-mysql: #4479a1;
+  --color-mongodb: #47a248;
+  --color-firebase: #ffca28;
+  --color-aws: #ff9900;
+  
+  /* Action colors */
+  --color-like: #f87171;
+}
+
+/* Thème clair */
+body.light-theme {
+  --bg-primary: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 25%, #cbd5e1 50%, #e2e8f0 75%, #f8fafc 100%);
+  --bg-secondary: rgba(255, 255, 255, 0.95);
+  --bg-tertiary: rgba(248, 250, 252, 0.8);
+  --bg-card: rgba(255, 255, 255, 0.6);
+  --bg-navbar: linear-gradient(135deg, rgba(255, 255, 255, 0.8), rgba(248, 250, 252, 0.6));
+  --bg-hover: linear-gradient(135deg, rgba(59, 130, 246, 0.15), rgba(139, 92, 246, 0.1));
+  --bg-active: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(248, 250, 252, 0.9));
+  
+  --text-primary: #1e293b;
+  --text-secondary: #475569;
+  --text-muted: #64748b;
+  --text-accent: #3b82f6;
+  
+  --border-primary: rgba(59, 130, 246, 0.2);
+  --border-hover: rgba(59, 130, 246, 0.4);
+  --border-active: rgba(59, 130, 246, 0.6);
+  
+  --shadow-primary: 0 20px 40px rgba(0, 0, 0, 0.1);
+  --shadow-hover: 0 -8px 25px rgba(59, 130, 246, 0.2);
+  --shadow-active: 0 -10px 30px rgba(59, 130, 246, 0.3);
+  
+  --gradient-primary: linear-gradient(135deg, #3b82f6, #8b5cf6);
+  --gradient-text: linear-gradient(135deg, #1e293b, #374151);
+  
+  --backdrop-blur: blur(20px);
+  --glass-effect: rgba(0, 0, 0, 0.05);
+}
+
 html, body {
    height: 100%;
    margin: 0;
    display: flex;
    flex-direction: column;
-   background: linear-gradient(135deg, #1e1e2e 0%, #2d2d44 25%, #3c3c5a 50%, #2d2d44 75%, #1e1e2e 100%);
+   background: var(--bg-primary);
    position: relative;
    overflow-x: hidden;
+   transition: all 0.3s ease;
 }
 
 /* Formes géométriques pour le relief */
@@ -67,7 +150,7 @@ html::after {
    text-align: center;
    font-family: 'Aerial', sans-serif;
    font-size: 200%;
-   background: linear-gradient(135deg, #e2e8f0, #cbd5e1);
+   background: var(--gradient-text);
    background-clip: text;
    -webkit-background-clip: text;
    -webkit-text-fill-color: transparent;
@@ -81,13 +164,13 @@ html::after {
 .window {
    width: 90vw;
    height: 87vh;
-   background: rgba(30, 30, 46, 0.95);
-   backdrop-filter: blur(20px);
-   -webkit-backdrop-filter: blur(20px);
-   border: 1px solid rgba(139, 92, 246, 0.2);
+   background: var(--bg-secondary);
+   backdrop-filter: var(--backdrop-blur);
+   -webkit-backdrop-filter: var(--backdrop-blur);
+   border: 1px solid var(--border-primary);
    border-radius: 20px;
    box-shadow: 
-      0 20px 40px rgba(0, 0, 0, 0.4),
+      var(--shadow-primary),
       0 0 0 1px rgba(255, 255, 255, 0.05),
       inset 0 1px 0 rgba(255, 255, 255, 0.1);
    position: relative;
@@ -178,8 +261,8 @@ footer {
    margin: 0 2px;
    text-decoration: none;
    color: #94a3b8;
-   background: linear-gradient(135deg, rgba(30, 30, 46, 0.8), rgba(45, 45, 68, 0.6));
-   border: 1px solid rgba(139, 92, 246, 0.2);
+   background: var(--bg-navbar);
+   border: 1px solid var(--border-primary);
    border-bottom: none;
    border-top-left-radius: 12px;
    border-top-right-radius: 12px;
@@ -194,22 +277,22 @@ footer {
 }
 
 .navbar a:hover, .navbar .dropdown:hover {
-   background: linear-gradient(135deg, rgba(139, 92, 246, 0.15), rgba(59, 130, 246, 0.1));
-   border-color: rgba(139, 92, 246, 0.4);
+   background: var(--bg-hover);
+   border-color: var(--border-hover);
    transform: translateY(-3px);
    box-shadow: 
-      0 -8px 25px rgba(139, 92, 246, 0.2),
+      var(--shadow-hover),
       inset 0 1px 0 rgba(255, 255, 255, 0.1);
    color: #e2e8f0;
 }
 
 .navbar a.active, .navbar .dropdown.active {
-   background: linear-gradient(135deg, rgba(30, 30, 46, 0.95), rgba(45, 45, 68, 0.9));
-   border-color: rgba(139, 92, 246, 0.6);
+   background: var(--bg-active);
+   border-color: var(--border-active);
    color: #ffffff;
    transform: translateY(-5px);
    box-shadow: 
-      0 -10px 30px rgba(139, 92, 246, 0.3),
+      var(--shadow-active),
       0 0 0 2px rgba(139, 92, 246, 0.2),
       inset 0 1px 0 rgba(255, 255, 255, 0.15);
    z-index: 3;
@@ -222,7 +305,7 @@ footer {
    left: 0;
    right: 0;
    height: 3px;
-   background: linear-gradient(90deg, #8b5cf6, #3b82f6);
+   background: var(--gradient-primary);
    border-radius: 2px;
 }
 
@@ -491,4 +574,69 @@ body.light-theme .apple-toggle.active .toggle-slider i {
 .about-modal {
     -webkit-backdrop-filter: blur(20px);
     backdrop-filter: blur(20px);
+}
+
+/* Bouton Toggle de Thème - Style Apple */
+.apple-toggle {
+    position: relative;
+    width: 50px;
+    height: 25px;
+    background: var(--bg-tertiary);
+    border: 1px solid var(--border-primary);
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 2px;
+    margin-left: 15px;
+}
+
+.apple-toggle:hover {
+    border-color: var(--border-hover);
+    box-shadow: 0 0 10px var(--border-primary);
+}
+
+.apple-toggle.active {
+    background: var(--gradient-primary);
+    justify-content: flex-end;
+}
+
+.toggle-slider {
+    width: 21px;
+    height: 21px;
+    background: var(--bg-secondary);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.toggle-slider i {
+    font-size: 10px;
+    color: var(--text-accent);
+    transition: all 0.3s ease;
+}
+
+.apple-toggle.active .toggle-slider {
+    background: white;
+}
+
+.apple-toggle.active .toggle-slider i {
+    color: #8b5cf6;
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
 }
