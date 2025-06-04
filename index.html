@@ -168,13 +168,15 @@
                 showDropdownWithDelay() {
                     if (this.dropdownTimeout) {
                         clearTimeout(this.dropdownTimeout);
+                        this.dropdownTimeout = null;
                     }
                     this.showDropdown = true;
                 },
                 hideDropdownWithDelay() {
                     this.dropdownTimeout = setTimeout(() => {
                         this.showDropdown = false;
-                    }, 200); // Délai de 200ms avant de fermer
+                        this.dropdownTimeout = null;
+                    }, 500);
                 },
                 setValueToFalse(componentStatus){
                     for (const key in componentStatus) {
