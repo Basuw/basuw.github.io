@@ -16,6 +16,7 @@
 	<link rel="stylesheet" href="/style/about/timeline.css"/>
 	<link rel="stylesheet" href="/style/about/projects.css"/>
 	<link rel="stylesheet" href="/style/about/personality.css"/>
+	<link rel="stylesheet" href="/style/website.css"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
 	<!-- <script src="assets/main.js"></script> -->
@@ -75,6 +76,9 @@
                 <div v-if="componentStatus['contact']">
                     <contact />
                 </div>
+                <div v-if="componentStatus['website']">
+                    <website />
+                </div>
             </div>
         </div>
         <footer>
@@ -96,6 +100,7 @@
         import Item from '/views/about/item.js';
         import Personality from '/views/about/personality.js';
         import Experience from '/views/about/experience.js';
+        import Website from '/views/website.js';
         const app = createApp({
             created()
             {
@@ -194,6 +199,7 @@
             .component('Item', Item)
             .component('Personality', Personality)
             .component('Experience', Experience)
+            .component('Website', Website)
         app.mount('#app');
     </script>    
 </body>
