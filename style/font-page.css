@@ -39,12 +39,25 @@
    display: flex;
    align-items: center;
    width: 100%;
+   flex-direction: column;
+   background: white;
+   padding: 20px;
+   border-radius: 10px;
+   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.font-container .font-item > div:first-child {
+   display: flex;
+   align-items: center;
+   width: 100%;
+   margin-bottom: 15px;
 }
 
 .font-container .font-rank {
    font-size: 1.5em;
    color: #d1c4e9;
    margin-right: 10px;
+   min-width: 30px;
 }
 
 .font-container input {
@@ -56,6 +69,7 @@
    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
    outline: none;
    transition: border-color 0.3s, box-shadow 0.3s;
+   flex: 1;
 }
 
 .font-container input:focus {
@@ -72,4 +86,61 @@ h2 {
    color: #d1c4e9;
    margin-bottom: 20px;
    text-align: center;
+}
+
+.font-info {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   width: 100%;
+   gap: 15px;
+   margin-top: 10px;
+}
+
+.font-description {
+   color: #666;
+   font-size: 0.9em;
+   margin: 0;
+   flex: 1;
+}
+
+.font-name {
+   color: #d1c4e9;
+   font-size: 1.2em;
+   font-weight: bold;
+   margin: 0;
+   text-align: center;
+   flex: 1;
+}
+
+.font-category {
+   background-color: #d1c4e9;
+   color: white;
+   padding: 4px 8px;
+   border-radius: 12px;
+   font-size: 0.8em;
+   font-weight: bold;
+}
+
+.download-button {
+   background-color: #6c5ce7;
+   color: white;
+   border: none;
+   padding: 8px 16px;
+   border-radius: 6px;
+   cursor: pointer;
+   transition: background-color 0.3s, transform 0.2s;
+   font-size: 0.9em;
+   display: flex;
+   align-items: center;
+   gap: 6px;
+}
+
+.download-button:hover {
+   background-color: #5a4fcf;
+   transform: translateY(-1px);
+}
+
+.download-button i {
+   font-size: 0.9em;
 }

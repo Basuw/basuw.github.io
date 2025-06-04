@@ -1,0 +1,56 @@
+[
+    {
+        "name": "Vercetti",
+        "description": "A bold and stylish typeface inspired by retro aesthetics",
+        "category": "Display",
+        "downloadUrl": "https://filipposfragkogiannis.com/fonts/vercetti-regular/",
+        "preview": "The quick brown fox jumps over the lazy dog",
+        "fontFamily": "Vercetti",
+        "id": "vercetti"
+    },
+    {
+        "name": "Aeronaut",
+        "description": "A modern and sleek typeface perfect for professional designs",
+        "category": "Display",
+        "downloadUrl": "https://unblast.com/aeronaut-geometric-sans-font/",
+        "preview": "The quick brown fox jumps over the lazy dog",
+        "fontFamily": "Aeronaut",
+        "id": "aeronaut"
+    },
+    {
+        "name": "Nohemi",
+        "description": "A versatile geometric sans-serif with multiple weights",
+        "category": "Sans-serif",
+        "downloadUrl": "https://rajputrajesh-448.gumroad.com/l/NOHEMI9",
+        "preview": "The quick brown fox jumps over the lazy dog",
+        "fontFamily": "Nohemi",
+        "id": "Nohemi"
+    },
+    {
+        "name": "Chillax",
+        "description": "A relaxed and friendly font with a contemporary feel",
+        "category": "Sans-serif",
+        "downloadUrl": "https://www.fontshare.com/fonts/chillax",
+        "preview": "The quick brown fox jumps over the lazy dog",
+        "fontFamily": "Chillax",
+        "id": "chillax"
+    },
+    {
+        "name": "HK Grotesk Wide",
+        "description": "A wide grotesque typeface with strong character",
+        "category": "Sans-serif",
+        "downloadUrl": "https://hanken.co/products/hk-grotesk-wide?variant=34410003267747",
+        "preview": "The quick brown fox jumps over the lazy dog",
+        "fontFamily": "HK Grotesk Wide",
+        "id": "HKGrotesk"
+    },
+    {
+        "name": "Skyer",
+        "description": "A modern display font with distinctive character",
+        "category": "Display",
+        "downloadUrl": "https://unblast.com/skyer-monoline-typeface/",
+        "preview": "The quick brown fox jumps over the lazy dog",
+        "fontFamily": "Skyer",
+        "id": "Skyer"
+    }
+]

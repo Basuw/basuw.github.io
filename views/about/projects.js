@@ -7,7 +7,6 @@ export default {
 	},
 	created() {
 		this.loadProjects();
-		this.loadLikedProjects();
 	},
     data() {
         return {
@@ -21,6 +20,8 @@ export default {
 				const response = await fetch('/data/projects.json');
 				const projectsData = await response.json();
 				this.projects = projectsData;
+				// Charger les likes après que les projets soient chargés
+				this.loadLikedProjects();
 			} catch (error) {
 				console.error('Error loading projects:', error);
 			}
@@ -36,8 +37,25 @@ export default {
 		openPopup(project) {
 			this.selectedProject = project;
 		},
+		loadLikedProjects() {
+			const likedProjects = JSON.parse(localStorage.getItem('likedProjects')) || [];
+			const likedLikes = JSON.parse(localStorage.getItem('likedLikes')) || {};
+			
+			this.projects.forEach(project => {
+				if (likedProjects.includes(project.id)) {
+					project.liked = true;
+					// Restaurer le nombre de likes depuis localStorage si disponible
+					if (likedLikes[project.id] !== undefined) {
+						project.likes = likedLikes[project.id];
+					}
+				} else {
+					project.liked = false;
+				}
+			});
+		},
 		likeProject(project) {
 			const likedProjects = JSON.parse(localStorage.getItem('likedProjects')) || [];
+			const likedLikes = JSON.parse(localStorage.getItem('likedLikes')) || {};
 			const projectIndex = likedProjects.indexOf(project.id);
 	
 			if (projectIndex === -1) {
@@ -52,15 +70,11 @@ export default {
 				likedProjects.splice(projectIndex, 1);
 			}
 	
+			// Sauvegarder le nombre de likes actuel
+			likedLikes[project.id] = project.likes;
+			
 			localStorage.setItem('likedProjects', JSON.stringify(likedProjects));
-		},
-		loadLikedProjects() {
-			const likedProjects = JSON.parse(localStorage.getItem('likedProjects')) || [];
-			this.projects.forEach(project => {
-				if (likedProjects.includes(project.id)) {
-					project.liked = true;
-				}
-			});
+			localStorage.setItem('likedLikes', JSON.stringify(likedLikes));
 		}
 	},
 	template: `
