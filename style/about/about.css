@@ -6,52 +6,229 @@
 #container {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    height: 100%;
-    overflow-y: auto; /* Ajoute une barre de défilement verticale si nécessaire */
+    height: calc(100vh - 180px); /* Réserve l'espace pour la barre de navigation en bas */
+    overflow-y: auto;
+    padding: 5px 30px 50px 30px;
+    margin-bottom: 30px; /* Ajouter un margin en bas du container */
+    background: rgba(30, 30, 46, 0.2);
+    backdrop-filter: blur(15px);
+    border-radius: 20px;
+    margin: 20px 0 30px 0; /* Ajuster le margin pour inclure l'espace en bas */
+    border: 1px solid rgba(139, 92, 246, 0.1);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    position: relative;
+}
+
+#container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(139, 92, 246, 0.03) 0%, transparent 50%, rgba(59, 130, 246, 0.02) 100%);
+    border-radius: 20px;
+    z-index: -1;
 }
 
 .bottom-bar {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: calc(90vw - 60px); /* S'adapte à la largeur de la fenêtre */
+    max-width: 800px;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
-    text-align: center;
-    color: white;
-    border-bottom-left-radius: 5px;
-    border-bottom-right-radius: 5px;
-    z-index: 3;
+    gap: 15px;
+    padding: 15px 20px;
+    background: rgba(30, 30, 46, 0.95);
+    backdrop-filter: blur(25px);
+    border-radius: 16px;
+    border: 1px solid rgba(139, 92, 246, 0.3);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+    z-index: 1000;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    opacity: 1;
+    visibility: visible;
+}
+
+.bottom-bar.hidden {
+    transform: translateX(-50%) translateY(100px);
+    opacity: 0;
+    visibility: hidden;
+}
+
+/* Indicateur iOS-style */
+.ios-indicator {
+    position: fixed;
+    bottom: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 70px;
+    height: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1001;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.ios-indicator.visible {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+.indicator-bar {
+    width: 50px;
+    height: 5px;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 3px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.ios-indicator:hover .indicator-bar {
+    background: rgba(139, 92, 246, 0.9);
+    width: 55px;
+    height: 6px;
+    box-shadow: 0 0 15px rgba(139, 92, 246, 0.5);
 }
 
 .bar-button {
     flex: 1; /* Make buttons take equal width */
-    background-color: #333;
-    font-family: 'Vercetti', sans-serif;
-    padding: 10px 0; /* Adjust padding to make buttons take full height */
+    padding: 12px 24px;
+    background: linear-gradient(135deg, rgba(139, 92, 246, 0.1), rgba(59, 130, 246, 0.1));
+    border: 1px solid rgba(139, 92, 246, 0.2);
+    border-radius: 12px;
+    color: #e2e8f0;
     cursor: pointer;
-    transition: background-color 0.3s;
-    height: 100%; /* Make buttons take full height */
-    color: #fff; /* Ensure text is visible */
-    display: flex; /* Use flexbox for alignment */
-    justify-content: center; /* Center horizontally */
-    align-items: center; /* Center vertically */
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    font-family: 'Chillax', sans-serif;
+    font-size: 1em;
+    font-weight: 500;
+    backdrop-filter: blur(10px);
+    position: relative;
+    overflow: hidden;
+}
+
+.bar-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(139, 92, 246, 0.2), transparent);
+    transition: left 0.5s;
+}
+
+.bar-button:hover::before {
+    left: 100%;
 }
 
 .bar-button:hover {
-    background-color: #575757;
+    background: linear-gradient(135deg, rgba(139, 92, 246, 0.2), rgba(59, 130, 246, 0.2));
+    border-color: rgba(139, 92, 246, 0.4);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(139, 92, 246, 0.3);
+    color: #ffffff;
 }
 
 .bar-button.highlighted {
-    background-color: #d1c4e9; /* Violet pas trop flashy */
-    color: #1f1f1f;
+    background: linear-gradient(135deg, rgba(139, 92, 246, 0.6), rgba(59, 130, 246, 0.4));
+    border: 2px solid rgba(139, 92, 246, 0.8);
+    color: #ffffff;
+    font-weight: 600;
+    transform: translateY(-3px);
+    box-shadow: 
+        0 12px 30px rgba(139, 92, 246, 0.4),
+        0 0 20px rgba(139, 92, 246, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
 }
 
-#first-button {
-    border-bottom-left-radius: 5px;
+.bar-button.highlighted::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), transparent);
+    border-radius: 10px;
 }
 
-#last-button {
-    border-bottom-right-radius: 5px;
+/* Styles thème clair pour About */
+body.light-theme .bottom-bar {
+    background: rgba(248, 250, 252, 0.6);
+    border: 1px solid rgba(59, 130, 246, 0.15);
+}
+
+body.light-theme .ios-indicator .indicator-bar {
+    background: rgba(59, 130, 246, 0.8);
+}
+
+body.light-theme .ios-indicator:hover .indicator-bar {
+    background: rgba(139, 92, 246, 0.9);
+}
+
+body.light-theme .bar-button {
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.08), rgba(139, 92, 246, 0.05));
+    border: 1px solid rgba(59, 130, 246, 0.2);
+    color: #475569;
+}
+
+body.light-theme .bar-button:hover {
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.15), rgba(139, 92, 246, 0.1));
+    border-color: rgba(59, 130, 246, 0.3);
+    color: #1e293b;
+    box-shadow: 0 8px 25px rgba(59, 130, 246, 0.2);
+}
+
+body.light-theme .bar-button.highlighted {
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.4), rgba(139, 92, 246, 0.3));
+    border: 2px solid rgba(59, 130, 246, 0.6);
+    color: #ffffff;
+    box-shadow: 
+        0 12px 30px rgba(59, 130, 246, 0.3),
+        0 0 20px rgba(59, 130, 246, 0.2);
+}
+
+body.light-theme #container {
+    background: rgba(255, 255, 255, 0.3);
+    border: 1px solid rgba(59, 130, 246, 0.1);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .bottom-bar {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+    
+    .bar-button {
+        flex: 1;
+        min-width: calc(50% - 5px);
+        text-align: center;
+    }
+    
+    .ios-indicator {
+        bottom: 5px;
+    }
+    
+    .indicator-bar {
+        width: 30px;
+        height: 3px;
+    }
+    
+    .ios-indicator:hover .indicator-bar {
+        width: 35px;
+        height: 4px;
+    }
 }

@@ -115,7 +115,7 @@ export default {
     },
     template: `
         <div class="contact">
-            <h2>Don't hesitate to contact me !😊</h2>
+            <h2>Don't hesitate to contact me !</h2>
             <div class="carousel">
                 <div class="carousel-inner">
                     <div v-for="(link, index) in links" :key="index" class="carousel-item" :class="{ active: index === currentIndex }">

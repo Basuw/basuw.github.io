@@ -3,29 +3,55 @@ html, body {
    margin: 0;
    display: flex;
    flex-direction: column;
-   background-color: rgb(215, 240, 242);
+   background: linear-gradient(135deg, #1e1e2e 0%, #2d2d44 25%, #3c3c5a 50%, #2d2d44 75%, #1e1e2e 100%);
+   position: relative;
+   overflow-x: hidden;
 }
 
-html::-webkit-scrollbar {
-    width: 8px; /* Width of the scrollbar */
+/* Formes géométriques pour le relief */
+html::before {
+   content: '';
+   position: fixed;
+   top: -50%;
+   left: -50%;
+   width: 200%;
+   height: 200%;
+   background: 
+      radial-gradient(circle at 20% 20%, rgba(139, 92, 246, 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 80% 40%, rgba(16, 185, 129, 0.08) 0%, transparent 50%),
+      radial-gradient(circle at 40% 80%, rgba(244, 63, 94, 0.06) 0%, transparent 50%),
+      radial-gradient(circle at 90% 10%, rgba(59, 130, 246, 0.08) 0%, transparent 50%),
+      radial-gradient(circle at 10% 90%, rgba(245, 158, 11, 0.06) 0%, transparent 50%);
+   z-index: -2;
+   animation: float 20s ease-in-out infinite;
 }
 
-html::-webkit-scrollbar-thumb {
-    background-color: #ccc; /* Change to gray */
-    border-radius: 10px; /* Rounded corners for the scrollbar thumb */
+/* Formes géométriques flottantes */
+html::after {
+   content: '';
+   position: fixed;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 100%;
+   background-image: 
+      polygon(30% 0%, 0% 0%, 0% 100%),
+      polygon(100% 0%, 70% 0%, 100% 30%),
+      polygon(0% 70%, 30% 100%, 0% 100%),
+      polygon(70% 100%, 100% 100%, 100% 70%);
+   background: 
+      linear-gradient(45deg, rgba(139, 92, 246, 0.03), transparent),
+      linear-gradient(-45deg, rgba(16, 185, 129, 0.02), transparent),
+      linear-gradient(135deg, rgba(244, 63, 94, 0.02), transparent),
+      linear-gradient(-135deg, rgba(59, 130, 246, 0.03), transparent);
+   z-index: -1;
 }
 
-html::-webkit-scrollbar-thumb:hover {
-    background-color: #a0a0a0; /* Change to violet on hover */
-}
-
-html::-webkit-scrollbar-track {
-    background: #fff; /* Color of the scrollbar track */
-    border-radius: 10px; /* Rounded corners for the scrollbar track */
-}
-
-html::-webkit-scrollbar-button {
-    display: none; /* Remove the buttons at the top and bottom */
+@keyframes float {
+   0%, 100% { transform: translate(0, 0) rotate(0deg); }
+   25% { transform: translate(-20px, -20px) rotate(1deg); }
+   50% { transform: translate(20px, -10px) rotate(-1deg); }
+   75% { transform: translate(-10px, 20px) rotate(0.5deg); }
 }
 
 /* Le conteneur principal prend tout l'espace disponible */
@@ -42,24 +68,47 @@ html::-webkit-scrollbar-button {
    font-family: Aerial;
    font-size: 200%;
    color: #333;
+   margin-top: 10px; /* Réduire l'espace en haut */
+   margin-bottom: 10px; /* Réduire l'espace en bas */
 }
 
 /* Styles pour la fenêtre */
 .window {
-   width: 90vw; /* Utilisation de vw pour prendre 90% de la largeur de la fenêtre */
-   height: 87vh; /* Utilisation de vh pour prendre 90% de la hauteur de la fenêtre */
-   background-color: white;
-   border-radius: 10px;
-   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+   width: 90vw;
+   height: 87vh;
+   background: rgba(30, 30, 46, 0.95);
+   backdrop-filter: blur(20px);
+   -webkit-backdrop-filter: blur(20px);
+   border: 1px solid rgba(139, 92, 246, 0.2);
+   border-radius: 20px;
+   box-shadow: 
+      0 20px 40px rgba(0, 0, 0, 0.4),
+      0 0 0 1px rgba(255, 255, 255, 0.05),
+      inset 0 1px 0 rgba(255, 255, 255, 0.1);
    position: relative;
+   overflow: hidden;
+}
+
+.window::before {
+   content: '';
+   position: absolute;
+   top: 0;
+   left: 0;
+   right: 0;
+   bottom: 0;
+   background: linear-gradient(135deg, rgba(139, 92, 246, 0.05) 0%, transparent 50%, rgba(16, 185, 129, 0.03) 100%);
+   z-index: -1;
 }
 
 /* Styles pour l'en-tête de la fenêtre */
 .window-header {
    height: 30px;
-   background-color: #e0e0e0;
-   border-top-left-radius: 10px;
-   border-top-right-radius: 10px;
+   background: linear-gradient(135deg, rgba(45, 45, 68, 0.8), rgba(60, 60, 90, 0.6));
+   backdrop-filter: blur(10px);
+   -webkit-backdrop-filter: blur(10px);
+   border-top-left-radius: 20px;
+   border-top-right-radius: 20px;
+   border-bottom: 1px solid rgba(139, 92, 246, 0.1);
    display: flex;
    align-items: center;
    padding-left: 10px;
@@ -93,98 +142,332 @@ footer {
 /* Styles pour la barre de navigation */
 .navbar {
    display: flex;
-   justify-content: space-between;
-   align-items: center;
-   background-color: #333;
-   padding: 10px;
+   justify-content: flex-start;
+   align-items: flex-end;
+   background: transparent;
+   backdrop-filter: none;
+   border-bottom: 2px solid rgba(139, 92, 246, 0.3);
+   padding: 0;
    color: white;
    font-family: 'Nohemi';
    font-size: large;
+   position: relative;
+   overflow: hidden;
 }
 
-/* Style pour les boutons de la barre de navigation */
-.navbar a, .navbar .dropdown-btn {
+.navbar::before {
+   content: '';
+   position: absolute;
+   bottom: 0;
+   left: 0;
+   right: 0;
+   height: 2px;
+   background: linear-gradient(90deg, rgba(139, 92, 246, 0.5), rgba(59, 130, 246, 0.3));
+   z-index: 1;
+}
+
+/* Style pour les onglets */
+.navbar a, .navbar .dropdown {
    display: inline-block;
-   padding: 10px 20px;
-   margin: 5px;
+   padding: 15px 25px;
+   margin: 0 2px;
    text-decoration: none;
-   color: #fff;
-   background-color: #333;
-   border-radius: 5px;
-   transition: background-color 0.3s;
-}
-
-.navbar a:hover, .navbar .dropdown-btn:hover {
-   background-color: #555;
+   color: #94a3b8;
+   background: linear-gradient(135deg, rgba(30, 30, 46, 0.8), rgba(45, 45, 68, 0.6));
+   border: 1px solid rgba(139, 92, 246, 0.2);
+   border-bottom: none;
+   border-top-left-radius: 12px;
+   border-top-right-radius: 12px;
+   transition: all 0.3s ease;
+   backdrop-filter: blur(10px);
+   position: relative;
    cursor: pointer;
+   z-index: 2;
+   box-shadow: 
+      0 -5px 15px rgba(0, 0, 0, 0.2),
+      inset 0 1px 0 rgba(255, 255, 255, 0.05);
 }
 
-
-/* Styles pour la nouvelle barre de navigation */
-.navbar {
-   display: flex;
-   justify-content: space-between;
-   align-items: center;
-   background-color: #333;
-   padding: 10px;
-   color: white;
+.navbar a:hover, .navbar .dropdown:hover {
+   background: linear-gradient(135deg, rgba(139, 92, 246, 0.15), rgba(59, 130, 246, 0.1));
+   border-color: rgba(139, 92, 246, 0.4);
+   transform: translateY(-3px);
+   box-shadow: 
+      0 -8px 25px rgba(139, 92, 246, 0.2),
+      inset 0 1px 0 rgba(255, 255, 255, 0.1);
+   color: #e2e8f0;
 }
 
-.navbar a, .navbar .dropdown-btn {
-   display: inline-block;
-   padding: 10px 20px;
-   margin: 5px;
-   text-decoration: none;
-   color: #fff;
-   background-color: #333;
-   border-radius: 5px;
-   transition: background-color 0.3s;
+.navbar a.active, .navbar .dropdown.active {
+   background: linear-gradient(135deg, rgba(30, 30, 46, 0.95), rgba(45, 45, 68, 0.9));
+   border-color: rgba(139, 92, 246, 0.6);
+   color: #ffffff;
+   transform: translateY(-5px);
+   box-shadow: 
+      0 -10px 30px rgba(139, 92, 246, 0.3),
+      0 0 0 2px rgba(139, 92, 246, 0.2),
+      inset 0 1px 0 rgba(255, 255, 255, 0.15);
+   z-index: 3;
 }
 
-/* Styles pour le nouveau menu déroulant */
+.navbar a.active::after, .navbar .dropdown.active::after {
+   content: '';
+   position: absolute;
+   bottom: -2px;
+   left: 0;
+   right: 0;
+   height: 3px;
+   background: linear-gradient(90deg, #8b5cf6, #3b82f6);
+   border-radius: 2px;
+}
+
+/* Styles pour le menu déroulant */
 .dropdown {
-    position: relative;
-    display: inline-block;
+   position: relative;
+   display: inline-block;
+}
+
+.dropdown-btn {
+   background: none;
+   border: none;
+   color: inherit;
+   font-family: inherit;
+   font-size: inherit;
+   cursor: pointer;
+   padding: 0;
+   text-decoration: none;
+   transition: color 0.3s ease;
+}
+
+.dropdown-btn:hover {
+   color: #8b5cf6;
 }
 
 .dropdown-content {
    display: none;
    position: absolute;
-   background-color: #3f3f3f;
-   min-width: 100%;
-   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-   z-index: 20;
-   border-radius: 5px;
-   overflow: hidden;
-   text-align: center;
-   margin-left: 3%;
+   background: rgba(30, 30, 46, 0.95);
+   backdrop-filter: blur(15px);
+   -webkit-backdrop-filter: blur(15px);
+   min-width: 160px;
+   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+   z-index: 1000;
+   border-radius: 8px;
+   border: 1px solid rgba(139, 92, 246, 0.2);
+   top: 100%;
+   left: 0;
+   margin-top: 5px;
 }
 
 .dropdown-content a {
-   margin-top: 5%;
-   color: #f1f1f1;
+   color: #e2e8f0;
+   padding: 12px 16px;
    text-decoration: none;
    display: block;
-   transition: background-color 0.3s;
-   background-color: #3f3f3f;
-
+   border-radius: 6px;
+   margin: 4px;
+   transition: all 0.3s ease;
 }
 
 .dropdown-content a:hover {
-   background-color: #f1f1f1;
-   color: #000;
+   background: rgba(139, 92, 246, 0.2);
+   color: #ffffff;
 }
 
-.dropdown:hover .dropdown-content {
+/* Modification: le menu se ferme au clic et non plus au hover */
+.dropdown.show .dropdown-content {
    display: block;
 }
 
-.dropdown-btn {
-   width: 100%;
-   box-sizing: border-box;
-   border: none;
-   outline: inherit;
-   font-family: 'Nohemi';
-   font-size: large;
-    
+/* Light theme dropdown styles */
+body.light-theme .dropdown-content {
+   background: rgba(255, 255, 255, 0.95);
+   border: 1px solid rgba(59, 130, 246, 0.2);
+}
+
+body.light-theme .dropdown-content a {
+   color: #475569;
+}
+
+body.light-theme .dropdown-content a:hover {
+   background: rgba(59, 130, 246, 0.1);
+   color: #1e293b;
+}
+
+/* Toggle button repositionné */
+.apple-toggle {
+   position: absolute;
+   right: 20px;
+   top: 50%;
+   transform: translateY(-50%);
+   z-index: 10;
+   width: 60px;
+   height: 30px;
+   background: rgba(60, 60, 75, 0.8);
+   border: 2px solid rgba(139, 92, 246, 0.2);
+   border-radius: 15px;
+   cursor: pointer;
+   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+   margin: 5px;
+   padding: 0;
+   backdrop-filter: blur(10px);
+   outline: none;
+}
+
+.apple-toggle:hover {
+   border-color: rgba(139, 92, 246, 0.4);
+   box-shadow: 0 4px 15px rgba(139, 92, 246, 0.2);
+}
+
+.apple-toggle.active {
+   background: linear-gradient(135deg, rgba(139, 92, 246, 0.8), rgba(59, 130, 246, 0.6));
+   border-color: rgba(139, 92, 246, 0.6);
+}
+
+.toggle-slider {
+   width: 24px;
+   height: 24px;
+   background: rgba(255, 255, 255, 0.95);
+   border-radius: 50%;
+   position: absolute;
+   top: 1px;
+   left: 2px;
+   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   box-shadow: 
+      0 2px 8px rgba(0, 0, 0, 0.3),
+      0 0 0 1px rgba(255, 255, 255, 0.1);
+}
+
+.apple-toggle.active .toggle-slider {
+   transform: translateX(30px);
+   background: rgba(255, 255, 255, 1);
+   box-shadow: 
+      0 4px 12px rgba(139, 92, 246, 0.4),
+      0 0 0 1px rgba(255, 255, 255, 0.2);
+}
+
+.toggle-slider i {
+   font-size: 10px;
+   color: #6b7280;
+   transition: all 0.3s ease;
+}
+
+.apple-toggle.active .toggle-slider i {
+   color: #8b5cf6;
+}
+
+/* Styles thème clair pour le toggle */
+body.light-theme .apple-toggle {
+   background: rgba(229, 231, 235, 0.8);
+   border-color: rgba(59, 130, 246, 0.2);
+}
+
+body.light-theme .apple-toggle.active {
+   background: linear-gradient(135deg, rgba(59, 130, 246, 0.8), rgba(139, 92, 246, 0.6));
+}
+
+body.light-theme .toggle-slider {
+   background: rgba(255, 255, 255, 0.98);
+   box-shadow: 
+      0 2px 8px rgba(0, 0, 0, 0.15),
+      0 0 0 1px rgba(0, 0, 0, 0.05);
+}
+
+body.light-theme .apple-toggle.active .toggle-slider {
+   box-shadow: 
+      0 4px 12px rgba(59, 130, 246, 0.3),
+      0 0 0 1px rgba(255, 255, 255, 0.2);
+}
+
+body.light-theme .toggle-slider i {
+   color: #374151;
+}
+
+body.light-theme .apple-toggle.active .toggle-slider i {
+   color: #3b82f6;
+}
+
+/* Screen reader only text for accessibility */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+.menu-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background-color: rgba(18, 18, 23, 0.8);
+    -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(20px);
+}
+
+.about .modal .modal-content {
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+}
+
+.about .modal:not(.show) {
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+}
+
+.about .modal.show {
+    -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(20px);
+}
+
+.modal-content {
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+}
+
+.projectsPage .modal-content {
+    -webkit-backdrop-filter: blur(15px);
+    backdrop-filter: blur(15px);
+}
+
+.contact .modal-content {
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+}
+
+.contact .modal.show {
+    -webkit-backdrop-filter: blur(15px);
+    backdrop-filter: blur(15px);
+}
+
+/* Navigation styles */
+.nav {
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+}
+
+.nav.scrolled {
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+}
+
+/* Modal and overlay styles */
+.modal-overlay {
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+}
+
+/* About section modal */
+.about-modal {
+    -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(20px);
 }

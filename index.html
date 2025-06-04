@@ -4,6 +4,7 @@
 <head>
 
 	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title> Bastien's personal page </title>
 
 	<link rel="stylesheet" href="/style/style.css"/>
@@ -45,9 +46,9 @@
                 <div class="navbar">
                     <a @click="homeFunction">Home</a>
                     <a @click="aboutFunction">About myself</a>
-                    <div class="dropdown">
-                        <button class="dropdown-btn">▼ For developers</button>
-                        <div class="dropdown-content">
+                    <div class="dropdown" :class="{ show: showDropdown }" @mouseenter="showDropdownWithDelay" @mouseleave="hideDropdownWithDelay">
+                        <button class="dropdown-btn" @click="toggleDropdown">▼ For developers</button>
+                        <div class="dropdown-content" @mouseenter="showDropdownWithDelay" @mouseleave="hideDropdownWithDelay">
                             <a @click="fontsFunction">Fonts</a>
                             <a @click="developmentFunction">Coming soon</a>
                             <a @click="developmentFunction">Coming soon</a>
@@ -55,8 +56,14 @@
                     </div>
                     <a @click="contactFunction">Contact</a>
                     <a @click="thisWebSiteFunction">This website</a>
+                    <button @click="toggleTheme" class="apple-toggle" :class="{ 'active': isDarkTheme }" :title="isDarkTheme ? 'Switch to Light Theme' : 'Switch to Dark Theme'">
+                        <div class="toggle-slider">
+                            <i :class="isDarkTheme ? 'fas fa-moon' : 'fas fa-sun'"></i>
+                        </div>
+                        <span class="sr-only">{{ isDarkTheme ? 'Switch to Light Theme' : 'Switch to Dark Theme' }}</span>
+                    </button>
                 </div>
-                <div v-if="componentStatus['fonts']">
+                <div v-if="componentStatus['fonts']" class="fonts-page-container">
                     <fonts/>
                 </div>
                 <div v-if="componentStatus['home']">
@@ -94,7 +101,15 @@
             {
             },
             mounted()
-            {},
+            {
+                // Fermer le menu déroulant si on clique en dehors
+                document.addEventListener('click', (event) => {
+                    const dropdown = event.target.closest('.dropdown');
+                    if (!dropdown) {
+                        this.showDropdown = false;
+                    }
+                });
+            },
             data(){
                 return{
                     title:'Bastien\'s personal page',
@@ -105,15 +120,20 @@
                         'about': false,
                         'contact': false,
                         'website': false,
-                    }
+                    },
+                    isDarkTheme: false,
+                    showDropdown: false,
+                    dropdownTimeout: null
                 }
             },
             methods:{
                 developmentFunction(){
+                    this.showDropdown = false; // Fermer le menu déroulant
                     this.setValueToFalse(this.componentStatus);
                     this.title = "Development tools";
                 },
                 fontsFunction(){
+                    this.showDropdown = false; // Fermer le menu déroulant
                     this.developmentFunction()
                     this.setValueToFalse(this.componentStatus);
                     this.componentStatus['fonts'] = true;
@@ -137,6 +157,24 @@
                     this.setValueToFalse(this.componentStatus);
                     this.componentStatus['website'] = true;
                     this.title = "About this website";
+                },
+                toggleTheme() {
+                    this.isDarkTheme = !this.isDarkTheme;
+                    document.body.classList.toggle('dark-theme', this.isDarkTheme);
+                },
+                toggleDropdown() {
+                    this.showDropdown = !this.showDropdown;
+                },
+                showDropdownWithDelay() {
+                    if (this.dropdownTimeout) {
+                        clearTimeout(this.dropdownTimeout);
+                    }
+                    this.showDropdown = true;
+                },
+                hideDropdownWithDelay() {
+                    this.dropdownTimeout = setTimeout(() => {
+                        this.showDropdown = false;
+                    }, 200); // Délai de 200ms avant de fermer
                 },
                 setValueToFalse(componentStatus){
                     for (const key in componentStatus) {

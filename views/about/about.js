@@ -8,11 +8,22 @@ export default{
                 'projects': false,
                 'experience': false,
             },
+            isBottomBarVisible: true,
+            hideTimeout: null,
+            isHoveringBottomBar: false,
 		}
 	},
     created() {
 		this.setStyles();
+        this.startHideTimer();
 	},
+    mounted() {
+        this.setupEventListeners();
+    },
+    beforeUnmount() {
+        this.clearHideTimer();
+        this.removeEventListeners();
+    },
 	methods: {
         setValueToFalse(componentStatus){
             for (const key in componentStatus) {
@@ -23,21 +34,25 @@ export default{
             this.setValueToFalse(this.aboutComponentStatus);
             this.aboutComponentStatus['timeline'] = true;
             this.highlightButton(event);
+            this.startHideTimer(); // Redémarrer le timer après une action
         },
         projectsFunc(event){
             this.setValueToFalse(this.aboutComponentStatus);
             this.aboutComponentStatus['projects'] = true;
             this.highlightButton(event);
+            this.startHideTimer();
         },        
         personalityFunc(event){
             this.setValueToFalse(this.aboutComponentStatus);
             this.aboutComponentStatus['personality'] = true;
             this.highlightButton(event);
+            this.startHideTimer();
         },
         experienceFunc(event){
             this.setValueToFalse(this.aboutComponentStatus);
             this.aboutComponentStatus['experience'] = true;
             this.highlightButton(event);
+            this.startHideTimer();
         },
         highlightButton(event) {
             // Remove highlight from all buttons
@@ -57,6 +72,59 @@ export default{
                 }
             });
         },
+        startHideTimer() {
+            this.clearHideTimer();
+            this.hideTimeout = setTimeout(() => {
+                if (!this.isHoveringBottomBar) {
+                    this.isBottomBarVisible = false;
+                }
+            }, 2000);
+        },
+        clearHideTimer() {
+            if (this.hideTimeout) {
+                clearTimeout(this.hideTimeout);
+                this.hideTimeout = null;
+            }
+        },
+        showBottomBar() {
+            this.isBottomBarVisible = true;
+            this.startHideTimer();
+        },
+        hideBottomBar() {
+            this.isBottomBarVisible = false;
+        },
+        onBottomBarMouseEnter() {
+            this.isHoveringBottomBar = true;
+            this.clearHideTimer();
+            this.isBottomBarVisible = true;
+        },
+        onBottomBarMouseLeave() {
+            this.isHoveringBottomBar = false;
+            this.startHideTimer();
+        },
+        onIndicatorClick() {
+            this.showBottomBar();
+        },
+        onIndicatorHover() {
+            this.showBottomBar();
+        },
+        setupEventListeners() {
+            // Écouter les clics globaux pour fermer la barre si on clique ailleurs
+            document.addEventListener('click', this.onDocumentClick);
+        },
+        removeEventListeners() {
+            document.removeEventListener('click', this.onDocumentClick);
+        },
+        onDocumentClick(event) {
+            // Vérifier si le clic est en dehors de la bottom-bar et de l'indicateur
+            const bottomBar = document.querySelector('.bottom-bar');
+            const indicator = document.querySelector('.ios-indicator');
+            
+            if (bottomBar && !bottomBar.contains(event.target) && 
+                indicator && !indicator.contains(event.target)) {
+                this.hideBottomBar();
+            }
+        },
 	},
 	template:
 	`
@@ -74,11 +142,28 @@ export default{
             <experience />
         </div>
     </div>
-    <div class="bottom-bar">
-        <div id="first-button" class="bar-button" @click=timelineFunc($event)>Timeline</div>
-        <div class="bar-button" @click=experienceFunc($event)>Experience</div>
-        <div class="bar-button" @click=projectsFunc($event)>Projects</div>
-        <div id="last-button" class="bar-button" @click=personalityFunc($event)>Personality</div>
+    
+    <!-- Barre de navigation principale avec animation -->
+    <div 
+        class="bottom-bar" 
+        :class="{ 'hidden': !isBottomBarVisible }"
+        @mouseenter="onBottomBarMouseEnter"
+        @mouseleave="onBottomBarMouseLeave"
+    >
+        <div id="first-button" class="bar-button" @click="timelineFunc($event)">Timeline</div>
+        <div class="bar-button" @click="experienceFunc($event)">Experience</div>
+        <div class="bar-button" @click="projectsFunc($event)">Projects</div>
+        <div id="last-button" class="bar-button" @click="personalityFunc($event)">Personality</div>
+    </div>
+    
+    <!-- Petite barre indicatrice iOS-style -->
+    <div 
+        class="ios-indicator" 
+        :class="{ 'visible': !isBottomBarVisible }"
+        @click="onIndicatorClick"
+        @mouseenter="onIndicatorHover"
+    >
+        <div class="indicator-bar"></div>
     </div>
 	`
 }

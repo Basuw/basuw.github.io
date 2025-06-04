@@ -1,158 +1,380 @@
 .project-list {
-    max-height: 63vh; /* Définir une hauteur fixe pour la liste des projets */
-    overflow-y: auto; /* Activer le défilement vertical */
+    max-height: calc(100vh - 280px);
+    overflow-y: auto;
+    overflow-x: hidden;
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* Définir 3 colonnes fixes */
-    gap: 40px; /* Augmenter l'espace horizontal entre les items */
-    margin-bottom: 20vh;
-    padding: 10px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    padding: 5px 10px 10px 10px;
+}
+
+/* Styles de scrollbar pour project-list */
+.project-list::-webkit-scrollbar {
+    width: 8px;
+}
+
+.project-list::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, rgba(139, 92, 246, 0.6), rgba(59, 130, 246, 0.6));
+    border-radius: 10px;
+}
+
+.project-list::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(135deg, rgba(139, 92, 246, 0.8), rgba(59, 130, 246, 0.8));
+}
+
+.project-list::-webkit-scrollbar-track {
+    background: rgba(30, 30, 46, 0.3);
+    border-radius: 10px;
+}
+
+.project-list::-webkit-scrollbar-button {
+    display: none;
 }
 
 .projects-container {
     max-height: 80vh;
     overflow-y: auto;
+    overflow-x: hidden;
     padding: 20px;
+    background: rgba(30, 30, 46, 0.2);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    border: 1px solid rgba(139, 92, 246, 0.1);
+}
+
+/* Styles de scrollbar pour projects-container */
+.projects-container::-webkit-scrollbar {
+    width: 8px;
+}
+
+.projects-container::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, rgba(139, 92, 246, 0.6), rgba(59, 130, 246, 0.6));
+    border-radius: 10px;
+}
+
+.projects-container::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(135deg, rgba(139, 92, 246, 0.8), rgba(59, 130, 246, 0.8));
+}
+
+.projects-container::-webkit-scrollbar-track {
+    background: rgba(30, 30, 46, 0.3);
+    border-radius: 10px;
+}
+
+.projects-container::-webkit-scrollbar-button {
+    display: none;
 }
 
 .gallery-item {
     position: relative;
     width: 93%;
     cursor: pointer;
-    transition: transform 0.3s;
+    transition: all 0.4s ease;
     text-align: center;
-    background-color: #fff;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-    padding: 10px;
-    
+    background: rgba(45, 45, 68, 0.8);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(139, 92, 246, 0.2);
+    box-shadow: 
+        0 8px 25px rgba(0, 0, 0, 0.3),
+        0 0 0 1px rgba(255, 255, 255, 0.05);
+    border-radius: 16px;
+    padding: 20px;
+    overflow: hidden;
+}
+
+.gallery-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(139, 92, 246, 0.05), rgba(16, 185, 129, 0.03));
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: -1;
 }
 
 .gallery-item:hover {
-    transform: scale(1.05);
+    transform: translateY(-8px) scale(1.02);
+    border-color: rgba(139, 92, 246, 0.4);
+    box-shadow: 
+        0 20px 40px rgba(139, 92, 246, 0.2),
+        0 0 0 1px rgba(255, 255, 255, 0.1);
+}
+
+.gallery-item:hover::before {
+    opacity: 1;
 }
 
 .gallery-item img {
     height: 20vh;
-    border-radius: 8px;
+    border-radius: 12px;
     display: block;
     margin: 0 auto;
+    border: 2px solid rgba(139, 92, 246, 0.1);
+    transition: all 0.3s ease;
+}
+
+.gallery-item:hover img {
+    border-color: rgba(139, 92, 246, 0.3);
+    box-shadow: 0 8px 20px rgba(139, 92, 246, 0.2);
 }
 
 .description {
     text-align: center;
-    margin-top: 10px;
+    margin-top: 15px;
     font-family: 'Chillax', sans-serif;
 }
 
 .description h3 {
     font-size: 1.5em;
-    margin: 0;
+    margin: 0 0 10px 0;
+    color: #e2e8f0;
+    background: linear-gradient(135deg, #e2e8f0, #cbd5e1);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 .description p {
     font-size: 1em;
-    color: #666;
+    color: #94a3b8;
+    line-height: 1.4;
 }
 
 .description .date {
     font-size: 0.9em;
-    color: #999;
+    color: rgba(139, 92, 246, 0.8);
+    font-weight: 500;
 }
 
 .description .authors {
     font-size: 0.9em;
-    color: #999;
+    color: #64748b;
 }
 
 .like-button {
-    background: none;
-    border: none;
-    color: #ff0000; /* Use the same color as the current like button */
+    background: linear-gradient(135deg, rgba(244, 63, 94, 0.1), rgba(239, 68, 68, 0.1));
+    border: 1px solid rgba(244, 63, 94, 0.3);
+    color: #f87171;
     cursor: pointer;
-    font-size: 24px;
-    transition: color 0.3s ease;
+    font-size: 16px;
+    padding: 8px 16px;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    margin-top: 10px;
 }
 
 .like-button:hover {
-    color: #ff6666; /* Slightly lighter color on hover */
+    background: linear-gradient(135deg, rgba(244, 63, 94, 0.2), rgba(239, 68, 68, 0.2));
+    border-color: rgba(244, 63, 94, 0.5);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(244, 63, 94, 0.3);
 }
 
 .popup {
     display: block;
-    position: fixed;
+    position: absolute;
     z-index: 1000;
     left: 0;
     top: 0;
     width: 100%;
     height: 100%;
     overflow: auto;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(5px);
+    border-radius: 20px;
+}
+
+/* Styles de scrollbar pour popup */
+.popup::-webkit-scrollbar {
+    width: 8px;
+}
+
+.popup::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, rgba(139, 92, 246, 0.6), rgba(59, 130, 246, 0.6));
+    border-radius: 10px;
+}
+
+.popup::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(135deg, rgba(139, 92, 246, 0.8), rgba(59, 130, 246, 0.8));
+}
+
+.popup::-webkit-scrollbar-track {
+    background: rgba(30, 30, 46, 0.3);
+    border-radius: 10px;
+    margin: 10px 0;
+}
+
+.popup::-webkit-scrollbar-button {
+    display: none;
 }
 
 .popup-content {
-    background-color: #fff;
-    margin-top: 3%;
-    margin-left: auto;
-    margin-right: auto;
+    background: rgba(30, 30, 46, 0.95);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(139, 92, 246, 0.3);
+    margin: 2% auto;
     padding: 20px;
-    border: 1px solid #888;
     max-width: 40%;
-    border-radius: 8px;
+    min-height: fit-content;
+    max-height: 50%;
+    border-radius: 20px;
     position: relative;
     text-align: center;
     font-family: 'Chillax', sans-serif;
+    box-shadow: 
+        0 25px 50px rgba(0, 0, 0, 0.5),
+        0 0 0 1px rgba(255, 255, 255, 0.05);
+    color: #e2e8f0;
+    overflow-y: auto;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15%;
+}
 
+/* Styles de scrollbar pour popup-content */
+.popup-content::-webkit-scrollbar {
+    width: 10px;
+}
+
+.popup-content::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, rgba(139, 92, 246, 0.8), rgba(59, 130, 246, 0.8));
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.popup-content::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(135deg, rgba(139, 92, 246, 1), rgba(59, 130, 246, 1));
+    box-shadow: 0 0 10px rgba(139, 92, 246, 0.5);
+}
+
+.popup-content::-webkit-scrollbar-track {
+    background: rgba(30, 30, 46, 0.5);
+    border-radius: 10px;
+    margin: 10px 0;
+    border: 1px solid rgba(139, 92, 246, 0.1);
+}
+
+.popup-content::-webkit-scrollbar-button {
+    display: none;
 }
 
 .popup-project-icon {
-    height: 30vh;
-    border-radius: 8px;
+    max-height: 20vh;
+    max-width: 80%;
+    width: auto;
+    height: auto;
+    border-radius: 12px;
+    border: 2px solid rgba(139, 92, 246, 0.2);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    object-fit: contain;
+    display: block;
+    margin: 0 auto;
 }
 
 .popup-content h3 {
     font-size: 2em;
+    background: linear-gradient(135deg, #e2e8f0, #cbd5e1);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin: 20px 0;
 }
 
-.icon-project {
-    height: 300px;
-    border-radius: 8px;
-    margin-bottom: 20px;
+.popup-content p {
+    color: #94a3b8;
+    line-height: 1.6;
+    margin: 15px 0;
 }
 
 .popup-content .close {
     position: absolute;
-    top: 10px;
-    right: 20px;
+    top: 15px;
+    right: 25px;
     font-size: 30px;
     font-weight: bold;
     cursor: pointer;
+    color: #94a3b8;
+    transition: color 0.3s ease;
 }
 
-@keyframes hoverEffect {
-    to {
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Ombre finale */
-    }
+.popup-content .close:hover {
+    color: #e2e8f0;
 }
+
 .popup-footer {
     display: flex;
     align-items: center;
-    gap: 10px; /* Espace entre les éléments */
+    gap: 20px;
+    justify-content: center;
+    margin-top: 25px;
+    padding: 15px 0;
+    flex-shrink: 0;
+    border-top: 1px solid rgba(139, 92, 246, 0.2);
+}
+
+.popup-footer .git-icon {
+    width: 80px;
+    height: 80px;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    border: 2px solid rgba(139, 92, 246, 0.2);
+    object-fit: contain;
+    padding: 8px;
+    box-sizing: border-box;
+    display: block;
+    vertical-align: baseline;
+}
+
+.popup-footer .git-icon:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(139, 92, 246, 0.3);
+    border-color: rgba(139, 92, 246, 0.4);
+}
+
+.popup-footer .like-button {
+    width: 80px;
+    height: 80px;
+    min-width: 80px;
+    min-height: 80px;
+    max-width: 80px;
+    max-height: 80px;
+    background: linear-gradient(135deg, rgba(244, 63, 94, 0.1), rgba(239, 68, 68, 0.1));
+    border: 2px solid rgba(244, 63, 94, 0.3);
+    color: #f87171;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    text-align: center;
+    gap: 3px;
+    box-sizing: border-box;
+    flex-shrink: 0;
+    vertical-align: baseline;
 }
 
-.popup-footer .git-icon,
-.popup-footer .like-button i{
-    width: 8vh; /* Ajuster la taille de l'icône */
-    height: 8vh; /* Ajustez la taille selon vos besoins */
-    font-size: 8vh;
+.popup-footer .like-button:hover {
+    background: linear-gradient(135deg, rgba(244, 63, 94, 0.2), rgba(239, 68, 68, 0.2));
+    border-color: rgba(244, 63, 94, 0.5);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(244, 63, 94, 0.3);
 }
 
-.popup-footer .git-icon:hover,
-.popup-footer .like-button i:hover {
-    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.2), 0 0 0 0 rgba(0, 0, 0, 0.2); /* Initialement, pas d'ombre */
-    animation: hoverEffect 0.3s forwards; /* Appliquer l'animation */
-    background-color: #e9e9e9ba; /* Griser le fond de l'icône */
-    border-radius: 50%; /* Ajouter des coins arrondis pour un meilleur effet visuel */
+.popup-footer .like-button i {
+    font-size: 22px;
+}
+
+.popup-footer .like-button .like-count {
+    font-size: 14px;
+    font-weight: 600;
 }

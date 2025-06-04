@@ -109,10 +109,11 @@ export default {
 				<p class="authors">{{ selectedProject.authors }}</p>
 				<div class="popup-footer">
 					<a :href="selectedProject.github" target="_blank">
-						<img class="git-icon" src="/icon/github.png" alt="GitHub" />
+						<img class="git-icon" :src="'/icon/github.png'" alt="GitHub" />
 					</a>
 					<button class="like-button" @click.stop="likeProject(selectedProject)">
-						<i :class="selectedProject.liked ? 'fas fa-heart' : 'far fa-heart'"></i> {{ selectedProject.likes }}
+						<i :class="selectedProject.liked ? 'fas fa-heart' : 'far fa-heart'"></i>
+						<span class="like-count">{{ selectedProject.likes }}</span>
 					</button>
 				</div>
 			</div>

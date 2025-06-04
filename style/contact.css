@@ -1,143 +1,228 @@
 .contact {
+    padding: 5px 40px 30px 40px; /* Réduire le padding top de 30px à 5px */
     text-align: center;
-    padding: 20px;
-    background-color: #f9f9f9;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    max-height: 65vh;
-    width: 85vw;
-    margin-left: 1.5vw;
-}
-
-.carousel {
-    position: relative;
-    width: 100%;
-    height: 50vh;
-    overflow: hidden;
+    background: rgba(30, 30, 46, 0.3);
+    backdrop-filter: blur(15px);
+    border-radius: 20px;
+    margin: 20px;
+    border: 1px solid rgba(139, 92, 246, 0.1);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    min-height: calc(100vh - 200px); /* Utilise presque toute la hauteur disponible */
+    max-height: calc(100vh - 200px); /* Ajout d'une hauteur maximale */
+    overflow-y: auto; /* Ajout du scroll si débordement */
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-bottom: 5%;
+}
+
+.contact h2 {
+    font-family: 'Vercetti', sans-serif;
+    font-size: 3em;
+    margin-bottom: 30px; /* Réduire de 50px à 30px */
+    margin-top: 0; /* Supprimer tout margin top */
+    background: linear-gradient(135deg, #e2e8f0, #cbd5e1);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 20px rgba(139, 92, 246, 0.3);
+}
+
+.main-title {
+   text-align: center;
+   font-family: Aerial;
+   font-size: 200%;
+   color: #333;
+   margin-top: 5px; /* Réduire encore plus l'espace en haut */
+   margin-bottom: 5px; /* Réduire encore plus l'espace en bas */
+}
+
+/* Carousel moderne agrandi */
+.carousel {
+    position: relative;
+    max-width: 800px;
+    width: 100%;
+    margin: 0 auto;
+    background: rgba(45, 45, 68, 0.6);
+    backdrop-filter: blur(20px);
+    border-radius: 20px;
+    padding: 50px;
+    border: 1px solid rgba(139, 92, 246, 0.2);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
 }
 
 .carousel-inner {
     position: relative;
-    width: 100%;
-    height: 100%;
+    height: 120px; /* Augmenté pour plus de hauteur */
+    overflow: hidden;
+    border-radius: 16px;
 }
 
 .carousel-item {
     position: absolute;
-    top: 0;
     width: 100%;
     height: 100%;
-    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     opacity: 0;
-    display: none; /* Masquer les éléments non actifs */
-    transition: left 0.5s ease-in-out, opacity 0.5s ease-in-out;
-    z-index: 1; /* Assurez-vous que les éléments non actifs sont en arrière-plan */
+    transform: translateX(100%);
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .carousel-item.active {
-    left: 0;
     opacity: 1;
-    display: block; /* Afficher l'élément actif */
-    z-index: 2; /* Assurez-vous que l'élément actif est au-dessus des autres */
+    transform: translateX(0);
 }
 
 .carousel-item.prev {
-    left: -100%;
-    opacity: 1;
-    display: block; /* Afficher l'élément précédent */
-    z-index: 1; /* Assurez-vous que l'élément précédent est en arrière-plan */
+    transform: translateX(-100%);
 }
 
 .carousel-item.next {
-    left: 100%;
-    opacity: 1;
-    display: block; /* Afficher l'élément suivant */
-    z-index: 1; /* Assurez-vous que l'élément suivant est en arrière-plan */
-}
-
-.carousel-controls {
-    position: absolute;
-    top: 50%;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    z-index: 3; /* Assurez-vous que les contrôles sont au-dessus des éléments */
-}
-
-.carousel-control {
-    background: none;
-    border: none;
-    font-size: 2em;
-    cursor: pointer;
-}
-
-.carousel-control:hover::before {
-    background-color: rgba(128, 128, 128, 0.5); /* Rond gris */
-}
-
-.carousel-indicators {
-    position: absolute;
-    bottom: 10px;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    z-index: 3; /* Assurez-vous que les indicateurs sont au-dessus des éléments */
-}
-
-.carousel-indicators span {
-    display: inline-block;
-    width: 10px;
-    height: 10px;
-    background-color: #ccc;
-    border-radius: 50%;
-    margin: 0 5px;
-    transition: all 0.3s ease;
-}
-
-.carousel-indicators span.active {
-    width: 30px;
-    height: 10px;
-    border-radius: 20px;
-    background-color: #8e44ad; /* Couleur violette par défaut */
+    transform: translateX(100%);
 }
 
 .carousel-item a {
-    text-decoration: none;
-    color: #333;
-    font-size: 2em;
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: color 0.3s;
+    gap: 20px;
+    padding: 30px 50px; /* Augmenté pour plus d'espace */
+    background: linear-gradient(135deg, rgba(139, 92, 246, 0.2), rgba(59, 130, 246, 0.1));
+    color: #e2e8f0;
+    text-decoration: none;
+    border-radius: 16px;
+    border: 1px solid rgba(139, 92, 246, 0.3);
+    transition: all 0.3s ease;
+    font-family: 'Chillax', sans-serif;
+    font-size: 1.4em; /* Plus gros texte */
+    font-weight: 500;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
+.carousel-item a:hover {
+    background: linear-gradient(135deg, rgba(139, 92, 246, 0.3), rgba(59, 130, 246, 0.2));
+    border-color: rgba(139, 92, 246, 0.5);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(139, 92, 246, 0.3);
+    color: #ffffff;
+}
 
+.carousel-item a i {
+    font-size: 2em; /* Plus gros icônes */
+    background: linear-gradient(135deg, #8b5cf6, #3b82f6);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
 
-.carousel-item a{
-    margin: 6% 0;
-    text-decoration: none;
-    color: #333;
-    font-size: 2em;
+/* Contrôles du carousel agrandis */
+.carousel-controls {
     display: flex;
-    flex-direction: column; /* Ajoutez cette ligne */
+    justify-content: space-between;
+    position: absolute;
+    top: 50%;
+    left: -60px; /* Plus éloigné */
+    right: -60px;
+    transform: translateY(-50%);
+    pointer-events: none;
+}
+
+.carousel-control {
+    width: 50px; /* Plus gros */
+    height: 50px;
+    background: rgba(45, 45, 68, 0.9);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(139, 92, 246, 0.3);
+    border-radius: 50%;
+    color: #e2e8f0;
+    font-size: 20px; /* Plus gros texte */
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
     align-items: center;
     justify-content: center;
-    transition: color 0.3s;
+    pointer-events: auto;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
 }
 
-
-.carousel-item i {
-    margin-right: 10px;
-    font-size: 6em;
-    transition: color 0.3s;
+.carousel-control:hover {
+    background: linear-gradient(135deg, rgba(139, 92, 246, 0.4), rgba(59, 130, 246, 0.3));
+    border-color: rgba(139, 92, 246, 0.5);
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(139, 92, 246, 0.3);
 }
 
-.carousel-item a:hover i {
-    color: rgb(0, 115, 177); /* Hover color */
+/* Indicateurs du carousel agrandis */
+.carousel-indicators {
+    display: flex;
+    justify-content: center;
+    gap: 15px; /* Plus d'espace */
+    margin-top: 35px;
+}
+
+.carousel-indicators span {
+    width: 16px; /* Plus gros */
+    height: 16px;
+    background: rgba(139, 92, 246, 0.3);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 2px solid rgba(139, 92, 246, 0.2);
+}
+
+.carousel-indicators span:hover {
+    background: rgba(139, 92, 246, 0.5);
+    transform: scale(1.2);
+}
+
+.carousel-indicators span.active {
+    background: linear-gradient(135deg, #8b5cf6, #3b82f6);
+    border-color: rgba(139, 92, 246, 0.6);
+    transform: scale(1.3);
+    box-shadow: 0 0 15px rgba(139, 92, 246, 0.6);
+}
+
+/* Styles thème clair pour contact */
+body.light-theme .contact {
+    background: rgba(255, 255, 255, 0.4);
+    border: 1px solid rgba(59, 130, 246, 0.1);
+}
+
+body.light-theme .contact h2 {
+    background: linear-gradient(135deg, #1e293b, #475569);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+body.light-theme .carousel {
+    background: rgba(248, 250, 252, 0.8);
+    border: 1px solid rgba(59, 130, 246, 0.2);
+}
+
+body.light-theme .carousel-item a {
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(139, 92, 246, 0.05));
+    color: #475569;
+    border: 1px solid rgba(59, 130, 246, 0.2);
+}
+
+body.light-theme .carousel-item a:hover {
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.15), rgba(139, 92, 246, 0.1));
+    color: #1e293b;
+    border-color: rgba(59, 130, 246, 0.3);
+}
+
+body.light-theme .carousel-control {
+    background: rgba(248, 250, 252, 0.9);
+    color: #475569;
+    border: 1px solid rgba(59, 130, 246, 0.2);
+}
+
+body.light-theme .carousel-control:hover {
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(139, 92, 246, 0.05));
+    color: #1e293b;
 }
 

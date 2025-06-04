@@ -27,12 +27,40 @@
    flex-direction: column;
    align-items: center;
    gap: 20px;
-   padding: 20px;
-   background-color: #f5f5f5;
-   border-radius: 10px;
-   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-   max-height: 73vh; /* Adjust the height as needed */
+   padding: 5px 20px 20px 20px;
+   background: rgba(30, 30, 46, 0.3);
+   backdrop-filter: blur(15px);
+   border: 1px solid rgba(139, 92, 246, 0.1);
+   border-radius: 20px;
+   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+   max-height: calc(100vh - 220px);
    overflow-y: auto;
+   overflow-x: hidden;
+   width: 100%;
+   box-sizing: border-box;
+}
+
+/* Styles de scrollbar pour font-container - même style que la timeline */
+.font-container::-webkit-scrollbar {
+   width: 8px;
+}
+
+.font-container::-webkit-scrollbar-thumb {
+   background: linear-gradient(135deg, rgba(139, 92, 246, 0.6), rgba(59, 130, 246, 0.6));
+   border-radius: 10px;
+}
+
+.font-container::-webkit-scrollbar-thumb:hover {
+   background: linear-gradient(135deg, rgba(139, 92, 246, 0.8), rgba(59, 130, 246, 0.8));
+}
+
+.font-container::-webkit-scrollbar-track {
+   background: rgba(30, 30, 46, 0.3);
+   border-radius: 10px;
+}
+
+.font-container::-webkit-scrollbar-button {
+   display: none;
 }
 
 .font-container .font-item {
@@ -40,10 +68,23 @@
    align-items: center;
    width: 100%;
    flex-direction: column;
-   background: white;
+   background: rgba(45, 45, 68, 0.8);
+   backdrop-filter: blur(15px);
+   border: 1px solid rgba(139, 92, 246, 0.2);
    padding: 20px;
-   border-radius: 10px;
-   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+   border-radius: 16px;
+   box-shadow: 
+      0 8px 25px rgba(0, 0, 0, 0.3),
+      0 0 0 1px rgba(255, 255, 255, 0.05);
+   transition: all 0.3s ease;
+}
+
+.font-container .font-item:hover {
+   transform: translateY(-5px);
+   border-color: rgba(139, 92, 246, 0.4);
+   box-shadow: 
+      0 15px 35px rgba(139, 92, 246, 0.2),
+      0 0 0 1px rgba(255, 255, 255, 0.1);
 }
 
 .font-container .font-item > div:first-child {
@@ -55,37 +96,56 @@
 
 .font-container .font-rank {
    font-size: 1.5em;
-   color: #d1c4e9;
+   color: #8b5cf6;
    margin-right: 10px;
    min-width: 30px;
+   background: linear-gradient(135deg, rgba(139, 92, 246, 0.2), rgba(59, 130, 246, 0.1));
+   backdrop-filter: blur(10px);
+   border: 1px solid rgba(139, 92, 246, 0.3);
+   border-radius: 50%;
+   width: 35px;
+   height: 35px;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   font-weight: bold;
 }
 
 .font-container input {
    width: 80%;
    padding: 15px;
    font-size: 1.2em;
-   border: 2px solid #ccc;
-   border-radius: 5px;
-   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+   background: rgba(30, 30, 46, 0.6);
+   backdrop-filter: blur(10px);
+   border: 2px solid rgba(139, 92, 246, 0.2);
+   border-radius: 12px;
+   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
    outline: none;
-   transition: border-color 0.3s, box-shadow 0.3s;
+   transition: all 0.3s ease;
    flex: 1;
+   color: #e2e8f0;
 }
 
 .font-container input:focus {
-   border-color: #d1c4e9;
-   box-shadow: 0 0 8px rgba(209, 196, 233, 0.5);
+   border-color: rgba(139, 92, 246, 0.5);
+   box-shadow: 0 0 20px rgba(139, 92, 246, 0.3);
+   background: rgba(30, 30, 46, 0.8);
 }
 
 .font-container input::placeholder {
-   color: #999;
+   color: #64748b;
 }
 
 h2 {
    font-size: 2em;
-   color: #d1c4e9;
-   margin-bottom: 20px;
+   background: linear-gradient(135deg, #8b5cf6, #3b82f6);
+   background-clip: text;
+   -webkit-background-clip: text;
+   -webkit-text-fill-color: transparent;
+   margin-top: 0;
+   margin-bottom: 10px;
    text-align: center;
+   text-shadow: 0 0 30px rgba(139, 92, 246, 0.3);
 }
 
 .font-info {
@@ -97,48 +157,47 @@ h2 {
    margin-top: 10px;
 }
 
-.font-description {
-   color: #666;
-   font-size: 0.9em;
-   margin: 0;
-   flex: 1;
-}
-
 .font-name {
-   color: #d1c4e9;
+   color: #8b5cf6;
    font-size: 1.2em;
    font-weight: bold;
    margin: 0;
    text-align: center;
    flex: 1;
+   text-shadow: 0 0 15px rgba(139, 92, 246, 0.3);
 }
 
 .font-category {
-   background-color: #d1c4e9;
+   background: linear-gradient(135deg, #8b5cf6, #3b82f6);
    color: white;
-   padding: 4px 8px;
-   border-radius: 12px;
+   padding: 6px 12px;
+   border-radius: 20px;
    font-size: 0.8em;
    font-weight: bold;
+   box-shadow: 0 4px 15px rgba(139, 92, 246, 0.3);
 }
 
 .download-button {
-   background-color: #6c5ce7;
-   color: white;
-   border: none;
-   padding: 8px 16px;
-   border-radius: 6px;
+   background: linear-gradient(135deg, rgba(139, 92, 246, 0.2), rgba(59, 130, 246, 0.2));
+   backdrop-filter: blur(10px);
+   border: 1px solid rgba(139, 92, 246, 0.3);
+   color: #e2e8f0;
+   padding: 10px 18px;
+   border-radius: 12px;
    cursor: pointer;
-   transition: background-color 0.3s, transform 0.2s;
+   transition: all 0.3s ease;
    font-size: 0.9em;
    display: flex;
    align-items: center;
-   gap: 6px;
+   gap: 8px;
+   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
 .download-button:hover {
-   background-color: #5a4fcf;
-   transform: translateY(-1px);
+   background: linear-gradient(135deg, rgba(139, 92, 246, 0.3), rgba(59, 130, 246, 0.3));
+   border-color: rgba(139, 92, 246, 0.5);
+   transform: translateY(-2px);
+   box-shadow: 0 8px 25px rgba(139, 92, 246, 0.4);
 }
 
 .download-button i {
