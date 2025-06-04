@@ -6,88 +6,25 @@ export default {
 		document.removeEventListener('keydown', this.handleKeydown);
 	},
 	created() {
+		this.loadProjects();
 		this.loadLikedProjects();
 	},
     data() {
         return {
-            projects: [
-                {
-                    image: '/img/projects/AT-tistic_Logo.png',
-                    title: 'AR-tistic',
-                    description: 'Mobile game which aimed to use AR technology to create art and share it with other users on interest points located all over the streets. ',
-                    date: '2023-02',
-                    authors: 'Axel de la Fuente, Bastien Jacquelin',
-                    detailedDescription: 'AR-tistic is a mobile application based on augmented reality. The idea is to design a “social network” in AR. The application would allow you to be located in real time. As users approach points of interest, they will be allowed to use AR to draw around them. Users could therefore share their works of art, and contemplate those of others, at points of interest available on the application.',
-                    github: 'https://github.com/Basuw/AR-tistic',
-                    summary: 'Kotlin mobile app working with a javalin API and a Kotlin ORM to link the app to a PostgreSQL database.',
-                    likes: 5,
-                    id: 'project1'
-                },
-                {
-                    image: '/img/projects/Hyperset_Logo.png',
-                    title: 'HyperSet',
-                    description: 'Web version of the famous game Set, with a multiplayer mode, different difficulty levels.',
-                    date: '2023-06',
-                    authors: 'Raphaël Lacote, Aurian Jault, Rémi Arnal, Bastien Jacquelin',
-                    detailedDescription: 'The SET game consists of finding the maximum number of sets. A set is made up of three cards whose four characteristics (taken separately) are: either completely identical (for example the three cards have the same suit), or totally different (for example each of the three cards is of a different color). This project was realized in the context of the course of the 2nd year of IUT',
-                    github: 'https://github.com/Basuw/HyperSet',
-                    summary: 'JavaScript web app using Node.js with Socket.io for the multiplayer mode and VueJs',
-                    likes: 8,
-                    id: 'project2'
-                },                
-				{
-                    image: '/img/projects/arduino_icon.png',
-                    title: 'Moisture & Temperature Sensor',
-                    description: 'Moisture & Temperature Sensor using an Arduino board and a small screen to display the data.',
-                    date: '2023-04',
-                    authors: 'Bastien Jacquelin',
-                    detailedDescription: '2 termic sensors display temperature and humidity percentage on a monitor. Moisture sensor activating a pump to water a plant below a certain humidity level, Tools : - Elegoo Mega 2560 - Arduino card, - U8g2 - screen,- AZ-delivery DHT 11 Temperaturesensor, - AZ-delivery Bodefeuchte Sensor Modul, with some leds to create a nice design.',
-                    github: 'https://github.com/Basuw/Moisture_termic_sensor-Arduino',
-                    summary: 'Arduino project using C++',
-                    likes: 2,
-                    id: 'project3'
-                },                
-				{
-                    image: '/img/projects/visit_icon.png',
-                    title: 'Visit Manager',
-                    description: 'Web application to manage visits in a school',
-                    date: '2023-06',
-                    authors: 'Yoan Boyer, Bastien Jacquelin',
-                    detailedDescription: 'The goal of this app is to manage all the visits of the school from a client (the teacher) requirements. The app is divided in 2 parts : - The client part, where the teacher can create a visit, see all the visits, and see the details of a visit. - The admin part, where the admin can see all the visits, see the details of a visit, and validate a visit.',
-                    github: 'https://github.com/Basuw/Visit-manager',
-                    summary: 'Angular web app and a Spring Boot API deployed using DockerCompose',
-                    likes: 8,
-                    id: 'project4'
-                },
-				{
-                    image: '/img/projects/recoguenize_icon.png',
-                    title: 'Recoguenize',
-                    description: 'Mobile application that allows you to recognize the song that is playing.',
-                    date: '2024-06',
-                    authors: 'Antoine Imbert, Louis Cambier, Alban Guillot, Yoan Boyer, Bastien Jacquelin',
-                    detailedDescription: 'This application aims to to identify the name of a song you\'re hearing like the famous app Shazam. This project was realised during 1st year of engineering school in computer science at ISIMA (equivalent to master in engineering)',
-                    github: 'https://github.com/Basuw/Recoguenize-Backend',
-                    summary: 'Flutter mobile app working with a Spring Boot API deployed using DockerCompose, and signal processing made in Python',
-                    likes: 12,
-                    id: 'project5'
-                },
-				{
-                    image: '/img/projects/activities_icon.png',
-                    title: 'Activities',
-                    description: 'Mobile application that help you to set and follow you objectives.',
-                    date: '2024-now',
-                    authors: 'Bastien Jacquelin',
-                    detailedDescription: 'With Activities you can track your progress among all ativities you perform on a day. This application help you to reach your objectives and become better each days. You can customize as much as you want. More is coming like a sport tracker and a food tracker.',
-                    github: 'https://github.com/Basuw/Activities',
-                    summary: 'Personal project to learn React native.',
-                    likes: 9,
-                    id: 'project6'
-                },
-            ],
+            projects: [],
             selectedProject: null
         };
     },
 	methods: {
+		async loadProjects() {
+			try {
+				const response = await fetch('/data/projects.json');
+				const projectsData = await response.json();
+				this.projects = projectsData;
+			} catch (error) {
+				console.error('Error loading projects:', error);
+			}
+		},
 		handleKeydown(event) {
 			if (event.key === 'Escape') {
 				this.closePopup();
