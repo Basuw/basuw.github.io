@@ -45,18 +45,20 @@
                     <div class="button green"></div>
                 </div>
                 <div class="navbar">
-                    <a @click="homeFunction">Home</a>
-                    <a @click="aboutFunction">About myself</a>
-                    <div class="dropdown" :class="{ show: showDropdown }" @mouseenter="showDropdownWithDelay" @mouseleave="hideDropdownWithDelay">
-                        <button class="dropdown-btn" @click="toggleDropdown">▼ For developers</button>
-                        <div class="dropdown-content" @mouseenter="showDropdownWithDelay" @mouseleave="hideDropdownWithDelay">
-                            <a @click="fontsFunction">Fonts</a>
-                            <a @click="developmentFunction">Coming soon</a>
-                            <a @click="developmentFunction">Coming soon</a>
+                    <div class="navbar-tabs">
+                        <a @click="homeFunction">Home</a>
+                        <a @click="aboutFunction">About myself</a>
+                        <div class="dropdown" :class="{ show: showDropdown }" @mouseenter="showDropdownWithDelay" @mouseleave="hideDropdownWithDelay">
+                            <button class="dropdown-btn" @click="toggleDropdown">▼ For developers</button>
+                            <div class="dropdown-content" @mouseenter="showDropdownWithDelay" @mouseleave="hideDropdownWithDelay">
+                                <a @click="fontsFunction">Fonts</a>
+                                <a @click="developmentFunction">Coming soon</a>
+                                <a @click="developmentFunction">Coming soon</a>
+                            </div>
                         </div>
+                        <a @click="contactFunction">Contact</a>
+                        <a @click="thisWebSiteFunction">This website</a>
                     </div>
-                    <a @click="contactFunction">Contact</a>
-                    <a @click="thisWebSiteFunction">This website</a>
                     <button @click="toggleTheme" class="apple-toggle" :class="{ 'active': isDarkTheme }" :title="isDarkTheme ? 'Switch to Light Theme' : 'Switch to Dark Theme'">
                         <div class="toggle-slider">
                             <i :class="isDarkTheme ? 'fas fa-moon' : 'fas fa-sun'"></i>
