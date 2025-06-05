@@ -28,7 +28,7 @@ export default {
                     location: 'Aubière',
                     period: '2021-2023',
                     icon: 'fas fa-graduation-cap',
-                    description: 'Computer Science degree with focus on development logic and data structures.',
+                    description: 'Associate of Science (AS) in Computer Science with focus on development logic and data structures.',
                     technologies: [
                         { name: 'Development Logic & Architecture', level: 5 },
                         { name: 'Data Structures', level: 4 },
@@ -46,13 +46,13 @@ export default {
                     location: 'Aubière',
                     period: '2023-2026',
                     icon: 'fas fa-laptop-code',
-                    description: 'Engineering school with advanced computer science specialization and project management experience.',
+                    description: 'Engineering school equivalent of Master of Science (M.S.) in Computer Science with advanced computer science specialization and project management experience.',
                     technologies: [
                         { name: 'Graphs & Algorithms', level: 4 },
                         { name: 'Machine Learning', level: 3 },
                         { name: 'Digital Signal Processing', level: 3 },
                         { name: 'Mobile Dev (Kotlin)', level: 3 },
-                        { name: 'Unity', level: 2 },
+                        { name: 'Unity', level: 2 },c
                         { name: 'Kubernetes', level: 2 }
                     ],
                     color: 'rgba(139, 92, 246, 0.1)',

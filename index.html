@@ -34,16 +34,16 @@
 </head>
 
 <body>
-    <div id="app" class="app row" >
+    <div id="app" class="app row" :class="{ 'fullscreen': isWindowFullscreen }">
         <!-- Éléments de fond d'écran animé -->
         <div class="floating-particles"></div>
         <div class="depth-circles"></div>
         
-        <h1 class="main-title" :class="{ 'minimized': isWindowMinimized }">
+        <h1 class="main-title" :class="{ 'minimized': isWindowMinimized, 'fullscreen': isWindowFullscreen }">
             {{title}}
         </h1>
         <div class="main-content">
-            <div class="window" :class="{ 'minimized': isWindowMinimized }">
+            <div class="window" :class="{ 'minimized': isWindowMinimized, 'fullscreen': isWindowFullscreen }">
                 <div class="window-header">
                     <div class="button red" @click="closeWindow" title="Fermer"></div>
                     <div class="button yellow" @click="minimizeWindow" title="Réduire"></div>
@@ -158,7 +158,8 @@
                     isDarkTheme: true,
                     showDropdown: false,
                     dropdownTimeout: null,
-                    isWindowMinimized: false
+                    isWindowMinimized: false,
+                    isWindowFullscreen: false
                 }
             },
             methods:{
@@ -232,7 +233,22 @@
                     this.isWindowMinimized = true;
                 },
                 maximizeWindow() {
+                    console.log('Bouton vert cliqué - État actuel:', this.isWindowFullscreen);
+                    this.isWindowFullscreen = !this.isWindowFullscreen;
                     this.isWindowMinimized = false;
+                    console.log('Nouvel état plein écran:', this.isWindowFullscreen);
+                    
+                    // Forcer l'application des classes CSS
+                    this.$nextTick(() => {
+                        const app = document.getElementById('app');
+                        if (this.isWindowFullscreen) {
+                            app.classList.add('fullscreen');
+                            console.log('Classe fullscreen ajoutée');
+                        } else {
+                            app.classList.remove('fullscreen');
+                            console.log('Classe fullscreen supprimée');
+                        }
+                    });
                 },
                 restoreWindow() {
                     this.isWindowMinimized = false;

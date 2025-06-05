@@ -6,14 +6,14 @@
 #container {
     display: flex;
     flex-direction: column;
-    height: auto; /* Laisser le conteneur prendre sa hauteur naturelle */
-    overflow: visible; /* Pas de scroll forcé */
-    padding: 5px 30px 50px 30px;
-    margin-bottom: 30px;
+    height: calc(100vh - 200px); /* Hauteur fixe pour aller jusqu'en bas */
+    min-height: calc(100vh - 200px); /* Hauteur minimale garantie */
+    overflow: hidden; /* Masquer le débordement du conteneur principal */
+    padding: 5px 30px 20px 30px; /* Réduire le padding bottom */
+    margin: 20px 0 0 0; /* Supprimer la marge bottom */
     background: var(--bg-card);
     backdrop-filter: blur(15px);
     border-radius: 20px;
-    margin: 20px 0 30px 0;
     border: 1px solid var(--border-primary);
     box-shadow: var(--shadow-primary);
     position: relative;
