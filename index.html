@@ -33,7 +33,11 @@
 </head>
 
 <body>
-    <div id="app" class="row" >
+    <div id="app" class="app row" >
+        <!-- Éléments de fond d'écran animé -->
+        <div class="floating-particles"></div>
+        <div class="depth-circles"></div>
+        
         <h1 class="main-title" :class="{ 'minimized': isWindowMinimized }">
             {{title}}
         </h1>
