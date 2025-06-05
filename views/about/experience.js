@@ -52,7 +52,7 @@ export default {
                         { name: 'Machine Learning', level: 3 },
                         { name: 'Digital Signal Processing', level: 3 },
                         { name: 'Mobile Dev (Kotlin)', level: 3 },
-                        { name: 'Unity', level: 2 },c
+                        { name: 'Unity', level: 2 },
                         { name: 'Kubernetes', level: 2 }
                     ],
                     color: 'rgba(139, 92, 246, 0.1)',
