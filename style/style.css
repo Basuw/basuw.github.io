@@ -50,6 +50,16 @@
   --accent-primary-alpha-80: rgba(139, 92, 246, 0.8);
   --accent-primary: #8b5cf6;
   
+  /* Couleurs des technologies */
+  --tech-vue: #4FC08D;
+  --tech-vue-rgb: 79, 192, 141;
+  --tech-html: #E34F26;
+  --tech-html-rgb: 227, 79, 38;
+  --tech-css: #1572B6;
+  --tech-css-rgb: 21, 114, 182;
+  --tech-js: #F7DF1E;
+  --tech-js-rgb: 247, 223, 30;
+  
   /* Technology colors */
   --color-html: #e34f26;
   --color-css: #1572b6;

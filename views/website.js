@@ -44,32 +44,68 @@ export default {
                 {
                     icon: 'fas fa-mobile-alt',
                     title: 'Responsive Design',
-                    description: 'Fully responsive across all devices'
+                    description: 'Fully responsive across all devices',
+                    color: '#10b981'
                 },
                 {
                     icon: 'fas fa-palette',
                     title: 'Dark/Light Theme',
-                    description: 'Toggle between beautiful themes'
+                    description: 'Toggle between beautiful themes',
+                    color: '#8b5cf6'
                 },
                 {
                     icon: 'fas fa-font',
                     title: 'Custom Typography',
-                    description: 'Handpicked fonts for perfect readability'
+                    description: 'Handpicked fonts for perfect readability',
+                    color: '#f59e0b'
                 },
                 {
                     icon: 'fas fa-rocket',
                     title: 'Performance First',
-                    description: 'Optimized for speed and efficiency'
+                    description: 'Optimized for speed and efficiency',
+                    color: '#ef4444'
                 },
                 {
                     icon: 'fas fa-universal-access',
                     title: 'Accessibility',
-                    description: 'Built with accessibility in mind'
+                    description: 'Built with accessibility in mind',
+                    color: '#06b6d4'
                 },
                 {
                     icon: 'fas fa-code',
                     title: 'Clean Code',
-                    description: 'Well-structured and maintainable'
+                    description: 'Well-structured and maintainable',
+                    color: '#84cc16'
+                }
+            ],
+            stats: [
+                {
+                    number: '100%',
+                    label: 'Hand-coded',
+                    tooltip: 'Copilot & me = unstoppable duo! 🤖👨‍💻',
+                    icon: 'fas fa-robot',
+                    color: '#6f42c1'
+                },
+                {
+                    number: '0',
+                    label: 'Frameworks bloat',
+                    tooltip: 'Pure vanilla JS, no unnecessary dependencies',
+                    icon: 'fas fa-feather',
+                    color: '#28a745'
+                },
+                {
+                    number: '∞',
+                    label: 'Passion invested',
+                    tooltip: 'Countless hours of love and dedication',
+                    icon: 'fas fa-heart',
+                    color: '#e74c3c'
+                },
+                {
+                    number: '24/7',
+                    label: 'Available online',
+                    tooltip: 'Hosted on GitHub Pages',
+                    icon: 'fab fa-github',
+                    color: '#333'
                 }
             ]
         };
@@ -152,8 +188,8 @@ export default {
                 </h2>
                 <div class="features-grid">
                     <div v-for="feature in websiteFeatures" :key="feature.title" class="feature-card">
-                        <div class="feature-icon">
-                            <i :class="feature.icon"></i>
+                        <div class="feature-icon" :style="{ '--feature-color': feature.color }">
+                            <i :class="feature.icon" :style="{ color: feature.color }"></i>
                         </div>
                         <h3>{{ feature.title }}</h3>
                         <p>{{ feature.description }}</p>
@@ -167,21 +203,13 @@ export default {
                     Quick Stats
                 </h2>
                 <div class="stats-grid">
-                    <div class="stat-item">
-                        <div class="stat-number">100%</div>
-                        <div class="stat-label">Hand-coded</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-number">0</div>
-                        <div class="stat-label">Frameworks bloat</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-number">∞</div>
-                        <div class="stat-label">Passion invested</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-number">24/7</div>
-                        <div class="stat-label">Available online</div>
+                    <div v-for="stat in stats" :key="stat.label" class="stat-item">
+                        <div class="stat-icon" :style="{ color: stat.color }">
+                            <i :class="stat.icon"></i>
+                        </div>
+                        <div class="stat-number">{{ stat.number }}</div>
+                        <div class="stat-label">{{ stat.label }}</div>
+                        <div class="stat-tooltip">{{ stat.tooltip }}</div>
                     </div>
                 </div>
             </div>

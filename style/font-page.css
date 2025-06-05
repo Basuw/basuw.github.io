@@ -33,9 +33,8 @@
    border: 1px solid var(--border-primary);
    border-radius: 20px;
    box-shadow: var(--shadow-primary);
-   max-height: calc(100vh - 220px);
-   overflow-y: auto;
-   overflow-x: hidden;
+   height: auto; /* Laisser le conteneur prendre sa hauteur naturelle */
+   overflow: visible; /* Pas de scroll */
    width: 100%;
    box-sizing: border-box;
 }
