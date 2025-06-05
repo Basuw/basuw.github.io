@@ -29,6 +29,27 @@
   --backdrop-blur: blur(20px);
   --glass-effect: rgba(255, 255, 255, 0.05);
   
+  /* Variables supplémentaires pour la timeline */
+  --glass-bg: rgba(30, 30, 46, 0.6);
+  --accent-alpha-10: rgba(139, 92, 246, 0.1);
+  --accent-gradient: linear-gradient(135deg, #8b5cf6, #3b82f6);
+  --accent-gradient-hover: linear-gradient(135deg, #9333ea, #2563eb);
+  --accent-gradient-vertical: linear-gradient(180deg, #8b5cf6, #3b82f6);
+  --bg-secondary-alpha: rgba(45, 45, 68, 0.3);
+  --accent-alpha-30: rgba(139, 92, 246, 0.3);
+  --card-bg: rgba(45, 45, 68, 0.6);
+  --shadow-medium: rgba(0, 0, 0, 0.3);
+  --border-subtle: rgba(139, 92, 246, 0.1);
+  --accent-alpha-50: rgba(139, 92, 246, 0.5);
+  --accent-shadow: rgba(139, 92, 246, 0.2);
+  --text-primary-alpha-80: rgba(226, 232, 240, 0.8);
+  --accent-glow: rgba(139, 92, 246, 0.4);
+  --accent-glow-strong: rgba(139, 92, 246, 0.6);
+  --shadow-strong: rgba(0, 0, 0, 0.4);
+  --text-gradient: linear-gradient(135deg, #e2e8f0, #cbd5e1);
+  --accent-primary-alpha-80: rgba(139, 92, 246, 0.8);
+  --accent-primary: #8b5cf6;
+  
   /* Technology colors */
   --color-html: #e34f26;
   --color-css: #1572b6;
@@ -78,6 +99,27 @@ body.light-theme {
   
   --backdrop-blur: blur(20px);
   --glass-effect: rgba(0, 0, 0, 0.05);
+  
+  /* Variables thème clair pour la timeline */
+  --glass-bg: rgba(255, 255, 255, 0.6);
+  --accent-alpha-10: rgba(59, 130, 246, 0.1);
+  --accent-gradient: linear-gradient(135deg, #3b82f6, #8b5cf6);
+  --accent-gradient-hover: linear-gradient(135deg, #2563eb, #9333ea);
+  --accent-gradient-vertical: linear-gradient(180deg, #3b82f6, #8b5cf6);
+  --bg-secondary-alpha: rgba(248, 250, 252, 0.3);
+  --accent-alpha-30: rgba(59, 130, 246, 0.3);
+  --card-bg: rgba(255, 255, 255, 0.6);
+  --shadow-medium: rgba(0, 0, 0, 0.1);
+  --border-subtle: rgba(59, 130, 246, 0.1);
+  --accent-alpha-50: rgba(59, 130, 246, 0.5);
+  --accent-shadow: rgba(59, 130, 246, 0.2);
+  --text-primary-alpha-80: rgba(30, 41, 59, 0.8);
+  --accent-glow: rgba(59, 130, 246, 0.4);
+  --accent-glow-strong: rgba(59, 130, 246, 0.6);
+  --shadow-strong: rgba(0, 0, 0, 0.2);
+  --text-gradient: linear-gradient(135deg, #1e293b, #374151);
+  --accent-primary-alpha-80: rgba(59, 130, 246, 0.8);
+  --accent-primary: #3b82f6;
 }
 
 html, body {
@@ -174,7 +216,9 @@ html::after {
       0 0 0 1px rgba(255, 255, 255, 0.05),
       inset 0 1px 0 rgba(255, 255, 255, 0.1);
    position: relative;
-   overflow: visible; /* Changé de hidden à visible pour permettre au menu de s'afficher */
+   overflow: hidden; /* Revenir à hidden pour la fenêtre principale */
+   display: flex;
+   flex-direction: column;
 }
 
 .window::before {
@@ -186,6 +230,86 @@ html::after {
    bottom: 0;
    background: linear-gradient(135deg, rgba(139, 92, 246, 0.05) 0%, transparent 50%, rgba(16, 185, 129, 0.03) 100%);
    z-index: -1;
+}
+
+/* Zone de contenu avec scroll */
+.window-content {
+   flex: 1;
+   overflow-y: auto;
+   overflow-x: hidden;
+   padding: 0;
+   margin: 0;
+}
+
+/* Styles globaux pour tous les composants dans window-content */
+.window-content > div {
+    height: 100%;
+    overflow-y: auto;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+/* Utiliser le même style que la timeline pour toutes les scrollbars */
+.window-content > div::-webkit-scrollbar,
+.window-content::-webkit-scrollbar {
+    width: 8px;
+}
+
+.window-content > div::-webkit-scrollbar-thumb,
+.window-content::-webkit-scrollbar-thumb {
+    background: var(--accent-gradient);
+    border-radius: 10px;
+}
+
+.window-content > div::-webkit-scrollbar-thumb:hover,
+.window-content::-webkit-scrollbar-thumb:hover {
+    background: var(--accent-gradient-hover);
+}
+
+.window-content > div::-webkit-scrollbar-track,
+.window-content::-webkit-scrollbar-track {
+    background: var(--bg-secondary-alpha);
+    border-radius: 10px;
+}
+
+.window-content > div::-webkit-scrollbar-button,
+.window-content::-webkit-scrollbar-button {
+    display: none;
+}
+
+/* Masquer la scrollbar du niveau inférieur pour les composants about (qui contiennent déjà leur propre scrollbar) */
+.window-content > div[data-component="about"] {
+    overflow: hidden; /* Masquer la scrollbar externe pour about */
+}
+
+/* Styles spécifiques pour le composant fonts */
+.fonts-page-container {
+    padding: 20px !important;
+    height: 100% !important;
+    overflow-y: auto !important;
+    box-sizing: border-box !important;
+}
+
+.fonts-page-container::-webkit-scrollbar {
+    width: 8px;
+}
+
+.fonts-page-container::-webkit-scrollbar-thumb {
+    background: var(--accent-gradient);
+    border-radius: 10px;
+}
+
+.fonts-page-container::-webkit-scrollbar-thumb:hover {
+    background: var(--accent-gradient-hover);
+}
+
+.fonts-page-container::-webkit-scrollbar-track {
+    background: var(--bg-secondary-alpha);
+    border-radius: 10px;
+}
+
+.fonts-page-container::-webkit-scrollbar-button {
+    display: none;
 }
 
 /* Styles pour l'en-tête de la fenêtre */
