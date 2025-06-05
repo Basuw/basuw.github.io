@@ -34,15 +34,15 @@
 
 <body>
     <div id="app" class="row" >
-        <h1 class="main-title">
+        <h1 class="main-title" :class="{ 'minimized': isWindowMinimized }">
             {{title}}
         </h1>
         <div class="main-content">
-            <div class="window">
+            <div class="window" :class="{ 'minimized': isWindowMinimized }">
                 <div class="window-header">
-                    <div class="button red"></div>
-                    <div class="button yellow"></div>
-                    <div class="button green"></div>
+                    <div class="button red" @click="closeWindow" title="Fermer"></div>
+                    <div class="button yellow" @click="minimizeWindow" title="Réduire"></div>
+                    <div class="button green" @click="maximizeWindow" title="Agrandir"></div>
                 </div>
                 <div class="navbar">
                     <div class="navbar-tabs">
@@ -85,7 +85,18 @@
                 </div>
             </div>
         </div>
-        <footer>
+        
+        <!-- Dock macOS -->
+        <div class="dock" :class="{ 'visible': isWindowMinimized }">
+            <div class="dock-container">
+                <div class="dock-item" @click="restoreWindow" title="Bastien's Website">
+                    <img src="icon/watermelon.ico" alt="Website Icon" />
+                    <span class="dock-label">Website</span>
+                </div>
+            </div>
+        </div>
+        
+        <footer :class="{ 'minimized': isWindowMinimized }">
             <small>Bastien Jacquelin © </small>
         </footer>
     </div>
@@ -141,7 +152,8 @@
                     },
                     isDarkTheme: true,
                     showDropdown: false,
-                    dropdownTimeout: null
+                    dropdownTimeout: null,
+                    isWindowMinimized: false
                 }
             },
             methods:{
@@ -207,6 +219,18 @@
                     for (const key in componentStatus) {
                         componentStatus[key] = false;
                     }
+                },
+                closeWindow() {
+                    this.isWindowMinimized = false;
+                },
+                minimizeWindow() {
+                    this.isWindowMinimized = true;
+                },
+                maximizeWindow() {
+                    this.isWindowMinimized = false;
+                },
+                restoreWindow() {
+                    this.isWindowMinimized = false;
                 }
             }
         });

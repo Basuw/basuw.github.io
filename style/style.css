@@ -132,6 +132,65 @@ body.light-theme {
   --accent-primary: #3b82f6;
 }
 
+/* Adaptations pour le thème clair */
+body.light-theme html::before {
+   background: 
+      radial-gradient(ellipse at top left, rgba(59, 130, 246, 0.12) 0%, transparent 50%),
+      radial-gradient(ellipse at top right, rgba(16, 185, 129, 0.1) 0%, transparent 50%),
+      radial-gradient(ellipse at bottom left, rgba(244, 63, 94, 0.08) 0%, transparent 50%),
+      radial-gradient(ellipse at bottom right, rgba(139, 92, 246, 0.11) 0%, transparent 50%),
+      radial-gradient(ellipse at center, rgba(245, 158, 11, 0.06) 0%, transparent 70%);
+}
+
+body.light-theme html::after {
+   background: 
+      conic-gradient(from 45deg at 0% 0%, 
+         rgba(59, 130, 246, 0.05) 0deg, 
+         transparent 90deg, 
+         transparent 360deg),
+      conic-gradient(from 135deg at 100% 0%, 
+         rgba(16, 185, 129, 0.04) 0deg, 
+         transparent 90deg, 
+         transparent 360deg),
+      conic-gradient(from 225deg at 100% 100%, 
+         rgba(244, 63, 94, 0.03) 0deg, 
+         transparent 90deg, 
+         transparent 360deg),
+      conic-gradient(from 315deg at 0% 100%, 
+         rgba(139, 92, 246, 0.04) 0deg, 
+         transparent 90deg, 
+         transparent 360deg);
+}
+
+body.light-theme body::before {
+   background-image: 
+      radial-gradient(circle at 15% 25%, rgba(59, 130, 246, 0.06) 2px, transparent 3px),
+      radial-gradient(circle at 85% 35%, rgba(16, 185, 129, 0.05) 2px, transparent 3px),
+      radial-gradient(circle at 25% 75%, rgba(244, 63, 94, 0.04) 2px, transparent 3px),
+      radial-gradient(circle at 75% 85%, rgba(139, 92, 246, 0.06) 2px, transparent 3px),
+      radial-gradient(circle at 45% 15%, rgba(245, 158, 11, 0.03) 2px, transparent 3px),
+      radial-gradient(circle at 65% 65%, rgba(168, 85, 247, 0.05) 2px, transparent 3px);
+}
+
+body.light-theme body::after {
+   background: 
+      radial-gradient(circle at center, 
+         transparent 20%, 
+         rgba(59, 130, 246, 0.015) 21%, 
+         rgba(59, 130, 246, 0.015) 22%, 
+         transparent 23%),
+      radial-gradient(circle at center, 
+         transparent 40%, 
+         rgba(139, 92, 246, 0.015) 41%, 
+         rgba(139, 92, 246, 0.015) 42%, 
+         transparent 43%),
+      radial-gradient(circle at center, 
+         transparent 60%, 
+         rgba(16, 185, 129, 0.01) 61%, 
+         rgba(16, 185, 129, 0.01) 62%, 
+         transparent 63%);
+}
+
 html, body {
    height: 100%;
    margin: 0;
@@ -143,25 +202,25 @@ html, body {
    transition: all 0.3s ease;
 }
 
-/* Formes géométriques pour le relief */
+/* Couche de base avec un gradient plus riche - OPACITÉS AUGMENTÉES */
 html::before {
    content: '';
    position: fixed;
-   top: -50%;
-   left: -50%;
-   width: 200%;
-   height: 200%;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 100%;
    background: 
-      radial-gradient(circle at 20% 20%, rgba(139, 92, 246, 0.1) 0%, transparent 50%),
-      radial-gradient(circle at 80% 40%, rgba(16, 185, 129, 0.08) 0%, transparent 50%),
-      radial-gradient(circle at 40% 80%, rgba(244, 63, 94, 0.06) 0%, transparent 50%),
-      radial-gradient(circle at 90% 10%, rgba(59, 130, 246, 0.08) 0%, transparent 50%),
-      radial-gradient(circle at 10% 90%, rgba(245, 158, 11, 0.06) 0%, transparent 50%);
-   z-index: -2;
-   animation: float 20s ease-in-out infinite;
+      radial-gradient(ellipse at top left, rgba(139, 92, 246, 0.4) 0%, transparent 50%),
+      radial-gradient(ellipse at top right, rgba(16, 185, 129, 0.35) 0%, transparent 50%),
+      radial-gradient(ellipse at bottom left, rgba(244, 63, 94, 0.3) 0%, transparent 50%),
+      radial-gradient(ellipse at bottom right, rgba(59, 130, 246, 0.38) 0%, transparent 50%),
+      radial-gradient(ellipse at center, rgba(245, 158, 11, 0.25) 0%, transparent 70%);
+   z-index: -4;
+   animation: breathe 8s ease-in-out infinite;
 }
 
-/* Formes géométriques flottantes */
+/* Formes géométriques animées avec plus de couleurs - OPACITÉS AUGMENTÉES */
 html::after {
    content: '';
    position: fixed;
@@ -169,24 +228,150 @@ html::after {
    left: 0;
    width: 100%;
    height: 100%;
-   background-image: 
-      polygon(30% 0%, 0% 0%, 0% 100%),
-      polygon(100% 0%, 70% 0%, 100% 30%),
-      polygon(0% 70%, 30% 100%, 0% 100%),
-      polygon(70% 100%, 100% 100%, 100% 70%);
    background: 
-      linear-gradient(45deg, rgba(139, 92, 246, 0.03), transparent),
-      linear-gradient(-45deg, rgba(16, 185, 129, 0.02), transparent),
-      linear-gradient(135deg, rgba(244, 63, 94, 0.02), transparent),
-      linear-gradient(-135deg, rgba(59, 130, 246, 0.03), transparent);
-   z-index: -1;
+      /* Triangles aux coins */
+      conic-gradient(from 45deg at 0% 0%, 
+         rgba(139, 92, 246, 0.2) 0deg, 
+         transparent 90deg, 
+         transparent 360deg),
+      conic-gradient(from 135deg at 100% 0%, 
+         rgba(16, 185, 129, 0.18) 0deg, 
+         transparent 90deg, 
+         transparent 360deg),
+      conic-gradient(from 225deg at 100% 100%, 
+         rgba(244, 63, 94, 0.15) 0deg, 
+         transparent 90deg, 
+         transparent 360deg),
+      conic-gradient(from 315deg at 0% 100%, 
+         rgba(59, 130, 246, 0.17) 0deg, 
+         transparent 90deg, 
+         transparent 360deg);
+   z-index: -3;
+   animation: rotateShapes 25s linear infinite;
 }
 
-@keyframes float {
-   0%, 100% { transform: translate(0, 0) rotate(0deg); }
-   25% { transform: translate(-20px, -20px) rotate(1deg); }
-   50% { transform: translate(20px, -10px) rotate(-1deg); }
-   75% { transform: translate(-10px, 20px) rotate(0.5deg); }
+/* Couche de formes flottantes avec animation 3D - OPACITÉS AUGMENTÉES */
+body::before {
+   content: '';
+   position: fixed;
+   top: -10%;
+   left: -10%;
+   width: 120%;
+   height: 120%;
+   background-image: 
+      /* Points colorés plus visibles */
+      radial-gradient(circle at 15% 25%, rgba(139, 92, 246, 0.25) 3px, transparent 4px),
+      radial-gradient(circle at 85% 35%, rgba(16, 185, 129, 0.22) 3px, transparent 4px),
+      radial-gradient(circle at 25% 75%, rgba(244, 63, 94, 0.2) 3px, transparent 4px),
+      radial-gradient(circle at 75% 85%, rgba(59, 130, 246, 0.24) 3px, transparent 4px),
+      radial-gradient(circle at 45% 15%, rgba(245, 158, 11, 0.18) 3px, transparent 4px),
+      radial-gradient(circle at 65% 65%, rgba(168, 85, 247, 0.21) 3px, transparent 4px);
+   background-size: 
+      100px 100px,
+      130px 130px,
+      80px 80px,
+      110px 110px,
+      90px 90px,
+      120px 120px;
+   z-index: -2;
+   animation: floatParticles 30s ease-in-out infinite;
+}
+
+/* Couche de profondeur avec des cercles concentriques - OPACITÉS AUGMENTÉES */
+body::after {
+   content: '';
+   position: fixed;
+   top: 50%;
+   left: 50%;
+   width: 200%;
+   height: 200%;
+   transform: translate(-50%, -50%);
+   background: 
+      /* Cercles concentriques plus visibles */
+      radial-gradient(circle at center, 
+         transparent 20%, 
+         rgba(139, 92, 246, 0.08) 21%, 
+         rgba(139, 92, 246, 0.08) 22%, 
+         transparent 23%),
+      radial-gradient(circle at center, 
+         transparent 40%, 
+         rgba(59, 130, 246, 0.07) 41%, 
+         rgba(59, 130, 246, 0.07) 42%, 
+         transparent 43%),
+      radial-gradient(circle at center, 
+         transparent 60%, 
+         rgba(16, 185, 129, 0.06) 61%, 
+         rgba(16, 185, 129, 0.06) 62%, 
+         transparent 63%);
+   z-index: -1;
+   animation: pulse 15s ease-in-out infinite;
+}
+
+/* Nouvelle animation pour plus de visibilité */
+@keyframes breathe {
+   0%, 100% { 
+      transform: scale(1); 
+      opacity: 0.8; 
+   }
+   50% { 
+      transform: scale(1.05); 
+      opacity: 1; 
+   }
+}
+
+/* Animations */
+@keyframes floatParticles {
+   0%, 100% { 
+      transform: translate(0, 0) rotate(0deg) scale(1); 
+   }
+   25% { 
+      transform: translate(-15px, -25px) rotate(90deg) scale(1.05); 
+   }
+   50% { 
+      transform: translate(20px, -15px) rotate(180deg) scale(0.95); 
+   }
+   75% { 
+      transform: translate(-10px, 25px) rotate(270deg) scale(1.1); 
+   }
+}
+
+@keyframes rotateShapes {
+   0% { 
+      transform: rotate(0deg) scale(1); 
+   }
+   25% { 
+      transform: rotate(90deg) scale(1.02); 
+   }
+   50% { 
+      transform: rotate(180deg) scale(0.98); 
+   }
+   75% { 
+      transform: rotate(270deg) scale(1.01); 
+   }
+   100% { 
+      transform: rotate(360deg) scale(1); 
+   }
+}
+
+@keyframes pulse {
+   0%, 100% { 
+      transform: translate(-50%, -50%) scale(1); 
+      opacity: 0.3; 
+   }
+   50% { 
+      transform: translate(-50%, -50%) scale(1.1); 
+      opacity: 0.6; 
+   }
+}
+
+/* Animation de vague pour plus de dynamisme */
+@keyframes wave {
+   0%, 100% { 
+      clip-path: polygon(0% 45%, 15% 44%, 32% 50%, 54% 60%, 70% 61%, 84% 59%, 100% 52%, 100% 100%, 0% 100%); 
+   }
+   50% { 
+      clip-path: polygon(0% 60%, 16% 65%, 34% 66%, 51% 62%, 67% 50%, 84% 45%, 100% 46%, 100% 100%, 0% 100%); 
+   }
 }
 
 /* Le conteneur principal prend tout l'espace disponible */
@@ -203,8 +388,8 @@ html::after {
    font-family: 'Aerial', sans-serif;
    font-size: 200%;
    background: var(--gradient-text);
-   background-clip: text;
    -webkit-background-clip: text;
+   background-clip: text;
    -webkit-text-fill-color: transparent;
    margin-top: 0px;
    margin-bottom: 5px;
@@ -217,8 +402,8 @@ html::after {
    width: 90vw;
    height: 87vh;
    background: var(--bg-secondary);
-   backdrop-filter: var(--backdrop-blur);
    -webkit-backdrop-filter: var(--backdrop-blur);
+   backdrop-filter: var(--backdrop-blur);
    border: 1px solid var(--border-primary);
    border-radius: 20px;
    box-shadow: 
@@ -326,8 +511,8 @@ html::after {
 .window-header {
    height: 30px;
    background: linear-gradient(135deg, rgba(45, 45, 68, 0.8), rgba(60, 60, 90, 0.6));
-   backdrop-filter: blur(10px);
    -webkit-backdrop-filter: blur(10px);
+   backdrop-filter: blur(10px);
    border-top-left-radius: 20px;
    border-top-right-radius: 20px;
    border-bottom: 1px solid rgba(139, 92, 246, 0.1);
@@ -367,6 +552,7 @@ footer {
    justify-content: space-between; /* Changé de flex-start à space-between */
    align-items: flex-end;
    background: transparent;
+   -webkit-backdrop-filter: none;
    backdrop-filter: none;
    border-bottom: 2px solid rgba(139, 92, 246, 0.3);
    padding: 0;
@@ -407,6 +593,7 @@ footer {
    border-top-left-radius: 12px;
    border-top-right-radius: 12px;
    transition: all 0.3s ease;
+   -webkit-backdrop-filter: blur(10px);
    backdrop-filter: blur(10px);
    position: relative;
    cursor: pointer;
@@ -479,8 +666,8 @@ footer {
    display: none;
    position: absolute !important; /* Changer en absolute pour être relatif au bouton */
    background: rgba(30, 30, 46, 0.98) !important;
-   backdrop-filter: blur(20px);
    -webkit-backdrop-filter: blur(20px);
+   backdrop-filter: blur(20px);
    min-width: 100%; /* Même largeur que le bouton parent */
    width: 100%; /* Forcer la même largeur */
    box-shadow: 
@@ -703,4 +890,143 @@ body.light-theme .apple-toggle.active .toggle-slider i {
 .about-modal {
     -webkit-backdrop-filter: blur(20px);
     backdrop-filter: blur(20px);
+}
+
+/* Styles pour la minimisation de la fenêtre */
+.window.minimized {
+   animation: minimizeToMac 0.5s ease-in-out forwards;
+   pointer-events: none;
+}
+
+.main-title.minimized {
+   opacity: 0;
+   transform: translateY(-20px);
+   transition: all 0.5s ease-in-out;
+}
+
+footer.minimized {
+   opacity: 0;
+   transform: translateY(20px);
+   transition: all 0.5s ease-in-out;
+}
+
+/* Animation de minimisation type macOS */
+@keyframes minimizeToMac {
+   0% {
+      transform: scale(1) translateY(0);
+      opacity: 1;
+   }
+   100% {
+      transform: scale(0.1) translateY(50vh);
+      opacity: 0;
+   }
+}
+
+/* Dock macOS */
+.dock {
+   position: fixed;
+   bottom: -100px;
+   left: 50%;
+   transform: translateX(-50%);
+   opacity: 0;
+   visibility: hidden;
+   transition: all 0.5s ease-in-out;
+   z-index: 1000;
+}
+
+.dock.visible {
+   bottom: 20px;
+   opacity: 1;
+   visibility: visible;
+}
+
+.dock-container {
+   background: rgba(255, 255, 255, 0.2);
+   backdrop-filter: blur(20px);
+   -webkit-backdrop-filter: blur(20px);
+   border: 1px solid rgba(255, 255, 255, 0.3);
+   border-radius: 20px;
+   padding: 10px 15px;
+   display: flex;
+   align-items: center;
+   gap: 15px;
+   box-shadow: 
+      0 8px 32px rgba(0, 0, 0, 0.3),
+      inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.dock-item {
+   position: relative;
+   cursor: pointer;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   transition: all 0.3s ease;
+   padding: 5px;
+   border-radius: 12px;
+}
+
+.dock-item:hover {
+   transform: translateY(-10px) scale(1.2);
+   background: rgba(255, 255, 255, 0.1);
+}
+
+.dock-item img {
+   width: 50px;
+   height: 50px;
+   border-radius: 12px;
+   transition: all 0.3s ease;
+   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.dock-item:hover img {
+   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+}
+
+.dock-label {
+   position: absolute;
+   bottom: -25px;
+   background: rgba(0, 0, 0, 0.8);
+   color: white;
+   padding: 2px 8px;
+   border-radius: 6px;
+   font-size: 12px;
+   opacity: 0;
+   transform: translateY(10px);
+   transition: all 0.3s ease;
+   white-space: nowrap;
+   pointer-events: none;
+}
+
+.dock-item:hover .dock-label {
+   opacity: 1;
+   transform: translateY(0);
+}
+
+/* Thème clair pour le dock */
+body.light-theme .dock-container {
+   background: rgba(255, 255, 255, 0.8);
+   border: 1px solid rgba(0, 0, 0, 0.1);
+   box-shadow: 
+      0 8px 32px rgba(0, 0, 0, 0.1),
+      inset 0 1px 0 rgba(255, 255, 255, 0.8);
+}
+
+body.light-theme .dock-item:hover {
+   background: rgba(0, 0, 0, 0.05);
+}
+
+/* Animation pour révéler le fond d'écran */
+body:has(.window.minimized) {
+   animation: revealBackground 0.5s ease-in-out forwards;
+}
+
+@keyframes revealBackground {
+   0% {
+      background-position: center;
+   }
+   100% {
+      background-position: center;
+      background-size: cover;
+   }
 }
