@@ -12,10 +12,10 @@ export default {
                     description: 'Professional apprenticeship in software development and DevOps practices.',
                     technologies: [
                         { name: 'Spring Boot', level: 5 },
-                        { name: 'Angular', level: 5 },
-                        { name: 'Ansible', level: 4 },
+                        { name: 'Angular', level: 4 },
+                        { name: 'Ansible', level: 2 },
                         { name: 'PostgreSQL', level: 4 },
-                        { name: 'Agile Methods', level: 5 },
+                        { name: 'Agile Methods', level: 4 },
                         { name: 'DevOps', level: 4 }
                     ],
                     color: 'rgba(16, 185, 129, 0.1)',
@@ -24,13 +24,13 @@ export default {
                 {
                     type: 'academic',
                     title: 'IUT Computer Science',
-                    company: 'University of Aubière',
+                    company: 'Université Clermont Auvergne',
                     location: 'Aubière',
                     period: '2021-2023',
                     icon: 'fas fa-graduation-cap',
                     description: 'Computer Science degree with focus on development logic and data structures.',
                     technologies: [
-                        { name: 'Development Logic & Architecture', level: 4 },
+                        { name: 'Development Logic & Architecture', level: 5 },
                         { name: 'Data Structures', level: 4 },
                         { name: 'Blazor', level: 2 },
                         { name: 'Vue.js', level: 4 },
@@ -42,7 +42,7 @@ export default {
                 {
                     type: 'academic',
                     title: 'ISIMA Engineering School',
-                    company: 'ISIMA',
+                    company: 'INP ISIMA',
                     location: 'Aubière',
                     period: '2023-2026',
                     icon: 'fas fa-laptop-code',
@@ -59,7 +59,7 @@ export default {
                     borderColor: 'rgba(139, 92, 246, 0.3)',
                     project: {
                         name: 'Project FallZ (Fall Detection)',
-                        duration: '100h team project (5 members)',
+                        duration: '500h team project (5 members)',
                         role: 'Project Manager',
                         highlights: [
                             'Team leadership and task prioritization',
@@ -72,7 +72,7 @@ export default {
                 {
                     type: 'service',
                     title: 'Volunteer Firefighter',
-                    company: 'Puy-de-Dôme Fire Department',
+                    company: 'SDIS 63',
                     location: 'Puy-de-Dôme',
                     period: '2024 - Present',
                     icon: 'fas fa-fire-extinguisher',
