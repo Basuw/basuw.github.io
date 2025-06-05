@@ -232,19 +232,19 @@ html::after {
    z-index: -1;
 }
 
-/* Zone de contenu avec scroll */
+/* Zone de contenu sans scroll - dimensions calculées précisément */
 .window-content {
-   flex: 1;
-   overflow-y: auto;
-   overflow-x: hidden;
+   height: calc(87vh - 30px - 70px); /* Fenêtre totale - header - navbar avec marge */
+   overflow: hidden; /* Supprimer le scroll sur window-content */
    padding: 0;
    margin: 0;
+   flex-shrink: 0; /* Empêcher la compression */
 }
 
 /* Styles globaux pour tous les composants dans window-content */
 .window-content > div {
-    height: 100%;
-    overflow-y: auto;
+    height: auto; /* Laisser les composants prendre leur hauteur naturelle */
+    overflow: visible; /* Pas de scroll par défaut */
     padding: 20px;
     box-sizing: border-box;
 }
