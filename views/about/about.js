@@ -11,6 +11,7 @@ export default{
             isBottomBarVisible: true,
             hideTimeout: null,
             isHoveringBottomBar: false,
+            isFirstLoad: true, // Ajouter une variable pour détecter le premier chargement
 		}
 	},
     created() {
@@ -77,8 +78,9 @@ export default{
             this.hideTimeout = setTimeout(() => {
                 if (!this.isHoveringBottomBar) {
                     this.isBottomBarVisible = false;
+                    this.isFirstLoad = false; // Marquer que le premier affichage est terminé
                 }
-            }, 2000);
+            }, 5000); // Délai de 5 secondes comme demandé
         },
         clearHideTimer() {
             if (this.hideTimeout) {
@@ -116,6 +118,11 @@ export default{
             document.removeEventListener('click', this.onDocumentClick);
         },
         onDocumentClick(event) {
+            // Ne pas fermer automatiquement pendant les 5 premières secondes du premier chargement
+            if (this.isFirstLoad) {
+                return;
+            }
+            
             // Vérifier si le clic est en dehors de la bottom-bar et de l'indicateur
             const bottomBar = document.querySelector('.bottom-bar');
             const indicator = document.querySelector('.ios-indicator');
