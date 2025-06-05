@@ -4,8 +4,8 @@
     overflow-x: hidden;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 40px;
-    padding: 5px 10px 10px 10px;
+    gap: 20px; /* Réduit de 25px à 20px */
+    padding: 15px; /* Réduit de 20px à 15px */
 }
 
 /* Styles de scrollbar pour project-list */
@@ -67,17 +67,19 @@
 
 .gallery-item {
     position: relative;
-    width: 93%;
+    width: 100%;
     cursor: pointer;
-    transition: all 0.4s ease;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     text-align: center;
-    background: var(--bg-card);
-    backdrop-filter: blur(15px);
+    background: var(--bg-tertiary);
+    backdrop-filter: var(--backdrop-blur);
     border: 1px solid var(--border-primary);
     box-shadow: var(--shadow-primary);
-    border-radius: 16px;
-    padding: 20px;
+    border-radius: 20px;
+    padding: 20px; /* Réduit de 25px à 20px */
     overflow: hidden;
+    max-width: 350px; /* Ajouter une largeur maximale */
+    margin: 0 auto; /* Centrer les cartes */
 }
 
 .gallery-item::before {
@@ -87,16 +89,19 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(135deg, rgba(139, 92, 246, 0.05), rgba(16, 185, 129, 0.03));
+    background: linear-gradient(135deg, rgba(139, 92, 246, 0.05), rgba(59, 130, 246, 0.03));
     opacity: 0;
-    transition: opacity 0.3s ease;
+    transition: all 0.3s ease;
     z-index: -1;
+    border-radius: 20px;
 }
 
 .gallery-item:hover {
-    transform: translateY(-8px) scale(1.02);
+    transform: translateY(-10px) scale(1.03);
     border-color: var(--border-hover);
-    box-shadow: var(--shadow-hover);
+    box-shadow: 
+        var(--shadow-hover),
+        0 20px 40px rgba(139, 92, 246, 0.2);
 }
 
 .gallery-item:hover::before {
@@ -105,69 +110,87 @@
 
 .gallery-item img {
     height: 20vh;
-    border-radius: 12px;
+    width: 100%;
+    object-fit: contain;
+    border-radius: 16px;
     display: block;
-    margin: 0 auto;
+    margin: 0 auto 20px auto;
     border: 2px solid var(--border-primary);
     transition: all 0.3s ease;
+    background: var(--bg-secondary);
+    padding: 10px;
+    box-sizing: border-box;
 }
 
 .gallery-item:hover img {
     border-color: var(--border-hover);
-    box-shadow: 0 8px 20px rgba(139, 92, 246, 0.2);
+    box-shadow: 0 8px 25px rgba(139, 92, 246, 0.3);
+    transform: scale(1.05);
 }
 
 .description {
     text-align: center;
-    margin-top: 15px;
     font-family: 'Chillax', sans-serif;
 }
 
 .description h3 {
-    font-size: 1.5em;
-    margin: 0 0 10px 0;
-    color: var(--text-primary);
-    background: var(--gradient-text);
+    font-size: 1.4em;
+    margin: 0 0 15px 0;
+    background: var(--gradient-primary);
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    font-weight: 600;
+    text-shadow: 0 0 20px rgba(139, 92, 246, 0.3);
 }
 
 .description p {
-    font-size: 1em;
+    font-size: 0.95em;
     color: var(--text-secondary);
-    line-height: 1.4;
+    line-height: 1.5;
+    margin-bottom: 10px;
 }
 
 .description .date {
     font-size: 0.9em;
-    color: var(--accent-primary);
+    color: var(--text-accent);
     font-weight: 500;
+    background: linear-gradient(135deg, rgba(139, 92, 246, 0.1), rgba(59, 130, 246, 0.1));
+    padding: 4px 8px;
+    border-radius: 8px;
+    display: inline-block;
+    margin: 5px 0;
 }
 
 .description .authors {
-    font-size: 0.9em;
-    color: var(--text-tertiary);
+    font-size: 0.85em;
+    color: var(--text-muted);
+    font-style: italic;
 }
 
 .like-button {
-    background: linear-gradient(135deg, rgba(var(--accent-secondary-rgb), 0.1), rgba(var(--accent-secondary-rgb), 0.1));
-    border: 1px solid rgba(var(--accent-secondary-rgb), 0.3);
-    color: var(--accent-secondary);
+    background: linear-gradient(135deg, rgba(244, 63, 94, 0.1), rgba(239, 68, 68, 0.1));
+    border: 1px solid rgba(244, 63, 94, 0.3);
+    color: #f87171;
     cursor: pointer;
-    font-size: 16px;
-    padding: 8px 16px;
+    font-size: 14px;
+    padding: 10px 16px;
     border-radius: 12px;
     transition: all 0.3s ease;
     backdrop-filter: blur(10px);
-    margin-top: 10px;
+    margin-top: 15px;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
 }
 
 .like-button:hover {
-    background: linear-gradient(135deg, rgba(var(--accent-secondary-rgb), 0.2), rgba(var(--accent-secondary-rgb), 0.2));
-    border-color: rgba(var(--accent-secondary-rgb), 0.5);
+    background: linear-gradient(135deg, rgba(244, 63, 94, 0.2), rgba(239, 68, 68, 0.2));
+    border-color: rgba(244, 63, 94, 0.5);
     transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(var(--accent-secondary-rgb), 0.3);
+    box-shadow: 0 8px 20px rgba(244, 63, 94, 0.3);
+    color: #ef4444;
 }
 
 .popup {
@@ -179,9 +202,15 @@
     width: 100%;
     height: 100%;
     overflow: auto;
-    background-color: rgba(0, 0, 0, 0.8);
-    backdrop-filter: blur(5px);
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(15px);
     border-radius: 20px;
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
 }
 
 /* Styles de scrollbar pour popup */
@@ -209,24 +238,50 @@
 }
 
 .popup-content {
-    background: var(--bg-card);
-    backdrop-filter: blur(20px);
+    background: var(--bg-tertiary);
+    backdrop-filter: var(--backdrop-blur);
     border: 1px solid var(--border-primary);
-    margin: 2% auto;
-    padding: 20px;
-    max-width: 40%;
+    margin: 5% auto;
+    padding: 30px;
+    max-width: 600px;
     min-height: fit-content;
-    max-height: 50%;
-    border-radius: 20px;
+    max-height: 80%;
+    border-radius: 24px;
     position: relative;
     text-align: center;
     font-family: 'Chillax', sans-serif;
-    box-shadow: var(--shadow-primary);
+    box-shadow: 
+        var(--shadow-primary),
+        0 0 50px rgba(139, 92, 246, 0.2);
     color: var(--text-primary);
     overflow-y: auto;
     overflow-x: hidden;
     display: flex;
     flex-direction: column;
+    animation: slideIn 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes slideIn {
+    from { 
+        transform: translateY(-30px) scale(0.95);
+        opacity: 0;
+    }
+    to { 
+        transform: translateY(0) scale(1);
+        opacity: 1;
+    }
+}
+
+.popup-content::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(139, 92, 246, 0.05), rgba(59, 130, 246, 0.03));
+    border-radius: 24px;
+    z-index: -1;
 }
 
 /* Styles de scrollbar pour popup-content */
@@ -257,91 +312,111 @@
 }
 
 .popup-project-icon {
-    max-height: 20vh;
-    max-width: 80%;
+    max-height: 25vh;
+    max-width: 90%;
     width: auto;
     height: auto;
-    border-radius: 12px;
+    border-radius: 16px;
     border: 2px solid var(--border-primary);
     box-shadow: var(--shadow-primary);
     object-fit: contain;
     display: block;
-    margin: 0 auto;
+    margin: 0 auto 25px auto;
+    background: var(--bg-secondary);
+    padding: 15px;
+    box-sizing: border-box;
+    transition: all 0.3s ease;
 }
 
 .popup-content h3 {
-    font-size: 2em;
-    background: var(--gradient-text);
+    font-size: 2.2em;
+    background: var(--gradient-primary);
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    margin: 20px 0;
+    margin: 0 0 20px 0;
+    font-weight: 700;
+    text-shadow: 0 0 30px rgba(139, 92, 246, 0.3);
 }
 
 .popup-content p {
     color: var(--text-secondary);
-    line-height: 1.6;
+    line-height: 1.7;
     margin: 15px 0;
+    font-size: 1.05em;
 }
 
 .popup-content .close {
     position: absolute;
-    top: 15px;
+    top: 20px;
     right: 25px;
-    font-size: 30px;
+    width: 40px;
+    height: 40px;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-primary);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
     font-weight: bold;
     cursor: pointer;
     color: var(--text-secondary);
-    transition: color 0.3s ease;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
 }
 
 .popup-content .close:hover {
     color: var(--text-primary);
+    background: var(--bg-hover);
+    border-color: var(--border-hover);
+    transform: scale(1.1);
 }
 
 .popup-footer {
     display: flex;
     align-items: center;
-    gap: 20px;
+    gap: 25px;
     justify-content: center;
-    margin-top: 25px;
-    padding: 15px 0;
+    margin-top: 30px;
+    padding: 20px 0;
     flex-shrink: 0;
     border-top: 1px solid var(--border-primary);
 }
 
 .popup-footer .git-icon {
-    width: 80px;
-    height: 80px;
-    border-radius: 12px;
+    width: 60px;
+    height: 60px;
+    border-radius: 16px;
     transition: all 0.3s ease;
     border: 2px solid var(--border-primary);
     object-fit: contain;
-    padding: 8px;
+    padding: 12px;
     box-sizing: border-box;
     display: block;
-    vertical-align: baseline;
+    background: var(--bg-secondary);
+    backdrop-filter: blur(10px);
 }
 
 .popup-footer .git-icon:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 10px 25px rgba(139, 92, 246, 0.3);
+    transform: translateY(-5px) scale(1.1);
+    box-shadow: 0 15px 30px rgba(139, 92, 246, 0.3);
     border-color: var(--border-hover);
 }
 
 .popup-footer .like-button {
-    width: 80px;
-    height: 80px;
-    min-width: 80px;
-    min-height: 80px;
-    max-width: 80px;
-    max-height: 80px;
-    background: linear-gradient(135deg, rgba(var(--accent-secondary-rgb), 0.1), rgba(var(--accent-secondary-rgb), 0.1));
-    border: 2px solid rgba(var(--accent-secondary-rgb), 0.3);
-    color: var(--accent-secondary);
+    width: 60px;
+    height: 60px;
+    min-width: 60px;
+    min-height: 60px;
+    max-width: 60px;
+    max-height: 60px;
+    background: linear-gradient(135deg, rgba(244, 63, 94, 0.1), rgba(239, 68, 68, 0.1));
+    border: 2px solid rgba(244, 63, 94, 0.3);
+    color: #f87171;
     cursor: pointer;
     font-size: 16px;
-    border-radius: 12px;
+    border-radius: 16px;
     transition: all 0.3s ease;
     backdrop-filter: blur(10px);
     margin: 0;
@@ -350,24 +425,29 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 3px;
+    gap: 4px;
     box-sizing: border-box;
     flex-shrink: 0;
-    vertical-align: baseline;
 }
 
 .popup-footer .like-button:hover {
-    background: linear-gradient(135deg, rgba(var(--accent-secondary-rgb), 0.2), rgba(var(--accent-secondary-rgb), 0.2));
-    border-color: rgba(var(--accent-secondary-rgb), 0.5);
-    transform: translateY(-3px);
-    box-shadow: 0 10px 25px rgba(var(--accent-secondary-rgb), 0.3);
+    background: linear-gradient(135deg, rgba(244, 63, 94, 0.2), rgba(239, 68, 68, 0.2));
+    border-color: rgba(244, 63, 94, 0.5);
+    transform: translateY(-5px) scale(1.1);
+    box-shadow: 0 15px 30px rgba(244, 63, 94, 0.3);
+    color: #ef4444;
 }
 
 .popup-footer .like-button i {
-    font-size: 22px;
+    font-size: 20px;
+    transition: all 0.3s ease;
+}
+
+.popup-footer .like-button:hover i {
+    transform: scale(1.2);
 }
 
 .popup-footer .like-button .like-count {
-    font-size: 14px;
+    font-size: 12px;
     font-weight: 600;
 }
