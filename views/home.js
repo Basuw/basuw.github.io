@@ -16,7 +16,7 @@ export default{
 			</div>
 		</div>
 		<div class="intro-image-container">
-			<img src="path/to/your/image.jpg" alt="Description of image">
+			<img src="/img/bastien-home-pp.png" alt="Description of image">
 		</div>
 	</div>
 	`

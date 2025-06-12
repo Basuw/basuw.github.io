@@ -57,7 +57,7 @@
    left: -10px;
    right: -10px;
    bottom: -10px;
-   background: linear-gradient(135deg, rgba(139, 92, 246, 0.2), rgba(16, 185, 129, 0.1));
+   background: linear-gradient(135deg, rgba(138, 92, 246, 0.103), rgba(16, 185, 129, 0.096));
    border-radius: 20px;
    z-index: -1;
    filter: blur(10px);
@@ -65,7 +65,9 @@
 
 .intro-image-container img {
    width: 100%;
+   max-height: 450px;
    height: auto;
+   object-fit: contain;
    border-radius: 15px;
    border: 2px solid var(--border-primary);
    box-shadow: var(--shadow-primary);
@@ -106,4 +108,27 @@ body.light-theme .small-intro-text {
    text-shadow: 
       0 0 15px rgba(59, 130, 246, 0.2),
       0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive design pour l'image */
+@media (max-width: 768px) {
+   .intro-container {
+      flex-direction: column;
+      align-items: center;
+   }
+   
+   .intro-text-container,
+   .intro-image-container {
+      width: 100%;
+   }
+   
+   .intro-image-container img {
+      max-height: 250px;
+   }
+}
+
+@media (max-width: 480px) {
+   .intro-image-container img {
+      max-height: 200px;
+   }
 }
