@@ -169,8 +169,11 @@
     padding: 25px;
     cursor: pointer;
     transition: all 0.3s ease;
-    min-height: 200px;
+    min-height: 250px;
+    max-height: 300px;
     overflow: hidden;
+    display: flex;
+    flex-direction: column;
 }
 
 .tech-card:hover {
@@ -234,6 +237,8 @@
     padding: 25px;
     opacity: 0;
     animation: slideIn 0.3s ease forwards;
+    overflow-y: auto;
+    box-sizing: border-box;
 }
 
 @keyframes slideIn {

@@ -93,7 +93,7 @@
     bottom: 0;
     left: 50%;
     width: 3px;
-    height: 450%;
+    height: 520%;
     background: var(--accent-gradient-vertical);
     transform: translateY(1%);
     border-radius: 2px;
@@ -186,4 +186,215 @@
     margin-top: -10px;
     margin-bottom: -15px;
     font-weight: 600;
+}
+
+/* Responsive design pour la timeline */
+@media (max-width: 1200px) {
+    #time {
+        padding: 5px 15px 15px 15px;
+    }
+    
+    .timeline-container {
+        width: 42%;
+        margin: 25px 0;
+    }
+    
+    .timeline-container.left {
+        margin-right: 58%;
+        margin-left: 0;
+    }
+    
+    .timeline-container.right {
+        margin-left: 58%;
+        margin-right: 0;
+    }
+    
+    .timeline-content h2, .timeline-title {
+        font-size: 180%;
+    }
+    
+    .timeline-content p {
+        font-size: 110%;
+    }
+    
+    .timeline-content i {
+        font-size: 3.5em;
+    }
+}
+
+@media (max-width: 900px) {
+    #time {
+        padding: 5px 10px 10px 10px;
+        height: calc(100vh - 240px);
+        max-height: calc(100vh - 240px);
+    }
+    
+    .timeline-container {
+        width: 44%;
+        margin: 20px 0;
+    }
+    
+    .timeline-container.left {
+        margin-right: 56%;
+        margin-left: 0;
+    }
+    
+    .timeline-container.right {
+        margin-left: 56%;
+        margin-right: 0;
+    }
+    
+    .timeline-content {
+        padding: 15px;
+    }
+    
+    .timeline-content h2, .timeline-title {
+        font-size: 160%;
+    }
+    
+    .timeline-content p {
+        font-size: 100%;
+    }
+    
+    .timeline-content i {
+        font-size: 3em;
+    }
+    
+    #time::before {
+        height: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    #time {
+        padding: 5px 10px 10px 10px;
+        height: calc(100vh - 200px);
+        max-height: calc(100vh - 200px);
+    }
+    
+    .timeline-container {
+        width: 80%;
+        margin: 20px 0 !important;
+    }
+    
+    .timeline-container.left {
+        margin-right: 0 !important;
+    }
+    
+    .timeline-container.right {
+        margin-left: 0 !important;
+    }
+    
+    .timeline-content {
+        padding: 15px;
+        margin: 0 auto;
+    }
+    
+    .timeline-content h2, .timeline-title {
+        font-size: 140%;
+    }
+    
+    .timeline-content p {
+        font-size: 95%;
+    }
+    
+    .timeline-content i {
+        font-size: 2.5em;
+    }
+    
+    #time::before {
+        left: 50%;
+        height: 100%;
+    }
+    
+    .timeline-container::before {
+        left: 50%;
+    }
+    
+    .timeline-container.top .timeline-content {
+        margin-bottom: 20vh;
+    }
+    
+    .timeline-container.bottom .timeline-content {
+        margin-top: 20vh;
+    }
+}
+
+@media (max-width: 600px) {
+    #time {
+        padding: 5px 8px 8px 8px;
+        height: calc(100vh - 180px);
+        max-height: calc(100vh - 180px);
+    }
+    
+    .timeline-container {
+        width: 90%;
+    }
+    
+    .timeline-content {
+        padding: 12px;
+    }
+    
+    .timeline-content h2, .timeline-title {
+        font-size: 120%;
+    }
+    
+    .timeline-content p {
+        font-size: 90%;
+    }
+    
+    .timeline-content i {
+        font-size: 2em;
+    }
+    
+    #time::before {
+        height: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    #time {
+        padding: 5px 5px 5px 5px;
+        height: calc(100vh - 160px);
+        max-height: calc(100vh - 160px);
+    }
+    
+    .timeline-container {
+        width: 95%;
+    }
+    
+    .timeline-content {
+        padding: 10px;
+    }
+    
+    .timeline-content h2, .timeline-title {
+        font-size: 100%;
+    }
+    
+    .timeline-content p {
+        font-size: 85%;
+    }
+    
+    .timeline-content i {
+        font-size: 1.8em;
+    }
+    
+    .timeline-content h3, .timeline-subtitle {
+        font-size: 70%;
+    }
+    
+    #time::before {
+        height: 100%;
+        width: 2px;
+    }
+    
+    .timeline-container::before {
+        width: 20px;
+        height: 20px;
+    }
+    
+    .timeline-circle {
+        min-width: 20px;
+        min-height: 20px;
+    }
 }

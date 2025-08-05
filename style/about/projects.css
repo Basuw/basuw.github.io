@@ -3,9 +3,45 @@
     overflow-y: auto;
     overflow-x: hidden;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px; /* Réduit de 25px à 20px */
-    padding: 15px; /* Réduit de 20px à 15px */
+    grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+    gap: 55px;
+    padding: 35px;
+}
+
+/* Responsive grid adjustments */
+@media (max-width: 1200px) {
+    .project-list {
+        grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+        gap: 50px;
+        padding: 30px;
+    }
+}
+
+@media (max-width: 900px) {
+    .project-list {
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 45px;
+        max-height: calc(100vh - 240px);
+        padding: 25px;
+    }
+}
+
+@media (max-width: 768px) {
+    .project-list {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 40px;
+        max-height: calc(100vh - 200px);
+        padding: 22px;
+    }
+}
+
+@media (max-width: 600px) {
+    .project-list {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        max-height: calc(100vh - 180px);
+        padding: 20px;
+    }
 }
 
 /* Styles de scrollbar pour project-list */
@@ -72,14 +108,15 @@
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     text-align: center;
     background: var(--bg-tertiary);
+    -webkit-backdrop-filter: var(--backdrop-blur);
     backdrop-filter: var(--backdrop-blur);
     border: 1px solid var(--border-primary);
     box-shadow: var(--shadow-primary);
     border-radius: 20px;
-    padding: 20px; /* Réduit de 25px à 20px */
+    padding: 20px;
     overflow: hidden;
-    max-width: 350px; /* Ajouter une largeur maximale */
-    margin: 0 auto; /* Centrer les cartes */
+    max-width: none;
+    margin: 0 auto;
 }
 
 .gallery-item::before {
@@ -450,4 +487,158 @@
 .popup-footer .like-button .like-count {
     font-size: 12px;
     font-weight: 600;
+}
+
+/* Responsive design pour les projects */
+@media (max-width: 1200px) {
+    .projects-container {
+        max-height: calc(100vh - 250px);
+        padding: 18px;
+    }
+    
+    .gallery-item {
+        padding: 18px;
+    }
+    
+    .gallery-item img {
+        height: 18vh;
+    }
+}
+
+@media (max-width: 900px) {
+    .projects-container {
+        max-height: calc(100vh - 220px);
+        padding: 15px;
+    }
+    
+    .gallery-item {
+        padding: 15px;
+    }
+    
+    .gallery-item img {
+        height: 16vh;
+    }
+    
+    .description h3 {
+        font-size: 1.2em;
+    }
+    
+    .description p {
+        font-size: 0.9em;
+    }
+}
+
+@media (max-width: 768px) {
+    .projects-container {
+        max-height: calc(100vh - 180px);
+        padding: 12px;
+    }
+    
+    .gallery-item {
+        padding: 15px;
+    }
+    
+    .gallery-item img {
+        height: 15vh;
+    }
+    
+    .description h3 {
+        font-size: 1.1em;
+    }
+    
+    .description p {
+        font-size: 0.85em;
+    }
+    
+    .popup-content {
+        margin: 10% auto;
+        max-width: 90%;
+        padding: 20px;
+    }
+    
+    .popup-content h3 {
+        font-size: 1.8em;
+    }
+    
+    .popup-project-icon {
+        max-height: 20vh;
+    }
+}
+
+@media (max-width: 600px) {
+    .projects-container {
+        max-height: calc(100vh - 160px);
+        padding: 10px;
+    }
+    
+    .gallery-item {
+        padding: 12px;
+    }
+    
+    .gallery-item img {
+        height: 12vh;
+    }
+    
+    .description h3 {
+        font-size: 1em;
+    }
+    
+    .description p {
+        font-size: 0.8em;
+    }
+    
+    .popup-content {
+        margin: 5% auto;
+        max-width: 95%;
+        padding: 15px;
+    }
+    
+    .popup-content h3 {
+        font-size: 1.5em;
+    }
+    
+    .popup-project-icon {
+        max-height: 18vh;
+    }
+}
+
+@media (max-width: 480px) {
+    .gallery-item img {
+        height: 10vh;
+    }
+    
+    .description h3 {
+        font-size: 0.9em;
+    }
+    
+    .description p {
+        font-size: 0.75em;
+    }
+    
+    .popup-content {
+        padding: 12px;
+    }
+    
+    .popup-content h3 {
+        font-size: 1.3em;
+    }
+    
+    .popup-project-icon {
+        max-height: 15vh;
+    }
+    
+    .popup-footer {
+        gap: 15px;
+        padding: 15px 0;
+    }
+    
+    .popup-footer .git-icon,
+    .popup-footer .like-button {
+        width: 50px;
+        height: 50px;
+        min-width: 50px;
+        min-height: 50px;
+        max-width: 50px;
+        max-height: 50px;
+    }
 }

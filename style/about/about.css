@@ -80,7 +80,7 @@
     bottom: 8px;
     left: 50%;
     transform: translateX(-50%);
-    width: 70px;
+    width: 150px;
     height: 25px;
     display: flex;
     justify-content: center;
@@ -101,7 +101,7 @@
 }
 
 .indicator-bar {
-    width: 50px;
+    width: 100px;
     height: 5px;
     background: var(--text-secondary);
     border-radius: 3px;

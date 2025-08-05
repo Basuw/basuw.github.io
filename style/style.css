@@ -448,9 +448,11 @@ body.light-theme .app .depth-circles {
       0 0 0 1px rgba(255, 255, 255, 0.05),
       inset 0 1px 0 rgba(255, 255, 255, 0.1);
    position: relative;
-   overflow: hidden; /* Revenir à hidden pour la fenêtre principale */
+   overflow: hidden;
    display: flex;
    flex-direction: column;
+   margin: 0 auto;
+   box-sizing: border-box;
 }
 
 .window::before {
@@ -1300,4 +1302,84 @@ body:has(.window.minimized)::after {
     display: none !important;
     opacity: 0 !important;
     visibility: hidden !important;
+}
+
+/* Responsive design global */
+@media (max-width: 1400px) {
+    .window {
+        width: 95vw;
+        height: 90vh;
+    }
+    
+    .window-content {
+        height: calc(90vh - 30px - 70px);
+    }
+}
+
+@media (max-width: 1200px) {
+    .window {
+        width: 98vw;
+        height: 92vh;
+    }
+    
+    .window-content {
+        height: calc(92vh - 30px - 70px);
+    }
+    
+    .window-content > div {
+        padding: 15px;
+    }
+}
+
+@media (max-width: 900px) {
+    .window {
+        width: 100vw;
+        height: 95vh;
+        border-radius: 15px;
+    }
+    
+    .window-content {
+        height: calc(95vh - 30px - 70px);
+    }
+    
+    .window-content > div {
+        padding: 12px;
+    }
+}
+
+@media (max-width: 768px) {
+    .window {
+        width: 100vw;
+        height: 100vh;
+        border-radius: 0;
+        border: none;
+    }
+    
+    .window-content {
+        height: calc(100vh - 30px - 60px);
+    }
+    
+    .window-content > div {
+        padding: 10px;
+    }
+}
+
+@media (max-width: 600px) {
+    .window-content {
+        height: calc(100vh - 25px - 55px);
+    }
+    
+    .window-content > div {
+        padding: 8px;
+    }
+}
+
+@media (max-width: 480px) {
+    .window-content {
+        height: calc(100vh - 20px - 50px);
+    }
+    
+    .window-content > div {
+        padding: 5px;
+    }
 }
