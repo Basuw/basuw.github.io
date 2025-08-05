@@ -1,29 +1,39 @@
+/* Container principal responsive */
 .contact {
     text-align: center;
-    margin: 20px;
-    max-height: calc(100vh - 200px); /* Ajout d'une hauteur maximale */
-    overflow-y: auto; /* Ajout du scroll si débordement */
+    padding: clamp(20px, 4vw, 40px);
+    max-height: calc(100vh - 180px);
+    overflow-y: auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    gap: clamp(20px, 3vw, 40px);
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    box-sizing: border-box;
 }
 
+/* Titre principal avec animation */
 .contact h2 {
     font-family: 'Vercetti', sans-serif;
-    font-size: 3em;
+    font-size: clamp(1.8rem, 4vw, 3rem);
     background: linear-gradient(135deg, var(--text-primary), var(--text-secondary));
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     text-shadow: 0 0 20px rgba(139, 92, 246, 0.3);
+    margin-bottom: clamp(15px, 2vw, 30px);
+    animation: fadeInDown 0.8s ease-out;
 }
 
 .main-title {
-   text-align: center;
-   font-family: Aerial;
-   font-size: 200%;
-   color: var(--text-primary);
+    text-align: center;
+    font-family: 'Aerial', sans-serif;
+    font-size: clamp(1.5rem, 3.5vw, 2.5rem);
+    color: var(--text-primary);
+    margin-bottom: clamp(10px, 2vw, 20px);
 }
 
 /* Carousel moderne agrandi */
