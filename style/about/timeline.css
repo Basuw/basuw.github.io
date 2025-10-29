@@ -17,6 +17,12 @@
     box-sizing: border-box;
 }
 
+#time > .timeline-line {
+    position: absolute;
+    /* min-height: calc(75vh * 3); */
+    min-height: 1960px;
+}
+
 #time::-webkit-scrollbar {
     width: 8px;
 }
@@ -86,8 +92,7 @@
     }
 }
 
-#time::before {
-    content: '';
+.timeline-line {
     position: absolute;
     top: 0;
     left: 50%;
@@ -96,6 +101,7 @@
     background: var(--accent-gradient-vertical);
     border-radius: 2px;
     box-shadow: 0 0 10px var(--accent-glow);
+    z-index: 1;
 }
 
 .timeline-circle {

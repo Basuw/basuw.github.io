@@ -27,6 +27,7 @@ export default {
 	template:
 	`
 	<div id="time">
+		<div class="timeline-line"></div>
 		<template v-for="(activity, index) in activities" :key="index">
 			<activityBloc
 				:isRelevant="activity.isRelevant"
