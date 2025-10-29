@@ -468,7 +468,7 @@ body.light-theme .app .depth-circles {
 
 /* Zone de contenu sans scroll - dimensions calculées précisément */
 .window-content {
-   height: calc(87vh - 30px - 70px); /* Fenêtre totale - header - navbar avec marge */
+   height: calc(89vh - 30px - 70px); /* Fenêtre totale - header - navbar avec marge */
    overflow: hidden; /* Supprimer le scroll sur window-content */
    padding: 0;
    margin: 0;

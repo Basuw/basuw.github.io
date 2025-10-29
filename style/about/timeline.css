@@ -4,10 +4,10 @@
     flex-direction: column;
     align-items: center;
     padding: 5px 20px 20px 20px;
-    height: calc(100vh - 280px); /* Hauteur fixe pour permettre le scroll */
-    max-height: calc(100vh - 280px); /* Contrainte de hauteur maximale */
+    height: calc(83vh - 30px - 70px);
+    max-height: calc(83vh - 30px - 70px);
     position: relative;
-    overflow-y: auto; /* Rétablir la scrollbar verticale */
+    overflow-y: auto;
     overflow-x: hidden;
     flex-wrap: nowrap;
     background: var(--glass-bg);
@@ -90,12 +90,10 @@
     content: '';
     position: absolute;
     top: 0;
-    bottom: 0;
     left: 50%;
     width: 3px;
-    height: 520%;
+    height: 100%;
     background: var(--accent-gradient-vertical);
-    transform: translateY(1%);
     border-radius: 2px;
     box-shadow: 0 0 10px var(--accent-glow);
 }

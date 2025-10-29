@@ -7,10 +7,9 @@
     display: flex;
     flex-direction: column;
     height: calc(100vh - 200px); /* Hauteur fixe pour aller jusqu'en bas */
-    min-height: calc(100vh - 200px); /* Hauteur minimale garantie */
+    min-height: calc(82vh - 30px - 70px);
     overflow: hidden; /* Masquer le débordement du conteneur principal */
     padding: 5px 30px 20px 30px; /* Réduire le padding bottom */
-    margin: 20px 0 0 0; /* Supprimer la marge bottom */
     background: var(--bg-card);
     backdrop-filter: blur(15px);
     border-radius: 20px;
