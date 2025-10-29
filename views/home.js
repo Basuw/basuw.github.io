@@ -17,6 +17,7 @@ export default{
 		</div>
 		<div class="intro-image-container">
 			<img src="/img/bastien-home-pp.png" alt="Description of image">
+			<div class="image-protection-overlay"></div>
 		</div>
 	</div>
 	`

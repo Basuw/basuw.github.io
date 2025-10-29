@@ -73,6 +73,26 @@
    border-radius: 15px;
    border: none;
    box-shadow: none;
+   user-select: none;
+   -webkit-user-drag: none;
+   pointer-events: none;
+}
+
+.image-protection-overlay {
+   position: absolute;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 100%;
+   background: rgba(255, 255, 255, 0.02);
+   backdrop-filter: blur(0.5px);
+   border-radius: 15px;
+   pointer-events: all;
+   z-index: 10;
+}
+
+body.light-theme .image-protection-overlay {
+   background: rgba(0, 0, 0, 0.01);
 }
 
 /* Style pour le paragraphe */
