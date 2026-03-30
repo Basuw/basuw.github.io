@@ -1,5 +1,79 @@
 [
     {
+        "image": "/img/projects/capitalot_icon.png",
+        "title": "Capitalot",
+        "description": "Smart Investment Portfolio Tracker.",
+        "date": "2026-02",
+        "authors": "Bastien Jacquelin",
+        "detailedDescription": "Capitalot is a full-stack investment portfolio manager. Track real-time stock prices, create multiple portfolios, build watchlists, and analyze your performance across daily, monthly, yearly and all-time periods. Stock data is powered by Yahoo Finance API and Finnhub. Authentication is handled via Google OAuth2 and JWT.",
+        "github": "https://github.com/Basuw/capitalot",
+        "summary": "Spring Boot 3 + Vue.js 3 + TypeScript full-stack app, PostgreSQL database, Docker deployment.",
+        "screenshots": [
+            "/img/projects/capitalot/home.png",
+            "/img/projects/capitalot/portfolio.png",
+            "/img/projects/capitalot/stocks.png",
+            "/img/projects/capitalot/stock-details.png",
+            "/img/projects/capitalot/watchlist.png",
+            "/img/projects/capitalot/add-watchlist.png",
+            "/img/projects/capitalot/stock-news.png",
+            "/img/projects/capitalot/settings.png"
+        ],
+        "likes": 11,
+        "id": "project7"
+    },
+    {
+        "image": "/img/projects/4ldesdomes_icon.png",
+        "title": "4L des Dômes",
+        "description": "E-commerce website for the 4L Trophy 2026 adventure.",
+        "date": "2025-11",
+        "authors": "Bastien Jacquelin",
+        "detailedDescription": "A turnkey e-commerce website to fund a 4L Trophy adventure. Features a clothing shop with real-time stock management, a smooth checkout flow, and secure Stripe payment integration. All orders are centralized in a PostgreSQL database. The site is fully responsive with smooth scroll animations.",
+        "github": "https://github.com/Basuw/La-4L-des-d-mes",
+        "summary": "Vue.js 3 + Vite + Pinia frontend, Spring Boot 3 + Java 21 backend, PostgreSQL, Docker + Nginx.",
+        "screenshots": [
+            "/img/projects/4Ldesdomes/clothes.png",
+            "/img/projects/4Ldesdomes/panier.png"
+        ],
+        "likes": 5,
+        "id": "project8"
+    },
+    {
+        "image": "/img/projects/fallz_icon.png",
+        "title": "FallZ",
+        "description": "Fall detector for Hikers.",
+        "date": "2025-06",
+        "authors": "Anderson Burengero-Shema, Augustin Quatrefages, Léo Ruy, Yoan Boyer, Bastien Jacquelin",
+        "detailedDescription": "This hiking fall detector uses an accelerometer and gyroscope with an Arduino-based machine learning algorithm to identify falls. It transmits the user's GPS location via LoRaWAN and TheThingsStack to a backend. Users can create accounts, manage multiple devices, and track hikes and falls on a map, with data stored in a PostgreSQL database.",
+        "github": "https://github.com/Basuw/FallZ",
+        "summary": "University project combining IoT and machine learning.",
+        "likes": 11,
+        "id": "project7"
+    },
+    {
+        "image": "/img/projects/my_series_icon.png",
+        "title": "My series",
+        "description": "Mobile application that help find series to watch.",
+        "date": "2025-06",
+        "authors": "Bastien Jacquelin",
+        "detailedDescription": "Mobile application to allow you to find series you want to watch and add them to a watchlist and by setting your preferencies it gives how much days / weeks you have to spend to watch it.",
+        "github": "https://github.com/Basuw/my-series",
+        "summary": "University project to enhance my knowledge on mobile development and Kotlin.",
+        "likes": 5,
+        "id": "project8"
+    },
+    {
+        "image": "/img/projects/home_automation_icon.png",
+        "title": "Home Automation",
+        "description": "Domotic project to control RGB LEDs, collect sensor data, and visualize it in Grafana.",
+        "date": "2025-now",
+        "authors": "Bastien Jacquelin",
+        "detailedDescription": "This project is a home automation system that allows you to:Control RGB LEDs remotely via an API.Collect and store sensor data from an ESP32 using MQTT. Visualize the collected data in Grafana dashboards. Manage all services using Docker and Docker Compose.",
+        "github": "https://github.com/Basuw/home-automation",
+        "summary": "Personal project to facilitate home automation.",
+        "likes": 9,
+        "id": "project9"
+    },
+    {
         "image": "/img/projects/AT-tistic_Logo.png",
         "title": "AR-tistic",
         "description": "Mobile game which aimed to use AR technology to create art and share it with other users on interest points located all over the streets.",
@@ -70,41 +144,5 @@
         "summary": "Personal project to learn React native.",
         "likes": 9,
         "id": "project6"
-    },
-    {
-        "image": "/img/projects/fallz_icon.png",
-        "title": "FallZ",
-        "description": "Fall detector for Hikers.",
-        "date": "2025-06",
-        "authors": "Anderson Burengero-Shema, Augustin Quatrefages, Léo Ruy, Yoan Boyer, Bastien Jacquelin",
-        "detailedDescription": "This hiking fall detector uses an accelerometer and gyroscope with an Arduino-based machine learning algorithm to identify falls. It transmits the user's GPS location via LoRaWAN and TheThingsStack to a backend. Users can create accounts, manage multiple devices, and track hikes and falls on a map, with data stored in a PostgreSQL database.",
-        "github": "https://github.com/Basuw/FallZ",
-        "summary": "University project combining IoT and machine learning.",
-        "likes": 11,
-        "id": "project7"
-    },
-    {
-        "image": "/img/projects/my_series_icon.png",
-        "title": "My series",
-        "description": "Mobile application that help find series to watch.",
-        "date": "2025-06",
-        "authors": "Bastien Jacquelin",
-        "detailedDescription": "Mobile application to allow you to find series you want to watch and add them to a watchlist and by setting your preferencies it gives how much days / weeks you have to spend to watch it.",
-        "github": "https://github.com/Basuw/my-series",
-        "summary": "University project to enhance my knowledge on mobile development and Kotlin.",
-        "likes": 5,
-        "id": "project8"
-    },
-    {
-        "image": "/img/projects/home_automation_icon.png",
-        "title": "Home Automation",
-        "description": "Domotic project to control RGB LEDs, collect sensor data, and visualize it in Grafana.",
-        "date": "2025-now",
-        "authors": "Bastien Jacquelin",
-        "detailedDescription": "This project is a home automation system that allows you to:Control RGB LEDs remotely via an API.Collect and store sensor data from an ESP32 using MQTT. Visualize the collected data in Grafana dashboards. Manage all services using Docker and Docker Compose.",
-        "github": "https://github.com/Basuw/home-automation",
-        "summary": "Personal project to facilitate home automation.",
-        "likes": 9,
-        "id": "project9"
     }
 ]

@@ -410,6 +410,27 @@
     transform: scale(1.1);
 }
 
+.popup-screenshots {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    margin: 16px 0;
+}
+
+.popup-screenshot {
+    width: calc(50% - 5px);
+    border-radius: 8px;
+    object-fit: cover;
+    border: 1px solid var(--border-primary);
+}
+
+@media (max-width: 600px) {
+    .popup-screenshot {
+        width: 100%;
+    }
+}
+
 .popup-footer {
     display: flex;
     align-items: center;

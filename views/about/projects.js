@@ -105,6 +105,9 @@ export default {
 				<h3>{{ selectedProject.title }}</h3>
 				<p>{{ selectedProject.summary }}</p>
 				<p>{{ selectedProject.detailedDescription }}</p>
+				<div v-if="selectedProject.screenshots && selectedProject.screenshots.length" class="popup-screenshots">
+					<img v-for="(shot, i) in selectedProject.screenshots" :key="i" :src="shot" :alt="selectedProject.title + ' screenshot ' + (i+1)" class="popup-screenshot" />
+				</div>
 				<p class="date">{{ selectedProject.date }}</p>
 				<p class="authors">{{ selectedProject.authors }}</p>
 				<div class="popup-footer">

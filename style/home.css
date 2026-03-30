@@ -1,7 +1,6 @@
 /* Style pour le paragraphe surligné */
 .highlight {
    background: linear-gradient(135deg, rgba(139, 92, 246, 0.4), rgba(59, 130, 246, 0.3));
-   backdrop-filter: blur(8px);
    border: none;
    padding: 8px 12px;
    border-radius: 12px;

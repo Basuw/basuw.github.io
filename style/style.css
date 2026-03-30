@@ -178,7 +178,7 @@ body:has(.window.minimized)::after {
    flex-direction: column;
 }
 
-/* Couche de base avec un gradient plus riche pour .app */
+/* Fond d'écran image pour .app */
 .app::before {
    content: '';
    position: fixed;
@@ -186,218 +186,14 @@ body:has(.window.minimized)::after {
    left: 0;
    width: 100%;
    height: 100%;
-   background: 
-      radial-gradient(ellipse at top left, rgba(139, 92, 246, 0.4) 0%, transparent 50%),
-      radial-gradient(ellipse at top right, rgba(16, 185, 129, 0.35) 0%, transparent 50%),
-      radial-gradient(ellipse at bottom left, rgba(244, 63, 94, 0.3) 0%, transparent 50%),
-      radial-gradient(ellipse at bottom right, rgba(59, 130, 246, 0.38) 0%, transparent 50%),
-      radial-gradient(ellipse at center, rgba(245, 158, 11, 0.25) 0%, transparent 70%);
+   background-image: url('/img/wallpaper/sierra-wp.jpg');
+   background-size: cover;
+   background-position: center;
+   background-repeat: no-repeat;
    z-index: -4;
-   animation: breathe 8s ease-in-out infinite;
 }
 
-/* Formes géométriques animées pour .app */
-.app::after {
-   content: '';
-   position: fixed;
-   top: 0;
-   left: 0;
-   width: 100%;
-   height: 100%;
-   background: 
-      /* Triangles aux coins */
-      conic-gradient(from 45deg at 0% 0%, 
-         rgba(139, 92, 246, 0.2) 0deg, 
-         transparent 90deg, 
-         transparent 360deg),
-      conic-gradient(from 135deg at 100% 0%, 
-         rgba(16, 185, 129, 0.18) 0deg, 
-         transparent 90deg, 
-         transparent 360deg),
-      conic-gradient(from 225deg at 100% 100%, 
-         rgba(244, 63, 94, 0.15) 0deg, 
-         transparent 90deg, 
-         transparent 360deg),
-      conic-gradient(from 315deg at 0% 100%, 
-         rgba(59, 130, 246, 0.17) 0deg, 
-         transparent 90deg, 
-         transparent 360deg);
-   z-index: -3;
-   animation: rotateShapes 25s linear infinite;
-}
 
-/* Couche de formes flottantes avec animation 3D pour .app */
-.app .floating-particles {
-   position: fixed;
-   top: -10%;
-   left: -10%;
-   width: 120%;
-   height: 120%;
-   background-image: 
-      /* Points colorés plus visibles */
-      radial-gradient(circle at 15% 25%, rgba(139, 92, 246, 0.25) 3px, transparent 4px),
-      radial-gradient(circle at 85% 35%, rgba(16, 185, 129, 0.22) 3px, transparent 4px),
-      radial-gradient(circle at 25% 75%, rgba(244, 63, 94, 0.2) 3px, transparent 4px),
-      radial-gradient(circle at 75% 85%, rgba(59, 130, 246, 0.24) 3px, transparent 4px),
-      radial-gradient(circle at 45% 15%, rgba(245, 158, 11, 0.18) 3px, transparent 4px),
-      radial-gradient(circle at 65% 65%, rgba(168, 85, 247, 0.21) 3px, transparent 4px);
-   background-size: 
-      100px 100px,
-      130px 130px,
-      80px 80px,
-      110px 110px,
-      90px 90px,
-      120px 120px;
-   z-index: -2;
-   animation: floatParticles 30s ease-in-out infinite;
-   pointer-events: none;
-}
-
-/* Couche de profondeur avec des cercles concentriques pour .app */
-.app .depth-circles {
-   position: fixed;
-   top: 50%;
-   left: 50%;
-   width: 200%;
-   height: 200%;
-   transform: translate(-50%, -50%);
-   background: 
-      /* Cercles concentriques plus visibles */
-      radial-gradient(circle at center, 
-         transparent 20%, 
-         rgba(139, 92, 246, 0.08) 21%, 
-         rgba(139, 92, 246, 0.08) 22%, 
-         transparent 23%),
-      radial-gradient(circle at center, 
-         transparent 40%, 
-         rgba(59, 130, 246, 0.07) 41%, 
-         rgba(59, 130, 246, 0.07) 42%, 
-         transparent 43%),
-      radial-gradient(circle at center, 
-         transparent 60%, 
-         rgba(16, 185, 129, 0.06) 61%, 
-         rgba(16, 185, 129, 0.06) 62%, 
-         transparent 63%);
-   z-index: -1;
-   animation: pulse 15s ease-in-out infinite;
-   pointer-events: none;
-}
-
-/* Adaptations pour le thème clair sur .app */
-body.light-theme .app::before {
-   background: 
-      radial-gradient(ellipse at top left, rgba(59, 130, 246, 0.25) 0%, transparent 50%),
-      radial-gradient(ellipse at top right, rgba(16, 185, 129, 0.22) 0%, transparent 50%),
-      radial-gradient(ellipse at bottom left, rgba(244, 63, 94, 0.18) 0%, transparent 50%),
-      radial-gradient(ellipse at bottom right, rgba(139, 92, 246, 0.24) 0%, transparent 50%),
-      radial-gradient(ellipse at center, rgba(245, 158, 11, 0.15) 0%, transparent 70%);
-}
-
-body.light-theme .app::after {
-   background: 
-      conic-gradient(from 45deg at 0% 0%, 
-         rgba(59, 130, 246, 0.15) 0deg, 
-         transparent 90deg, 
-         transparent 360deg),
-      conic-gradient(from 135deg at 100% 0%, 
-         rgba(16, 185, 129, 0.12) 0deg, 
-         transparent 90deg, 
-         transparent 360deg),
-      conic-gradient(from 225deg at 100% 100%, 
-         rgba(244, 63, 94, 0.1) 0deg, 
-         transparent 90deg, 
-         transparent 360deg),
-      conic-gradient(from 315deg at 0% 100%, 
-         rgba(139, 92, 246, 0.13) 0deg, 
-         transparent 90deg, 
-         transparent 360deg);
-}
-
-/* Adaptations thème clair pour les particules */
-body.light-theme .app .floating-particles {
-   background-image: 
-      radial-gradient(circle at 15% 25%, rgba(59, 130, 246, 0.18) 3px, transparent 4px),
-      radial-gradient(circle at 85% 35%, rgba(16, 185, 129, 0.15) 3px, transparent 4px),
-      radial-gradient(circle at 25% 75%, rgba(244, 63, 94, 0.12) 3px, transparent 4px),
-      radial-gradient(circle at 75% 85%, rgba(139, 92, 246, 0.16) 3px, transparent 4px),
-      radial-gradient(circle at 45% 15%, rgba(245, 158, 11, 0.1) 3px, transparent 4px),
-      radial-gradient(circle at 65% 65%, rgba(168, 85, 247, 0.14) 3px, transparent 4px);
-}
-
-body.light-theme .app .depth-circles {
-   background: 
-      radial-gradient(circle at center, 
-         transparent 20%, 
-         rgba(59, 130, 246, 0.08) 21%, 
-         rgba(59, 130, 246, 0.08) 22%, 
-         transparent 23%),
-      radial-gradient(circle at center, 
-         transparent 40%, 
-         rgba(139, 92, 246, 0.07) 41%, 
-         rgba(139, 92, 246, 0.07) 42%, 
-         transparent 43%),
-      radial-gradient(circle at center, 
-         transparent 60%, 
-         rgba(16, 185, 129, 0.06) 61%, 
-         rgba(16, 185, 129, 0.06) 62%, 
-         transparent 63%);
-}
-
-/* ANIMATIONS */
-@keyframes breathe {
-   0%, 100% { 
-      transform: scale(1); 
-      opacity: 0.8; 
-   }
-   50% { 
-      transform: scale(1.05); 
-      opacity: 1; 
-   }
-}
-
-@keyframes floatParticles {
-   0%, 100% { 
-      transform: translate(0, 0) rotate(0deg) scale(1); 
-   }
-   25% { 
-      transform: translate(-15px, -25px) rotate(90deg) scale(1.05); 
-   }
-   50% { 
-      transform: translate(20px, -15px) rotate(180deg) scale(0.95); 
-   }
-   75% { 
-      transform: translate(-10px, 25px) rotate(270deg) scale(1.1); 
-   }
-}
-
-@keyframes rotateShapes {
-   0% { 
-      transform: rotate(0deg) scale(1); 
-   }
-   25% { 
-      transform: rotate(90deg) scale(1.02); 
-   }
-   50% { 
-      transform: rotate(180deg) scale(0.98); 
-   }
-   75% { 
-      transform: rotate(270deg) scale(1.01); 
-   }
-   100% { 
-      transform: rotate(360deg) scale(1); 
-   }
-}
-
-@keyframes pulse {
-   0%, 100% { 
-      transform: translate(-50%, -50%) scale(1); 
-      opacity: 0.3; 
-   }
-   50% { 
-      transform: translate(-50%, -50%) scale(1.1); 
-      opacity: 0.6; 
-   }
-}
 
 /* Animation de vague pour plus de dynamisme */
 @keyframes wave {
@@ -1209,22 +1005,12 @@ body:has(.window.minimized)::after {
     flex-direction: column !important;
 }
 
-.app.fullscreen::before,
 .app.fullscreen::after,
-#app.fullscreen::before,
 #app.fullscreen::after {
     display: none !important;
     content: none !important;
 }
 
-.app.fullscreen .floating-particles,
-.app.fullscreen .depth-circles,
-#app.fullscreen .floating-particles,
-#app.fullscreen .depth-circles {
-    display: none !important;
-    visibility: hidden !important;
-    opacity: 0 !important;
-}
 
 .app.fullscreen .main-title,
 #app.fullscreen .main-title {
