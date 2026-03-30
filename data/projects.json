@@ -18,8 +18,17 @@
             "/img/projects/capitalot/stock-news.png",
             "/img/projects/capitalot/settings.png"
         ],
-        "likes": 11,
-        "id": "project7"
+        "technologies": [
+            { "name": "Vue.js", "icon": "devicon-vuejs-plain colored" },
+            { "name": "TypeScript", "icon": "devicon-typescript-plain colored" },
+            { "name": "Spring Boot", "icon": "devicon-spring-plain colored" },
+            { "name": "Java", "icon": "devicon-java-plain colored" },
+            { "name": "PostgreSQL", "icon": "devicon-postgresql-plain colored" },
+            { "name": "Docker", "icon": "devicon-docker-plain colored" },
+            { "name": "Nginx", "icon": "devicon-nginx-original colored" }
+        ],
+        "likes": 17,
+        "id": "project_capitalot"
     },
     {
         "image": "/img/projects/4ldesdomes_icon.png",
@@ -30,12 +39,23 @@
         "detailedDescription": "A turnkey e-commerce website to fund a 4L Trophy adventure. Features a clothing shop with real-time stock management, a smooth checkout flow, and secure Stripe payment integration. All orders are centralized in a PostgreSQL database. The site is fully responsive with smooth scroll animations.",
         "github": "https://github.com/Basuw/La-4L-des-d-mes",
         "summary": "Vue.js 3 + Vite + Pinia frontend, Spring Boot 3 + Java 21 backend, PostgreSQL, Docker + Nginx.",
-        "screenshots": [
-            "/img/projects/4Ldesdomes/clothes.png",
-            "/img/projects/4Ldesdomes/panier.png"
+        "media": [
+            { "type": "video", "src": "/img/projects/4Ldesdomes/home.mov" },
+            { "type": "image", "src": "/img/projects/4Ldesdomes/clothes.png" },
+            { "type": "video", "src": "/img/projects/4Ldesdomes/clothes.mov" },
+            { "type": "image", "src": "/img/projects/4Ldesdomes/panier.png" }
         ],
-        "likes": 5,
-        "id": "project8"
+        "technologies": [
+            { "name": "Vue.js", "icon": "devicon-vuejs-plain colored" },
+            { "name": "Vite", "icon": "devicon-vitejs-plain colored" },
+            { "name": "Spring Boot", "icon": "devicon-spring-plain colored" },
+            { "name": "Java", "icon": "devicon-java-plain colored" },
+            { "name": "PostgreSQL", "icon": "devicon-postgresql-plain colored" },
+            { "name": "Docker", "icon": "devicon-docker-plain colored" },
+            { "name": "Stripe", "icon": "fab fa-stripe-s" }
+        ],
+        "likes": 12,
+        "id": "project_4l"
     },
     {
         "image": "/img/projects/fallz_icon.png",
@@ -46,8 +66,15 @@
         "detailedDescription": "This hiking fall detector uses an accelerometer and gyroscope with an Arduino-based machine learning algorithm to identify falls. It transmits the user's GPS location via LoRaWAN and TheThingsStack to a backend. Users can create accounts, manage multiple devices, and track hikes and falls on a map, with data stored in a PostgreSQL database.",
         "github": "https://github.com/Basuw/FallZ",
         "summary": "University project combining IoT and machine learning.",
+        "technologies": [
+            { "name": "Arduino", "icon": "devicon-arduino-plain colored" },
+            { "name": "C++", "icon": "devicon-cplusplus-plain colored" },
+            { "name": "Python", "icon": "devicon-python-plain colored" },
+            { "name": "PostgreSQL", "icon": "devicon-postgresql-plain colored" },
+            { "name": "LoRaWAN", "icon": "fas fa-broadcast-tower" }
+        ],
         "likes": 11,
-        "id": "project7"
+        "id": "project_fallz"
     },
     {
         "image": "/img/projects/my_series_icon.png",
@@ -58,8 +85,12 @@
         "detailedDescription": "Mobile application to allow you to find series you want to watch and add them to a watchlist and by setting your preferencies it gives how much days / weeks you have to spend to watch it.",
         "github": "https://github.com/Basuw/my-series",
         "summary": "University project to enhance my knowledge on mobile development and Kotlin.",
+        "technologies": [
+            { "name": "Kotlin", "icon": "devicon-kotlin-plain colored" },
+            { "name": "Android", "icon": "devicon-android-plain colored" }
+        ],
         "likes": 5,
-        "id": "project8"
+        "id": "project_myseries"
     },
     {
         "image": "/img/projects/home_automation_icon.png",
@@ -67,9 +98,16 @@
         "description": "Domotic project to control RGB LEDs, collect sensor data, and visualize it in Grafana.",
         "date": "2025-now",
         "authors": "Bastien Jacquelin",
-        "detailedDescription": "This project is a home automation system that allows you to:Control RGB LEDs remotely via an API.Collect and store sensor data from an ESP32 using MQTT. Visualize the collected data in Grafana dashboards. Manage all services using Docker and Docker Compose.",
+        "detailedDescription": "This project is a home automation system that allows you to: Control RGB LEDs remotely via an API. Collect and store sensor data from an ESP32 using MQTT. Visualize the collected data in Grafana dashboards. Manage all services using Docker and Docker Compose.",
         "github": "https://github.com/Basuw/home-automation",
         "summary": "Personal project to facilitate home automation.",
+        "technologies": [
+            { "name": "Arduino", "icon": "devicon-arduino-plain colored" },
+            { "name": "Python", "icon": "devicon-python-plain colored" },
+            { "name": "MQTT", "icon": "fas fa-network-wired" },
+            { "name": "Grafana", "icon": "devicon-grafana-plain colored" },
+            { "name": "Docker", "icon": "devicon-docker-plain colored" }
+        ],
         "likes": 9,
         "id": "project9"
     },
@@ -82,6 +120,12 @@
         "detailedDescription": "AR-tistic is a mobile application based on augmented reality. The idea is to design a \"social network\" in AR. The application would allow you to be located in real time. As users approach points of interest, they will be allowed to use AR to draw around them. Users could therefore share their works of art, and contemplate those of others, at points of interest available on the application.",
         "github": "https://github.com/Basuw/AR-tistic",
         "summary": "Kotlin mobile app working with a javalin API and a Kotlin ORM to link the app to a PostgreSQL database.",
+        "technologies": [
+            { "name": "Kotlin", "icon": "devicon-kotlin-plain colored" },
+            { "name": "Java", "icon": "devicon-java-plain colored" },
+            { "name": "PostgreSQL", "icon": "devicon-postgresql-plain colored" },
+            { "name": "Android", "icon": "devicon-android-plain colored" }
+        ],
         "likes": 5,
         "id": "project1"
     },
@@ -91,9 +135,15 @@
         "description": "Web version of the famous game Set, with a multiplayer mode, different difficulty levels.",
         "date": "2023-06",
         "authors": "Raphaël Lacote, Aurian Jault, Rémi Arnal, Bastien Jacquelin",
-        "detailedDescription": "The SET game consists of finding the maximum number of sets. A set is made up of three cards whose four characteristics (taken separately) are: either completely identical (for example the three cards have the same suit), or totally different (for example each of the three cards is of a different color). This project was realized in the context of the course of the 2nd year of IUT",
+        "detailedDescription": "The SET game consists of finding the maximum number of sets. A set is made up of three cards whose four characteristics (taken separately) are: either completely identical (for example the three cards have the same suit), or totally different (for example each of the three cards is of a different color). This project was realized in the context of the course of the 2nd year of IUT.",
         "github": "https://github.com/Basuw/HyperSet",
-        "summary": "JavaScript web app using Node.js with Socket.io for the multiplayer mode and VueJs",
+        "summary": "JavaScript web app using Node.js with Socket.io for the multiplayer mode and VueJs.",
+        "technologies": [
+            { "name": "JavaScript", "icon": "devicon-javascript-plain colored" },
+            { "name": "Vue.js", "icon": "devicon-vuejs-plain colored" },
+            { "name": "Node.js", "icon": "devicon-nodejs-plain colored" },
+            { "name": "Socket.io", "icon": "devicon-socketio-original" }
+        ],
         "likes": 8,
         "id": "project2"
     },
@@ -103,21 +153,31 @@
         "description": "Moisture & Temperature Sensor using an Arduino board and a small screen to display the data.",
         "date": "2023-04",
         "authors": "Bastien Jacquelin",
-        "detailedDescription": "2 termic sensors display temperature and humidity percentage on a monitor. Moisture sensor activating a pump to water a plant below a certain humidity level, Tools : - Elegoo Mega 2560 - Arduino card, - U8g2 - screen,- AZ-delivery DHT 11 Temperaturesensor, - AZ-delivery Bodefeuchte Sensor Modul, with some leds to create a nice design.",
+        "detailedDescription": "2 termic sensors display temperature and humidity percentage on a monitor. Moisture sensor activating a pump to water a plant below a certain humidity level. Tools: Elegoo Mega 2560 Arduino card, U8g2 screen, AZ-delivery DHT 11 Temperature sensor, AZ-delivery Bodefeuchte Sensor Modul, with some leds to create a nice design.",
         "github": "https://github.com/Basuw/Moisture_termic_sensor-Arduino",
-        "summary": "Arduino project using C++",
+        "summary": "Arduino project using C++.",
+        "technologies": [
+            { "name": "Arduino", "icon": "devicon-arduino-plain colored" },
+            { "name": "C++", "icon": "devicon-cplusplus-plain colored" }
+        ],
         "likes": 2,
         "id": "project3"
     },
     {
         "image": "/img/projects/visit_icon.png",
         "title": "Visit Manager",
-        "description": "Web application to manage visits in a school",
+        "description": "Web application to manage visits in a school.",
         "date": "2023-06",
         "authors": "Yoan Boyer, Bastien Jacquelin",
-        "detailedDescription": "The goal of this app is to manage all the visits of the school from a client (the teacher) requirements. The app is divided in 2 parts : - The client part, where the teacher can create a visit, see all the visits, and see the details of a visit. - The admin part, where the admin can see all the visits, see the details of a visit, and validate a visit.",
+        "detailedDescription": "The goal of this app is to manage all the visits of the school from a client (the teacher) requirements. The app is divided in 2 parts: the client part, where the teacher can create a visit, see all the visits, and see the details of a visit; the admin part, where the admin can see all the visits, see the details of a visit, and validate a visit.",
         "github": "https://github.com/Basuw/Visit-manager",
-        "summary": "Angular web app and a Spring Boot API deployed using DockerCompose",
+        "summary": "Angular web app and a Spring Boot API deployed using DockerCompose.",
+        "technologies": [
+            { "name": "Angular", "icon": "devicon-angularjs-plain colored" },
+            { "name": "Spring Boot", "icon": "devicon-spring-plain colored" },
+            { "name": "Java", "icon": "devicon-java-plain colored" },
+            { "name": "Docker", "icon": "devicon-docker-plain colored" }
+        ],
         "likes": 8,
         "id": "project4"
     },
@@ -127,9 +187,15 @@
         "description": "Mobile application that allows you to recognize the song that is playing.",
         "date": "2024-06",
         "authors": "Antoine Imbert, Louis Cambier, Alban Guillot, Yoan Boyer, Bastien Jacquelin",
-        "detailedDescription": "This application aims to to identify the name of a song you're hearing like the famous app Shazam. This project was realised during 1st year of engineering school in computer science at ISIMA (equivalent to master in engineering)",
+        "detailedDescription": "This application aims to identify the name of a song you're hearing like the famous app Shazam. This project was realised during 1st year of engineering school in computer science at ISIMA (equivalent to master in engineering).",
         "github": "https://github.com/Basuw/Recoguenize-Backend",
-        "summary": "Flutter mobile app working with a Spring Boot API deployed using DockerCompose, and signal processing made in Python",
+        "summary": "Flutter mobile app working with a Spring Boot API deployed using DockerCompose, and signal processing made in Python.",
+        "technologies": [
+            { "name": "Flutter", "icon": "devicon-flutter-plain colored" },
+            { "name": "Spring Boot", "icon": "devicon-spring-plain colored" },
+            { "name": "Python", "icon": "devicon-python-plain colored" },
+            { "name": "Docker", "icon": "devicon-docker-plain colored" }
+        ],
         "likes": 12,
         "id": "project5"
     },
@@ -139,9 +205,13 @@
         "description": "Mobile application that help you to set and follow you objectives.",
         "date": "2024-now",
         "authors": "Bastien Jacquelin",
-        "detailedDescription": "With Activities you can track your progress among all ativities you perform on a day. This application help you to reach your objectives and become better each days. You can customize as much as you want. More is coming like a sport tracker and a food tracker.",
+        "detailedDescription": "With Activities you can track your progress among all activities you perform on a day. This application helps you to reach your objectives and become better each day. You can customize as much as you want. More is coming like a sport tracker and a food tracker.",
         "github": "https://github.com/Basuw/Activities",
-        "summary": "Personal project to learn React native.",
+        "summary": "Personal project to learn React Native.",
+        "technologies": [
+            { "name": "React Native", "icon": "devicon-react-original colored" },
+            { "name": "TypeScript", "icon": "devicon-typescript-plain colored" }
+        ],
         "likes": 9,
         "id": "project6"
     }

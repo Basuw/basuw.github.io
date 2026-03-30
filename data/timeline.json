@@ -2,50 +2,73 @@
     {
         "isRelevant": false,
         "iconName": "fa-solid fa-tractor",
-        "date": "2018-19-20",
-        "description": "Worked as a seasonal worker on a farm during summer holidays.",
+        "date": "2018 – 2020",
+        "description": "Seasonal farm worker.",
+        "details": "Worked as a seasonal agricultural worker during summer holidays on a large farm in Auvergne. Responsibilities included harvesting crops, operating farm machinery, maintaining equipment, and general fieldwork. A grounding experience that built discipline and work ethic.",
         "position": "right"
     },
     {
         "isRelevant": false,
         "iconName": "fas fa-graduation-cap",
         "date": "2021",
-        "description": "Obtention of baccalauréat with honors in Math and Physics.",
+        "description": "Baccalauréat with honors in Maths & Physics.",
+        "details": "Obtained the French baccalauréat with honors (mention Bien) in the scientific stream, specializing in Mathematics and Physics-Chemistry. Solid foundation in analytical thinking and problem solving that shaped my engineering path.",
         "position": "left"
     },
     {
         "isRelevant": true,
         "iconName": "fas fa-keyboard",
         "date": "2023",
-        "description": "Started working for a famous tire manufacturer as trainee devops.",
+        "description": "Trainee DevOps at Michelin.",
+        "details": "6-month internship at Michelin, one of the world's leading tyre manufacturers. Worked on CI/CD pipeline automation, infrastructure-as-code, and containerization using Docker and Kubernetes. First real-world exposure to large-scale software engineering practices.",
         "position": "right"
     },
     {
         "isRelevant": false,
         "iconName": "fas fa-laptop-code",
         "date": "2023",
-        "description": "Obtention of DUT in Computer Science at IUT Informatique Aubiere.",
+        "description": "DUT in Computer Science at IUT Informatique Aubière.",
+        "details": "2-year technical degree (DUT INFO) at IUT Informatique d'Aubière, Clermont-Ferrand. Covered algorithms, data structures, networking, databases, object-oriented programming, and web development. Graduated with strong fundamentals across the full software stack.",
         "position": "left"
     },
     {
         "isRelevant": true,
         "iconName": "fas fa-fire-extinguisher",
         "date": "2024",
-        "description": "Started my engagement as a volunteer firefighter.",
+        "description": "Volunteer firefighter.",
+        "details": "Active volunteer firefighter (Sapeur-Pompier Volontaire) at a local fire station in Auvergne. Trained in fire suppression, road accident response, and first aid (PSE1 certified). On-call every few weeks, balancing this commitment alongside full-time studies. A deeply rewarding engagement that develops teamwork and resilience under pressure.",
         "position": "right"
     },
     {
-        "isRelevant": true,
+        "isRelevant": false,
         "iconName": "fas fa-chalkboard-teacher",
         "date": "2024",
-        "description": "Started giving private Maths lesson.",
+        "description": "Private Maths tutor.",
+        "details": "Giving private mathematics lessons to high school and preparatory class students. Helping them master key concepts, prepare for the baccalauréat, and tackle competitive entrance exams. Strengthened my ability to communicate complex ideas clearly.",
         "position": "left"
     },
     {
         "isRelevant": true,
         "iconName": "fas fa-user-graduate",
-        "date": "2025",
-        "description": "2nd year of engineering degree in Computer Science at ISIMA.",
+        "date": "2026",
+        "description": "3rd year engineering degree at ISIMA.",
+        "details": "3rd year of a 5-year engineering degree in Computer Science at ISIMA (Institut Supérieur d'Informatique, de Modélisation et de leurs Applications), Clermont-Ferrand. Specializing in software engineering, algorithms, and applied mathematics. Pursuing this degree as an apprentice engineer.",
+        "position": "right"
+    },
+    {
+        "isRelevant": false,
+        "iconName": "fas fa-car",
+        "date": "2026",
+        "description": "4L Trophy 2026.",
+        "details": "Participated in the 4L Trophy 2026, the world's largest humanitarian student rally. Crossed Morocco from France in a Renault 4L, covering over 6 000 km of tracks and desert terrain. Collected and delivered school supplies to children in remote Moroccan villages. An unforgettable adventure combining solidarity, teamwork, and endurance.",
+        "position": "left"
+    },
+    {
+        "isRelevant": true,
+        "iconName": "fas fa-route",
+        "date": "2026",
+        "description": "Research internship at UFMG, Brazil.",
+        "details": "Research internship at UFMG (Universidade Federal de Minas Gerais), one of Brazil's top universities. Working on mathematical optimization for the Location-Routing Problem (LRP) applied to last-mile logistics delivery. Involves combinatorial optimization, metaheuristics, and operational research. A highly technical and international academic experience.",
         "position": "right"
     }
 ]

@@ -126,8 +126,8 @@
     justify-content: space-between;
     position: absolute;
     top: 50%;
-    left: -60px; /* Plus éloigné */
-    right: -60px;
+    left: 8px;
+    right: 8px;
     transform: translateY(-50%);
     pointer-events: none;
 }
@@ -230,8 +230,8 @@
     }
 
     .carousel-controls {
-        left: clamp(-45px, -6vw, -35px);
-        right: clamp(-45px, -6vw, -35px);
+        left: 6px;
+        right: 6px;
     }
 
     .carousel-control {

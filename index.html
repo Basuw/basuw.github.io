@@ -19,6 +19,10 @@
 	<link rel="stylesheet" href="/style/about/experience.css"/>
 	<link rel="stylesheet" href="/style/website.css"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/devicon.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700&display=swap">
 
 	<!-- <script src="assets/main.js"></script> -->
 	<link rel="icon" type="image/x-icon" href="icon/watermelon.ico">
@@ -34,6 +38,61 @@
 </head>
 
 <body>
+    <!-- macOS Menubar -->
+    <div class="mac-menubar" id="mac-menubar">
+        <div class="mac-menubar-left">
+            <span class="mac-apple">&#63743;</span>
+            <span class="mac-menu-app">Bastien's Page</span>
+        </div>
+        <div class="mac-menubar-right">
+            <button type="button" class="mac-status-btn" id="mac-wifi-btn" title="Network"><i class="fas fa-wifi" id="mac-wifi-icon"></i></button>
+            <button type="button" class="mac-status-btn" id="mac-sound-btn" title="Sound"><i class="fas fa-volume-up" id="mac-sound-icon"></i></button>
+            <button type="button" class="mac-status-btn mac-battery-wrap" id="mac-battery-btn" title="Battery">
+                <i class="fas fa-battery-full" id="mac-battery-icon"></i><span id="mac-battery-text"></span>
+            </button>
+            <span class="mac-datetime" id="mac-datetime"></span>
+        </div>
+    </div>
+
+    <!-- macOS Panels -->
+    <div class="mac-panel" id="mac-wifi-panel">
+        <div class="mac-panel-header">
+            <i class="fas fa-wifi mac-panel-icon" id="mac-wifi-panel-icon"></i>
+            <span class="mac-panel-title">Network</span>
+        </div>
+        <div class="mac-panel-row" id="mac-wifi-detail">
+            <span class="mac-dot mac-dot-green"></span><span>Connected</span>
+        </div>
+    </div>
+
+    <div class="mac-panel" id="mac-sound-panel">
+        <div class="mac-panel-header">
+            <i class="fas fa-volume-up mac-panel-icon" id="mac-sound-panel-icon"></i>
+            <span class="mac-panel-title">Sound</span>
+            <span class="mac-panel-value" id="mac-sound-value">75%</span>
+        </div>
+        <div class="mac-panel-slider-row">
+            <i class="fas fa-volume-down mac-panel-sm"></i>
+            <div class="mac-panel-track">
+                <div class="mac-panel-fill" id="mac-sound-fill"></div>
+                <input type="range" class="mac-range" id="mac-sound-range" min="0" max="100" value="75" title="Volume" aria-label="Volume" />
+            </div>
+            <i class="fas fa-volume-up mac-panel-sm"></i>
+        </div>
+    </div>
+
+    <div class="mac-panel" id="mac-battery-panel">
+        <div class="mac-panel-header">
+            <i class="fas fa-battery-full mac-panel-icon" id="mac-battery-icon-lg"></i>
+            <span class="mac-panel-title">Battery</span>
+            <span class="mac-panel-value" id="mac-battery-pct">—</span>
+        </div>
+        <div class="mac-panel-track mac-battery-track">
+            <div class="mac-panel-fill mac-battery-fill" id="mac-battery-fill"></div>
+        </div>
+        <div class="mac-panel-sub" id="mac-battery-status">—</div>
+    </div>
+
     <div id="app" class="app row" :class="{ 'fullscreen': isWindowFullscreen }">
         <h1 class="main-title" :class="{ 'minimized': isWindowMinimized, 'fullscreen': isWindowFullscreen }">
             {{title}}
@@ -103,6 +162,131 @@
     </div>
 
 
+
+    <script>
+    (function () {
+        // ── Clock ────────────────────────────────────────
+        var DAYS   = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+        var MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+        function updateClock() {
+            var now = new Date();
+            var el = document.getElementById('mac-datetime');
+            if (el) el.textContent = DAYS[now.getDay()] + ' ' + now.getDate() + ' ' +
+                MONTHS[now.getMonth()] + '  ' +
+                String(now.getHours()).padStart(2,'0') + ':' +
+                String(now.getMinutes()).padStart(2,'0');
+        }
+        updateClock();
+        setInterval(updateClock, 10000);
+
+        // ── Battery ──────────────────────────────────────
+        var batteryObj = null;
+        function batteryIcon(lvl) {
+            return 'fas ' + (lvl > 87 ? 'fa-battery-full' :
+                             lvl > 62 ? 'fa-battery-three-quarters' :
+                             lvl > 37 ? 'fa-battery-half' :
+                             lvl > 12 ? 'fa-battery-quarter' : 'fa-battery-empty');
+        }
+        function batteryColor(lvl) {
+            return lvl > 50 ? '#4ade80' : lvl > 20 ? '#facc15' : '#f87171';
+        }
+        function refreshBattery() {
+            if (!batteryObj) return;
+            var lvl     = Math.round(batteryObj.level * 100);
+            var charging = batteryObj.charging;
+            var txt  = document.getElementById('mac-battery-text');
+            var ico  = document.getElementById('mac-battery-icon');
+            var icoL = document.getElementById('mac-battery-icon-lg');
+            var pct  = document.getElementById('mac-battery-pct');
+            var fill = document.getElementById('mac-battery-fill');
+            var stat = document.getElementById('mac-battery-status');
+            var btn  = document.getElementById('mac-battery-btn');
+            if (txt)  txt.textContent  = ' ' + lvl + '%';
+            if (ico)  ico.className    = batteryIcon(lvl);
+            if (icoL) icoL.className   = 'fas ' + (batteryIcon(lvl).split(' ')[1]) + ' mac-panel-icon';
+            if (pct)  pct.textContent  = lvl + '%';
+            if (fill) { fill.style.width = lvl + '%'; fill.style.background = charging ? '#60a5fa' : batteryColor(lvl); }
+            if (stat) stat.textContent = charging ? '⚡ Charging' : (lvl < 20 ? '⚠ Low battery' : 'On battery');
+            if (btn)  btn.classList.toggle('mac-battery-charging', charging);
+        }
+        if ('getBattery' in navigator) {
+            navigator.getBattery().then(function (bat) {
+                batteryObj = bat;
+                refreshBattery();
+                bat.addEventListener('levelchange', refreshBattery);
+                bat.addEventListener('chargingchange', refreshBattery);
+            });
+        }
+
+        // ── WiFi ─────────────────────────────────────────
+        function refreshWifi() {
+            var online = navigator.onLine;
+            var ico    = document.getElementById('mac-wifi-icon');
+            var picoEl = document.getElementById('mac-wifi-panel-icon');
+            var det    = document.getElementById('mac-wifi-detail');
+            var btn    = document.getElementById('mac-wifi-btn');
+            if (ico)    { ico.style.opacity = online ? '1' : '0.3'; }
+            if (picoEl) { picoEl.style.color = online ? '' : '#f87171'; }
+            if (det)    det.innerHTML = online
+                ? '<span class="mac-dot mac-dot-green"></span><span>Connected</span>'
+                : '<span class="mac-dot mac-dot-red"></span><span>No connection</span>';
+            if (btn)    btn.classList.toggle('mac-btn-offline', !online);
+        }
+        refreshWifi();
+        window.addEventListener('online',  refreshWifi);
+        window.addEventListener('offline', refreshWifi);
+
+        // ── Sound slider ─────────────────────────────────
+        var soundRange = document.getElementById('mac-sound-range');
+        function refreshSound(val) {
+            var fill  = document.getElementById('mac-sound-fill');
+            var value = document.getElementById('mac-sound-value');
+            var ico   = document.getElementById('mac-sound-icon');
+            var pico  = document.getElementById('mac-sound-panel-icon');
+            var cls   = val > 50 ? 'fa-volume-up' : val > 0 ? 'fa-volume-down' : 'fa-volume-mute';
+            if (fill)  fill.style.width = val + '%';
+            if (value) value.textContent = val + '%';
+            if (ico)   ico.className = 'fas ' + cls;
+            if (pico)  pico.className = 'fas ' + cls + ' mac-panel-icon';
+        }
+        if (soundRange) {
+            refreshSound(soundRange.value);
+            soundRange.addEventListener('input', function () { refreshSound(this.value); });
+        }
+
+        // ── Panel toggle ─────────────────────────────────
+        function openPanel(panelId, btnId) {
+            var panels = document.querySelectorAll('.mac-panel');
+            panels.forEach(function (p) {
+                if (p.id !== panelId) { p.classList.remove('active'); }
+            });
+            var panel = document.getElementById(panelId);
+            var btn   = document.getElementById(btnId);
+            if (!panel || !btn) return;
+            var rect = btn.getBoundingClientRect();
+            panel.style.right = (window.innerWidth - rect.right) + 'px';
+            panel.classList.toggle('active');
+        }
+
+        document.getElementById('mac-wifi-btn').addEventListener('click', function (e) {
+            e.stopPropagation(); openPanel('mac-wifi-panel', 'mac-wifi-btn');
+        });
+        document.getElementById('mac-sound-btn').addEventListener('click', function (e) {
+            e.stopPropagation(); openPanel('mac-sound-panel', 'mac-sound-btn');
+        });
+        document.getElementById('mac-battery-btn').addEventListener('click', function (e) {
+            e.stopPropagation(); openPanel('mac-battery-panel', 'mac-battery-btn');
+        });
+
+        document.addEventListener('click', function () {
+            document.querySelectorAll('.mac-panel').forEach(function (p) { p.classList.remove('active'); });
+            document.querySelectorAll('.mac-status-btn').forEach(function (b) { b.classList.remove('mac-btn-active'); });
+        });
+        document.querySelectorAll('.mac-panel').forEach(function (p) {
+            p.addEventListener('click', function (e) { e.stopPropagation(); });
+        });
+    })();
+    </script>
 
     <script type="module">
 

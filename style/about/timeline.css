@@ -20,7 +20,7 @@
 #time > .timeline-line {
     position: absolute;
     /* min-height: calc(75vh * 3); */
-    min-height: 1960px;
+    min-height: 2300px;
 }
 
 #time::-webkit-scrollbar {
@@ -64,7 +64,6 @@
 .timeline-content {
     background: var(--card-bg);
     backdrop-filter: blur(20px);
-    border: 1px solid var(--accent-alpha-30);
     padding: 20px;
     border-radius: 16px;
     box-shadow: 
@@ -353,6 +352,184 @@
     
     #time::before {
         height: 100%;
+    }
+}
+
+/* Timeline more hint */
+.timeline-more-hint {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 0.78em;
+    font-family: 'Chillax', sans-serif;
+    color: var(--accent-primary-alpha-80);
+    margin-top: 8px;
+    opacity: 0.8;
+    transition: opacity 0.2s ease;
+}
+
+.timeline-content--clickable:hover .timeline-more-hint {
+    opacity: 1;
+}
+
+.timeline-content--clickable {
+    border-color: var(--accent-alpha-40) !important;
+}
+
+/* Timeline detail popup */
+.tl-popup-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.55);
+    -webkit-backdrop-filter: blur(6px);
+    backdrop-filter: blur(6px);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    animation: tl-overlay-in 0.2s ease;
+}
+
+@keyframes tl-overlay-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.tl-popup-card {
+    background: var(--card-bg);
+    -webkit-backdrop-filter: blur(30px);
+    backdrop-filter: blur(30px);
+    border: 1px solid var(--accent-alpha-30);
+    border-radius: 20px;
+    padding: 32px;
+    max-width: 560px;
+    width: 100%;
+    position: relative;
+    box-shadow:
+        0 30px 60px rgba(0, 0, 0, 0.4),
+        0 0 0 1px var(--border-subtle);
+    animation: tl-card-in 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes tl-card-in {
+    from { opacity: 0; transform: scale(0.88) translateY(16px); }
+    to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.tl-popup-close {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 1px solid var(--accent-alpha-20);
+    background: var(--bg-secondary-alpha);
+    color: var(--text-secondary);
+    font-size: 18px;
+    line-height: 1;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+
+.tl-popup-close:hover {
+    background: var(--accent-alpha-20);
+    color: var(--text-primary);
+    border-color: var(--accent-alpha-50);
+}
+
+.tl-popup-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 20px;
+}
+
+.tl-popup-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 14px;
+    background: var(--accent-alpha-10);
+    border: 1px solid var(--accent-alpha-30);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.tl-popup-icon i {
+    font-size: 1.6em;
+    background: var(--accent-gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 0 8px var(--accent-glow));
+    margin-bottom: 0;
+}
+
+.tl-popup-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.tl-popup-date {
+    font-family: 'Vercetti', sans-serif;
+    font-size: 1.3em;
+    background: var(--text-gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    line-height: 1;
+}
+
+.tl-popup-badge {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 20px;
+    background: var(--accent-alpha-15);
+    border: 1px solid var(--accent-alpha-30);
+    color: var(--accent-primary-alpha-80);
+    font-size: 0.72em;
+    font-family: 'Chillax', sans-serif;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+}
+
+.tl-popup-title {
+    font-family: 'Chillax', sans-serif;
+    font-size: 1.05em;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 0 0 14px 0;
+    line-height: 1.4;
+}
+
+.tl-popup-details {
+    font-family: 'Chillax', sans-serif;
+    font-size: 0.92em;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    margin: 0;
+}
+
+@media (max-width: 600px) {
+    .tl-popup-card {
+        padding: 22px 18px;
+        border-radius: 16px;
+    }
+
+    .tl-popup-icon {
+        width: 44px;
+        height: 44px;
+    }
+
+    .tl-popup-date {
+        font-size: 1.1em;
     }
 }
 
