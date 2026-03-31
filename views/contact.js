@@ -3,135 +3,133 @@ export default {
         return {
             currentIndex: 0,
             intervalId: null,
-            colorIntervalId: null, // Ajout d'un identifiant pour l'intervalle de couleur
-            colorStep: 0, // Étape actuelle de la couleur
+            colorIntervalId: null,
+            colorStep: 0,
             links: [
                 {
                     href: "https://www.linkedin.com/in/bastien-jacquelin",
                     icon: "fab fa-linkedin",
-                    text: "LinkedIn"
+                    name: "LinkedIn",
+                    handle: "/in/bastien-jacquelin",
+                    tagline: "Let's connect professionally",
+                    accentClass: "contact-card--linkedin"
                 },
                 {
                     href: "https://github.com/Basuw",
                     icon: "fab fa-github",
-                    text: "GitHub"
+                    name: "GitHub",
+                    handle: "github.com/Basuw",
+                    tagline: "Check out my open-source work",
+                    accentClass: "contact-card--github"
                 },
                 {
                     href: "mailto:bastien.jacquelin@free.fr",
                     icon: "fas fa-envelope",
-                    text: "Email"
+                    name: "Email",
+                    handle: "bastien.jacquelin@free.fr",
+                    tagline: "Drop me a message anytime",
+                    accentClass: "contact-card--email"
                 }
             ]
         };
     },
     methods: {
         nextLink() {
-            const prevIndex = this.currentIndex;
             this.currentIndex = (this.currentIndex + 1) % this.links.length;
-            this.updateClasses(prevIndex, this.currentIndex, 'next');
-            this.resetInterval(); // Réinitialiser l'intervalle
+            this.resetTimer();
         },
         prevLink() {
-            const prevIndex = this.currentIndex;
             this.currentIndex = (this.currentIndex - 1 + this.links.length) % this.links.length;
-            this.updateClasses(prevIndex, this.currentIndex, 'prev');
-            this.resetInterval(); // Réinitialiser l'intervalle
+            this.resetTimer();
         },
         selectLink(index) {
-            const prevIndex = this.currentIndex;
             this.currentIndex = index;
-            this.updateClasses(prevIndex, this.currentIndex, 'next');
-            this.resetInterval(); // Réinitialiser l'intervalle
+            this.resetTimer();
         },
-        updateClasses(prevIndex, currentIndex, direction) {
-            const items = this.$el.querySelectorAll('.carousel-item');
-            items.forEach((item, index) => {
-                item.classList.remove('active', 'prev', 'next');
-                item.style.display = 'none'; // Masquer tous les éléments
-                if (index === prevIndex) {
-                    item.classList.add(direction === 'next' ? 'next' : 'prev');
-                    item.style.display = 'block'; // Afficher l'élément précédent ou suivant
-                }
-                if (index === currentIndex) {
-                    item.classList.add('active');
-                    item.style.display = 'block'; // Afficher l'élément actif
-                }
-            });
-            this.resetIndicatorColors(); // Réinitialiser les couleurs des indicateurs
+        resetTimer() {
+            clearInterval(this.intervalId);
+            clearInterval(this.colorIntervalId);
+            this.colorStep = 0;
+            this.intervalId = setInterval(this.nextLink, 5000);
+            this.colorIntervalId = setInterval(this.tickColor, 100);
         },
-        resetInterval() {
-            if (this.intervalId) {
-                clearInterval(this.intervalId);
-            }
-            if (this.colorIntervalId) {
-                clearInterval(this.colorIntervalId);
-            }
-            this.intervalId = setInterval(this.nextLink, 5000); // Réinitialiser l'intervalle
-            this.colorStep = 0; // Réinitialiser l'étape de couleur
-            this.colorIntervalId = setInterval(this.updateIndicatorColor, 100); // Changer la couleur toutes les 0.1 secondes
+        tickColor() {
+            this.colorStep = (this.colorStep + 1) % 51;
         },
-        interpolateColor(color1, color2, factor) {
-            const result = color1.slice();
-            for (let i = 0; i < 3; i++) {
-                result[i] = Math.round(result[i] + factor * (color2[i] - color1[i]));
+        dotColor(index) {
+            if (index !== this.currentIndex) return null;
+            // green → amber → red over 50 steps
+            const t = this.colorStep / 50;
+            let r, g, b;
+            if (t < 0.5) {
+                const f = t * 2;
+                r = Math.round(74  + f * (245 - 74));
+                g = Math.round(222 + f * (158 - 222));
+                b = Math.round(128 + f * (11  - 128));
+            } else {
+                const f = (t - 0.5) * 2;
+                r = Math.round(245 + f * (239 - 245));
+                g = Math.round(158 + f * (68  - 158));
+                b = Math.round(11  + f * (68  - 11));
             }
-            return result;
-        },
-        updateIndicatorColor() {
-            const blue = [0, 115, 177];
-            const violet = [142, 68, 173];
-            const factor = this.colorStep / 50;
-            const color = this.interpolateColor(blue, violet, factor);
-            const colorString = `rgb(${color[0]}, ${color[1]}, ${color[2]})`;
-            const activeIndicator = this.$el.querySelector('.carousel-indicators span.active');
-            if (activeIndicator) {
-                activeIndicator.style.backgroundColor = colorString;
-            }
-            this.colorStep = (this.colorStep + 1) % 51; // Réinitialiser après 50 étapes
-        },
-        resetIndicatorColors() {
-            const indicators = this.$el.querySelectorAll('.carousel-indicators span');
-            indicators.forEach(indicator => {
-                indicator.style.backgroundColor = '#ccc'; // Couleur grise pour tous les indicateurs
-                indicator.classList.remove('active'); // Supprimer la classe active
-            });
-            const activeIndicator = this.$el.querySelector(`.carousel-indicators span:nth-child(${this.currentIndex + 1})`);
-            if (activeIndicator) {
-                activeIndicator.classList.add('active'); // Ajouter la classe active au point sélectionné
-            }
+            return `rgb(${r},${g},${b})`;
         }
     },
     mounted() {
-        this.intervalId = setInterval(this.nextLink, 5000); // Change link every 5 seconds
-        this.colorIntervalId = setInterval(this.updateIndicatorColor, 100); // Change color every 0.1 seconds
+        this.intervalId = setInterval(this.nextLink, 5000);
+        this.colorIntervalId = setInterval(this.tickColor, 100);
     },
-    beforeDestroy() {
-        if (this.intervalId) {
-            clearInterval(this.intervalId); // Nettoyer l'intervalle lors de la destruction du composant
-        }
-        if (this.colorIntervalId) {
-            clearInterval(this.colorIntervalId); // Nettoyer l'intervalle de couleur lors de la destruction du composant
-        }
+    beforeUnmount() {
+        clearInterval(this.intervalId);
+        clearInterval(this.colorIntervalId);
     },
     template: `
-        <div class="contact">
-            <h2>Don't hesitate to contact me !</h2>
-            <div class="carousel">
-                <div class="carousel-inner">
-                    <div v-for="(link, index) in links" :key="index" class="carousel-item" :class="{ active: index === currentIndex }">
-                        <a :href="link.href" target="_blank">
-                            <i :class="link.icon"></i> {{ link.text }}
+    <div class="contact">
+        <h2 class="contact-title">Get in touch</h2>
+        <p class="contact-subtitle">I'd love to hear from you — pick your favourite channel.</p>
+
+        <div class="contact-stage">
+            <button type="button" class="contact-arrow contact-arrow--prev" @click="prevLink">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+
+            <div class="contact-cards">
+                <div
+                    v-for="(link, index) in links"
+                    :key="index"
+                    class="contact-card"
+                    :class="[link.accentClass, { 'is-active': index === currentIndex, 'is-prev': index === (currentIndex - 1 + links.length) % links.length, 'is-next': index === (currentIndex + 1) % links.length }]"
+                >
+                    <div class="contact-card-glow"></div>
+                    <div class="contact-card-inner">
+                        <div class="contact-card-icon">
+                            <i :class="link.icon"></i>
+                        </div>
+                        <h3 class="contact-card-name">{{ link.name }}</h3>
+                        <p class="contact-card-tagline">{{ link.tagline }}</p>
+                        <span class="contact-card-handle">{{ link.handle }}</span>
+                        <a :href="link.href" target="_blank" class="contact-card-btn" @click.stop>
+                            Visit <i class="fas fa-arrow-right"></i>
                         </a>
                     </div>
                 </div>
-                <div class="carousel-controls">
-                    <button @click="prevLink" class="carousel-control prev">&lt;</button>
-                    <button @click="nextLink" class="carousel-control next">&gt;</button>
-                </div>
-                <div class="carousel-indicators">
-                    <span v-for="(link, index) in links" :key="index" :class="{ active: index === currentIndex }" @click="selectLink(index)"></span>
-                </div>
             </div>
+
+            <button type="button" class="contact-arrow contact-arrow--next" @click="nextLink">
+                <i class="fas fa-chevron-right"></i>
+            </button>
         </div>
+
+        <div class="contact-dots">
+            <span
+                v-for="(link, index) in links"
+                :key="index"
+                class="contact-dot"
+                :class="{ 'is-active': index === currentIndex }"
+                :style="index === currentIndex ? { backgroundColor: dotColor(index), boxShadow: '0 0 10px ' + dotColor(index) } : {}"
+                @click="selectLink(index)"
+            ></span>
+        </div>
+    </div>
     `
 }

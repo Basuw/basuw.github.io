@@ -18,6 +18,8 @@
 	<link rel="stylesheet" href="/style/about/personality.css"/>
 	<link rel="stylesheet" href="/style/about/experience.css"/>
 	<link rel="stylesheet" href="/style/website.css"/>
+	<link rel="stylesheet" href="/style/colorpalette.css"/>
+	<link rel="stylesheet" href="/style/terminal.css"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/devicon.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -106,20 +108,53 @@
                 </div>
                 <div class="navbar">
                     <div class="navbar-tabs">
-                        <a @click="homeFunction">Home</a>
-                        <a @click="aboutFunction">About myself</a>
-                        <div class="dropdown" :class="{ show: showDropdown }" @mouseenter="showDropdownWithDelay" @mouseleave="hideDropdownWithDelay">
-                            <button class="dropdown-btn" @click="toggleDropdown">▼ For developers</button>
+                        <a @click="homeFunction" :class="{ active: componentStatus['home'] }">
+                            <i class="fas fa-house nav-tab-icon"></i>
+                            <span class="nav-tab-label">Home</span>
+                        </a>
+                        <a @click="aboutFunction" :class="{ active: componentStatus['about'] }" class="nav-tab-featured">
+                            <i class="fas fa-user nav-tab-icon"></i>
+                            <span class="nav-tab-label">About myself</span>
+                        </a>
+                        <div class="dropdown" :class="{ show: showDropdown, active: componentStatus['fonts'] || componentStatus['colorpalette'] || componentStatus['terminal'] }" @mouseenter="showDropdownWithDelay" @mouseleave="hideDropdownWithDelay">
+                            <button type="button" class="dropdown-btn" @click="toggleDropdown">
+                                <i class="fas fa-code nav-tab-icon"></i>
+                                <span class="nav-tab-label">Developers</span>
+                            </button>
                             <div class="dropdown-content" @mouseenter="showDropdownWithDelay" @mouseleave="hideDropdownWithDelay">
-                                <a @click="fontsFunction">Fonts</a>
-                                <a @click="developmentFunction">Coming soon</a>
-                                <a @click="developmentFunction">Coming soon</a>
+                                <a @click="fontsFunction" class="dropdown-item">
+                                    <span class="dropdown-item-icon"><i class="fas fa-font"></i></span>
+                                    <span class="dropdown-item-body">
+                                        <span class="dropdown-item-title">Fonts</span>
+                                        <span class="dropdown-item-desc">Explore the typefaces used on this site</span>
+                                    </span>
+                                </a>
+                                <a @click="colorpaletteFunction" class="dropdown-item">
+                                    <span class="dropdown-item-icon"><i class="fas fa-palette"></i></span>
+                                    <span class="dropdown-item-body">
+                                        <span class="dropdown-item-title">Color Palette</span>
+                                        <span class="dropdown-item-desc">Design tokens &amp; theme variables</span>
+                                    </span>
+                                </a>
+                                <a @click="terminalFunction" class="dropdown-item">
+                                    <span class="dropdown-item-icon"><i class="fas fa-terminal"></i></span>
+                                    <span class="dropdown-item-body">
+                                        <span class="dropdown-item-title">Terminal</span>
+                                        <span class="dropdown-item-desc">Interactive easter egg</span>
+                                    </span>
+                                </a>
                             </div>
                         </div>
-                        <a @click="contactFunction">Contact</a>
-                        <a @click="thisWebSiteFunction">This website</a>
+                        <a @click="contactFunction" :class="{ active: componentStatus['contact'] }">
+                            <i class="fas fa-envelope nav-tab-icon"></i>
+                            <span class="nav-tab-label">Contact</span>
+                        </a>
+                        <a @click="thisWebSiteFunction" :class="{ active: componentStatus['website'] }">
+                            <i class="fas fa-globe nav-tab-icon"></i>
+                            <span class="nav-tab-label">This website</span>
+                        </a>
                     </div>
-                    <button @click="toggleTheme" class="apple-toggle" :class="{ 'active': isDarkTheme }" :title="isDarkTheme ? 'Switch to Light Theme' : 'Switch to Dark Theme'">
+                    <button type="button" @click="toggleTheme" class="apple-toggle" :class="{ 'active': isDarkTheme }" :title="isDarkTheme ? 'Switch to Light Theme' : 'Switch to Dark Theme'">
                         <div class="toggle-slider">
                             <i :class="isDarkTheme ? 'fas fa-moon' : 'fas fa-sun'"></i>
                         </div>
@@ -142,6 +177,12 @@
                     <div v-if="componentStatus['website']">
                         <website />
                     </div>
+                    <div v-if="componentStatus['colorpalette']">
+                        <colorpalette />
+                    </div>
+                    <div v-if="componentStatus['terminal']">
+                        <terminal-dev />
+                    </div>
                 </div>
             </div>
         </div>
@@ -149,10 +190,47 @@
         <!-- Dock macOS -->
         <div class="dock" :class="{ 'visible': isWindowMinimized }">
             <div class="dock-container">
+
                 <div class="dock-item" @click="restoreWindow" title="Bastien's Website">
                     <img src="icon/watermelon.ico" alt="Website Icon" />
                     <span class="dock-label">Website</span>
+                    <span class="dock-dot"></span>
                 </div>
+
+                <div class="dock-separator"></div>
+
+                <div class="dock-item" @click="restoreWindow(); homeFunction()" title="Home">
+                    <div class="dock-icon dock-icon--safari"><i class="fas fa-compass"></i></div>
+                    <span class="dock-label">Home</span>
+                </div>
+
+                <div class="dock-item" @click="restoreWindow(); aboutFunction()" title="About myself">
+                    <div class="dock-icon dock-icon--photos"><i class="fas fa-user"></i></div>
+                    <span class="dock-label">About</span>
+                </div>
+
+                <div class="dock-item" @click="restoreWindow(); contactFunction()" title="Contact">
+                    <div class="dock-icon dock-icon--mail"><i class="fas fa-envelope"></i></div>
+                    <span class="dock-label">Mail</span>
+                </div>
+
+                <div class="dock-item" @click="restoreWindow(); terminalFunction()" title="Terminal">
+                    <div class="dock-icon dock-icon--terminal"><i class="fas fa-terminal"></i></div>
+                    <span class="dock-label">Terminal</span>
+                </div>
+
+                <div class="dock-separator"></div>
+
+                <div class="dock-item dock-item--decorative" title="Finder">
+                    <div class="dock-icon dock-icon--finder"><i class="fas fa-folder"></i></div>
+                    <span class="dock-label">Finder</span>
+                </div>
+
+                <div class="dock-item" @click="toggleTheme()" title="System Preferences">
+                    <div class="dock-icon dock-icon--settings"><i class="fas fa-gear"></i></div>
+                    <span class="dock-label">Settings</span>
+                </div>
+
             </div>
         </div>
         
@@ -292,6 +370,8 @@
 
         import { createApp } from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js';
         import Fonts from '/views/development/fonts.js';
+        import ColorPalette from '/views/development/colorpalette.js';
+        import Terminal from '/views/development/terminal.js';
         import Home from '/views/home.js';
         import Contact from '/views/contact.js';
         import About from '/views/about/about.js';
@@ -330,6 +410,8 @@
                         'home': true,
                         'development': false,
                         'fonts': false,
+                        'colorpalette': false,
+                        'terminal': false,
                         'about': false,
                         'contact': false,
                         'website': false,
@@ -348,10 +430,22 @@
                     this.title = "Development tools";
                 },
                 fontsFunction(){
-                    this.showDropdown = false; // Fermer le menu déroulant
-                    this.developmentFunction()
+                    this.showDropdown = false;
                     this.setValueToFalse(this.componentStatus);
                     this.componentStatus['fonts'] = true;
+                    this.title = "Fonts";
+                },
+                colorpaletteFunction(){
+                    this.showDropdown = false;
+                    this.setValueToFalse(this.componentStatus);
+                    this.componentStatus['colorpalette'] = true;
+                    this.title = "Color Palette";
+                },
+                terminalFunction(){
+                    this.showDropdown = false;
+                    this.setValueToFalse(this.componentStatus);
+                    this.componentStatus['terminal'] = true;
+                    this.title = "Terminal";
                 },
                 homeFunction(){
                     this.setValueToFalse(this.componentStatus);
@@ -406,7 +500,7 @@
                     }
                 },
                 closeWindow() {
-                    this.isWindowMinimized = false;
+                    this.isWindowMinimized = true;
                 },
                 minimizeWindow() {
                     this.isWindowMinimized = true;
@@ -444,6 +538,8 @@
             .component('Personality', Personality)
             .component('Experience', Experience)
             .component('Website', Website)
+            .component('Colorpalette', ColorPalette)
+            .component('TerminalDev', Terminal)
         app.mount('#app');
     </script>    
 </body>

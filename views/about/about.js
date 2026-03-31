@@ -56,12 +56,9 @@ export default{
             this.startHideTimer();
         },
         highlightButton(event) {
-            // Remove highlight from all buttons
             const buttons = document.querySelectorAll('.bar-button');
             buttons.forEach(btn => btn.classList.remove('highlighted'));
-
-            // Add highlight to the clicked button
-            event.target.classList.add('highlighted');
+            event.currentTarget.classList.add('highlighted');
         },
         setStyles(){
             this.$nextTick(() => {
@@ -157,10 +154,22 @@ export default{
         @mouseenter="onBottomBarMouseEnter"
         @mouseleave="onBottomBarMouseLeave"
     >
-        <div id="first-button" class="bar-button" @click="timelineFunc($event)">Timeline</div>
-        <div class="bar-button" @click="experienceFunc($event)">Experience</div>
-        <div class="bar-button" @click="projectsFunc($event)">Projects</div>
-        <div id="last-button" class="bar-button" @click="personalityFunc($event)">Personality</div>
+        <div id="first-button" class="bar-button" @click="timelineFunc($event)">
+            <i class="fas fa-clock-rotate-left bar-btn-icon"></i>
+            <span class="bar-btn-label">Timeline</span>
+        </div>
+        <div class="bar-button" @click="experienceFunc($event)">
+            <i class="fas fa-briefcase bar-btn-icon"></i>
+            <span class="bar-btn-label">Experience</span>
+        </div>
+        <div class="bar-button" @click="projectsFunc($event)">
+            <i class="fas fa-laptop-code bar-btn-icon"></i>
+            <span class="bar-btn-label">Projects</span>
+        </div>
+        <div id="last-button" class="bar-button bar-button--about" @click="personalityFunc($event)">
+            <i class="fas fa-id-card bar-btn-icon"></i>
+            <span class="bar-btn-label">About me</span>
+        </div>
     </div>
     
     <!-- Petite barre indicatrice iOS-style -->

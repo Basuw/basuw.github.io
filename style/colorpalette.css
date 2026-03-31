@@ -1,0 +1,238 @@
+.color-palette-page {
+    padding: 24px 30px 40px;
+    height: calc(83vh - 30px - 70px);
+    overflow-y: auto;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+}
+
+.color-palette-page::-webkit-scrollbar { width: 8px; }
+.color-palette-page::-webkit-scrollbar-thumb { background: var(--accent-gradient); border-radius: 10px; }
+.color-palette-page::-webkit-scrollbar-track { background: var(--bg-secondary-alpha); border-radius: 10px; }
+.color-palette-page::-webkit-scrollbar-button { display: none; }
+
+/* ── Chapter ── */
+.palette-chapter {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.palette-chapter-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--border-primary);
+}
+
+.chapter-icon-box {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    background: rgba(139, 92, 246, 0.1);
+    border: 1px solid rgba(139, 92, 246, 0.25);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.chapter-icon {
+    font-size: 1.05em;
+    background: var(--accent-gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 0 6px rgba(139, 92, 246, 0.4));
+}
+
+.palette-chapter-title {
+    font-family: 'Chillax', sans-serif;
+    font-size: 1.1em;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 0 0 3px;
+}
+
+.palette-chapter-desc {
+    font-family: 'Chillax', sans-serif;
+    font-size: 0.78em;
+    color: var(--text-muted);
+    margin: 0;
+}
+
+/* ── Group within site colors ── */
+.palette-section {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.palette-group-title {
+    font-family: 'Chillax', sans-serif;
+    font-size: 0.7em;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--text-muted);
+    margin: 0;
+}
+
+.palette-swatches {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+/* ── Swatch card ── */
+.palette-swatch {
+    width: 148px;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid var(--border-primary);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    background: var(--card-bg);
+    flex-shrink: 0;
+}
+
+.palette-swatch:hover {
+    transform: translateY(-3px);
+    border-color: var(--border-hover);
+    box-shadow: 0 10px 24px var(--shadow-medium);
+}
+
+.swatch-preview {
+    height: 64px;
+    width: 100%;
+}
+
+.gradient-preview {
+    height: 64px;
+}
+
+.swatch-info {
+    padding: 8px 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    position: relative;
+}
+
+.swatch-label {
+    font-family: 'Chillax', sans-serif;
+    font-size: 0.8em;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.swatch-name {
+    font-family: 'Chillax', sans-serif;
+    font-size: 0.65em;
+    color: var(--text-muted);
+    letter-spacing: 0.02em;
+}
+
+.swatch-value {
+    font-family: 'Courier New', monospace;
+    font-size: 0.68em;
+    color: var(--text-secondary);
+}
+
+.swatch-copied {
+    position: absolute;
+    top: 6px;
+    right: 8px;
+    font-size: 0.65em;
+    font-weight: 700;
+    color: #4ade80;
+    background: rgba(74, 222, 128, 0.12);
+    border: 1px solid rgba(74, 222, 128, 0.3);
+    padding: 2px 7px;
+    border-radius: 20px;
+}
+
+.gradient-swatch {
+    width: 210px;
+}
+
+/* ── Harmonious palette combos ── */
+.palette-combos {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 14px;
+}
+
+.palette-combo {
+    border-radius: 14px;
+    border: 1px solid var(--border-primary);
+    overflow: hidden;
+    background: var(--card-bg);
+    transition: all 0.2s ease;
+}
+
+.palette-combo:hover {
+    transform: translateY(-2px);
+    border-color: var(--border-hover);
+    box-shadow: 0 10px 24px var(--shadow-medium);
+}
+
+.combo-strip {
+    display: flex;
+    height: 72px;
+}
+
+.combo-chip {
+    flex: 1;
+    position: relative;
+    cursor: pointer;
+    transition: flex 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.combo-chip:hover {
+    flex: 1.6;
+}
+
+.combo-chip-copied {
+    font-size: 0.85em;
+    font-weight: 700;
+    color: rgba(255,255,255,0.9);
+    text-shadow: 0 1px 4px rgba(0,0,0,0.5);
+    pointer-events: none;
+}
+
+.combo-meta {
+    padding: 10px 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.combo-name {
+    font-family: 'Chillax', sans-serif;
+    font-size: 0.88em;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.combo-desc {
+    font-family: 'Chillax', sans-serif;
+    font-size: 0.72em;
+    color: var(--text-muted);
+    line-height: 1.4;
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+    .color-palette-page { padding: 16px; }
+
+    .palette-swatch { width: calc(50% - 5px); }
+    .gradient-swatch { width: 100%; }
+    .palette-combos { grid-template-columns: 1fr; }
+}

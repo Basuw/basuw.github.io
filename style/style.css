@@ -695,8 +695,12 @@ footer {
 
 /* Style pour les onglets */
 .navbar a, .navbar .dropdown {
-   display: inline-block;
-   padding: 15px 25px;
+   display: inline-flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: flex-end;
+   gap: 5px;
+   padding: 10px 28px 12px;
    margin: 0 2px;
    text-decoration: none;
    color: #94a3b8;
@@ -711,31 +715,75 @@ footer {
    position: relative;
    cursor: pointer;
    z-index: 2;
-   box-shadow: 
+   box-shadow:
       0 -5px 15px rgba(0, 0, 0, 0.2),
       inset 0 1px 0 rgba(255, 255, 255, 0.05);
+   -webkit-user-select: none;
+   user-select: none;
+}
+
+.nav-tab-icon {
+   font-size: 1em;
+   transition: transform 0.25s ease;
+   pointer-events: none;
+}
+
+.nav-tab-label {
+   font-size: 0.75em;
+   font-weight: 600;
+   letter-spacing: 0.03em;
+   pointer-events: none;
+   white-space: nowrap;
+}
+
+/* Featured "About myself" tab — gradient icon at rest */
+.nav-tab-featured .nav-tab-icon {
+   background: var(--accent-gradient);
+   -webkit-background-clip: text;
+   background-clip: text;
+   -webkit-text-fill-color: transparent;
+   filter: drop-shadow(0 0 5px rgba(139, 92, 246, 0.4));
+}
+
+.nav-tab-featured {
+   color: #b8a5e0;
 }
 
 .navbar a:hover, .navbar .dropdown:hover {
    background: var(--bg-hover);
    border-color: var(--border-hover);
    transform: translateY(-3px);
-   box-shadow: 
+   box-shadow:
       var(--shadow-hover),
       inset 0 1px 0 rgba(255, 255, 255, 0.1);
    color: #e2e8f0;
 }
 
+.navbar a:hover .nav-tab-icon,
+.navbar .dropdown:hover .nav-tab-icon {
+   transform: scale(1.2) translateY(-1px);
+}
+
 .navbar a.active, .navbar .dropdown.active {
-   background: var(--bg-active);
-   border-color: var(--border-active);
+   background: var(--gradient-primary);
+   border-color: transparent;
    color: #ffffff;
    transform: translateY(-5px);
-   box-shadow: 
+   box-shadow:
       var(--shadow-active),
       0 0 0 2px rgba(139, 92, 246, 0.2),
       inset 0 1px 0 rgba(255, 255, 255, 0.15);
    z-index: 3;
+}
+
+.navbar a.active .nav-tab-icon,
+.navbar .dropdown.active .nav-tab-icon {
+   background: none;
+   -webkit-background-clip: unset;
+   background-clip: unset;
+   -webkit-text-fill-color: #ffffff;
+   filter: none;
+   transform: scale(1.1);
 }
 
 .navbar a.active::after, .navbar .dropdown.active::after {
@@ -768,6 +816,11 @@ footer {
    transition: color 0.3s ease;
    position: relative;
    z-index: 100001;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   gap: 5px;
+   width: 100%;
 }
 
 .dropdown-btn:hover {
@@ -777,65 +830,142 @@ footer {
 /* Menu déroulant fonctionnel */
 .dropdown-content {
    display: none;
-   position: absolute !important; /* Changer en absolute pour être relatif au bouton */
-   background: rgba(30, 30, 46, 0.98) !important;
-   -webkit-backdrop-filter: blur(20px);
-   backdrop-filter: blur(20px);
-   min-width: 100%; /* Même largeur que le bouton parent */
-   width: 100%; /* Forcer la même largeur */
-   box-shadow: 
-      0 10px 25px rgba(0, 0, 0, 0.4),
-      0 0 0 1px rgba(139, 92, 246, 0.3),
-      inset 0 1px 0 rgba(255, 255, 255, 0.1);
+   position: absolute !important;
+   background: rgba(18, 18, 32, 0.96) !important;
+   -webkit-backdrop-filter: blur(24px);
+   backdrop-filter: blur(24px);
+   min-width: 100%;
+   box-shadow:
+      0 20px 40px rgba(0, 0, 0, 0.5),
+      0 0 0 1px rgba(139, 92, 246, 0.25),
+      inset 0 1px 0 rgba(255, 255, 255, 0.07);
    z-index: 1000 !important;
-   border-radius: 12px;
-   border: 2px solid rgba(139, 92, 246, 0.4);
-   top: 100% !important; /* Juste sous le bouton */
-   left: 0 !important; /* Aligné avec le bord gauche du bouton */
-   margin: 0;
-   margin-top: 2px; /* Petit espace entre le bouton et le menu */
+   border-radius: 16px;
+   border: 1px solid rgba(139, 92, 246, 0.3);
+   top: calc(100% + 6px) !important;
+   left: 50% !important;
+   transform: translateX(-50%) !important;
    padding: 8px;
-   box-sizing: border-box; /* Pour inclure les bordures dans la largeur */
+   box-sizing: border-box;
 }
 
 .dropdown-content a {
    color: #e2e8f0;
-   padding: 12px 16px;
    text-decoration: none;
-   display: block;
-   border-radius: 6px;
-   margin: 4px;
-   transition: all 0.3s ease;
+   display: flex;
+   align-items: center;
+   gap: 12px;
+   padding: 10px 12px;
+   border-radius: 10px;
+   margin: 2px 0;
+   transition: all 0.2s ease;
    cursor: pointer;
+   position: relative;
+}
+
+.dropdown-item-icon {
+   width: 36px;
+   height: 36px;
+   border-radius: 9px;
+   background: rgba(139, 92, 246, 0.12);
+   border: 1px solid rgba(139, 92, 246, 0.2);
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   flex-shrink: 0;
+   transition: all 0.2s ease;
+}
+
+.dropdown-item-icon i {
+   font-size: 0.85em;
+   background: var(--accent-gradient);
+   -webkit-background-clip: text;
+   background-clip: text;
+   -webkit-text-fill-color: transparent;
+}
+
+.dropdown-item-body {
+   display: flex;
+   flex-direction: column;
+   gap: 2px;
+   flex: 1;
+   min-width: 0;
+}
+
+.dropdown-item-title {
+   font-size: 0.85em;
+   font-weight: 600;
+   color: #e2e8f0;
+   line-height: 1;
+}
+
+.dropdown-item-desc {
+   font-size: 0.72em;
+   color: #64748b;
+   line-height: 1.3;
+}
+
+.dropdown-item-badge {
+   font-size: 0.6em;
+   font-weight: 700;
+   letter-spacing: 0.05em;
+   text-transform: uppercase;
+   padding: 2px 7px;
+   border-radius: 20px;
+   background: rgba(139, 92, 246, 0.15);
+   border: 1px solid rgba(139, 92, 246, 0.3);
+   color: #a78bfa;
+   flex-shrink: 0;
 }
 
 .dropdown-content a:hover {
-   background: rgba(139, 92, 246, 0.2);
+   background: rgba(139, 92, 246, 0.12) !important;
+}
+
+.dropdown-content a:hover .dropdown-item-icon {
+   background: rgba(139, 92, 246, 0.22);
+   border-color: rgba(139, 92, 246, 0.4);
+   transform: scale(1.05);
+}
+
+.dropdown-content a:hover .dropdown-item-title {
    color: #ffffff;
+}
+
+.dropdown-content a:hover .dropdown-item-desc {
+   color: #94a3b8;
 }
 
 /* Afficher le menu au survol ET avec la classe show */
 .dropdown:hover .dropdown-content,
 .dropdown.show .dropdown-content {
    display: block !important;
-   transform: translateY(0);
-   opacity: 1;
-   visibility: visible;
 }
 
 /* Light theme dropdown styles */
 body.light-theme .dropdown-content {
-   background: rgba(255, 255, 255, 0.98) !important;
-   border: 2px solid rgba(59, 130, 246, 0.4) !important;
-   box-shadow: 
-      0 10px 25px rgba(0, 0, 0, 0.15),
-      0 0 0 1px rgba(59, 130, 246, 0.2),
+   background: rgba(250, 250, 255, 0.98) !important;
+   border: 1px solid rgba(59, 130, 246, 0.25) !important;
+   box-shadow:
+      0 20px 40px rgba(0, 0, 0, 0.12),
+      0 0 0 1px rgba(59, 130, 246, 0.1),
       inset 0 1px 0 rgba(255, 255, 255, 0.9) !important;
 }
 
 body.light-theme .dropdown-content a {
    color: #1e293b !important;
-   font-weight: 500;
+}
+
+body.light-theme .dropdown-item-title {
+   color: #1e293b;
+}
+
+body.light-theme .dropdown-item-desc {
+   color: #94a3b8;
+}
+
+body.light-theme .dropdown-content a:hover .dropdown-item-title {
+   color: #1e293b;
 }
 
 body.light-theme .dropdown-content a:hover {
@@ -1148,6 +1278,57 @@ body.light-theme .dock-container {
 body.light-theme .dock-item:hover {
    background: rgba(0, 0, 0, 0.05);
 }
+
+/* Dock separator */
+.dock-separator {
+   width: 1px;
+   height: 40px;
+   background: rgba(255, 255, 255, 0.25);
+   border-radius: 1px;
+   flex-shrink: 0;
+   align-self: center;
+}
+
+body.light-theme .dock-separator {
+   background: rgba(0, 0, 0, 0.15);
+}
+
+/* Active dot under website icon */
+.dock-dot {
+   position: absolute;
+   bottom: -6px;
+   left: 50%;
+   transform: translateX(-50%);
+   width: 5px;
+   height: 5px;
+   border-radius: 50%;
+   background: rgba(255, 255, 255, 0.8);
+}
+
+/* App icon squares */
+.dock-icon {
+   width: 50px;
+   height: 50px;
+   border-radius: 12px;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   font-size: 1.4em;
+   color: #ffffff;
+   transition: all 0.3s ease;
+   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+}
+
+.dock-item:hover .dock-icon {
+   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
+}
+
+.dock-icon--safari   { background: linear-gradient(145deg, #1a9cf7, #0055cc); }
+.dock-icon--photos   { background: linear-gradient(145deg, #8b5cf6, #6366f1); }
+.dock-icon--mail     { background: linear-gradient(145deg, #4b9dff, #1a6fcc); }
+.dock-icon--terminal { background: linear-gradient(145deg, #1c1c1e, #2d2d30); border: 1px solid rgba(255,255,255,0.1); }
+.dock-icon--finder   { background: linear-gradient(145deg, #57b5f9, #1573d4); }
+.dock-icon--settings { background: linear-gradient(145deg, #98989d, #636366); }
 
 /* Animation pour révéler le fond d'écran */
 body:has(.window.minimized) {
