@@ -4,7 +4,7 @@ export default {
         return {
             copiedSwatch: null,
 
-            /* ── Section 1 : couleurs du site ── */
+            /* ── Section 1 : site colors ── */
             siteColors: [
                 {
                     group: 'Accent',
@@ -50,36 +50,36 @@ export default {
                 { name: '--bg-light-gradient',  value: 'linear-gradient(135deg, #f8fafc 0%, #e2e8f0 25%, #cbd5e1 50%, #e2e8f0 75%, #f8fafc 100%)', label: 'Background (light)' },
             ],
 
-            /* ── Section 2 : palettes harmonieuses ── */
+            /* ── Section 2 : harmonious palettes ── */
             harmonious: [
                 {
                     name: 'Purple Haze',
-                    desc: 'Les couleurs de ce site — violet profond et bleu vif',
+                    desc: 'This site\'s colors — deep violet and vivid blue',
                     colors: ['#1e1e2e', '#8b5cf6', '#6366f1', '#3b82f6', '#e2e8f0'],
                 },
                 {
                     name: 'Emerald Night',
-                    desc: 'Fonds sombres avec des accents émeraude lumineux',
+                    desc: 'Dark backgrounds with bright emerald accents',
                     colors: ['#0d1f1a', '#059669', '#10b981', '#34d399', '#d1fae5'],
                 },
                 {
                     name: 'Sunset Glow',
-                    desc: 'Chaleureux, du corail à l\'or en passant par le rose',
+                    desc: 'Warm tones, from coral to gold through pink',
                     colors: ['#1c0a00', '#f97316', '#fb923c', '#fbbf24', '#fef3c7'],
                 },
                 {
                     name: 'Rose Quartz',
-                    desc: 'Douceur et romantisme, du bordeaux au blush',
+                    desc: 'Softness and romance, from burgundy to blush',
                     colors: ['#1f0a10', '#e11d48', '#fb7185', '#fda4af', '#fff1f2'],
                 },
                 {
                     name: 'Arctic',
-                    desc: 'Froid et minimaliste, du noir à la glace',
+                    desc: 'Cold and minimal, from black to ice',
                     colors: ['#0f172a', '#0ea5e9', '#38bdf8', '#bae6fd', '#f0f9ff'],
                 },
                 {
                     name: 'Slate Mono',
-                    desc: 'Monochrome élégant, nuances de gris bleuté',
+                    desc: 'Elegant monochrome, shades of blue-grey',
                     colors: ['#0f172a', '#1e293b', '#334155', '#94a3b8', '#f1f5f9'],
                 },
             ],
@@ -105,13 +105,44 @@ export default {
     template: `
     <div class="color-palette-page">
 
-        <!-- ══ Section : couleurs du site ══ -->
+        <!-- ══ Section : harmonious palettes ══ -->
+        <section class="palette-chapter">
+            <div class="palette-chapter-header">
+                <div class="chapter-icon-box"><i class="fas fa-swatchbook chapter-icon"></i></div>
+                <div>
+                    <h2 class="palette-chapter-title">Harmonious palettes</h2>
+                    <p class="palette-chapter-desc">Color combinations that work perfectly together — click to copy</p>
+                </div>
+            </div>
+
+            <div class="palette-combos">
+                <div class="palette-combo" v-for="palette in harmonious" :key="palette.name">
+                    <div class="combo-strip">
+                        <div
+                            v-for="(color, ci) in palette.colors"
+                            :key="ci"
+                            class="combo-chip"
+                            :style="{ background: color }"
+                            :title="'Copy ' + color"
+                            @click="copyToClipboard(color, palette.name + ci)"
+                        >
+                            <span class="combo-chip-copied" v-if="copiedSwatch === palette.name + ci">✓</span>
+                        </div>
+                    </div>
+                    <div class="combo-meta">
+                        <span class="combo-name">{{ palette.name }}</span>
+                        <span class="combo-desc">{{ palette.desc }}</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- ══ Section : site colors ══ -->
         <section class="palette-chapter">
             <div class="palette-chapter-header">
                 <div class="chapter-icon-box"><i class="fas fa-globe chapter-icon"></i></div>
                 <div>
                     <h2 class="palette-chapter-title">Site colors</h2>
-                    <p class="palette-chapter-desc">Toutes les couleurs utilisées sur ce site — clic pour copier</p>
+                    <p class="palette-chapter-desc">All colors used on this site — click to copy</p>
                 </div>
             </div>
 
@@ -152,38 +183,6 @@ export default {
                             <span class="swatch-name">{{ g.name }}</span>
                             <span class="swatch-copied" v-if="copiedSwatch === sid('gradient', g.name)">Copied!</span>
                         </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- ══ Section : palettes harmonieuses ══ -->
-        <section class="palette-chapter">
-            <div class="palette-chapter-header">
-                <div class="chapter-icon-box"><i class="fas fa-swatchbook chapter-icon"></i></div>
-                <div>
-                    <h2 class="palette-chapter-title">Harmonious palettes</h2>
-                    <p class="palette-chapter-desc">Combinaisons de couleurs qui s'accordent parfaitement — clic pour copier</p>
-                </div>
-            </div>
-
-            <div class="palette-combos">
-                <div class="palette-combo" v-for="palette in harmonious" :key="palette.name">
-                    <div class="combo-strip">
-                        <div
-                            v-for="(color, ci) in palette.colors"
-                            :key="ci"
-                            class="combo-chip"
-                            :style="{ background: color }"
-                            :title="'Copy ' + color"
-                            @click="copyToClipboard(color, palette.name + ci)"
-                        >
-                            <span class="combo-chip-copied" v-if="copiedSwatch === palette.name + ci">✓</span>
-                        </div>
-                    </div>
-                    <div class="combo-meta">
-                        <span class="combo-name">{{ palette.name }}</span>
-                        <span class="combo-desc">{{ palette.desc }}</span>
                     </div>
                 </div>
             </div>
