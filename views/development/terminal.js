@@ -150,16 +150,16 @@ export default {
             this.print('Contact:', 'term-info');
             this.history.push({ type: 'output', text: '  LinkedIn  →  https://linkedin.com/in/bastienjacquelin', class: 'term-text' });
             this.history.push({ type: 'output', text: '  GitHub    →  https://github.com/basuw', class: 'term-text' });
-            this.history.push({ type: 'output', text: '  Email     →  bastien.jacquelin@outlook.com', class: 'term-text' });
+            this.history.push({ type: 'output', text: '  Email     →  bastien.jacquelin@free.fr', class: 'term-text' });
         },
 
         printProjects() {
             this.print('Projects:', 'term-info');
             const projects = [
                 { name: 'Capitalot',   desc: 'Personal finance tracking app' },
-                { name: '4L Trophy',   desc: 'Humanitarian rally project and logistics' },
+                { name: '4L Trophy',   desc: 'Humanitarian rally project and logistics website to promote my adventure' },
                 { name: 'MySeries',    desc: 'TV series tracking web app' },
-                { name: 'FallZ',       desc: 'Survival game project' },
+                { name: 'FallZ',       desc: 'Fall detector for hikers' },
             ];
             projects.forEach(({ name, desc }) => {
                 this.history.push({
