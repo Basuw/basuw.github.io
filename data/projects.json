@@ -40,10 +40,10 @@
         "github": "https://github.com/Basuw/La-4L-des-d-mes",
         "summary": "Vue.js 3 + Vite + Pinia frontend, Spring Boot 3 + Java 21 backend, PostgreSQL, Docker + Nginx.",
         "media": [
-            { "type": "video", "src": "/img/projects/4Ldesdomes/home.mov" },
-            { "type": "image", "src": "/img/projects/4Ldesdomes/clothes.png" },
-            { "type": "video", "src": "/img/projects/4Ldesdomes/clothes.mov" },
-            { "type": "image", "src": "/img/projects/4Ldesdomes/panier.png" }
+            { "type": "video", "src": "/img/projects/4ldesdomes/home.mov" },
+            { "type": "image", "src": "/img/projects/4ldesdomes/clothes.png" },
+            { "type": "video", "src": "/img/projects/4ldesdomes/clothes.mov" },
+            { "type": "image", "src": "/img/projects/4ldesdomes/panier.png" }
         ],
         "technologies": [
             { "name": "Vue.js", "icon": "devicon-vuejs-plain colored" },
